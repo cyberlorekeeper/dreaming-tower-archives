@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Cyber Lorekeeper — The Codex</title>
+  <meta name="description" content="The Codex — A storytelling framework from the Digital Realm. Turn security data into stories executives remember." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind (CDN for starter; swap to compiled in production) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            aether:'#0B0F14', runic:'#1A2430', indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            parchment:'#F7F4EF', silver:'#C9D1D9', fog:'#E9EDF2', shadow:'#101418', verdigris:'#1EC6A6', ward:'#E84D5B'
+          },
+          fontFamily: { display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow: { card:'0 6px 18px rgba(0,0,0,.08)', hover:'0 10px 24px rgba(0,0,0,.12)' },
+          maxWidth: { prose:'68ch' },
+          borderRadius: { xl:'28px' }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Subtle star/circuit noise for dark hero */
+    .hero-bg{background: radial-gradient(1200px 600px at 80% -10%, rgba(124,77,255,.35), transparent 60%), radial-gradient(900px 500px at -10% 10%, rgba(75,93,255,.35), transparent 60%), linear-gradient(120deg, #0B0F14 0%, #1A2430 60%, #0B0F14 100%);} 
+    .underline-link{ text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    .focus-ring:focus{ outline: 2px solid #7C4DFF; outline-offset: 3px; }
+  </style>
+</head>
+<body class="bg-parchment text-aether font-body selection:bg-ember/30 selection:text-aether">
+  <!-- Skip link -->
+  <a href="#main" class="sr-only focus:not-sr-only focus-ring fixed left-4 top-4 z-50 bg-white/90 px-3 py-2 rounded-md shadow-card">Skip to content</a>
+
+  <!-- Header / Nav -->
+  <header class="fixed inset-x-0 top-0 z-40 transition backdrop-blur supports-[backdrop-filter]:bg-parchment/70 border-b border-fog">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2 font-display text-lg tracking-wide">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-violet text-white font-bold">CL</span>
+        <span class="hidden sm:inline">The Cyber Lorekeeper</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-[15px]">
+        <a href="#codex" class="hover:text-violet underline-link">The Codex</a>
+        <a href="#value" class="hover:text-violet underline-link">Why It Works</a>
+        <a href="#case" class="hover:text-violet underline-link">Case Study</a>
+        <a href="#about" class="hover:text-violet underline-link">About</a>
+      </nav>
+      <a href="#download" class="btn focus-ring inline-flex items-center rounded-md bg-indigo px-4 py-2 text-white font-semibold shadow-card hover:shadow-hover">Claim the Scroll</a>
+    </div>
+  </header>
+
+  <main id="main" class="pt-24" >
+    <!-- Hero -->
+    <section id="top" class="hero-bg text-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+        <div class="max-w-3xl">
+          <p class="uppercase tracking-[.18em] text-silver/90 text-xs mb-4">TALES FROM THE DIGITAL REALM</p>
+          <h1 class="font-display text-4xl sm:text-5xl leading-tight">The Codex — A Storytelling Framework from the Digital Realm</h1>
+          <p class="mt-5 text-silver text-lg max-w-prose">Stop presenting numbers executives forget. Start telling stories they can’t ignore. Learn the archetypes and translation tools that turn security data into executive action.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#download" class="focus-ring inline-flex items-center rounded-md bg-indigo px-5 py-3 text-white font-semibold shadow-card hover:shadow-hover">📜 Download the Free Mini‑Guide</a>
+            <a href="#case" class="focus-ring inline-flex items-center rounded-md border border-silver/30 px-5 py-3 text-white/90 hover:bg-white/10">Read a Scroll</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Trio -->
+    <section id="value" class="py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="card bg-white rounded-xl p-6 shadow-card">
+            <h3 class="font-display text-xl">Seven Archetypes</h3>
+            <p class="mt-2 text-[15px] leading-relaxed">Siege, Prophet’s Warning, Dragon’s Awakening, Quest, Merchant’s Journey, Alliance, Succession. Repeatable structures for any security story.</p>
+          </div>
+          <div class="card bg-white rounded-xl p-6 shadow-card">
+            <h3 class="font-display text-xl">The Mythology Dial</h3>
+            <p class="mt-2 text-[15px] leading-relaxed">Calibrate from conservative to full‑fantasy. Pair every metaphor with a business translation and data anchor.</p>
+          </div>
+          <div class="card bg-white rounded-xl p-6 shadow-card">
+            <h3 class="font-display text-xl">5‑Step Application Guide</h3>
+            <p class="mt-2 text-[15px] leading-relaxed">Identify the challenge, choose an archetype, map Realm/Cast/Quest, anchor in data, deliver the call to adventure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Study Teaser -->
+    <section id="case" class="py-20 bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="md:flex items-start gap-10">
+          <div class="md:w-1/2">
+            <h2 class="font-display text-3xl">Case Study: The Dragon Awakens</h2>
+            <p class="mt-3 text-[15px] leading-relaxed max-w-prose">A traditional report: 17 slides of CVSS and timelines. The Codex version: a Dragon’s Awakening that reframed risk, clarified stakes, and closed with a clear decision. Result: engaged executives and faster approvals.</p>
+            <ul class="mt-4 space-y-2 text-[15px]">
+              <li>• Attention shifted from metrics → impact</li>
+              <li>• Executives asked, “What resources do you need?”</li>
+              <li>• Decision made in the same meeting</li>
+            </ul>
+            <a href="#download" class="mt-6 inline-flex items-center text-violet underline-link">Get the mini‑guide to see how →</a>
+          </div>
+          <div class="md:w-1/2 mt-8 md:mt-0">
+            <div class="rounded-xl border border-fog overflow-hidden">
+              <div class="grid grid-cols-2 divide-x divide-fog bg-parchment">
+                <div class="p-5">
+                  <p class="text-xs uppercase tracking-widest text-aether/60">Before</p>
+                  <h4 class="font-semibold mt-1">Traditional</h4>
+                  <ul class="mt-3 text-[14px] space-y-1">
+                    <li>– CVSS 9.8 details</li>
+                    <li>– Dense timeline bullets</li>
+                    <li>– No decision framing</li>
+                  </ul>
+                </div>
+                <div class="p-5 bg-white">
+                  <p class="text-xs uppercase tracking-widest text-aether/60">After</p>
+                  <h4 class="font-semibold mt-1">The Codex</h4>
+                  <ul class="mt-3 text-[14px] space-y-1">
+                    <li>– Dragon’s Awakening narrative</li>
+                    <li>– Business translation on each beat</li>
+                    <li>– Clear call to approve defenses</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Codex (what it is) -->
+    <section id="codex" class="py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-prose">
+          <h2 class="font-display text-3xl">What is the Codex?</h2>
+          <p class="mt-3 text-[15px] leading-relaxed">A practical storytelling framework for security leaders. Use universal archetypes to make risk visceral, pair every metaphor with data, and guide executives to timely decisions.</p>
+          <div class="mt-6 grid sm:grid-cols-2 gap-4">
+            <div class="rounded-xl p-5 bg-white shadow-card">
+              <p class="text-xs uppercase tracking-widest text-aether/60">For</p>
+              <h4 class="font-semibold mt-1">CISOs & Security Leads</h4>
+              <p class="mt-2 text-[14px]">Board updates, budget asks, strategic roadmaps.</p>
+            </div>
+            <div class="rounded-xl p-5 bg-white shadow-card">
+              <p class="text-xs uppercase tracking-widest text-aether/60">For</p>
+              <h4 class="font-semibold mt-1">Practitioners & SEs</h4>
+              <p class="mt-2 text-[14px]">Incident briefings, risk assessments, enablement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download / Lead form -->
+    <section id="download" class="py-20 bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-xl border border-fog bg-parchment p-8 md:p-10 grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-display text-2xl">Claim the Mini‑Guide</h3>
+            <p class="mt-2 text-[15px] leading-relaxed">Get the free Codex Mini‑Guide (3 archetypes, the Mythology Dial, and a 5‑step application). You’ll also join the Guild for future scrolls.</p>
+            <ul class="mt-4 text-[14px] space-y-1">
+              <li>• PDF guide (9–12 pages)</li>
+              <li>• Case study before/after</li>
+              <li>• No spam. Unsubscribe anytime.</li>
+            </ul>
+          </div>
+          <form class="grid gap-3" onsubmit="handleSubmit(event)">
+            <label class="text-xs tracking-widest uppercase" for="name">Name</label>
+            <input id="name" name="name" type="text" required class="focus-ring rounded-md border border-fog bg-white px-3 py-2" placeholder="Ada Lovelace" />
+            <label class="text-xs tracking-widest uppercase mt-2" for="email">Email</label>
+            <input id="email" name="email" type="email" required class="focus-ring rounded-md border border-fog bg-white px-3 py-2" placeholder="you@realm.co" />
+            <button class="mt-4 inline-flex items-center justify-center rounded-md bg-indigo px-5 py-3 text-white font-semibold shadow-card hover:shadow-hover" type="submit">Send the Scroll</button>
+            <p id="formMsg" class="text-[14px] text-aether/70" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-[120px_1fr] gap-6 items-start">
+          <div class="w-24 h-24 rounded-xl bg-runic/90 text-white flex items-center justify-center font-display text-3xl">CL</div>
+          <div class="max-w-prose">
+            <h3 class="font-display text-2xl">About the Cyber Lorekeeper</h3>
+            <p class="mt-2 text-[15px] leading-relaxed">I’m Victoria — security practitioner, recovering SE, and creator of the Codex. I help teams turn dense security data into stories executives remember and act on. Myth + metrics. No fluff.</p>
+            <div class="mt-4 flex gap-3">
+              <a href="#download" class="focus-ring inline-flex items-center rounded-md border border-fog px-4 py-2">Download the Mini‑Guide</a>
+              <a href="mailto:hello@cyberlorekeeper.com" class="focus-ring inline-flex items-center rounded-md border border-fog px-4 py-2">Summon the Lorekeeper</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-runic text-silver">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-3 gap-8">
+      <div>
+        <div class="flex items-center gap-2 text-white font-display"><span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-violet text-white font-bold">CL</span> The Cyber Lorekeeper</div>
+        <p class="mt-3 text-[14px] max-w-prose">Stories that make security leaders heard.</p>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-silver/70">Links</p>
+        <ul class="mt-2 space-y-1 text-[14px]">
+          <li><a class="underline-link hover:text-white" href="#codex">The Codex</a></li>
+          <li><a class="underline-link hover:text-white" href="#case">Case Study</a></li>
+          <li><a class="underline-link hover:text-white" href="#download">Mini‑Guide</a></li>
+        </ul>
+      </div>
+      <div id="signup">
+        <p class="text-xs uppercase tracking-widest text-silver/70">Join the Guild</p>
+        <form class="mt-2 flex gap-2" onsubmit="handleFooterSignup(event)">
+          <input type="email" required placeholder="you@realm.co" class="focus-ring w-full rounded-md border border-white/10 bg-white/10 px-3 py-2 placeholder:text-silver/70 text-white" />
+          <button class="rounded-md bg-indigo px-4 py-2 text-white font-semibold">Join</button>
+        </form>
+        <p id="signupMsg" class="mt-2 text-[13px] text-silver/80"></p>
+      </div>
+    </div>
+    <div class="border-t border-white/10 py-4 text-center text-[12px] text-silver/70">© <span id="year"></span> The Cyber Lorekeeper. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Placeholder form handlers — replace with your provider (ConvertKit, Beehiiv, Netlify Forms, Tally, etc.)
+    function handleSubmit(e){
+      e.preventDefault();
+      const msg = document.getElementById('formMsg');
+      msg.textContent = 'Your raven is en route. Check your inbox for the scroll.';
+      e.target.reset();
+    }
+    function handleFooterSignup(e){
+      e.preventDefault();
+      document.getElementById('signupMsg').textContent = 'Welcome to the Guild. New scrolls will arrive soon.';
+      e.target.reset();
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
