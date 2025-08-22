@@ -4,22 +4,32 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cyber Lorekeeper — Thank You</title>
-  <meta name="description" content="Thank you for joining the Cyber Lorekeeper early access list." />
+  <meta name="description" content="Thank you for claiming the Codex Mini-Guide from the Cyber Lorekeeper." />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Tailwind (CDN for quick start) -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme:{extend:{
-        colors:{aether:'#0B0F14', runic:'#1A2430', indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429', parchment:'#F7F4EF', silver:'#C9D1D9', fog:'#E9EDF2'},
-        fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] }
-      }}
+      theme: {
+        extend: {
+          colors: {
+            aether:'#0B0F14', runic:'#1A2430',
+            indigo:'#4B5DFF', violet:'#7C4DFF',
+            ember:'#F0B429', parchment:'#F7F4EF',
+            silver:'#C9D1D9', fog:'#E9EDF2'
+          },
+          fontFamily: {
+            display:['Cinzel','serif'],
+            body:['Source Sans 3','ui-sans-serif','system-ui']
+          }
+        }
+      }
     }
   </script>
   <style>
-    .hero-bg{
+    .hero-bg {
       background:
         radial-gradient(1200px 600px at 80% -10%, rgba(124,77,255,.35), transparent 60%),
         radial-gradient(900px 500px at -10% 10%, rgba(75,93,255,.35), transparent 60%),
@@ -31,22 +41,37 @@
 <body class="bg-aether text-white font-body">
   <main class="min-h-screen hero-bg flex items-center">
     <div class="mx-auto max-w-2xl px-6 py-16 text-center">
-      <!-- Logo / Mark -->
-      <div class="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-violet font-display text-xl">CL</div>
+      <!-- Logo -->
+      <div class="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-violet font-display text-xl">
+        CL
+      </div>
 
       <h1 class="font-display text-4xl sm:text-5xl">Thank You, Traveler</h1>
       <p class="mt-4 text-lg text-silver/90">
-        Your raven has been dispatched. When <span class="font-semibold">The Codex</span> is unveiled,
-        you’ll be among the first to receive it.
+        Your raven has arrived. The <span class="font-semibold">Codex Mini-Guide</span> is ready for you to download below.
       </p>
 
+      <!-- Download button -->
       <div class="mt-8">
-        <a href="/" class="focus-ring inline-flex items-center justify-center rounded-md bg-indigo px-6 py-3 font-semibold shadow hover:brightness-110">
-          Return to Home
+        <a href="/assets/codex-mini-guide-v1.0.pdf"
+           class="focus-ring inline-flex items-center justify-center rounded-md bg-indigo px-6 py-3 font-semibold shadow hover:brightness-110">
+          📜 Download the Mini-Guide
         </a>
       </div>
 
-      <p class="mt-10 text-xs text-silver/60">© <span id="year"></span> The Cyber Lorekeeper. All rights reserved.</p>
+      <!-- Optional: auto-download after a pause -->
+      <script>
+        setTimeout(()=>{ window.location.href='/assets/codex-mini-guide-v1.0.pdf'; }, 1500);
+      </script>
+
+      <!-- Back home link -->
+      <div class="mt-8">
+        <a href="/" class="text-sm text-silver/70 underline hover:text-silver">← Return to Home</a>
+      </div>
+
+      <p class="mt-10 text-xs text-silver/60">
+        © <span id="year"></span> The Cyber Lorekeeper. All rights reserved.
+      </p>
     </div>
   </main>
 
