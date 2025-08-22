@@ -156,28 +156,48 @@
 
     <!-- Download / Lead form -->
     <section id="download" class="py-20 bg-white">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="rounded-xl border border-fog bg-parchment p-8 md:p-10 grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="font-display text-2xl">Claim the Mini‑Guide</h3>
-            <p class="mt-2 text-[15px] leading-relaxed">Get the free Codex Mini‑Guide (3 archetypes, the Mythology Dial, and a 5‑step application). You’ll also join the Guild for future scrolls.</p>
-            <ul class="mt-4 text-[14px] space-y-1">
-              <li>• PDF guide (9–12 pages)</li>
-              <li>• Case study before/after</li>
-              <li>• No spam. Unsubscribe anytime.</li>
-            </ul>
-          </div>
-          <form class="grid gap-3" onsubmit="handleSubmit(event)">
-            <label class="text-xs tracking-widest uppercase" for="name">Name</label>
-            <input id="name" name="name" type="text" required class="focus-ring rounded-md border border-fog bg-white px-3 py-2" placeholder="Ada Lovelace" />
-            <label class="text-xs tracking-widest uppercase mt-2" for="email">Email</label>
-            <input id="email" name="email" type="email" required class="focus-ring rounded-md border border-fog bg-white px-3 py-2" placeholder="you@realm.co" />
-            <button class="mt-4 inline-flex items-center justify-center rounded-md bg-indigo px-5 py-3 text-white font-semibold shadow-card hover:shadow-hover" type="submit">Send the Scroll</button>
-            <p id="formMsg" class="text-[14px] text-aether/70" role="status"></p>
-          </form>
-        </div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="rounded-xl border border-fog bg-parchment p-8 md:p-10 grid md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="font-display text-2xl">Claim the Mini-Guide</h3>
+        <p class="mt-2 text-[15px] leading-relaxed">
+          Get the free Codex Mini-Guide (3 archetypes, the Mythology Dial, and a 5-step application). 
+          You’ll also join the Guild for future scrolls.
+        </p>
+        <ul class="mt-4 text-[14px] space-y-1">
+          <li>• PDF guide (9–12 pages)</li>
+          <li>• Case study before/after</li>
+          <li>• No spam. Unsubscribe anytime.</li>
+        </ul>
       </div>
-    </section>
+
+      <!-- Netlify form -->
+      <form name="codex-download" method="POST" netlify netlify-honeypot="bot-field" action="/thanks.html" class="grid gap-3">
+        <!-- hidden input required by Netlify -->
+        <input type="hidden" name="form-name" value="codex-download">
+        
+        <!-- Honeypot field (hidden from humans) -->
+        <p class="hidden">
+          <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+        </p>
+
+        <label class="text-xs tracking-widest uppercase" for="name">Name</label>
+        <input id="name" name="name" type="text" required 
+               class="focus-ring rounded-md border border-fog bg-white px-3 py-2"
+               placeholder="Ada Lovelace" />
+
+        <label class="text-xs tracking-widest uppercase mt-2" for="email">Email</label>
+        <input id="email" name="email" type="email" required 
+               class="focus-ring rounded-md border border-fog bg-white px-3 py-2"
+               placeholder="you@realm.co" />
+
+        <button class="mt-4 inline-flex items-center justify-center rounded-md bg-indigo px-5 py-3 text-white font-semibold shadow-card hover:shadow-hover" type="submit">
+          Send the Scroll
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
 
     <!-- About -->
     <section id="about" class="py-16">
