@@ -4,74 +4,104 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cyber Lorekeeper — Coming Soon</title>
-  <meta name="description" content="The Codex — A Storytelling Framework from the Digital Realm. Launching soon." />
+  <meta name="description" content="The Codex — A storytelling framework from the Digital Realm. Launching soon." />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Tailwind (CDN for quick start) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme:{extend:{
-        colors:{aether:'#0B0F14', runic:'#1A2430', indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429', parchment:'#F7F4EF', silver:'#C9D1D9', fog:'#E9EDF2'},
-        fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] }
-      }}
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow:{
+            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card:'0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
     }
   </script>
   <style>
-    .hero-bg{
-      background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(124,77,255,.35), transparent 60%),
-        radial-gradient(900px 500px at -10% 10%, rgba(75,93,255,.35), transparent 60%),
-        linear-gradient(120deg, #0B0F14 0%, #1A2430 60%, #0B0F14 100%);
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
     }
-    .focus-ring:focus { outline:2px solid #7C4DFF; outline-offset:3px; }
-    .underline-link{ text-underline-offset:3px; text-decoration-thickness:1px; }
   </style>
 </head>
-<body class="bg-aether text-white font-body">
-  <main class="min-h-screen hero-bg flex items-center">
-    <div class="mx-auto max-w-3xl px-6 py-16 text-center">
-      <!-- Logo / Mark -->
-      <div class="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-violet font-display text-xl">CL</div>
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen flex items-center">
+    <!-- Hero background -->
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
 
-      <p class="uppercase tracking-[.18em] text-silver/80 text-xs">TALES FROM THE DIGITAL REALM</p>
-      <h1 class="mt-2 font-display text-4xl sm:text-5xl leading-tight">The Cyber Lorekeeper</h1>
-      <p class="mt-3 text-silver/90 text-lg">
+    <div class="relative mx-auto max-w-3xl px-6 py-16 text-center">
+      <!-- Mark -->
+      <div class="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-xl bg-abyss">
+        <img src="/images/icon.png" alt="Cyber Lorekeeper Icon" class="h-20 w-20" />
+      </div>
+
+      <p class="uppercase tracking-[.18em] text-stardust/80 text-xs">TALES FROM THE DIGITAL REALM</p>
+      <h1 class="mt-2 font-display text-4xl sm:text-5xl leading-tight text-gradient">The Cyber Lorekeeper</h1>
+      <p class="mt-4 text-lg text-stardust/90">
         <span class="font-semibold">The Codex</span> — a storytelling framework for security leaders — is nearly here.
         Stop presenting numbers executives forget. Start telling stories they can’t ignore.
       </p>
 
       <!-- Email capture (Netlify Forms) -->
       <div class="mt-8 mx-auto max-w-xl">
-        <form name="early-access" method="POST" data-netlify="true" class="grid gap-3 sm:grid-cols-[1fr_auto]" action="/thanks.html">
-          <input type="hidden" name="form-name" value="early-access">
-          <label for="email" class="sr-only">Email</label>
+        <form name="early-access" method="POST" netlify netlify-honeypot="bot-field" action="/thanks.html"
+              class="grid gap-3 sm:grid-cols-[1fr_auto] text-left">
+          <input type="hidden" name="form-name" value="early-access" />
+          <!-- Honeypot -->
+          <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+
+          <label class="sr-only" for="email">Email</label>
           <input id="email" name="email" type="email" required
-                 class="focus-ring w-full rounded-md border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-silver/70"
+                 class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
                  placeholder="you@realm.co" />
           <button type="submit"
-                  class="focus-ring mt-2 sm:mt-0 inline-flex items-center justify-center rounded-md bg-indigo px-5 py-3 font-semibold shadow hover:brightness-110">
+                  class="focus-ring mt-2 sm:mt-0 inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
             Notify Me
           </button>
         </form>
-        <p class="mt-2 text-sm text-silver/80">No spam. Just a raven when the gates open.</p>
+        <p class="mt-2 text-sm text-stardust/80">No spam. Just a raven when the gates open.</p>
       </div>
 
-      <!-- Social / Links (optional placeholders) -->
-      <div class="mt-8 flex items-center justify-center gap-4 text-silver/80 text-sm">
-        <a class="underline-link hover:text-white" href="https://www.linkedin.com/in/victoria-mosby" target="_blank" rel="noopener">LinkedIn</a>
-        <span aria-hidden="true">•</span>
-        <a class="underline-link hover:text-white" href="mailto:hello@cyberlorekeeper.com">Contact</a>
+      <!-- Divider -->
+      <svg aria-hidden="true" class="mx-auto my-10 h-6 w-64 text-rift/60" viewBox="0 0 256 24" fill="none">
+        <path d="M2 12H90M166 12H254" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="128" cy="12" r="3" fill="#35C6E0"/>
+        <circle cx="90" cy="12" r="2" fill="currentColor"/><circle cx="166" cy="12" r="2" fill="currentColor"/>
+      </svg>
+
+      <!-- Teaser Panel -->
+      <div class="mx-auto max-w-2xl rounded-xl border border-rift/60 bg-abyss/40 p-6 shadow-card text-left">
+        <h2 class="font-display text-2xl">What’s Coming</h2>
+        <ul class="mt-3 space-y-2 text-[15px] leading-relaxed">
+          <li>• The Codex Mini‑Guide (3 archetypes + Mythology Dial)</li>
+          <li>• A before/after case study you can steal</li>
+          <li>• And, soon: workshops that turn briefings into decisions</li>
+        </ul>
       </div>
 
       <!-- Footer note -->
-      <p class="mt-10 text-xs text-silver/60">© <span id="year"></span> The Cyber Lorekeeper. All rights reserved.</p>
+      <p class="mt-10 text-xs text-stardust/70">© <span id="year"></span> The Cyber Lorekeeper. All rights reserved.</p>
     </div>
   </main>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
