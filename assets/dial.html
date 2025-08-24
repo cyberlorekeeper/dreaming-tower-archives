@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Mythology Dial — Cyber Lorekeeper</title>
+  <meta name="robots" content="noindex, nofollow"/>
+
+  <!-- Fonts + Tailwind (CDN) to match your site -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme:{extend:{
+        colors:{
+          'deep-space':'#0A141B','abyss':'#0F2230','rift':'#143545','nebula':'#1E6175',
+          'glow':'#35C6E0','stardust':'#CFE5EF', violet:'#7C4DFF'
+        },
+        fontFamily:{display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui']},
+        boxShadow:{glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)'}
+      }}
+    }
+  </script>
+  <style>
+    body{background:#0A141B;color:#CFE5EF;font-family:"Source Sans 3",system-ui,sans-serif}
+    .text-gradient{
+      background:linear-gradient(90deg,#CFE5EF 0%,#35C6E0 60%,#7C4DFF 100%);
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+    .focus-ring:focus{outline:2px solid #35C6E0;outline-offset:3px}
+  </style>
+
+  <!-- React UMD + Babel (no build needed) -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <main id="root" class="min-h-screen bg-gradient-to-br from-deep-space via-abyss to-deep-space p-6"></main>
+
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    // ------- Data (sane defaults; tweak later if you like) -------
+    const industries = [
+      { value:'finance', label:'Finance', conservatism:75 },
+      { value:'healthcare', label:'Healthcare', conservatism:70 },
+      { value:'government', label:'Government / Public Sector', conservatism:85 },
+      { value:'saas', label:'SaaS / Tech', conservatism:45 },
+      { value:'manufacturing', label:'Manufacturing', conservatism:65 },
+      { value:'retail', label:'Retail / E‑commerce', conservatism:55 },
+    ];
+
+    const roles = [
+      { value:'board', label:'Board of Directors', conservatism:85 },
+      { value:'cfo', label:'CFO', conservatism:80 },
+      { value:'ceo', label:'CEO', conservatism:75 },
+      { value:'ciso', label:'CISO', conservatism:65 },
+      { value:'vpeng', label:'VP Engineering / CTO', conservatism:55 },
+      { value:'prod', label:'Product / IT Leadership', conservatism:60 },
+      { value:'mgr', label:'Security Leaders / Directors', conservatism:60 },
+      { value:'analyst', label:'Practitioners / Analysts', conservatism:45 },
+      { value:'se', label:'Sales Engineers / Enablement', conservatism:50 },
+      { value:'grc', label:'Risk & Compliance', conservatism:70 },
+    ];
+
+    const archetypes = [
+      { value:'siege', label:'Siege', intensity:55, desc:'Adversary pressure mounting; defenses tested.' },
+      { value:'prophet', label:'Prophet’s Warning', intensity:40, desc:'Foresight and prevention before impact.' },
+      { value:'dragon', label:'Dragon’s Awakening', intensity:85, desc:'A major threat surfaces; time is short.' },
+      { value:'quest', label:'The Quest', intensity:60, desc:'A multi‑step journey toward a clear prize.' },
+      { value:'merchant', label:'Merchant’s Journey', intensity:35, desc:'Value exchange, trade‑offs, ROI clarity.' },
+      { value:'alliance', label:'Alliance', intensity:50, desc:'Coalition across teams/vendors to win.' },
+      { value:'succession', label:'Succession', intensity:45, desc:'Hand‑offs, continuity, ownership shifts.' },
+    ];
+
+    // ------- Helpers -------
+    const getDialColor = (pos) => pos<=35 ? '#35C6E0' : pos<=75 ? '#CFE5EF' : '#7C4DFF';
+    const getDialLabel = (pos) => pos<=35 ? 'CONSERVATIVE/EXECUTIVE' : pos<=75 ? 'BALANCED' : 'FULL MYTH';
+
+    function MythologyDialApp(){
+      const [audience, setAudience] = useState({
+        industry:'finance',
+        roles:['board'],
+        culture:'traditional',         // traditional | moderate | innovative
+        riskTolerance:'low',           // low | medium | high
+        creativity:'skeptical',        // skeptical | neutral | embracing
+      });
+
+      const [scenario, setScenario] = useState({
+        archetype:'siege',
+        urgency:'medium',              // low | medium | high
+        complexity:'medium',           // low | medium | high
+        stakes:'medium',               // low | medium | high
+      });
+
+      const [dialPosition, setDialPosition] = useState(50); // 0..100 myth intensity
+      const [recommended, setRecommended] = useState('moderate'); // conservative | moderate | fantasy
+
+      // --- Scoring & Recommendation ---
+      const calculate = () => {
+        let conserv = 50;
+
+        // Industry (40%)
+        const ind = industries.find(i => i.value === audience.industry);
+        if (ind) conserv = conserv * 0.6 + ind.conservatism * 0.4;
+
+        // Roles (30%)
+        if (audience.roles.length > 0) {
+          const avgRole = audience.roles
+            .map(v => (roles.find(r => r.value === v)?.conservatism) ?? 50)
+            .reduce((a,b)=>a+b,0) / audience.roles.length;
+          conserv = conserv * 0.7 + avgRole * 0.3;
+        }
+
+        // Culture
+        const cultureAdj = { traditional:15, moderate:0, innovative:-15 }[audience.culture] ?? 0;
+        conserv += cultureAdj;
+
+        // Risk tolerance
+        const riskAdj = { low:10, medium:0, high:-10 }[audience.riskTolerance] ?? 0;
+        conserv += riskAdj;
+
+        // Creativity attitude
+        const createAdj = { skeptical:20, neutral:0, embracing:-20 }[audience.creativity] ?? 0;
+        conserv += createAdj;
+
+        // Archetype intensity (flip: higher intensity → less conservative)
+        const arch = archetypes.find(a => a.value === scenario.archetype);
+        if (arch) conserv += (60 - arch.intensity) * 0.3;
+
+        // Urgency (high → allow more myth)
+        const urgAdj = { low:5, medium:0, high:-10 }[scenario.urgency] ?? 0;
+        conserv += urgAdj;
+
+        // Complexity (high → nudge conservative for clarity)
+        const compAdj = { low:-2, medium:0, high:6 }[scenario.complexity] ?? 0;
+        conserv += compAdj;
+
+        // Stakes (high → nudge conservative for precision)
+        const stakeAdj = { low:-2, medium:3, high:8 }[scenario.stakes] ?? 0;
+        conserv += stakeAdj;
+
+        // Clamp 0..100
+        conserv = Math.max(0, Math.min(100, conserv));
+
+        // Thresholds (invert to dial)
+        const myth = 100 - conserv; // 100 == full myth
+        setDialPosition(myth);
+
+        let level;
+        if (conserv >= 75) level = 'conservative';
+        else if (conserv >= 35) level = 'moderate';
+        else level = 'fantasy';
+        setRecommended(level);
+      };
+
+      const resetAll = () => {
+        setAudience({ industry:'finance', roles:['board'], culture:'traditional', riskTolerance:'low', creativity:'skeptical' });
+        setScenario({ archetype:'siege', urgency:'medium', complexity:'medium', stakes:'medium' });
+        setDialPosition(50);
+        setRecommended('moderate');
+      };
+
+      const selectedArchetype = useMemo(
+        () => archetypes.find(a => a.value === scenario.archetype),
+        [scenario.archetype]
+      );
+
+      return (
+        <div className="max-w-5xl mx-auto">
+          {/* Header */}
+          <header className="mb-8">
+            <a href="/" className="inline-flex items-center gap-2 text-stardust/80 hover:text-glow focus-ring rounded">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-abyss">
+                <img src="/images/icon.png" alt="Cyber Lorekeeper Icon" className="h-6 w-6"/>
+              </span>
+              <span className="text-sm">Return to the Codex</span>
+            </a>
+            <h1 className="text-4xl font-display text-gradient mt-2">The Mythology Dial</h1>
+            <p className="text-stardust/85 mt-1">Calibrate your narrative for the audience, context, and archetype.</p>
+          </header>
+
+          {/* Panel */}
+          <div className="bg-abyss/40 backdrop-blur-lg rounded-2xl p-6 border border-rift/60">
+            {/* Audience */}
+            <section>
+              <h2 className="text-2xl font-display mb-3">1) Know Your Audience</h2>
+              <div className="grid md:grid-cols-3 gap-4">
+                {/* Industry */}
+                <div>
+                  <label className="text-xs uppercase tracking-widest text-stardust/70">Industry</label>
+                  <select
+                    value={audience.industry}
+                    onChange={(e)=>setAudience(a=>({...a, industry:e.target.value}))}
+                    className="mt-1 w-full p-3 bg-deep-space/60 border border-rift/60 rounded-lg text-stardust">
+                    {industries.map(i=> <option key={i.value} value={i.value}>{i.label}</option>)}
+                  </select>
+                </div>
+
+                {/* Roles */}
+                <div className="md:col-span-2">
+                  <label className="text-xs uppercase tracking-widest text-stardust/70">Primary Audience Roles</label>
+                  <div className="mt-1 grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                    {roles.map(r=>(
+                      <label key={r.value} className="flex items-center gap-2 bg-deep-space/60 border border-rift/60 rounded-lg p-2">
+                        <input
+                          type="checkbox"
+                          className="accent-[#35C6E0]"
+                          checked={audience.roles.includes(r.value)}
+                          onChange={(e)=>{
+                            setAudience(a=>{
+                              const set = new Set(a.roles);
+                              e.target.checked ? set.add(r.value) : set.delete(r.value);
+                              return {...a, roles:[...set]};
+                            })
+                          }}
+                        />
+                        <span className="text-sm">{r.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-4 grid md:grid-cols-3 gap-4">
+                {/* Culture */}
+                <div>
+                  <label className="text-xs uppercase tracking-widest text-stardust/70">Org Culture</label>
+                  <select
+                    value={audience.culture}
+                    onChange={(e)=>setAudience(a=>({...a, culture:e.target.value}))}
+                    className="mt-1 w-full p-3 bg-deep-space/60 border border-rift/60 rounded-lg text-stardust">
+                    <option value="traditional">Traditional</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="innovative">Innovative</option>
+                  </select>
+                </div>
+
+                {/* Risk tolerance */}
+                <div>
+                  <label className="text-xs uppercase tracking-widest text-stardust/70">Risk Tolerance</label>
+                  <select
+                    value={audience.riskTolerance}
+                    onChange={(e)=>setAudience(a=>({...a, riskTolerance:e.target.value}))}
+                    className="mt-1 w-full p-3 bg-deep-space/60 border border-rift/60 rounded-lg text-stardust">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                </div>
+
+                {/* Creativity */}
+                <div>
+                  <label className="text-xs uppercase tracking-widest text-stardust/70">Attitude Toward Creativity</label>
+                  <select
+                    value={audience.creativity}
+                    onChange={(e)=>setAudience(a=>({...a, creativity:e.target.value}))}
+                    className="mt-1 w-full p-3 bg-deep-space/60 border border-rift/60 rounded-lg text-stardust">
+                    <option value="skeptical">Skeptical</option>
+                    <option value="neutral">Neutral</option>
+                    <option value="embracing">Embracing</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            <hr className="my-6 border-rift/60"/>
+
+            {/* Scenario */}
+            <section>
+              <h2 className="text-2xl font-display mb-3">2) Choose Archetype & Context</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                {/* Archetype */}
+                <div>
+                  <label className="text-xs uppercase tracking-widest text-stardust/70">Archetype</label>
+                  <select
+                    value={scenario.archetype}
+                    onChange={(e)=>setScenario(s=>({...s, archetype:e.target.value}))}
+                    className="mt-1 w-full p-3 bg-deep-space/60 border border-rift/60 rounded-lg text-stardust">
+                    {archetypes.map(a => <option key={a.value} value={a.value}>{a.label}</option>)}
+                  </select>
+                  <div className="mt-2 bg-deep-space/60 border border-rift/60 rounded-lg p-3 text-sm">
+                    <span className="text-stardust/80">{selectedArchetype?.desc}</span>
+                    {selectedArchetype && (
+                      <span className="ml-2 text-[12px] text-stardust/60">• Intensity {selectedArchetype.intensity}</span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Context sliders (selects for simplicity) */}
+                <div className="grid grid-cols-3 gap-2">
+                  <div>
+                    <label className="text-xs uppercase tracking-widest text-stardust/70">Urgency</label>
+                    <select
+                      value={scenario.urgency}
+                      onChange={(e)=>setScenario(s=>({...s, urgency:e.target.value}))}
+                      className="mt-1 w-full p-3 bg-deep-space/60 border border-rift/60 rounded-lg text-stardust">
+                      <option value="low">Low</option>
+                      <option value="medium">Medium</option>
+                      <option value="high">High</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-xs uppercase tracking-widest text-stardust/70">Complexity</label>
+                    <select
+                      value={scenario.complexity}
+                      onChange={(e)=>setScenario(s=>({...s, complexity:e.target.value}))}
+                      className="mt-1 w-full p-3 bg-deep-space/60 border border-rift/60 rounded-lg text-stardust">
+                      <option value="low">Low</option>
+                      <option value="medium">Medium</option>
+                      <option value="high">High</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-xs uppercase tracking-widest text-stardust/70">Stakes</label>
+                    <select
+                      value={scenario.stakes}
+                      onChange={(e)=>setScenario(s=>({...s, stakes:e.target.value}))}
+                      className="mt-1 w-full p-3 bg-deep-space/60 border border-rift/60 rounded-lg text-stardust">
+                      <option value="low">Low</option>
+                      <option value="medium">Medium</option>
+                      <option value="high">High</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Actions */}
+            <div className="mt-6 flex flex-wrap gap-3">
+              <button onClick={calculate}
+                className="px-6 py-2 bg-glow text-abyss font-bold rounded-lg hover:brightness-110 focus-ring">
+                Calculate
+              </button>
+              <button onClick={resetAll}
+                className="px-6 py-2 bg-rift/60 text-stardust font-bold rounded-lg hover:bg-rift/50 focus-ring">
+                Reset
+              </button>
+            </div>
+          </div>
+
+          {/* Results */}
+          <section className="mt-8 grid lg:grid-cols-[280px_1fr] gap-6 items-center">
+            {/* Dial */}
+            <div className="relative mx-auto">
+              <div
+                className="w-64 h-64 rounded-full border-8 relative"
+                style={{
+                  background:`conic-gradient(from -60deg,
+                    #35C6E0 0deg 126deg,      /* 35% */
+                    #CFE5EF 126deg 270deg,    /* up to 75% */
+                    #7C4DFF 270deg 360deg     /* 75–100% */
+                  )`,
+                  borderColor:'#35C6E0'
+                }}>
+                <div className="absolute w-1 h-20 bg-[#35C6E0] origin-bottom shadow-lg"
+                     style={{
+                       top:'50%', left:'50%',
+                       transform:`translate(-50%,-100%) rotate(${(dialPosition*3.6) - 180}deg)`,
+                       borderRadius:'2px'
+                     }} />
+                <div className="absolute inset-8 bg-deep-space rounded-full flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-lg font-bold" style={{color:getDialColor(dialPosition)}}>{getDialLabel(dialPosition)}</div>
+                    <div className="text-sm text-stardust/85">{Math.round(dialPosition)}% Myth Intensity</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Recommendation */}
+            <div>
+              <div className="bg-deep-space/60 border border-rift/60 rounded-lg p-6 mb-6">
+                <h3 className="text-xl font-semibold text-glow">Recommendation</h3>
+                <p className="text-stardust/85 mt-2">
+                  Pair every story beat with a business translation and a data anchor. Calibrate style to the guidance below.
+                </p>
+              </div>
+
+              {/* Cards */}
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className={`rounded-lg p-4 border ${recommended==='conservative' ? 'border-glow/70 shadow-glow bg-abyss/30' : 'border-rift/60 bg-abyss/20'}`}>
+                  <h4 className="font-bold text-[#35C6E0] mb-1">Conservative / Executive</h4>
+                  <ul className="text-sm text-stardust/85 space-y-1">
+                    <li>• Use minimal metaphor; plain language</li>
+                    <li>• Lead with impact, options, ask</li>
+                    <li>• One visual per beat, max</li>
+                  </ul>
+                </div>
+                <div className={`rounded-lg p-4 border ${recommended==='moderate' ? 'border-glow/70 shadow-glow bg-abyss/30' : 'border-rift/60 bg-abyss/20'}`}>
+                  <h4 className="font-bold text-[#CFE5EF] mb-1">Balanced</h4>
+                  <ul className="text-sm text-stardust/85 space-y-1">
+                    <li>• Light archetype framing</li>
+                    <li>• Translate each beat to business</li>
+                    <li>• Keep metrics close to the story</li>
+                  </ul>
+                </div>
+                <div className={`rounded-lg p-4 border ${recommended==='fantasy' ? 'border-glow/70 shadow-glow bg-abyss/30' : 'border-rift/60 bg-abyss/20'}`}>
+                  <h4 className="font-bold text-[#7C4DFF] mb-1">Full Myth</h4>
+                  <ul className="text-sm text-stardust/85 space-y-1">
+                    <li>• Open with vivid narrative</li>
+                    <li>• Map Realm / Cast / Quest</li>
+                    <li>• Anchor each beat in data</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Example opening */}
+              <div className="mt-4 bg-abyss/40 rounded-lg p-4 border border-rift/60">
+                <h5 className="font-bold text-glow mb-2">Example Opening</h5>
+                <p className="text-sm text-stardust/90">
+                  {recommended === 'conservative' && `In plain terms: we’re facing a ${selectedArchetype?.label.toLowerCase()}. Here’s the business impact, options, and a recommended path.`}
+                  {recommended === 'moderate' && `Think of this as ${selectedArchetype?.label.toLowerCase()}—and in business terms, it means X risk, Y options, and Z decision.`}
+                  {recommended === 'fantasy' && `Here’s the story of our ${selectedArchetype?.label.toLowerCase()}. I’ll anchor each beat with the numbers that matter for today’s decision.`}
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <footer className="mt-10 text-center text-sm text-stardust/70">
+            <a href="/" className="underline underline-offset-4 hover:text-glow">← Return to Home</a>
+            <div className="mt-2">© <span id="year"></span> The Cyber Lorekeeper</div>
+          </footer>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<MythologyDialApp/>);
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
