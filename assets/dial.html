@@ -149,10 +149,10 @@
         setDialPosition(myth);
 
         let level;
-        if (conserv >= 75) level = 'conservative';
-        else if (conserv >= 35) level = 'moderate';
-        else level = 'fantasy';
-        setRecommended(level);
+       if (myth >= 76) level = 'fantasy';          // Full Myth
+       else if (myth >= 36) level = 'moderate';    // Balanced
+       else level = 'conservative';                // Executive / Conservative
+       setRecommended(level);
       };
 
       const resetAll = () => {
@@ -376,6 +376,22 @@
                 <p className="text-stardust/85 mt-2">
                   Pair every story beat with a business translation and a data anchor. Calibrate style to the guidance below.
                 </p>
+              </div>
+              <div class="mt-4 bg-abyss/40 rounded-lg p-4 border border-rift/60">
+                <details>
+                  <summary class="cursor-pointer text-sm text-stardust/85">
+                    🧭 How the Dial works
+                  </summary>
+                  <div class="mt-2 text-sm text-stardust/85 space-y-2">
+                    <p><strong>Myth Intensity</strong> is the % you see on the dial (higher = more narrative flavor). Your recommendation is based directly on this number.</p>
+                    <ul class="list-disc pl-5">
+                      <li><strong>What’s scored:</strong> industry, audience roles, org culture, risk tolerance, attitude to creativity, chosen archetype, urgency, complexity, and stakes.</li>
+                      <li><strong>Weights (rough):</strong> industry ~40%, roles ~30%; the rest make smaller nudges.</li>
+                      <li><strong>Cutoffs:</strong> 0–35% myth = Conservative; 36–75% = Balanced; 76–100% = Full Myth.</li>
+                    </ul>
+                    <p>Every story beat should still be paired with a business translation and a data anchor—myth is the wrapper, decisions come from clarity.</p>
+                  </div>
+                </details>
               </div>
 
               {/* Cards */}
