@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="shortcut icon" href="/images/favicon.ico">
-  <meta name="description" content="The Cyber Lorekeeper – Tales from the Digital Realm &amp; the Dreaming Tower coming soon. A chronicle of journeys, glitches, and field notes from the Dreaming Tower and Glitchborne." />
+  <meta name="description" content="The Cyber Lorekeeper — a living chronicle of journeys through the Dreaming Tower and Glitchborne, told through tales, journal excerpts, and field reports from the Lorekeeper’s archives." />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
@@ -43,6 +43,50 @@
       background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
+
+    .parchment-callout {
+      background: radial-gradient(circle at 20% 0%, #fffaf2 0%, #f7f4ef 35%, #f1ece3 70%, #e6ddcf 100%);
+      border-radius: 0.9rem;
+      border: 1px solid rgba(26, 36, 48, 0.38); /* runic-ish */
+      box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+      padding: 1.75rem 1.6rem;
+      position: relative;
+      max-width: 40rem;
+      margin-left: auto;
+      margin-right: auto;
+      transform: rotate(-0.4deg);
+    }
+
+    .parchment-callout::before {
+      content: "";
+      position: absolute;
+      inset: 10px 10px auto auto;
+      border-radius: 0.7rem;
+      border: 1px dashed rgba(26, 36, 48, 0.2);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .parchment-heading {
+      font-family: 'Cinzel','serif';
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #b5842e; /* ember-adjacent */
+      margin-bottom: 0.6rem;
+    }
+
+    .parchment-body {
+      font-size: 0.97rem;
+      line-height: 1.75;
+      color: #2b3440; /* runic-ish, readable on parchment */
+      font-style: italic;
+    }
+
+    .parchment-body + .parchment-body {
+      margin-top: 0.4rem;
+      text-indent: 0.9em;
+    }
   </style>
 </head>
 <body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
@@ -61,16 +105,28 @@
         TALES FROM THE DIGITAL REALM &amp; THE DREAMING TOWER
       </p>
       <h1 class="mt-2 font-display text-4xl sm:text-5xl leading-tight text-gradient">The Cyber Lorekeeper</h1>
-      <p class="mt-4 text-lg text-stardust/90">
-        <span class="font-semibold">Coming Soon.</span>
-      </p>
-      <p class="mt-3 text-base text-stardust/90">
-        This site is becoming the Lorekeeper’s launchpad: an ongoing chronicle of his journey through the Dreaming Tower,
-        the glitched borderlands of Glitchborne, and the strange threats that flicker between realms.
-      </p>
-      <p class="mt-2 text-base text-stardust/80">
-        Expect newsletters, journal excerpts, and recovered fragments from the Lorekeeper’s archives – equal parts story,
-        field report, and warning.
+
+      <!-- Parchment-style journal excerpt -->
+      <div class="mt-7 parchment-callout text-left">
+        <p class="parchment-heading">From the Lorekeeper’s Journal</p>
+        <p class="parchment-body">
+          I write these passages for the one who will follow after me.
+        </p>
+        <p class="parchment-body">
+          This chronicle will be the archive of all I have observed, deciphered, and endured — a
+          record of the forces that shape our realm and the secrets passed down by Lorekeepers
+          long before my time.
+        </p>
+        <p class="parchment-body">
+          Within these entries you will find lessons carved from my wanderings through the Dreaming
+          Tower, field notes from the unstable frontier of Glitchborne, and truths I can no longer
+          keep to myself. May these writings guide you where I once walked alone.
+        </p>
+      </div>
+
+      <p class="mt-5 text-sm sm:text-base text-stardust/85">
+        The first public excerpts from these archives are coming soon — shared as tales, newsletters,
+        and recovered pages from the Lorekeeper’s desk.
       </p>
 
       <!-- Email capture (Netlify Forms) -->
