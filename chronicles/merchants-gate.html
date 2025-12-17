@@ -570,17 +570,14 @@
   // --- Next Chronicle link wiring (hide unless set) ---
   // Set this when you have a real next chronicle:
   // const NEXT_CHRONICLE_URL = "/chronicles/crowdstrike-dragon.html";
-  const NEXT_CHRONICLE_URL = ""; // keep empty to hide the Next link
+  const NEXT_CHRONICLE_URL = ""; // set to real URL when ready
+const nextLink = document.getElementById('nextChronicleLink');
 
-  const nextLink = document.getElementById('nextChronicleLink');
-  const nextSep = document.getElementById('nextSep');
-
-  if (!NEXT_CHRONICLE_URL) {
-    if (nextLink) nextLink.style.display = "none";
-    if (nextSep) nextSep.style.display = "none";
-  } else {
-    if (nextLink) nextLink.href = NEXT_CHRONICLE_URL;
-  }
+if (!NEXT_CHRONICLE_URL) {
+  if (nextLink) nextLink.style.display = "none";
+} else {
+  if (nextLink) nextLink.href = NEXT_CHRONICLE_URL;
+}
   // --- End Next Chronicle wiring ---
 
   const btnStory = document.getElementById('btnStory');
