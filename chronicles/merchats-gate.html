@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyber Lorekeeper — Chronicle</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <meta name="description" content="A recovered chronicle from the Dreaming Tower archives." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow:{
+            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card:'0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+
+    /* Content typography (consistent, readable) */
+    .prose-lore p { margin-top: 1rem; line-height: 1.9; color: rgba(207,229,239,.92); }
+    .prose-lore h2 { margin-top: 2.25rem; font-family: Cinzel, serif; font-size: 1.4rem; color: rgba(207,229,239,.95); }
+    .prose-lore h3 { margin-top: 1.75rem; font-weight: 700; color: rgba(207,229,239,.95); }
+    .prose-lore ul { margin-top: 1rem; padding-left: 1.25rem; }
+    .prose-lore li { margin-top: .5rem; line-height: 1.8; color: rgba(207,229,239,.9); }
+    .prose-lore hr { margin: 2rem 0; border-color: rgba(20,53,69,.7); }
+
+    /* Flip panels */
+    .panel { display: none; }
+    .panel.is-active { display: block; }
+
+    /* Toggle styling */
+    .toggle-wrap{
+      display: inline-flex;
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.40);
+      border-radius: .75rem;
+      padding: .25rem;
+      gap: .25rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.16);
+      backdrop-filter: blur(6px);
+    }
+    .toggle-btn{
+      border-radius: .6rem;
+      padding: .55rem .9rem;
+      font-size: .9rem;
+      color: rgba(207,229,239,.85);
+      transition: all .18s ease;
+      white-space: nowrap;
+    }
+    .toggle-btn:hover{ color: rgba(207,229,239,.98); }
+    .toggle-btn[aria-pressed="true"]{
+      background: rgba(53,198,224,.18);
+      color: rgba(207,229,239,.98);
+      box-shadow: 0 0 0 2px rgba(53,198,224,.12) inset;
+    }
+
+    /* Subtle page-turn feel */
+    .fade-enter { opacity: 0; transform: translateY(4px); }
+    .fade-enter-active { opacity: 1; transform: translateY(0); transition: opacity .22s ease, transform .22s ease; }
+
+    /* Callout card for “Context Footer” */
+    .soft-card{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.35);
+      border-radius: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+    }
+  </style>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen">
+    <!-- Background (same treatment as landing) -->
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+
+    <!-- Top Nav -->
+    <header class="relative mx-auto max-w-5xl px-6 pt-10">
+      <div class="flex items-center justify-between gap-4">
+        <a href="/" class="inline-flex items-center gap-3 group">
+          <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-abyss/70 border border-rift/60">
+            <img src="/images/icon.png" alt="Cyber Lorekeeper" class="h-8 w-8" />
+          </span>
+          <span class="font-display text-sm tracking-[.14em] uppercase text-stardust/80 group-hover:text-stardust">
+            The Cyber Lorekeeper
+          </span>
+        </a>
+
+        <nav class="flex items-center gap-4 text-sm text-stardust/80">
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/chronicles.html">Chronicles</a>
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/characters.html">Characters</a>
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/subscribe.html">Subscribe</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Chronicle Header -->
+    <section class="relative mx-auto max-w-5xl px-6 pt-10 pb-6">
+      <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">
+        Recovered Chronicle • Dreaming Tower Archives
+      </p>
+
+      <div class="mt-2 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h1 class="font-display text-4xl sm:text-5xl leading-tight text-gradient">
+            The Breach at Merchant’s Gate
+          </h1>
+          <p class="mt-3 text-stardust/85 max-w-2xl">
+            A coordinated infiltration through trusted writs, shadow markets, and poisoned pathways.
+          </p>
+
+          <!-- Optional: metadata chips -->
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Theme: Supply Chain</span>
+            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Status: Complete</span>
+            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Threat: Rot Swarm</span>
+          </div>
+        </div>
+
+        <!-- Flip Toggle -->
+        <div class="md:text-right">
+          <div class="toggle-wrap" role="group" aria-label="Chronicle view toggle">
+            <button id="btnStory" class="toggle-btn focus-ring" type="button" aria-pressed="true">
+              ◉ Chronicle
+            </button>
+            <button id="btnAnalysis" class="toggle-btn focus-ring" type="button" aria-pressed="false">
+              ◯ Real-World Analysis
+            </button>
+          </div>
+          <p class="mt-2 text-xs text-stardust/65">
+            Flip the page to reveal the real-world meaning.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="relative mx-auto max-w-5xl px-6">
+      <div class="h-px w-full bg-rift/60"></div>
+    </div>
+
+    <!-- Content Panels -->
+    <section class="relative mx-auto max-w-5xl px-6 pt-8 pb-14">
+      <!-- Story Panel -->
+      <article id="panelStory" class="panel is-active">
+        <div class="mx-auto max-w-3xl prose-lore">
+          <!-- Paste story content here -->
+          <p class="text-stardust/90">
+            <span class="font-semibold">The Dreaming Tower shuddered.</span>
+          </p>
+          <p>
+            It was not a sound that anyone else could hear… <!-- (continue story) -->
+          </p>
+
+          <!-- Tip: use <hr> between major scene beats if you want -->
+          <!-- <hr /> -->
+        </div>
+      </article>
+
+      <!-- Analysis Panel -->
+      <article id="panelAnalysis" class="panel">
+        <div class="mx-auto max-w-3xl prose-lore">
+          <h2>What This Chronicle Represents</h2>
+          <p>
+            Seven coordinated attackers used forged but legitimate-looking credentials to infiltrate through trusted access points…
+            <!-- (your overview) -->
+          </p>
+
+          <h2>Real-World Cybersecurity Concept</h2>
+          <p>
+            <strong>Supply Chain Attack / Third-Party Vendor Compromise</strong>
+          </p>
+
+          <h2>Real-World Examples</h2>
+          <ul>
+            <li><strong>SolarWinds</strong> – trusted update mechanism turned into an entry point.</li>
+            <li><strong>3CX</strong> – compromised build process delivered malicious code via legitimate updates.</li>
+            <li><strong>NotPetya (M.E.Doc)</strong> – poisoned vendor update sparked global disruption.</li>
+          </ul>
+
+          <h2>Lessons Learned</h2>
+          <h3>For Enterprises</h3>
+          <ul>
+            <li>Vendor risk management beyond trust and reputation.</li>
+            <li>Verification and staged rollout for updates.</li>
+            <li>Segmentation to limit blast radius.</li>
+            <li>Detection and response readiness.</li>
+          </ul>
+
+          <h3>For Small Businesses</h3>
+          <ul>
+            <li>Know who has access and what auto-updates.</li>
+            <li>Backups you can actually restore.</li>
+            <li>MFA wherever possible.</li>
+            <li>Basic monitoring for “weird behavior.”</li>
+          </ul>
+
+          <h2>The Uncomfortable Truth</h2>
+          <p>
+            The breach succeeded because the attackers used legitimate credentials through trusted pathways. You can’t “firewall harder” your way out of that.
+          </p>
+        </div>
+      </article>
+
+      <!-- Context Footer -->
+      <div class="mx-auto max-w-3xl mt-12 soft-card p-6">
+        <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <h3 class="font-display text-xl text-stardust/95">Appearing in this Chronicle</h3>
+            <div class="mt-3 flex flex-wrap gap-2 text-sm">
+              <a href="/characters/lorekeeper.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">The Lorekeeper</a>
+              <a href="/characters/queen-lyra.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Queen Lyra</a>
+              <a href="/characters/shade.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Shade</a>
+              <a href="/characters/cassia.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Cassia Goldthread</a>
+              <a href="/characters/valdris.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Valdris Ironheart</a>
+            </div>
+          </div>
+
+          <div class="sm:text-right">
+            <h3 class="font-display text-xl text-stardust/95">Continue the Archive</h3>
+            <div class="mt-3 flex items-center gap-4 text-sm text-stardust/80 sm:justify-end">
+              <a class="underline underline-offset-4 hover:text-glow" href="/chronicles.html">← Back to Chronicles</a>
+              <span aria-hidden="true">•</span>
+              <a class="underline underline-offset-4 hover:text-glow" href="/chronicles/next-chronicle.html">Next Chronicle →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-10 text-center text-xs text-stardust/65">
+        © <span id="year"></span> The Cyber Lorekeeper. All rights reserved.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const btnStory = document.getElementById('btnStory');
+    const btnAnalysis = document.getElementById('btnAnalysis');
+    const panelStory = document.getElementById('panelStory');
+    const panelAnalysis = document.getElementById('panelAnalysis');
+
+    function showPanel(which) {
+      const toShow = which === 'analysis' ? panelAnalysis : panelStory;
+      const toHide = which === 'analysis' ? panelStory : panelAnalysis;
+
+      // preserve scroll anchor (no jump)
+      const y = window.scrollY;
+
+      // toggle pressed state
+      btnStory.setAttribute('aria-pressed', which !== 'analysis');
+      btnAnalysis.setAttribute('aria-pressed', which === 'analysis');
+
+      // swap panels
+      toHide.classList.remove('is-active');
+      toShow.classList.add('is-active');
+
+      // animate in
+      toShow.classList.remove('fade-enter', 'fade-enter-active');
+      toShow.classList.add('fade-enter');
+      requestAnimationFrame(() => {
+        toShow.classList.add('fade-enter-active');
+      });
+
+      // restore scroll exactly (some browsers nudge on display change)
+      window.scrollTo(0, y);
+    }
+
+    btnStory.addEventListener('click', () => showPanel('story'));
+    btnAnalysis.addEventListener('click', () => showPanel('analysis'));
+
+    // Optional: allow deep links like /chronicles/merchant-gate.html#analysis
+    if (window.location.hash === '#analysis') showPanel('analysis');
+  </script>
+</body>
+</html>
