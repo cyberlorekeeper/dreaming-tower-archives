@@ -121,42 +121,37 @@
     </header>
 
     <!-- Chronicle Header -->
-    <section class="relative mx-auto max-w-5xl px-6 pt-10 pb-6">
-      <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">
-        Recovered Chronicle • Dreaming Tower Archives
-      </p>
+    <div class="mt-2 flex flex-col gap-5">
+  <div>
+    <h1 class="font-display text-4xl sm:text-5xl leading-tight text-gradient">
+      The Breach at Merchant’s Gate
+    </h1>
+    <p class="mt-3 text-stardust/85 max-w-3xl">
+      Trusted writs. Shadow markets. Seven intruders, coordinated like a swarm.
+    </p>
 
-      <div class="mt-2 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-        <div>
-          <h1 class="font-display text-4xl sm:text-5xl leading-tight text-gradient">
-            The Breach at Merchant’s Gate
-          </h1>
-          <p class="mt-3 text-stardust/85 max-w-2xl">
-            Trusted writs. Shadow markets. Seven intruders, coordinated like a swarm.
-          </p>
+    <div class="mt-4 flex flex-wrap gap-2">
+      <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Theme: Supply Chain</span>
+      <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Threat: Rot Swarm</span>
+      <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Status: Complete</span>
+    </div>
+  </div>
 
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Theme: Supply Chain</span>
-            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Threat: Rot Swarm</span>
-            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Status: Complete</span>
-          </div>
-        </div>
-
-        <!-- Flip Toggle -->
-        <div class="md:text-right">
-          <div class="toggle-wrap" role="group" aria-label="Chronicle view toggle">
-            <button id="btnStory" class="toggle-btn focus-ring" type="button" aria-pressed="true">
-              ◉ Chronicle
-            </button>
-            <button id="btnAnalysis" class="toggle-btn focus-ring" type="button" aria-pressed="false">
-              ◯ Real-World Analysis
-            </button>
-          </div>
-          <p class="mt-2 text-xs text-stardust/65">
-            Flip the page to reveal the real-world meaning.
-          </p>
-        </div>
-      </div>
+  <!-- Flip Toggle now sits below, aligned right -->
+  <div class="text-left md:text-right">
+    <div class="toggle-wrap" role="group" aria-label="Chronicle view toggle">
+      <button id="btnStory" class="toggle-btn focus-ring" type="button" aria-pressed="true">
+        ◉ Chronicle
+      </button>
+      <button id="btnAnalysis" class="toggle-btn focus-ring" type="button" aria-pressed="false">
+        ◯ Real-World Analysis
+      </button>
+    </div>
+    <p class="mt-2 text-xs text-stardust/65">
+      Flip the page to reveal the real-world meaning.
+    </p>
+  </div>
+</div>
     </section>
 
     <!-- Divider -->
@@ -533,35 +528,34 @@
       </article>
 
       <!-- Context Footer -->
-      <div class="mx-auto max-w-3xl mt-12 soft-card p-6">
-        <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <h3 class="font-display text-xl text-stardust/95">Appearing in this Chronicle</h3>
-            <div class="mt-3 flex flex-wrap gap-2 text-sm">
-              <a href="/characters/lorekeeper.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">The Lorekeeper</a>
-              <a href="/characters/queen-lyra.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Queen Lyra</a>
-              <a href="/characters/shade.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Shade</a>
-              <a href="/characters/cassia.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Cassia Goldthread</a>
-              <a href="/characters/valdris.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Valdris Ironheart</a>
-              <a href="/characters/pip.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Junior Archivist Pip</a>
-            </div>
-          </div>
+<div class="mx-auto max-w-3xl mt-12 soft-card p-6">
+  <h3 class="font-display text-xl text-stardust/95">Appearing in this Chronicle</h3>
+  <div class="mt-3 flex flex-wrap gap-2 text-sm">
+    <a href="/characters/lorekeeper.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">The Lorekeeper</a>
+    <a href="/characters/queen-lyra.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Queen Lyra</a>
+    <a href="/characters/shade.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Shade</a>
+    <a href="/characters/cassia.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Cassia Goldthread</a>
+    <a href="/characters/valdris.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Valdris Ironheart</a>
+    <a href="/characters/pip.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Junior Archivist Pip</a>
+  </div>
 
-          <div class="sm:text-right">
-  <h3 class="font-display text-xl text-stardust/95">Continue the Archive</h3>
-  <div class="mt-3 flex items-center gap-4 text-sm text-stardust/80 sm:justify-end">
-    <a class="underline underline-offset-4 hover:text-glow" href="/chronicles/">← Back to Chronicles</a>
+  <div class="mt-6 h-px w-full bg-rift/60"></div>
 
-    <span id="nextSep" aria-hidden="true">•</span>
+  <div class="mt-6">
+    <h3 class="font-display text-xl text-stardust/95">Continue the Archive</h3>
 
-    <a id="nextChronicleLink"
-       class="underline underline-offset-4 hover:text-glow"
-       href="/chronicles/next-chronicle.html">
-      Next Chronicle →
-    </a>
+    <!-- Full-width nav row -->
+    <div class="mt-3 flex items-center justify-between gap-4 text-sm text-stardust/80">
+      <a class="underline underline-offset-4 hover:text-glow" href="/chronicles/">← Back to Chronicles</a>
+
+      <a id="nextChronicleLink"
+         class="underline underline-offset-4 hover:text-glow"
+         href="/chronicles/next-chronicle.html">
+        Next Chronicle →
+      </a>
+    </div>
   </div>
 </div>
-        </div>
       </div>
 
       <p class="mt-10 text-center text-xs text-stardust/65">
