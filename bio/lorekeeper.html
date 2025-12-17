@@ -69,6 +69,12 @@
     details[open] .chevron { transform: rotate(90deg); }
 
     .anchor { scroll-margin-top: 110px; }
+
+    .appears-item + .appears-item {
+      border-top: 1px solid rgba(20,53,69,.45);
+      padding-top: .5rem;
+    }
+
   </style>
 </head>
 
@@ -135,11 +141,52 @@
 
         <!-- Quick Nav -->
         <aside class="soft-card p-6">
-          <div class="mt-6 text-sm text-stardust/80">
+          <div class="text-sm text-stardust/80">
             <p class="font-semibold text-stardust/90">Appears in</p>
-            <a class="mt-2 inline-flex hover:text-glow underline underline-offset-4" href="/chronicles/merchants-gate.html">
-              The Breach at Merchant’s Gate →
-            </a>
+            <p class="mt-2 text-sm text-stardust/75">
+              Selected chronicles featuring the Lorekeeper.
+            </p>
+          
+            <ul id="appearsInList" class="mt-4 space-y-2 text-sm">
+              <!-- Add as many as you want. Script collapses extras. -->
+              <li class="appears-item">
+                <a class="hover:text-glow underline underline-offset-4" href="/chronicles/merchants-gate.html">
+                  The Breach at Merchant’s Gate
+                </a>
+              </li>
+          
+              <!-- Examples: replace/remove as needed -->
+              <li class="appears-item">
+                <a class="hover:text-glow underline underline-offset-4" href="/chronicles/next-chronicle.html">
+                  Chronicle Incoming
+                </a>
+              </li>
+          
+              <li class="appears-item">
+                <a class="hover:text-glow underline underline-offset-4" href="/chronicles/example-3.html">
+                  Example Chronicle 3
+                </a>
+              </li>
+          
+              <li class="appears-item">
+                <a class="hover:text-glow underline underline-offset-4" href="/chronicles/example-4.html">
+                  Example Chronicle 4
+                </a>
+              </li>
+          
+              <li class="appears-item">
+                <a class="hover:text-glow underline underline-offset-4" href="/chronicles/example-5.html">
+                  Example Chronicle 5
+                </a>
+              </li>
+            </ul>
+          
+            <button id="appearsToggle"
+                    class="mt-4 focus-ring inline-flex w-full items-center justify-center rounded-md border border-rift/60 bg-abyss/30 px-4 py-2 text-sm font-semibold text-stardust/85 hover:text-glow"
+                    type="button"
+                    aria-expanded="false">
+              Show more
+            </button>
           </div>
         </aside>
       </div>
@@ -304,6 +351,40 @@
       const details = target?.querySelector('details');
       if (details) details.open = true;
     }
+    // --- Appears In: show first N, expand/collapse ---
+    (function () {
+      const VISIBLE_COUNT = 4; // change to 3 if you want
+      const list = document.getElementById('appearsInList');
+      const btn = document.getElementById('appearsToggle');
+    
+      if (!list || !btn) return;
+    
+      const items = Array.from(list.querySelectorAll('.appears-item'));
+    
+      // If there aren't enough items to collapse, hide the button
+      if (items.length <= VISIBLE_COUNT) {
+        btn.style.display = 'none';
+        return;
+      }
+    
+      let expanded = false;
+    
+      function render() {
+        items.forEach((item, idx) => {
+          item.style.display = (expanded || idx < VISIBLE_COUNT) ? '' : 'none';
+        });
+    
+        btn.textContent = expanded ? 'Show less' : `Show more (${items.length - VISIBLE_COUNT})`;
+        btn.setAttribute('aria-expanded', String(expanded));
+      }
+    
+      btn.addEventListener('click', () => {
+        expanded = !expanded;
+        render();
+      });
+    
+      render();
+    })();
   </script>
 </body>
 </html>
