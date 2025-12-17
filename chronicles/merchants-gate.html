@@ -571,46 +571,61 @@
   </main>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    const btnStory = document.getElementById('btnStory');
-    const btnAnalysis = document.getElementById('btnAnalysis');
-    const panelStory = document.getElementById('panelStory');
-    const panelAnalysis = document.getElementById('panelAnalysis');
+  // --- Next Chronicle link wiring (hide unless set) ---
+  // Set this when you have a real next chronicle:
+  // const NEXT_CHRONICLE_URL = "/chronicles/crowdstrike-dragon.html";
+  const NEXT_CHRONICLE_URL = ""; // keep empty to hide the Next link
 
-    function showPanel(which) {
-      const toShow = which === 'analysis' ? panelAnalysis : panelStory;
-      const toHide = which === 'analysis' ? panelStory : panelAnalysis;
+  const nextLink = document.getElementById('nextChronicleLink');
+  const nextSep = document.getElementById('nextSep');
 
-      const y = window.scrollY;
+  if (!NEXT_CHRONICLE_URL) {
+    if (nextLink) nextLink.style.display = "none";
+    if (nextSep) nextSep.style.display = "none";
+  } else {
+    if (nextLink) nextLink.href = NEXT_CHRONICLE_URL;
+  }
+  // --- End Next Chronicle wiring ---
 
-      btnStory.setAttribute('aria-pressed', which !== 'analysis');
-      btnAnalysis.setAttribute('aria-pressed', which === 'analysis');
+  const btnStory = document.getElementById('btnStory');
+  const btnAnalysis = document.getElementById('btnAnalysis');
+  const panelStory = document.getElementById('panelStory');
+  const panelAnalysis = document.getElementById('panelAnalysis');
 
-      toHide.classList.remove('is-active');
-      toShow.classList.add('is-active');
+  function showPanel(which) {
+    const toShow = which === 'analysis' ? panelAnalysis : panelStory;
+    const toHide = which === 'analysis' ? panelStory : panelAnalysis;
 
-      toShow.classList.remove('fade-enter', 'fade-enter-active');
-      toShow.classList.add('fade-enter');
-      requestAnimationFrame(() => {
-        toShow.classList.add('fade-enter-active');
-      });
+    const y = window.scrollY;
 
-      // Update hash for shareable links
-      if (which === 'analysis') {
-        history.replaceState(null, '', '#analysis');
-      } else {
-        history.replaceState(null, '', ' ');
-        history.replaceState(null, '', window.location.pathname);
-      }
+    btnStory.setAttribute('aria-pressed', which !== 'analysis');
+    btnAnalysis.setAttribute('aria-pressed', which === 'analysis');
 
-      window.scrollTo(0, y);
+    toHide.classList.remove('is-active');
+    toShow.classList.add('is-active');
+
+    toShow.classList.remove('fade-enter', 'fade-enter-active');
+    toShow.classList.add('fade-enter');
+    requestAnimationFrame(() => {
+      toShow.classList.add('fade-enter-active');
+    });
+
+    // Update hash for shareable links
+    if (which === 'analysis') {
+      history.replaceState(null, '', '#analysis');
+    } else {
+      history.replaceState(null, '', window.location.pathname);
     }
 
-    btnStory.addEventListener('click', () => showPanel('story'));
-    btnAnalysis.addEventListener('click', () => showPanel('analysis'));
+    window.scrollTo(0, y);
+  }
 
-    if (window.location.hash === '#analysis') showPanel('analysis');
-  </script>
+  btnStory.addEventListener('click', () => showPanel('story'));
+  btnAnalysis.addEventListener('click', () => showPanel('analysis'));
+
+  if (window.location.hash === '#analysis') showPanel('analysis');
+</script>
 </body>
 </html>
