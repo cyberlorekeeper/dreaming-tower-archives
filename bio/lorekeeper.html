@@ -147,40 +147,21 @@
               Selected chronicles featuring the Lorekeeper.
             </p>
           
-            <ul id="appearsInList" class="mt-4 space-y-2 text-sm">
-              <!-- Add as many as you want. Script collapses extras. -->
-              <li class="appears-item">
-                <a class="hover:text-glow underline underline-offset-4" href="/chronicles/merchants-gate.html">
-                  The Breach at Merchant’s Gate
-                </a>
-              </li>
-          
-              <!-- Examples: replace/remove as needed -->
-              <li class="appears-item">
-                <a class="hover:text-glow underline underline-offset-4" href="/chronicles/next-chronicle.html">
-                  Chronicle Incoming
-                </a>
-              </li>
-          
-              <li class="appears-item">
-                <a class="hover:text-glow underline underline-offset-4" href="/chronicles/example-3.html">
-                  Example Chronicle 3
-                </a>
-              </li>
-          
-              <li class="appears-item">
-                <a class="hover:text-glow underline underline-offset-4" href="/chronicles/example-4.html">
-                  Example Chronicle 4
-                </a>
-              </li>
-          
-              <li class="appears-item">
-                <a class="hover:text-glow underline underline-offset-4" href="/chronicles/example-5.html">
-                  Example Chronicle 5
-                </a>
-              </li>
-            </ul>
-          
+            <div class="text-sm text-stardust/80">
+              <p class="font-semibold text-stardust/90">Appears in</p>
+              <p class="mt-2 text-sm text-stardust/75">
+                Selected chronicles featuring the Lorekeeper.
+              </p>
+            
+              <ul id="appearsInList" class="mt-4 space-y-2 text-sm"></ul>
+            
+              <button id="appearsToggle"
+                      class="mt-4 focus-ring inline-flex w-full items-center justify-center rounded-md border border-rift/60 bg-abyss/30 px-4 py-2 text-sm font-semibold text-stardust/85 hover:text-glow"
+                      type="button"
+                      aria-expanded="false">
+                Show more
+              </button>
+            </div>
             <button id="appearsToggle"
                     class="mt-4 focus-ring inline-flex w-full items-center justify-center rounded-md border border-rift/60 bg-abyss/30 px-4 py-2 text-sm font-semibold text-stardust/85 hover:text-glow"
                     type="button"
@@ -351,17 +332,47 @@
       const details = target?.querySelector('details');
       if (details) details.open = true;
     }
-    // --- Appears In: show first N, expand/collapse ---
+    
+    // --- Appears In (dynamic render + show first N) ---
     (function () {
-      const VISIBLE_COUNT = 4; // change to 3 if you want
+      const VISIBLE_COUNT = 4;
+    
+      // Only items in this array will render.
+      // Add new chronicles by adding objects here.
+      // If you leave an entry out, it simply won't appear.
+      const APPEARS_IN = [
+        { title: "The Breach at Merchant’s Gate", href: "/chronicles/merchants-gate.html" },
+    
+        // Examples (leave commented out until real):
+        // { title: "The CrowdStrike Dragon", href: "/chronicles/crowdstrike-dragon.html" },
+        // { title: "The Equifax Wound", href: "/chronicles/equifax-wound.html" },
+      ];
+    
       const list = document.getElementById('appearsInList');
       const btn = document.getElementById('appearsToggle');
-    
       if (!list || !btn) return;
     
-      const items = Array.from(list.querySelectorAll('.appears-item'));
+      // Filter out invalid entries defensively
+      const items = APPEARS_IN.filter(x => x && typeof x.title === 'string' && x.title.trim() && typeof x.href === 'string' && x.href.trim());
     
-      // If there aren't enough items to collapse, hide the button
+      // If nothing exists, hide the entire block gracefully
+      if (items.length === 0) {
+        // Hide list + button, and optionally the whole parent
+        list.style.display = 'none';
+        btn.style.display = 'none';
+        return;
+      }
+    
+      // Render <li> items
+      list.innerHTML = items.map((x) => `
+        <li class="appears-item">
+          <a class="hover:text-glow underline underline-offset-4" href="${x.href}">
+            ${x.title}
+          </a>
+        </li>
+      `).join('');
+    
+      // If not enough to collapse, hide the button
       if (items.length <= VISIBLE_COUNT) {
         btn.style.display = 'none';
         return;
@@ -369,9 +380,10 @@
     
       let expanded = false;
     
-      function render() {
-        items.forEach((item, idx) => {
-          item.style.display = (expanded || idx < VISIBLE_COUNT) ? '' : 'none';
+      function renderCollapsed() {
+        const renderedLis = Array.from(list.querySelectorAll('.appears-item'));
+        renderedLis.forEach((li, idx) => {
+          li.style.display = (expanded || idx < VISIBLE_COUNT) ? '' : 'none';
         });
     
         btn.textContent = expanded ? 'Show less' : `Show more (${items.length - VISIBLE_COUNT})`;
@@ -380,10 +392,10 @@
     
       btn.addEventListener('click', () => {
         expanded = !expanded;
-        render();
+        renderCollapsed();
       });
     
-      render();
+      renderCollapsed();
     })();
   </script>
 </body>
