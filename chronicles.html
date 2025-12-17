@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyber Lorekeeper — Chronicles</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <meta name="description" content="Recovered chronicles from the Dreaming Tower archives. Read tales from the Digital Realm and flip to real-world analysis." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow:{
+            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card:'0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+  </style>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen">
+    <!-- Background -->
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+
+    <!-- Top Nav -->
+    <header class="relative mx-auto max-w-6xl px-6 pt-10">
+      <div class="flex items-center justify-between gap-4">
+        <a href="/" class="inline-flex items-center gap-3 group">
+          <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-abyss/70 border border-rift/60">
+            <img src="/images/icon.png" alt="Cyber Lorekeeper" class="h-8 w-8" />
+          </span>
+          <span class="font-display text-sm tracking-[.14em] uppercase text-stardust/80 group-hover:text-stardust">
+            The Cyber Lorekeeper
+          </span>
+        </a>
+
+        <nav class="flex items-center gap-4 text-sm text-stardust/80">
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/chronicles/">Chronicles</a>
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/characters/">Characters</a>
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/world/">The World</a>
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/subscribe.html">Subscribe</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative mx-auto max-w-6xl px-6 pt-10 pb-6">
+      <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">
+        Dreaming Tower Archives
+      </p>
+      <h1 class="mt-2 font-display text-4xl sm:text-5xl leading-tight text-gradient">
+        Chronicles
+      </h1>
+      <p class="mt-4 max-w-3xl text-stardust/85">
+        Recovered tales from the Digital Realm, recorded by the Lorekeeper. Open a chronicle to read the story,
+        then flip the page to reveal its real-world meaning.
+      </p>
+
+      <!-- Utility row -->
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex flex-wrap gap-2 text-xs text-stardust/80">
+          <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1">Flip-to-Analysis</span>
+          <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1">Lore + Lessons</span>
+          <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1">New entries incoming</span>
+        </div>
+
+        <!-- Placeholder filters (Phase 2) -->
+        <div class="text-sm text-stardust/70">
+          <span class="inline-flex items-center gap-2 rounded-lg border border-rift/60 bg-abyss/30 px-3 py-2">
+            Filters (coming soon)
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="relative mx-auto max-w-6xl px-6">
+      <div class="h-px w-full bg-rift/60"></div>
+    </div>
+
+    <!-- Cards -->
+    <section class="relative mx-auto max-w-6xl px-6 pt-8 pb-14">
+      <div class="grid gap-6 lg:grid-cols-3">
+        <!-- Featured Chronicle -->
+        <article class="lg:col-span-2 rounded-xl border border-rift/60 bg-abyss/40 p-6 shadow-card">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Featured • Recovered Chronicle</p>
+              <h2 class="mt-2 font-display text-2xl sm:text-3xl text-stardust/95">
+                The Breach at Merchant’s Gate
+              </h2>
+              <p class="mt-3 text-stardust/85 leading-relaxed">
+                Seven entities entered through trusted writs and moved like ink through commerce, records, keys, and vaults.
+                The Kingdom survived, but only by invoking a dangerous Purge Script and accepting loss.
+              </p>
+
+              <div class="mt-4 flex flex-wrap gap-2 text-xs text-stardust/80">
+                <span class="rounded-full border border-rift/60 bg-deep-space/30 px-3 py-1">Theme: Supply Chain</span>
+                <span class="rounded-full border border-rift/60 bg-deep-space/30 px-3 py-1">Threat: Rot Swarm</span>
+                <span class="rounded-full border border-rift/60 bg-deep-space/30 px-3 py-1">Flip: Real-World Analysis</span>
+              </div>
+            </div>
+
+            <div class="hidden sm:flex flex-col items-end gap-2 text-xs text-stardust/70">
+              <span class="rounded-full border border-rift/60 bg-deep-space/30 px-3 py-1">Status: Complete</span>
+              <span class="rounded-full border border-rift/60 bg-deep-space/30 px-3 py-1">Read time: ~10–12 min</span>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <a href="/chronicles/merchants-gate.html"
+               class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
+              Open Chronicle →
+            </a>
+
+            <a href="/characters/"
+               class="inline-flex items-center justify-center rounded-md border border-rift/60 bg-deep-space/20 px-5 py-3 text-sm text-stardust/85 hover:text-glow">
+              Meet the characters
+            </a>
+          </div>
+        </article>
+
+        <!-- Sidebar: Subscribe / CTA -->
+        <aside class="rounded-xl border border-rift/60 bg-abyss/40 p-6 shadow-card">
+          <h3 class="font-display text-xl text-stardust/95">Receive New Chronicles</h3>
+          <p class="mt-2 text-sm text-stardust/80 leading-relaxed">
+            Join the Tower’s list and you’ll receive a raven when new tales and excerpts are released.
+          </p>
+
+          <div class="mt-5">
+            <a href="/#email"
+               class="focus-ring inline-flex w-full items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
+              Subscribe on Home
+            </a>
+          </div>
+
+          <p class="mt-3 text-xs text-stardust/65">
+            No spam. Just dispatches from the Dreaming Tower.
+          </p>
+
+          <div class="mt-6 h-px w-full bg-rift/60"></div>
+
+          <h4 class="mt-6 font-display text-lg text-stardust/95">Coming Soon</h4>
+          <ul class="mt-3 space-y-2 text-sm text-stardust/80">
+            <li>• Additional recovered Chronicles</li>
+            <li>• Journal excerpts from the Lorekeeper</li>
+            <li>• Glitchborne field notes</li>
+            <li>• World history and records</li>
+          </ul>
+        </aside>
+
+        <!-- Upcoming Chronicle Cards (placeholders) -->
+        <article class="rounded-xl border border-rift/60 bg-abyss/30 p-6 shadow-card">
+          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Incoming Chronicle</p>
+          <h3 class="mt-2 font-display text-xl text-stardust/95">Recovered Fragment</h3>
+          <p class="mt-3 text-sm text-stardust/80 leading-relaxed">
+            A new chronicle is being translated from the Tower’s archives.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs text-stardust/75">
+            <span class="rounded-full border border-rift/60 bg-deep-space/20 px-3 py-1">Status: In Progress</span>
+          </div>
+          <div class="mt-5">
+            <a class="inline-flex items-center text-sm text-stardust/75 hover:text-glow underline underline-offset-4" href="#">
+              Soon →
+            </a>
+          </div>
+        </article>
+
+        <article class="rounded-xl border border-rift/60 bg-abyss/30 p-6 shadow-card">
+          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Incoming Chronicle</p>
+          <h3 class="mt-2 font-display text-xl text-stardust/95">Recovered Fragment</h3>
+          <p class="mt-3 text-sm text-stardust/80 leading-relaxed">
+            Another tale awaits its final seal and release.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs text-stardust/75">
+            <span class="rounded-full border border-rift/60 bg-deep-space/20 px-3 py-1">Status: In Progress</span>
+          </div>
+          <div class="mt-5">
+            <a class="inline-flex items-center text-sm text-stardust/75 hover:text-glow underline underline-offset-4" href="#">
+              Soon →
+            </a>
+          </div>
+        </article>
+
+        <article class="rounded-xl border border-rift/60 bg-abyss/30 p-6 shadow-card">
+          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Incoming Chronicle</p>
+          <h3 class="mt-2 font-display text-xl text-stardust/95">Recovered Fragment</h3>
+          <p class="mt-3 text-sm text-stardust/80 leading-relaxed">
+            The Tower hums with distant warnings. A new entry approaches.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs text-stardust/75">
+            <span class="rounded-full border border-rift/60 bg-deep-space/20 px-3 py-1">Status: In Progress</span>
+          </div>
+          <div class="mt-5">
+            <a class="inline-flex items-center text-sm text-stardust/75 hover:text-glow underline underline-offset-4" href="#">
+              Soon →
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Footer -->
+      <div class="mt-12 text-center">
+        <a href="/" class="text-sm text-stardust/75 hover:text-glow underline underline-offset-4">← Return to Home</a>
+        <p class="mt-6 text-xs text-stardust/65">
+          © <span id="year"></span> The Cyber Lorekeeper. All rights reserved.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
