@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyber Lorekeeper — Character Codex: The Lorekeeper</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <meta name="description" content="Character Codex entry for The Lorekeeper, custodian of the Dreaming Tower archives." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow:{
+            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card:'0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+
+    /* Codex typography */
+    .prose-codex p { margin-top: 1rem; line-height: 1.9; color: rgba(207,229,239,.92); }
+    .prose-codex ul { margin-top: 1rem; padding-left: 1.25rem; }
+    .prose-codex li { margin-top: .5rem; line-height: 1.8; color: rgba(207,229,239,.9); }
+    .prose-codex strong { color: rgba(207,229,239,.98); }
+
+    /* Card */
+    .soft-card{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.35);
+      border-radius: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      backdrop-filter: blur(6px);
+    }
+
+    /* Details accordion styling */
+    details { border-radius: 1rem; }
+    details summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+    details summary::-webkit-details-marker { display:none; }
+
+    .chevron {
+      transition: transform .18s ease;
+    }
+    details[open] .chevron {
+      transform: rotate(90deg);
+    }
+
+    /* Anchor offset so headings don't hide under top padding if you add sticky nav later */
+    .anchor { scroll-margin-top: 110px; }
+  </style>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen">
+    <!-- Background -->
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+
+    <!-- Top Nav -->
+    <header class="relative mx-auto max-w-6xl px-6 pt-10">
+      <div class="flex items-center justify-between gap-4">
+        <a href="/" class="inline-flex items-center gap-3 group">
+          <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-abyss/70 border border-rift/60">
+            <img src="/images/icon.png" alt="Cyber Lorekeeper" class="h-8 w-8" />
+          </span>
+          <span class="font-display text-sm tracking-[.14em] uppercase text-stardust/80 group-hover:text-stardust">
+            The Cyber Lorekeeper
+          </span>
+        </a>
+
+        <nav class="flex items-center gap-4 text-sm text-stardust/80">
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/chronicles/">Chronicles</a>
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/characters/">Characters</a>
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/world/">The World</a>
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/subscribe.html">Subscribe</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero / Codex Header -->
+    <section class="relative mx-auto max-w-6xl px-6 pt-10 pb-6">
+      <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">
+        Character Codex • Dreaming Tower Archives
+      </p>
+
+      <div class="mt-3 grid gap-6 lg:grid-cols-3 lg:items-start">
+        <!-- Identity -->
+        <div class="lg:col-span-2">
+          <h1 class="font-display text-4xl sm:text-5xl leading-tight text-gradient">
+            The Lorekeeper
+          </h1>
+          <p class="mt-3 text-stardust/85 max-w-3xl">
+            Custodian of the Dreaming Tower. Archivist of breaches, betrayals, and the strange patterns that return when kingdoms forget.
+          </p>
+
+          <!-- Metadata chips -->
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Role: Custodian</span>
+            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Domain: Memory & Records</span>
+            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Status: Bound to the Tower</span>
+          </div>
+
+          <!-- Pull quote callout -->
+          <div class="mt-6 soft-card p-5">
+            <p class="text-sm uppercase tracking-[.18em] text-stardust/70">Excerpt</p>
+            <p class="mt-3 text-lg text-stardust/90 italic leading-relaxed">
+              “This chronicle will be the culmination of my life’s work, the observations and secrets I have protected about our realm, and the lessons left behind by those who came before.”
+            </p>
+          </div>
+        </div>
+
+        <!-- Quick Nav -->
+        <aside class="soft-card p-6">
+          <h2 class="font-display text-xl text-stardust/95">Entry Index</h2>
+          <p class="mt-2 text-sm text-stardust/75">Jump to a section.</p>
+
+          <div class="mt-4 flex flex-col gap-2 text-sm">
+            <a class="hover:text-glow underline underline-offset-4" href="#identity">Identity & Role</a>
+            <a class="hover:text-glow underline underline-offset-4" href="#bond">Bond to the Tower</a>
+            <a class="hover:text-glow underline underline-offset-4" href="#capabilities">Capabilities & Tools</a>
+            <a class="hover:text-glow underline underline-offset-4" href="#appearance">Appearance & Presence</a>
+            <a class="hover:text-glow underline underline-offset-4" href="#legacy">Legacy & Apprentices</a>
+            <a class="hover:text-glow underline underline-offset-4" href="#omens">Omens & Cost</a>
+          </div>
+
+          <div class="mt-6 h-px w-full bg-rift/60"></div>
+
+          <div class="mt-6 text-sm text-stardust/80">
+            <p class="font-semibold text-stardust/90">Appears in</p>
+            <a class="mt-2 inline-flex hover:text-glow underline underline-offset-4" href="/chronicles/merchants-gate.html">
+              The Breach at Merchant’s Gate →
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="relative mx-auto max-w-6xl px-6">
+      <div class="h-px w-full bg-rift/60"></div>
+    </div>
+
+    <!-- Codex Body -->
+    <section class="relative mx-auto max-w-6xl px-6 pt-8 pb-14">
+      <div class="grid gap-6 lg:grid-cols-3 lg:items-start">
+        <!-- Main Accordions -->
+        <div class="lg:col-span-2 space-y-4">
+
+          <!-- Identity & Role -->
+          <div id="identity" class="anchor soft-card p-0 overflow-hidden">
+            <details open>
+              <summary class="flex items-center justify-between gap-4 px-6 py-5">
+                <div>
+                  <h2 class="font-display text-xl text-stardust/95">Identity & Role</h2>
+                  <p class="mt-1 text-sm text-stardust/75">Who he is, and what he protects.</p>
+                </div>
+                <span class="chevron text-stardust/70">▶</span>
+              </summary>
+              <div class="px-6 pb-6 prose-codex">
+                <!-- Paste your Identity/Role paragraphs here -->
+                <p><strong>Placeholder:</strong> Replace this section with your bio text.</p>
+              </div>
+            </details>
+          </div>
+
+          <!-- Bond to the Tower -->
+          <div id="bond" class="anchor soft-card p-0 overflow-hidden">
+            <details>
+              <summary class="flex items-center justify-between gap-4 px-6 py-5">
+                <div>
+                  <h2 class="font-display text-xl text-stardust/95">Bond to the Dreaming Tower</h2>
+                  <p class="mt-1 text-sm text-stardust/75">The bargain that sustains him, and demands its price.</p>
+                </div>
+                <span class="chevron text-stardust/70">▶</span>
+              </summary>
+              <div class="px-6 pb-6 prose-codex">
+                <p><strong>Placeholder:</strong> Replace with Bond section text.</p>
+              </div>
+            </details>
+          </div>
+
+          <!-- Capabilities -->
+          <div id="capabilities" class="anchor soft-card p-0 overflow-hidden">
+            <details>
+              <summary class="flex items-center justify-between gap-4 px-6 py-5">
+                <div>
+                  <h2 class="font-display text-xl text-stardust/95">Capabilities & Tools</h2>
+                  <p class="mt-1 text-sm text-stardust/75">How he detects patterns, seals breaches, and records the aftermath.</p>
+                </div>
+                <span class="chevron text-stardust/70">▶</span>
+              </summary>
+              <div class="px-6 pb-6 prose-codex">
+                <p><strong>Placeholder:</strong> Replace with capabilities, staff, scripts, and methods.</p>
+                <ul>
+                  <li>Pattern recognition across centuries</li>
+                  <li>Archive rituals and monitoring enchantments</li>
+                  <li>Emergency protocols and “forbidden” scripts</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+          <!-- Appearance -->
+          <div id="appearance" class="anchor soft-card p-0 overflow-hidden">
+            <details>
+              <summary class="flex items-center justify-between gap-4 px-6 py-5">
+                <div>
+                  <h2 class="font-display text-xl text-stardust/95">Appearance & Presence</h2>
+                  <p class="mt-1 text-sm text-stardust/75">What people notice, and what they misunderstand.</p>
+                </div>
+                <span class="chevron text-stardust/70">▶</span>
+              </summary>
+              <div class="px-6 pb-6 prose-codex">
+                <p><strong>Placeholder:</strong> Replace with appearance details and tone.</p>
+              </div>
+            </details>
+          </div>
+
+          <!-- Legacy -->
+          <div id="legacy" class="anchor soft-card p-0 overflow-hidden">
+            <details>
+              <summary class="flex items-center justify-between gap-4 px-6 py-5">
+                <div>
+                  <h2 class="font-display text-xl text-stardust/95">Legacy & Apprentices</h2>
+                  <p class="mt-1 text-sm text-stardust/75">Continuity, succession, and the next set of hands to hold the record.</p>
+                </div>
+                <span class="chevron text-stardust/70">▶</span>
+              </summary>
+              <div class="px-6 pb-6 prose-codex">
+                <p><strong>Placeholder:</strong> Replace with apprentice network and continuity.</p>
+              </div>
+            </details>
+          </div>
+
+          <!-- Omens / Cost -->
+          <div id="omens" class="anchor soft-card p-0 overflow-hidden">
+            <details>
+              <summary class="flex items-center justify-between gap-4 px-6 py-5">
+                <div>
+                  <h2 class="font-display text-xl text-stardust/95">Omens & Cost</h2>
+                  <p class="mt-1 text-sm text-stardust/75">What happens when the Tower decides he can no longer carry it.</p>
+                </div>
+                <span class="chevron text-stardust/70">▶</span>
+              </summary>
+              <div class="px-6 pb-6 prose-codex">
+                <p><strong>Placeholder:</strong> Replace with the mortality, strain, and consequences section.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- Right Rail (Related + CTA) -->
+        <aside class="space-y-6">
+          <!-- Related Characters -->
+          <div class="soft-card p-6">
+            <h2 class="font-display text-xl text-stardust/95">Related</h2>
+            <p class="mt-2 text-sm text-stardust/75">Figures who intersect his work.</p>
+            <div class="mt-4 flex flex-wrap gap-2 text-sm">
+              <a class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow" href="/characters/shade.html">Shade</a>
+              <a class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow" href="/characters/queen-lyra.html">Queen Lyra</a>
+              <a class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow" href="/characters/pip.html">Junior Archivist Pip</a>
+            </div>
+          </div>
+
+          <!-- Subscribe -->
+          <div class="soft-card p-6">
+            <h2 class="font-display text-xl text-stardust/95">Receive New Entries</h2>
+            <p class="mt-2 text-sm text-stardust/80 leading-relaxed">
+              Join the Tower’s list. A raven will find you when new chronicles and excerpts are released.
+            </p>
+            <a href="/#email" class="mt-5 focus-ring inline-flex w-full items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
+              Subscribe
+            </a>
+            <p class="mt-3 text-xs text-stardust/65">No spam. Just dispatches.</p>
+          </div>
+
+          <!-- Back -->
+          <div class="text-sm text-stardust/80">
+            <a href="/characters/" class="hover:text-glow underline underline-offset-4">← Back to Characters</a>
+          </div>
+        </aside>
+      </div>
+
+      <p class="mt-12 text-center text-xs text-stardust/65">
+        © <span id="year"></span> The Cyber Lorekeeper. All rights reserved.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Optional: open a specific accordion when arriving via hash (#bond, #capabilities, etc.)
+    const hash = window.location.hash?.replace('#','');
+    if (hash) {
+      const target = document.getElementById(hash);
+      const details = target?.querySelector('details');
+      if (details) details.open = true;
+    }
+  </script>
+</body>
+</html>
