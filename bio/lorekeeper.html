@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cyber Lorekeeper — Character Codex: The Lorekeeper</title>
+  <title>Cyber Lorekeeper - Character Codex: The Lorekeeper</title>
 
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
@@ -48,13 +48,11 @@
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
 
-    /* Codex typography */
     .prose-codex p { margin-top: 1rem; line-height: 1.9; color: rgba(207,229,239,.92); }
     .prose-codex ul { margin-top: 1rem; padding-left: 1.25rem; }
     .prose-codex li { margin-top: .5rem; line-height: 1.8; color: rgba(207,229,239,.9); }
     .prose-codex strong { color: rgba(207,229,239,.98); }
 
-    /* Card */
     .soft-card{
       border: 1px solid rgba(20,53,69,.65);
       background: rgba(15,34,48,.35);
@@ -63,23 +61,13 @@
       backdrop-filter: blur(6px);
     }
 
-    /* Details accordion styling */
     details { border-radius: 1rem; }
-    details summary {
-      list-style: none;
-      cursor: pointer;
-      user-select: none;
-    }
+    details summary { list-style: none; cursor: pointer; user-select: none; }
     details summary::-webkit-details-marker { display:none; }
 
-    .chevron {
-      transition: transform .18s ease;
-    }
-    details[open] .chevron {
-      transform: rotate(90deg);
-    }
+    .chevron { transition: transform .18s ease; }
+    details[open] .chevron { transform: rotate(90deg); }
 
-    /* Anchor offset so headings don't hide under top padding if you add sticky nav later */
     .anchor { scroll-margin-top: 110px; }
   </style>
 </head>
@@ -114,7 +102,7 @@
     <!-- Hero / Codex Header -->
     <section class="relative mx-auto max-w-6xl px-6 pt-10 pb-6">
       <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">
-        Character Codex • Dreaming Tower Archives
+        Character Codex - Dreaming Tower Archives
       </p>
 
       <div class="mt-3 grid gap-6 lg:grid-cols-3 lg:items-start">
@@ -123,14 +111,16 @@
           <h1 class="font-display text-4xl sm:text-5xl leading-tight text-gradient">
             The Lorekeeper
           </h1>
+
           <p class="mt-3 text-stardust/85 max-w-3xl">
-            Custodian of the Dreaming Tower. Archivist of breaches, betrayals, and the strange patterns that return when kingdoms forget.
+            Master of the Dreaming Tower, Chief Chronicler of the Digital Realm, Historical Advisor to the Crown.
           </p>
 
           <!-- Metadata chips -->
           <div class="mt-5 flex flex-wrap gap-2">
-            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Role: Custodian</span>
-            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Domain: Memory & Records</span>
+            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Role: Keeper of the Chronicles</span>
+            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Role: Witness of Patterns</span>
+            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Role: Defender of Memory</span>
             <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Status: Bound to the Tower</span>
           </div>
 
@@ -138,7 +128,7 @@
           <div class="mt-6 soft-card p-5">
             <p class="text-sm uppercase tracking-[.18em] text-stardust/70">Excerpt</p>
             <p class="mt-3 text-lg text-stardust/90 italic leading-relaxed">
-              “This chronicle will be the culmination of my life’s work, the observations and secrets I have protected about our realm, and the lessons left behind by those who came before.”
+              “The Tower keeps me alive to remember. It will let me die when I forget why that matters.”
             </p>
           </div>
         </div>
@@ -149,12 +139,12 @@
           <p class="mt-2 text-sm text-stardust/75">Jump to a section.</p>
 
           <div class="mt-4 flex flex-col gap-2 text-sm">
-            <a class="hover:text-glow underline underline-offset-4" href="#identity">Identity & Role</a>
+            <a class="hover:text-glow underline underline-offset-4" href="#identity">Identity and Role</a>
             <a class="hover:text-glow underline underline-offset-4" href="#bond">Bond to the Tower</a>
-            <a class="hover:text-glow underline underline-offset-4" href="#capabilities">Capabilities & Tools</a>
-            <a class="hover:text-glow underline underline-offset-4" href="#appearance">Appearance & Presence</a>
-            <a class="hover:text-glow underline underline-offset-4" href="#legacy">Legacy & Apprentices</a>
-            <a class="hover:text-glow underline underline-offset-4" href="#omens">Omens & Cost</a>
+            <a class="hover:text-glow underline underline-offset-4" href="#capabilities">Capabilities and Tools</a>
+            <a class="hover:text-glow underline underline-offset-4" href="#appearance">Appearance and Presence</a>
+            <a class="hover:text-glow underline underline-offset-4" href="#legacy">Legacy and Apprentices</a>
+            <a class="hover:text-glow underline underline-offset-4" href="#omens">Omens and Cost</a>
           </div>
 
           <div class="mt-6 h-px w-full bg-rift/60"></div>
@@ -185,14 +175,17 @@
             <details open>
               <summary class="flex items-center justify-between gap-4 px-6 py-5">
                 <div>
-                  <h2 class="font-display text-xl text-stardust/95">Identity & Role</h2>
+                  <h2 class="font-display text-xl text-stardust/95">Identity and Role</h2>
                   <p class="mt-1 text-sm text-stardust/75">Who he is, and what he protects.</p>
                 </div>
                 <span class="chevron text-stardust/70">▶</span>
               </summary>
               <div class="px-6 pb-6 prose-codex">
-                <!-- Paste your Identity/Role paragraphs here -->
-                <p><strong>Placeholder:</strong> Replace this section with your bio text.</p>
+                <p><strong>Title:</strong> Master of the Dreaming Tower, Chief Chronicler of the Digital Realm, Historical Advisor to the Crown</p>
+                <p><strong>Role:</strong> Keeper of the Chronicles, Witness of Patterns, Defender of Memory</p>
+
+                <p><strong>The Burden of Remembering</strong></p>
+                <p>The Lorekeeper is the living bridge between past and present, the only one in the Kingdom who holds centuries of breach history, forgotten alliances, and catastrophic failures in his mind. His purpose is not to rule or command armies, but to remember. To ensure that the Kingdom does not repeat the same mistakes simply because generations forget. He embodies the cost of memory, both its power and its burden, and carries the weight of the title he carries and the memories he preserves.</p>
               </div>
             </details>
           </div>
@@ -208,7 +201,12 @@
                 <span class="chevron text-stardust/70">▶</span>
               </summary>
               <div class="px-6 pb-6 prose-codex">
-                <p><strong>Placeholder:</strong> Replace with Bond section text.</p>
+                <p>Bonded to the Dreaming Tower, a sentient structure that houses the Kingdom’s collective memory, the Lorekeeper is sustained beyond what any mortal life should allow. The Tower feeds him longevity in exchange for service. This is not immortality, nor eternal youth. It is a bargain written in the weight of centuries.</p>
+
+                <div class="mt-4 soft-card p-4">
+                  <p class="text-sm uppercase tracking-[.18em] text-stardust/70">Tower Covenant</p>
+                  <p class="mt-2 italic text-stardust/90">As long as you can carry the weight, I will keep you alive to carry it.</p>
+                </div>
               </div>
             </details>
           </div>
@@ -218,18 +216,25 @@
             <details>
               <summary class="flex items-center justify-between gap-4 px-6 py-5">
                 <div>
-                  <h2 class="font-display text-xl text-stardust/95">Capabilities & Tools</h2>
+                  <h2 class="font-display text-xl text-stardust/95">Capabilities and Tools</h2>
                   <p class="mt-1 text-sm text-stardust/75">How he detects patterns, seals breaches, and records the aftermath.</p>
                 </div>
                 <span class="chevron text-stardust/70">▶</span>
               </summary>
               <div class="px-6 pb-6 prose-codex">
-                <p><strong>Placeholder:</strong> Replace with capabilities, staff, scripts, and methods.</p>
-                <ul>
-                  <li>Pattern recognition across centuries</li>
-                  <li>Archive rituals and monitoring enchantments</li>
-                  <li>Emergency protocols and “forbidden” scripts</li>
-                </ul>
+                <p><strong>The Keeper of Chronicles</strong></p>
+                <p>The Lorekeeper maintains the Chronicles - comprehensive records of every major breach, corruption event, and systemic collapse the Kingdom has faced. Each entry contains not just what happened, but how it unfolded, what warnings were missed, and what mistakes were made. The Chronicles are treated as sacred texts by those who understand their value, but ignored by those who believe the present is always different. The Lorekeeper’s current chronicle is the longest he has ever kept, and if he survives long enough, it may become the longest single-Lorekeeper chronicle in history.</p>
+
+                <p>When he speaks of having “seen this before,” he means it literally. He remembers past corruption events in detail, including the Rot Swarm Plague, the Cipher Collapse of the Second Age, the Vaultfire Incident that destroyed an entire province’s record-keepers, and the Great Schism that nearly tore the Kingdom apart.</p>
+
+                <p>His role is not to make decisions, but to ensure the Kingdom does not make decisions blindly. He advises leaders with context that no one else can provide, warning them about threats that have emerged before, and will emerge again.</p>
+
+                <p><strong>Pattern Recognition Across Lifetimes</strong></p>
+                <p>The Lorekeeper’s greatest ability is pattern recognition honed across centuries. Threats change their masks, but rarely their motives. He has learned to see through surface differences and identify recurring behaviors. The Tower’s monitoring enchantments feed him constant streams of data, and he has learned to hear the next verse before it is sung.</p>
+
+                <p>He carries a twisted staff of dark wood inlaid with living script. The staff serves as both a focus for his connection to the Tower and a key to certain emergency protocols housed within the Tower’s depths.</p>
+
+                <p>His historical memory is perfect, enhanced by his bond with the Tower. He remembers incidents from eighty years prior with crystal clarity.</p>
               </div>
             </details>
           </div>
@@ -239,13 +244,18 @@
             <details>
               <summary class="flex items-center justify-between gap-4 px-6 py-5">
                 <div>
-                  <h2 class="font-display text-xl text-stardust/95">Appearance & Presence</h2>
+                  <h2 class="font-display text-xl text-stardust/95">Appearance and Presence</h2>
                   <p class="mt-1 text-sm text-stardust/75">What people notice, and what they misunderstand.</p>
                 </div>
                 <span class="chevron text-stardust/70">▶</span>
               </summary>
               <div class="px-6 pb-6 prose-codex">
-                <p><strong>Placeholder:</strong> Replace with appearance details and tone.</p>
+                <p><strong>The Weight and the Will</strong></p>
+                <p>Ancient and wizened, the Lorekeeper appears as a gnarled oak of a man, tall but stooped, his frame lean and hardened from centuries of sleepless nights. His robes are layered with runic stitching, each thread woven with protective scripts, some mnemonic, some so old even he has forgotten their purpose.</p>
+
+                <p>His silver-white hair and long beard are marked with small cracks of obsidian, a visible sign of the Tower’s influence. His eyes are pale gray, occasionally black when communing with the Tower’s deepest memories.</p>
+
+                <p>He moves with the careful deliberation of someone whose body has outlasted its natural time. Every step is measured, not from weakness, but from knowing the cost of haste. Those who meet him often mistake him for frail, until they feel the pressure of his presence, as though he is half-fading into the structure itself, becoming more memory than man.</p>
               </div>
             </details>
           </div>
@@ -255,13 +265,18 @@
             <details>
               <summary class="flex items-center justify-between gap-4 px-6 py-5">
                 <div>
-                  <h2 class="font-display text-xl text-stardust/95">Legacy & Apprentices</h2>
+                  <h2 class="font-display text-xl text-stardust/95">Legacy and Apprentices</h2>
                   <p class="mt-1 text-sm text-stardust/75">Continuity, succession, and the next set of hands to hold the record.</p>
                 </div>
                 <span class="chevron text-stardust/70">▶</span>
               </summary>
               <div class="px-6 pb-6 prose-codex">
-                <p><strong>Placeholder:</strong> Replace with apprentice network and continuity.</p>
+                <p><strong>The Apprentice System</strong></p>
+                <p>The Lorekeeper knows he cannot last forever. Even with the Tower’s longevity, the burden is cumulative. For this reason, he trains apprentices, but not in a traditional mage-and-student way. Few apprentices are chosen, and fewer survive the emotional weight of the Tower’s archives. Most leave within months, some within only a few years before the isolation and weight drive them away.</p>
+
+                <p>Others go out into the world, trained in the Lorekeeper’s methods of pattern recognition and documentation. They become wandering chroniclers, risk seers, and quiet advisors. The Lorekeeper’s apprentices form a distributed network of historians who consult with the Tower when patterns emerge.</p>
+
+                <p>The apprentices serve multiple purposes: to preserve the Lorekeeper’s work, to ensure the Kingdom has many eyes watching, and to give him hope that his work will continue after he is gone.</p>
               </div>
             </details>
           </div>
@@ -271,32 +286,56 @@
             <details>
               <summary class="flex items-center justify-between gap-4 px-6 py-5">
                 <div>
-                  <h2 class="font-display text-xl text-stardust/95">Omens & Cost</h2>
+                  <h2 class="font-display text-xl text-stardust/95">Omens and Cost</h2>
                   <p class="mt-1 text-sm text-stardust/75">What happens when the Tower decides he can no longer carry it.</p>
                 </div>
                 <span class="chevron text-stardust/70">▶</span>
               </summary>
               <div class="px-6 pb-6 prose-codex">
-                <p><strong>Placeholder:</strong> Replace with the mortality, strain, and consequences section.</p>
+                <p><strong>The Question That Haunts</strong></p>
+                <p>The Lorekeeper is patient beyond mortal measure, having learned that panic is a tool of the enemy. He knows that most threats can be endured and outlasted. But he is also unyielding. He believes the Kingdom must remember its failures and victories, and refuses to let the Kingdom die of amnesia.</p>
+
+                <p>But he is also weary. Every failure he documents adds to the burden on his mind. The Tower can sustain his body, but it cannot lighten his soul. The weight of memory never grows lighter. You simply grow accustomed to the burden.</p>
+
+                <p><strong>Until you don’t.</strong></p>
+
+                <p>The question that haunts him grows heavier with each passing decade: How long can I carry this? And what happens when I finally can’t?</p>
+
+                <p>He will serve until the weight breaks him, or until he finds a successor strong enough to carry it. Or until he faces a threat so dire that his life is the price of its survival. Whichever comes first.</p>
+
+                <p>The Tower will decide when he has carried enough.</p>
+
+                <div class="mt-5 soft-card p-5">
+                  <p class="text-sm uppercase tracking-[.18em] text-stardust/70">Recorded Quotations</p>
+
+                  <p class="mt-3 italic text-stardust/90">
+                    “I have lived through seven corruption events, three Queens, and more breach rituals than most people have even heard of. When I say ‘I’ve seen this before,’ I mean it literally.”
+                  </p>
+
+                  <p class="mt-4 italic text-stardust/90">
+                    “The Tower keeps me alive to remember. It will let me die when I forget why that matters.”
+                  </p>
+
+                  <p class="mt-4 italic text-stardust/90">
+                    “The weight of memory doesn’t get lighter. You simply grow accustomed to it, until the day you don’t, and then... then the Tower releases you.”
+                  </p>
+                </div>
               </div>
             </details>
           </div>
         </div>
 
-        <!-- Right Rail (Related + CTA) -->
+        <!-- Right Rail -->
         <aside class="space-y-6">
-          <!-- Related Characters -->
           <div class="soft-card p-6">
             <h2 class="font-display text-xl text-stardust/95">Related</h2>
             <p class="mt-2 text-sm text-stardust/75">Figures who intersect his work.</p>
             <div class="mt-4 flex flex-wrap gap-2 text-sm">
               <a class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow" href="/characters/shade.html">Shade</a>
               <a class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow" href="/characters/queen-lyra.html">Queen Lyra</a>
-              <a class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow" href="/characters/pip.html">Junior Archivist Pip</a>
             </div>
           </div>
 
-          <!-- Subscribe -->
           <div class="soft-card p-6">
             <h2 class="font-display text-xl text-stardust/95">Receive New Entries</h2>
             <p class="mt-2 text-sm text-stardust/80 leading-relaxed">
@@ -308,7 +347,6 @@
             <p class="mt-3 text-xs text-stardust/65">No spam. Just dispatches.</p>
           </div>
 
-          <!-- Back -->
           <div class="text-sm text-stardust/80">
             <a href="/characters/" class="hover:text-glow underline underline-offset-4">← Back to Characters</a>
           </div>
