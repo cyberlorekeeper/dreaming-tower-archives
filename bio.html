@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyber Lorekeeper — Character Codex</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <meta name="description" content="The Character Codex of the Dreaming Tower and the Digital Realm." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow:{
+            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card:'0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .soft-card{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.35);
+      border-radius: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      backdrop-filter: blur(6px);
+    }
+    .card-hover { transition: transform .15s ease, filter .15s ease; }
+    .card-hover:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .tag{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.35);
+      border-radius: 9999px;
+      padding: .25rem .75rem;
+      font-size: .75rem;
+      color: rgba(207,229,239,.85);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen">
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+
+    <!-- Top Nav -->
+    <header class="relative mx-auto max-w-6xl px-6 pt-10">
+      <div class="flex items-center justify-between gap-4">
+        <a href="/" class="inline-flex items-center gap-3 group">
+          <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-abyss/70 border border-rift/60">
+            <img src="/images/icon.png" alt="Cyber Lorekeeper" class="h-8 w-8" />
+          </span>
+          <span class="font-display text-sm tracking-[.14em] uppercase text-stardust/80 group-hover:text-stardust">
+            The Cyber Lorekeeper
+          </span>
+        </a>
+
+        <nav class="flex items-center gap-4 text-sm text-stardust/80">
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/chronicles/">Chronicles</a>
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/characters/">Characters</a>
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/world/">The World</a>
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/subscribe.html">Subscribe</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative mx-auto max-w-6xl px-6 pt-10 pb-8">
+      <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Character Codex</p>
+      <h1 class="mt-2 font-display text-4xl sm:text-5xl leading-tight text-gradient">The Codex of Names</h1>
+      <p class="mt-4 text-stardust/85 max-w-3xl leading-relaxed">
+        Figures who shaped the Dreaming Tower, crossed the Digital Realm, and left footprints in the record.
+        Some are allies. Some are warnings. All are remembered.
+      </p>
+
+      <!-- Controls -->
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex flex-wrap gap-2">
+          <button data-filter="all" class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/30 px-4 py-2 text-sm font-semibold text-stardust/85 hover:text-glow" type="button">
+            All
+          </button>
+          <button data-filter="core" class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/30 px-4 py-2 text-sm font-semibold text-stardust/85 hover:text-glow" type="button">
+            Core
+          </button>
+          <button data-filter="ally" class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/30 px-4 py-2 text-sm font-semibold text-stardust/85 hover:text-glow" type="button">
+            Allies
+          </button>
+          <button data-filter="threat" class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/30 px-4 py-2 text-sm font-semibold text-stardust/85 hover:text-glow" type="button">
+            Threats
+          </button>
+        </div>
+
+        <div class="sm:w-80">
+          <input id="searchInput"
+                 class="focus-ring w-full rounded-md border border-rift/60 bg-abyss/30 px-4 py-2 text-sm text-stardust/90 placeholder:text-stardust/50"
+                 type="search"
+                 placeholder="Search characters..." />
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid -->
+    <section class="relative mx-auto max-w-6xl px-6 pb-14">
+      <div id="characterGrid" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- JS will render cards here -->
+      </div>
+
+      <p class="mt-10 text-center text-xs text-stardust/65">
+        © <span id="year"></span> The Cyber Lorekeeper. All rights reserved.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Add characters here. Only enabled entries render.
+    const CHARACTERS = [
+      {
+        enabled: true,
+        name: "The Lorekeeper",
+        href: "/characters/lorekeeper.html",
+        blurb: "Custodian of the Dreaming Tower archives. Keeper of breach history, patterns, and the cost of remembering.",
+        tags: ["core", "advisor", "tower-bound"]
+      },
+      {
+        enabled: false,
+        name: "Shade",
+        href: "/characters/shade.html",
+        blurb: "A fractured shadow with a memory of cages, vaults, and bargains that refuse to stay buried.",
+        tags: ["ally"]
+      },
+      {
+        enabled: false,
+        name: "Queen Lyra",
+        href: "/characters/queen-lyra.html",
+        blurb: "Sovereign of the realm. A leader balancing survival, perception, and the politics of what must be forgotten.",
+        tags: ["core"]
+      }
+    ];
+
+    const grid = document.getElementById('characterGrid');
+    const searchInput = document.getElementById('searchInput');
+    const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
+
+    let activeFilter = "all";
+    let query = "";
+
+    function render() {
+      const enabled = CHARACTERS.filter(c => c.enabled);
+
+      const filtered = enabled.filter(c => {
+        const matchesFilter = (activeFilter === "all") || (c.tags || []).includes(activeFilter);
+        const hay = `${c.name} ${(c.blurb || "")} ${(c.tags || []).join(" ")}`.toLowerCase();
+        const matchesQuery = !query || hay.includes(query);
+        return matchesFilter && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="soft-card p-6 sm:col-span-2 lg:col-span-3">
+            <p class="font-display text-xl text-stardust/95">No matches</p>
+            <p class="mt-2 text-sm text-stardust/75">Try a different filter or search term.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(c => `
+        <a href="${c.href}" class="soft-card card-hover p-6 block">
+          <p class="uppercase tracking-[.18em] text-stardust/60 text-xs">Codex Entry</p>
+          <h2 class="mt-2 font-display text-2xl text-stardust/95">${c.name}</h2>
+          <p class="mt-3 text-sm text-stardust/80 leading-relaxed">${c.blurb || ""}</p>
+
+          <div class="mt-4 flex flex-wrap gap-2">
+            ${(c.tags || []).map(t => `<span class="tag">${t}</span>`).join("")}
+          </div>
+
+          <div class="mt-5 text-sm text-stardust/80">
+            <span class="underline underline-offset-4 hover:text-glow">Open entry →</span>
+          </div>
+        </a>
+      `).join("");
+    }
+
+    // Filter behavior
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeFilter = btn.getAttribute('data-filter') || "all";
+        filterBtns.forEach(b => b.classList.remove('ring-2','ring-glow/40'));
+        btn.classList.add('ring-2','ring-glow/40');
+        render();
+      });
+    });
+
+    // Default active state
+    const defaultBtn = filterBtns.find(b => b.getAttribute('data-filter') === 'all');
+    if (defaultBtn) defaultBtn.classList.add('ring-2','ring-glow/40');
+
+    // Search behavior
+    searchInput.addEventListener('input', (e) => {
+      query = (e.target.value || "").trim().toLowerCase();
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>
