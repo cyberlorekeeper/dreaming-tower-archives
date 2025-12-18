@@ -188,8 +188,7 @@
       pointer-events:auto;
       max-width: 620px;
       margin-left:auto;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.62));
+      background: rgba(255,255,255,.98);
       border: 1px solid rgba(20,53,69,.22);
       border-radius: 1rem;
       box-shadow: 0 12px 28px rgba(0,0,0,.25);
@@ -315,11 +314,6 @@
             </div>
           </div>
         </div>
-      
-        <!-- Context Footer stays the same -->
-        <!-- (keep your "Appearing in this Chronicle" / Continue the Archive block below) -->
-      
-        ...
       </section>
 
       
@@ -385,7 +379,7 @@
 
           <p>By the time he burst into the streets, he was already composing the message in his mind. The Secret Council would need to convene immediately.</p>
 
-          <hr />
+          <hr class="page-break" />
 
           <p>The council chamber sat beneath the Queen's palace, accessible only through a sealed vault door that required three simultaneous keys. The Lorekeeper arrived first, as he always did in emergencies, and waited in the circular stone room lit by floating orbs of pale light. Maps of the Kingdom covered every wall, enchanted to update in real-time as conditions changed.</p>
 
@@ -457,7 +451,7 @@
 
           <p>"Agreed," they said, almost in unison.</p>
 
-          <hr />
+          <hr class="page-break" />
 
           <p>The Lorekeeper returned to the Dreaming Tower and climbed to his observation chamber, a circular room at the Tower's heart where hundreds of floating crystals displayed active monitoring data from across the Kingdom. Each crystal represented a different system, a different stream of information. Normally, they drifted in lazy patterns, their light steady.</p>
 
@@ -486,7 +480,7 @@
 
           <p>He ran.</p>
 
-          <hr />
+          <hr class="page-break" />
 
           <p>The Secret Council reconvened within twenty minutes. The Lorekeeper's projection showed them the seven points of light, and he watched their expressions shift from concern to alarm.</p>
 
@@ -552,7 +546,7 @@
 
           <p>"Do it," the Queen said.</p>
 
-          <hr />
+          <hr class="page-break" />
 
           <p>The Lorekeeper ascended the Dreaming Tower faster than he'd ever climbed before. The Tower opened passages for him, shortcuts and impossible geometries that let him reach the highest vault in minutes instead of hours.</p>
 
@@ -576,7 +570,7 @@
 
           <p>He spoke the final command, and the scroll erupted with blinding light.</p>
 
-          <hr />
+          <hr class="page-break" />
 
           <p>The effect was instantaneous and violent.</p>
 
@@ -596,7 +590,7 @@
 
           <p>But wounded.</p>
 
-          <hr />
+          <hr class="page-break" />
 
           <p>The Queen stood in the council chamber, reviewing damage reports with a grim expression. Merchant-Lord Cassia sat at the table, her usual composure shaken. High Commander Valdris paced like a caged wolf.</p>
 
@@ -630,7 +624,7 @@
 
           <p>"Let them," the Queen said, and her voice was iron. "We'll be ready."</p>
 
-          <hr />
+          <hr class="page-break" />
 
           <p>Late that night, the Lorekeeper sat in his chamber at the top of the Dreaming Tower. The city below sparkled with enchanted lights, peaceful and oblivious to how close it had come to chaos.</p>
 
@@ -788,7 +782,9 @@
   
     btnStory.setAttribute('aria-pressed', mode === 'story');
     btnAnalysis.setAttribute('aria-pressed', mode === 'analysis');
-  
+    btnStory.textContent   = `${mode === 'story' ? '◉' : '◯'} Chronicle`;
+    btnAnalysis.textContent = `${mode === 'analysis' ? '◉' : '◯'} Real-World Analysis`;
+
     if (mode === 'analysis') {
       // Show overlay note
       if (analysisNoteWrap) analysisNoteWrap.classList.add('is-active');
@@ -813,8 +809,6 @@
   pages = buildPagesFromStory();
   renderPage(false);
   setMode(window.location.hash === '#analysis' ? 'analysis' : 'story');
-
-  if (window.location.hash === '#analysis') showPanel('analysis');
 </script>
 </body>
 </html>
