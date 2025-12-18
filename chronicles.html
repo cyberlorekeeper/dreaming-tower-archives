@@ -45,6 +45,29 @@
       background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
+    .soft-card{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.35);
+      border-radius: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      backdrop-filter: blur(6px);
+    }
+    .tag{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(10,20,27,.25);
+      border-radius: 9999px;
+      padding: .25rem .75rem;
+      font-size: .75rem;
+      color: rgba(207,229,239,.85);
+      white-space: nowrap;
+    }
+    .meta-pill{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(10,20,27,.25);
+      border-radius: .9rem;
+      padding: .65rem .9rem;
+      min-width: 220px;
+    }
   </style>
 </head>
 
@@ -110,50 +133,60 @@
       <div class="h-px w-full bg-rift/60"></div>
     </div>
 
-    <!-- Cards -->
+    <!-- Content -->
     <section class="relative mx-auto max-w-6xl px-6 pt-8 pb-14">
-      <div class="grid gap-6 lg:grid-cols-3">
-        <!-- Featured Chronicle -->
-        <article class="lg:col-span-2 rounded-xl border border-rift/60 bg-abyss/40 p-6 shadow-card">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Featured • Recovered Chronicle</p>
-              <h2 class="mt-2 font-display text-2xl sm:text-3xl text-stardust/95">
-                The Breach at Merchant’s Gate
-              </h2>
-              <p class="mt-3 text-stardust/85 leading-relaxed">
-                Seven entities entered through trusted writs and moved like ink through commerce, records, keys, and vaults.
-                The Kingdom survived, but only by invoking a dangerous Purge Script and accepting loss.
-              </p>
+      <div class="grid gap-6 lg:grid-cols-3 lg:items-start">
 
-              <div class="mt-4 flex flex-wrap gap-2 text-xs text-stardust/80">
-                <span class="rounded-full border border-rift/60 bg-deep-space/30 px-3 py-1">Theme: Supply Chain</span>
-                <span class="rounded-full border border-rift/60 bg-deep-space/30 px-3 py-1">Threat: Rot Swarm</span>
-                <span class="rounded-full border border-rift/60 bg-deep-space/30 px-3 py-1">Flip: Real-World Analysis</span>
+        <!-- Featured Chronicle -->
+        <article class="lg:col-span-2 soft-card p-6">
+          <div class="flex flex-col gap-5">
+            <div class="flex items-start justify-between gap-6">
+              <div class="min-w-0">
+                <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Featured • Recovered Chronicle</p>
+                <h2 class="mt-2 font-display text-2xl sm:text-3xl text-stardust/95">
+                  The Breach at Merchant’s Gate
+                </h2>
+                <p class="mt-3 text-stardust/85 leading-relaxed">
+                  Seven entities entered through trusted writs and moved like ink through commerce, records, keys, and vaults.
+                  The Kingdom survived, but only by invoking a dangerous Purge Script and accepting loss.
+                </p>
+
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="tag">Theme: Supply Chain</span>
+                  <span class="tag">Threat: Rot Swarm</span>
+                  <span class="tag">Flip: Real-World Analysis</span>
+                </div>
+              </div>
+
+              <!-- Status + Read time (roomier, not squished) -->
+              <div class="hidden sm:grid grid-cols-1 gap-3">
+                <div class="meta-pill">
+                  <p class="text-[11px] uppercase tracking-[.18em] text-stardust/60">Status</p>
+                  <p class="mt-1 text-sm text-stardust/90">Complete</p>
+                </div>
+                <div class="meta-pill">
+                  <p class="text-[11px] uppercase tracking-[.18em] text-stardust/60">Read time</p>
+                  <p class="mt-1 text-sm text-stardust/90">~10–12 min</p>
+                </div>
               </div>
             </div>
 
-            <div class="hidden sm:flex flex-col items-end gap-2 text-xs text-stardust/70">
-              <span class="rounded-full border border-rift/60 bg-deep-space/30 px-3 py-1">Status: Complete</span>
-              <span class="rounded-full border border-rift/60 bg-deep-space/30 px-3 py-1">Read time: ~10–12 min</span>
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <a href="/chronicles/merchants-gate.html"
+                 class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
+                Open Chronicle →
+              </a>
+
+              <a href="/characters/"
+                 class="inline-flex items-center justify-center rounded-md border border-rift/60 bg-deep-space/20 px-5 py-3 text-sm text-stardust/85 hover:text-glow">
+                Meet the characters
+              </a>
             </div>
-          </div>
-
-          <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <a href="/chronicles/merchants-gate.html"
-               class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
-              Open Chronicle →
-            </a>
-
-            <a href="/characters/"
-               class="inline-flex items-center justify-center rounded-md border border-rift/60 bg-deep-space/20 px-5 py-3 text-sm text-stardust/85 hover:text-glow">
-              Meet the characters
-            </a>
           </div>
         </article>
 
         <!-- Sidebar: Subscribe / CTA -->
-        <aside class="rounded-xl border border-rift/60 bg-abyss/40 p-6 shadow-card">
+        <aside class="soft-card p-6 lg:row-span-2">
           <h3 class="font-display text-xl text-stardust/95">Receive New Chronicles</h3>
           <p class="mt-2 text-sm text-stardust/80 leading-relaxed">
             Join the Tower’s list and you’ll receive a raven when new tales and excerpts are released.
@@ -181,54 +214,57 @@
           </ul>
         </aside>
 
-        <!-- Upcoming Chronicle Cards (placeholders) -->
-        <article class="rounded-xl border border-rift/60 bg-abyss/30 p-6 shadow-card">
-          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Incoming Chronicle</p>
-          <h3 class="mt-2 font-display text-xl text-stardust/95">Recovered Fragment</h3>
-          <p class="mt-3 text-sm text-stardust/80 leading-relaxed">
-            A new chronicle is being translated from the Tower’s archives.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2 text-xs text-stardust/75">
-            <span class="rounded-full border border-rift/60 bg-deep-space/20 px-3 py-1">Status: In Progress</span>
+        <!-- Chronicle List (replaces placeholders) -->
+        <section class="lg:col-span-2 soft-card p-6">
+          <div class="flex flex-col gap-1">
+            <h3 class="font-display text-xl text-stardust/95">All Chronicles</h3>
+            <p class="text-sm text-stardust/75">Browse recovered entries from the Tower’s archives.</p>
           </div>
-          <div class="mt-5">
-            <a class="inline-flex items-center text-sm text-stardust/75 hover:text-glow underline underline-offset-4" href="#">
-              Soon →
-            </a>
-          </div>
-        </article>
 
-        <article class="rounded-xl border border-rift/60 bg-abyss/30 p-6 shadow-card">
-          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Incoming Chronicle</p>
-          <h3 class="mt-2 font-display text-xl text-stardust/95">Recovered Fragment</h3>
-          <p class="mt-3 text-sm text-stardust/80 leading-relaxed">
-            Another tale awaits its final seal and release.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2 text-xs text-stardust/75">
-            <span class="rounded-full border border-rift/60 bg-deep-space/20 px-3 py-1">Status: In Progress</span>
-          </div>
-          <div class="mt-5">
-            <a class="inline-flex items-center text-sm text-stardust/75 hover:text-glow underline underline-offset-4" href="#">
-              Soon →
-            </a>
-          </div>
-        </article>
+          <ul class="mt-5 space-y-4">
+            <!-- Entry 1 -->
+            <li class="rounded-xl border border-rift/60 bg-deep-space/10 p-5">
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div class="min-w-0">
+                  <p class="uppercase tracking-[.18em] text-stardust/60 text-xs">Recovered Chronicle</p>
+                  <h4 class="mt-2 font-display text-2xl text-stardust/95">
+                    <a class="hover:text-glow underline underline-offset-4" href="/chronicles/merchants-gate.html">
+                      The Breach at Merchant’s Gate
+                    </a>
+                  </h4>
+                  <p class="mt-3 text-sm text-stardust/80 leading-relaxed">
+                    Seven entities entered through trusted writs and moved like ink through commerce, records, keys, and vaults.
+                    The Kingdom survived, but only by invoking a dangerous Purge Script and accepting loss.
+                  </p>
 
-        <article class="rounded-xl border border-rift/60 bg-abyss/30 p-6 shadow-card">
-          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Incoming Chronicle</p>
-          <h3 class="mt-2 font-display text-xl text-stardust/95">Recovered Fragment</h3>
-          <p class="mt-3 text-sm text-stardust/80 leading-relaxed">
-            The Tower hums with distant warnings. A new entry approaches.
+                  <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="tag">Theme: Supply Chain</span>
+                    <span class="tag">Threat: Rot Swarm</span>
+                    <span class="tag">Flip: Real-World Analysis</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-row gap-2 sm:flex-col sm:items-end">
+                  <span class="tag">Status: Complete</span>
+                  <span class="tag">Read: ~10–12 min</span>
+                </div>
+              </div>
+
+              <div class="mt-5">
+                <a href="/chronicles/merchants-gate.html"
+                   class="inline-flex items-center text-sm text-stardust/80 hover:text-glow underline underline-offset-4">
+                  Open chronicle →
+                </a>
+              </div>
+            </li>
+
+            <!-- When you add more chronicles, copy the <li> block above and update fields -->
+          </ul>
+
+          <p class="mt-6 text-xs text-stardust/65">
+            More entries will surface as the Tower releases them.
           </p>
-          <div class="mt-4 flex flex-wrap gap-2 text-xs text-stardust/75">
-            <span class="rounded-full border border-rift/60 bg-deep-space/20 px-3 py-1">Status: In Progress</span>
-          </div>
-          <div class="mt-5">
-            <a class="inline-flex items-center text-sm text-stardust/75 hover:text-glow underline underline-offset-4" href="#">
-              Soon →
-            </a>
-          </div>
-        </article>
+        </section>
       </div>
 
       <!-- Footer -->
