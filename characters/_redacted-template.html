@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyber Lorekeeper — Character Codex: Unknown</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <meta name="description" content="A redacted Character Codex entry from the Dreaming Tower." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow:{ card:'0 6px 18px rgba(0,0,0,.12)' }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .soft-card{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.35);
+      border-radius: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      backdrop-filter: blur(6px);
+    }
+
+    /* Redaction + recovery vibes */
+    .stamp{
+      display:inline-flex; align-items:center; gap:.5rem;
+      border: 1px solid rgba(240,180,41,.55);
+      background: rgba(240,180,41,.10);
+      color: rgba(240,180,41,.95);
+      padding: .35rem .75rem;
+      border-radius: 9999px;
+      font-size: .75rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .redact{
+      position:relative;
+      display:inline-block;
+      color: rgba(207,229,239,.25);
+      user-select:none;
+    }
+    .redact::before{
+      content:"";
+      position:absolute;
+      left:-.1em; right:-.1em;
+      top: 55%;
+      height: 1.1em;
+      transform: translateY(-50%) rotate(-1deg);
+      background: rgba(10,10,10,.82);
+      border-radius: .15rem;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+    }
+
+    /* “Recovered” placeholder lines */
+    .ghost-line{
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg,
+        rgba(207,229,239,.18) 0%,
+        rgba(207,229,239,.08) 60%,
+        rgba(207,229,239,.02) 100%);
+      border: 1px solid rgba(20,53,69,.30);
+    }
+
+    .prose-codex p { margin-top: 1rem; line-height: 1.9; color: rgba(207,229,239,.90); }
+    .prose-codex ul { margin-top: 1rem; padding-left: 1.25rem; }
+    .prose-codex li { margin-top: .5rem; }
+  </style>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+<main class="relative min-h-screen">
+
+  <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+  <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+
+  <!-- Top Nav -->
+  <header class="relative mx-auto max-w-6xl px-6 pt-10">
+    <div class="flex items-center justify-between gap-4">
+      <a href="/" class="inline-flex items-center gap-3 group">
+        <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-abyss/70 border border-rift/60">
+          <img src="/images/icon.png" alt="Cyber Lorekeeper" class="h-8 w-8" />
+        </span>
+        <span class="font-display text-sm tracking-[.14em] uppercase text-stardust/80 group-hover:text-stardust">
+          The Cyber Lorekeeper
+        </span>
+      </a>
+
+      <nav class="flex items-center gap-4 text-sm text-stardust/80">
+        <a class="hover:text-glow underline-offset-4 hover:underline" href="/chronicles/">Chronicles</a>
+        <a class="hover:text-glow underline-offset-4 hover:underline" href="/characters/">Characters</a>
+        <a class="hover:text-glow underline-offset-4 hover:underline" href="/world/">The World</a>
+        <a class="hover:text-glow underline-offset-4 hover:underline" href="/subscribe.html">Subscribe</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Header -->
+  <section class="relative mx-auto max-w-6xl px-6 pt-10 pb-6">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <p class="uppercase tracking-[.18em] text-xs text-stardust/70">Character Codex Entry</p>
+      <span class="stamp">RECOVERY: PARTIAL</span>
+    </div>
+
+    <h1 class="mt-3 font-display text-4xl sm:text-5xl leading-tight text-gradient">
+      Unknown Entity
+      <span class="text-stardust/40">/</span>
+      <span class="text-stardust/70">Redacted</span>
+    </h1>
+
+    <p class="mt-3 max-w-3xl text-stardust/85 leading-relaxed">
+      This record was found in the Tower’s lower stacks, filed beneath
+      <span class="redact">restricted indices</span> and sealed with
+      <span class="redact">binding sigils</span>.
+      Only fragments remain legible.
+    </p>
+
+    <!-- Tags -->
+    <div class="mt-5 flex flex-wrap gap-2">
+      <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs">Role: <span class="redact">Unknown</span></span>
+      <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs">Affiliation: <span class="redact">—</span></span>
+      <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs">Status: <span class="redact">Unconfirmed</span></span>
+    </div>
+
+    <!-- Optional Real-world role teaser -->
+    <p class="mt-3 text-sm text-stardust/75">
+      <strong class="text-stardust/85">Real-World Role:</strong>
+      <span class="redact">classified mapping</span>
+      <span class="text-stardust/60">(to be revealed)</span>
+    </p>
+  </section>
+
+  <div class="relative mx-auto max-w-6xl px-6">
+    <div class="h-px w-full bg-rift/60"></div>
+  </div>
+
+  <section class="relative mx-auto max-w-6xl px-6 pt-8 pb-14">
+    <div class="grid gap-6 lg:grid-cols-3">
+
+      <!-- Main -->
+      <div class="lg:col-span-2 space-y-6">
+
+        <!-- Core Entry -->
+        <div class="soft-card p-6 prose-codex">
+          <h2 class="font-display text-xl text-stardust/95">Recovered Fragment</h2>
+
+          <p class="mt-3 text-stardust/85">
+            The first line is intact. The rest is interrupted by black bars, burn marks, and missing ink.
+          </p>
+
+          <div class="mt-5 space-y-3">
+            <div class="ghost-line w-11/12"></div>
+            <div class="ghost-line w-10/12"></div>
+            <div class="ghost-line w-9/12"></div>
+            <div class="ghost-line w-11/12"></div>
+            <div class="ghost-line w-8/12"></div>
+          </div>
+
+          <p class="mt-6 text-stardust/85">
+            “…and when the wards failed, it did not enter through the gates. It arrived through the
+            <span class="redact">trusted</span>.”
+          </p>
+        </div>
+
+        <!-- Known Traits -->
+        <div class="soft-card p-6 prose-codex">
+          <h2 class="font-display text-xl text-stardust/95">Known Traits</h2>
+          <ul>
+            <li><span class="redact">Observed capability</span> recorded by a prior Keeper.</li>
+            <li>Associated with <span class="redact">a repeating pattern</span> in breach history.</li>
+            <li>Leaves behind <span class="redact">artifacts</span> that resist classification.</li>
+          </ul>
+          <p class="mt-4 text-sm text-stardust/70">
+            Note: This section will expand as additional chronicles are recovered.
+          </p>
+        </div>
+
+        <!-- Why This Matters -->
+        <div class="soft-card p-6 prose-codex">
+          <h2 class="font-display text-xl text-stardust/95">Why This Entry Is Redacted</h2>
+          <p>
+            Some names are sealed to prevent imitation. Some are erased to prevent panic.
+            And some are removed because memory itself becomes a vulnerability.
+          </p>
+          <p class="mt-3 text-sm text-stardust/70">
+            If you have encountered this entity, do not pursue it alone.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="space-y-6">
+        <div class="soft-card p-6">
+          <h2 class="font-display text-xl text-stardust/95">Appears In</h2>
+          <p class="mt-2 text-sm text-stardust/75">
+            This entry is referenced indirectly in the following recovered records.
+          </p>
+
+          <ul class="mt-4 space-y-2 text-sm">
+            <li class="text-stardust/70">
+              <span class="redact">Chronicle reference withheld</span>
+            </li>
+            <li class="text-stardust/70">
+              <span class="redact">Index key corrupted</span>
+            </li>
+          </ul>
+
+          <div class="mt-5 rounded-xl border border-rift/60 bg-abyss/30 p-4">
+            <p class="text-sm text-stardust/80">
+              Want to be notified when this entry is restored?
+            </p>
+            <a href="/subscribe.html"
+               class="mt-3 inline-flex w-full items-center justify-center rounded-md bg-glow px-4 py-2 font-semibold text-abyss hover:brightness-110">
+              Receive a raven
+            </a>
+          </div>
+        </div>
+
+        <div class="text-sm text-stardust/80">
+          <a class="underline underline-offset-4 hover:text-glow" href="/characters/">← Back to Characters</a>
+        </div>
+      </aside>
+    </div>
+
+    <p class="mt-12 text-center text-xs text-stardust/65">
+      © <span id="year"></span> The Cyber Lorekeeper. All rights reserved.
+    </p>
+  </section>
+</main>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
