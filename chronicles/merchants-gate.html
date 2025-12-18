@@ -175,25 +175,51 @@
       100% { transform: rotateY(0deg); opacity:1; }
     }
     
-    /* --- Analysis note overlay --- */
+    /* Two-page spread */
+    .journal-spread{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .journal-page{
+      min-height: 520px; /* feels like a real page */
+      padding: .25rem .25rem;
+    }
+    
+    /* Optional: make it stack on mobile */
+    @media (max-width: 640px){
+      .journal-spread{ grid-template-columns: 1fr; }
+    }
+    
+    /* Make overlay fit inside parchment and scroll */
     .note-wrap{
       position:absolute;
       inset: 1.25rem;
       display:none;
-      pointer-events:none; /* feel like a note placed on paper */
+      pointer-events:none;
+      z-index: 5;
     }
+    
     .note-wrap.is-active{ display:block; }
     
+    /* Fully opaque, readable, and scrollable */
     .note{
       pointer-events:auto;
-      max-width: 620px;
+      max-width: 720px;
       margin-left:auto;
-      background: rgba(255,255,255,.98);
+      background: rgba(255,255,255,1);  /* 100% opaque */
       border: 1px solid rgba(20,53,69,.22);
       border-radius: 1rem;
       box-shadow: 0 12px 28px rgba(0,0,0,.25);
       padding: 1.1rem 1.1rem;
       position: relative;
+    
+      /* critical: prevent cut-off */
+      max-height: calc(100% - 0.5rem);
+      overflow: auto;
     }
     
     /* “Pinned” effect */
@@ -296,7 +322,10 @@
         <div class="journal-shell p-4 sm:p-6">
           <div class="parchment p-6 sm:p-8 relative">
             <!-- Chronicle pages render here -->
-            <div id="journalPage" class="prose-parchment"></div>
+            <div class="journal-spread">
+              <div id="journalLeft" class="journal-page prose-parchment"></div>
+              <div id="journalRight" class="journal-page prose-parchment"></div>
+            </div>
       
             <!-- Analysis note overlay renders here -->
             <div id="analysisNoteWrap" class="note-wrap">
@@ -726,89 +755,161 @@
   }
   // --- End Next Chronicle wiring ---
 
-  // ---------- Journal paging + analysis overlay ----------
-  const btnStory = document.getElementById('btnStory');
-  const btnAnalysis = document.getElementById('btnAnalysis');
-  
-  const journalPage = document.getElementById('journalPage');
-  const analysisNoteWrap = document.getElementById('analysisNoteWrap');
-  const analysisNoteBody = document.getElementById('analysisNoteBody');
-  
-  const btnPrevPage = document.getElementById('btnPrevPage');
-  const btnNextPage = document.getElementById('btnNextPage');
-  const pageIndicator = document.getElementById('pageIndicator');
-  
-  // 1) Source content: pull from hidden template nodes (we’ll create them below)
-  const storySource = document.getElementById('storySource');
-  const analysisSource = document.getElementById('analysisSource');
-  
-  let pages = [];
-  let pageIndex = 0;
-  let mode = 'story'; // 'story' | 'analysis'
-  
-  function buildPagesFromStory() {
-    if (!storySource) return [];
-  
-    // Split on <hr class="page-break" />
-    const raw = storySource.innerHTML;
-    const parts = raw.split(/<hr\s+class=["']page-break["']\s*\/?>/i);
-  
-    return parts
-      .map(p => p.trim())
-      .filter(Boolean);
-  }
-  
-  function renderPage(animate = true) {
-    if (!journalPage) return;
-  
-    const total = Math.max(1, pages.length);
-    pageIndex = Math.min(Math.max(0, pageIndex), total - 1);
-  
-    journalPage.innerHTML = pages[pageIndex] || '';
-    pageIndicator.textContent = `Page ${pageIndex + 1} of ${total}`;
-  
-    btnPrevPage.disabled = pageIndex === 0;
-    btnNextPage.disabled = pageIndex >= total - 1;
-  
-    if (animate) {
-      journalPage.classList.remove('page-flip');
-      void journalPage.offsetWidth;
-      journalPage.classList.add('page-flip');
-    }
-  }
-  
-  function setMode(nextMode) {
-    mode = nextMode;
-  
-    btnStory.setAttribute('aria-pressed', mode === 'story');
-    btnAnalysis.setAttribute('aria-pressed', mode === 'analysis');
-    btnStory.textContent   = `${mode === 'story' ? '◉' : '◯'} Chronicle`;
-    btnAnalysis.textContent = `${mode === 'analysis' ? '◉' : '◯'} Real-World Analysis`;
+  // ---------- Journal paging + analysis overlay (two-page spread) ----------
+  (function () {
+    const btnStory = document.getElementById('btnStory');
+    const btnAnalysis = document.getElementById('btnAnalysis');
 
-    if (mode === 'analysis') {
-      // Show overlay note
-      if (analysisNoteWrap) analysisNoteWrap.classList.add('is-active');
-      if (analysisNoteBody && analysisSource) analysisNoteBody.innerHTML = analysisSource.innerHTML;
-  
-      history.replaceState(null, '', '#analysis');
-    } else {
-      // Hide overlay note
-      if (analysisNoteWrap) analysisNoteWrap.classList.remove('is-active');
-      history.replaceState(null, '', window.location.pathname);
+    const journalLeft = document.getElementById('journalLeft');
+    const journalRight = document.getElementById('journalRight');
+
+    const analysisNoteWrap = document.getElementById('analysisNoteWrap');
+    const analysisNoteBody = document.getElementById('analysisNoteBody');
+
+    const btnPrevPage = document.getElementById('btnPrevPage');
+    const btnNextPage = document.getElementById('btnNextPage');
+    const pageIndicator = document.getElementById('pageIndicator');
+
+    const storySource = document.getElementById('storySource');
+    const analysisSource = document.getElementById('analysisSource');
+
+    // Guard: if key elements are missing, do nothing.
+    if (!btnStory || !btnAnalysis || !journalLeft || !journalRight || !btnPrevPage || !btnNextPage || !pageIndicator || !storySource) {
+      return;
     }
-  }
-  
-  // Wire controls
-  btnPrevPage.addEventListener('click', () => { pageIndex -= 1; renderPage(true); });
-  btnNextPage.addEventListener('click', () => { pageIndex += 1; renderPage(true); });
-  
-  btnStory.addEventListener('click', () => setMode('story'));
-  btnAnalysis.addEventListener('click', () => setMode('analysis'));
-  
-  // Init
-  pages = buildPagesFromStory();
-  renderPage(false);
-  setMode(window.location.hash === '#analysis' ? 'analysis' : 'story');
+
+    let pages = [];
+    let spreadIndex = 0; // points to the LEFT page of the spread
+    let mode = 'story';  // 'story' | 'analysis'
+
+    function clamp(n, min, max) {
+      return Math.max(min, Math.min(n, max));
+    }
+
+    // Builds roughly even-length pages by grouping content blocks.
+    // Uses <p>, <h2>, <h3>, <ul>, <ol>, <blockquote> as blocks.
+    // Ignores manual page breaks so you do not have to hand-tune.
+    function buildPagesFromStoryBalanced(targetPages) {
+      const desired = clamp(Number(targetPages || 8), 6, 10);
+
+      const raw = (storySource.innerHTML || '')
+        // If you still have old <hr class="page-break">, treat them as simple separators, not hard splits
+        .replace(/<hr\s+class=["']page-break["']\s*\/?>/gi, '')
+        .trim();
+
+      if (!raw) return ['<p><em>(No story content found.)</em></p>'];
+
+      const blocks = raw.match(/<(p|h2|h3|ul|ol|blockquote)\b[^>]*>[\s\S]*?<\/\1>/gi);
+
+      // Fallback if content is not in expected blocks
+      if (!blocks || blocks.length === 0) return [raw];
+
+      const totalLen = blocks.reduce((sum, b) => sum + b.length, 0);
+      const targetLen = Math.max(900, Math.floor(totalLen / desired)); // soft target
+
+      const out = [];
+      let buf = '';
+      let bufLen = 0;
+
+      for (const b of blocks) {
+        // If adding this block would exceed target and we still need pages, push current buffer
+        if (bufLen > 0 && (bufLen + b.length) > targetLen && out.length < desired - 1) {
+          out.push(buf);
+          buf = '';
+          bufLen = 0;
+        }
+        buf += b;
+        bufLen += b.length;
+      }
+
+      if (buf.trim()) out.push(buf);
+
+      // Ensure we have at least 2 pages for a spread experience
+      if (out.length === 1) out.push('<p><em>(End of entry)</em></p>');
+
+      return out;
+    }
+
+    function renderSpread(animate) {
+      const total = Math.max(1, pages.length);
+
+      spreadIndex = clamp(spreadIndex, 0, total - 1);
+      if (spreadIndex % 2 !== 0) spreadIndex -= 1;
+
+      const left = pages[spreadIndex] || '';
+      const right = pages[spreadIndex + 1] || '<p><em>(End of entry)</em></p>';
+
+      journalLeft.innerHTML = left;
+      journalRight.innerHTML = right;
+
+      const leftNum = spreadIndex + 1;
+      const rightNum = Math.min(spreadIndex + 2, total);
+      pageIndicator.textContent = `Pages ${leftNum}–${rightNum} of ${total}`;
+
+      btnPrevPage.disabled = spreadIndex === 0;
+      btnNextPage.disabled = (spreadIndex + 2) >= total;
+
+      if (animate) {
+        journalLeft.classList.remove('page-flip');
+        journalRight.classList.remove('page-flip');
+        void journalLeft.offsetWidth;
+        journalLeft.classList.add('page-flip');
+        journalRight.classList.add('page-flip');
+      }
+    }
+
+    function setMode(nextMode) {
+      mode = nextMode;
+
+      btnStory.setAttribute('aria-pressed', String(mode === 'story'));
+      btnAnalysis.setAttribute('aria-pressed', String(mode === 'analysis'));
+
+      // Update the visible radio-dot label text
+      btnStory.textContent = `${mode === 'story' ? '◉' : '◯'} Chronicle`;
+      btnAnalysis.textContent = `${mode === 'analysis' ? '◉' : '◯'} Real-World Analysis`;
+
+      if (mode === 'analysis') {
+        if (analysisNoteWrap) analysisNoteWrap.classList.add('is-active');
+        if (analysisNoteBody && analysisSource) analysisNoteBody.innerHTML = analysisSource.innerHTML || '';
+        // Keep the current path, add hash
+        try { history.replaceState(null, '', '#analysis'); } catch (e) {}
+      } else {
+        if (analysisNoteWrap) analysisNoteWrap.classList.remove('is-active');
+        // Remove hash without changing path
+        try { history.replaceState(null, '', window.location.pathname); } catch (e) {}
+      }
+    }
+
+    // Controls
+    btnPrevPage.addEventListener('click', () => {
+      spreadIndex -= 2;
+      renderSpread(true);
+    });
+
+    btnNextPage.addEventListener('click', () => {
+      spreadIndex += 2;
+      renderSpread(true);
+    });
+
+    btnStory.addEventListener('click', () => setMode('story'));
+    btnAnalysis.addEventListener('click', () => setMode('analysis'));
+
+    // Optional: keyboard navigation (nice for a journal)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        if (!btnPrevPage.disabled) btnPrevPage.click();
+      } else if (e.key === 'ArrowRight') {
+        if (!btnNextPage.disabled) btnNextPage.click();
+      }
+    });
+
+    // Init
+    pages = buildPagesFromStoryBalanced(8); // pick 6–10, 8 feels good for most stories
+    renderSpread(false);
+
+    // Respect deep-link hash
+    setMode(window.location.hash === '#analysis' ? 'analysis' : 'story');
+  })();
 </script>
 </body>
 </html>
