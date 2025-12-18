@@ -66,8 +66,13 @@
       background: rgba(10,20,27,.25);
       border-radius: .9rem;
       padding: .65rem .9rem;
-      min-width: 220px;
+      min-width: 0;            /* allow it to shrink */
+      max-width: 100%;
     }
+    @media (min-width: 640px) { /* sm and up */
+      .meta-pill{ min-width: 200px; }
+    }
+
   </style>
 </head>
 
@@ -138,7 +143,7 @@
       <div class="grid gap-6 lg:grid-cols-3 lg:items-start">
 
         <!-- Featured Chronicle -->
-        <article class="lg:col-span-2 soft-card p-6">
+        <article id="featuredChronicle" class="lg:col-span-2 soft-card p-6 hidden">
           <div class="flex flex-col gap-5">
             <div class="flex items-start justify-between gap-6">
               <div class="min-w-0">
@@ -159,7 +164,7 @@
               </div>
 
               <!-- Status + Read time (roomier, not squished) -->
-              <div class="hidden sm:grid grid-cols-1 gap-3">
+              <div class="hidden sm:grid grid-cols-1 gap-3 max-w-full">
                 <div class="meta-pill">
                   <p class="text-[11px] uppercase tracking-[.18em] text-stardust/60">Status</p>
                   <p class="mt-1 text-sm text-stardust/90">Complete</p>
@@ -215,51 +220,13 @@
         </aside>
 
         <!-- Chronicle List (replaces placeholders) -->
-        <section class="lg:col-span-2 soft-card p-6">
+        <section id="allChronicles" class="lg:col-span-2 soft-card p-6">
           <div class="flex flex-col gap-1">
             <h3 class="font-display text-xl text-stardust/95">All Chronicles</h3>
             <p class="text-sm text-stardust/75">Browse recovered entries from the Tower’s archives.</p>
           </div>
 
-          <ul class="mt-5 space-y-4">
-            <!-- Entry 1 -->
-            <li class="rounded-xl border border-rift/60 bg-deep-space/10 p-5">
-              <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                <div class="min-w-0">
-                  <p class="uppercase tracking-[.18em] text-stardust/60 text-xs">Recovered Chronicle</p>
-                  <h4 class="mt-2 font-display text-2xl text-stardust/95">
-                    <a class="hover:text-glow underline underline-offset-4" href="/chronicles/merchants-gate.html">
-                      The Breach at Merchant’s Gate
-                    </a>
-                  </h4>
-                  <p class="mt-3 text-sm text-stardust/80 leading-relaxed">
-                    Seven entities entered through trusted writs and moved like ink through commerce, records, keys, and vaults.
-                    The Kingdom survived, but only by invoking a dangerous Purge Script and accepting loss.
-                  </p>
-
-                  <div class="mt-4 flex flex-wrap gap-2">
-                    <span class="tag">Theme: Supply Chain</span>
-                    <span class="tag">Threat: Rot Swarm</span>
-                    <span class="tag">Flip: Real-World Analysis</span>
-                  </div>
-                </div>
-
-                <div class="flex flex-row gap-2 sm:flex-col sm:items-end">
-                  <span class="tag">Status: Complete</span>
-                  <span class="tag">Read: ~10–12 min</span>
-                </div>
-              </div>
-
-              <div class="mt-5">
-                <a href="/chronicles/merchants-gate.html"
-                   class="inline-flex items-center text-sm text-stardust/80 hover:text-glow underline underline-offset-4">
-                  Open chronicle →
-                </a>
-              </div>
-            </li>
-
-            <!-- When you add more chronicles, copy the <li> block above and update fields -->
-          </ul>
+          <ul id="chronicleList" class="mt-5 space-y-4"></ul>
 
           <p class="mt-6 text-xs text-stardust/65">
             More entries will surface as the Tower releases them.
@@ -278,7 +245,108 @@
   </main>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const CHRONICLES = [
+    {
+      enabled: true,
+      featured: true, // set to true for exactly one chronicle to show Featured box
+      type: "Recovered Chronicle",
+      title: "The Breach at Merchant’s Gate",
+      href: "/chronicles/merchants-gate.html",
+      blurb: "Seven entities entered through trusted writs and moved like ink through commerce, records, keys, and vaults. The Kingdom survived, but only by invoking a dangerous Purge Script and accepting loss.",
+      tags: ["Theme: Supply Chain", "Threat: Rot Swarm", "Flip: Real-World Analysis"],
+      status: "Complete",
+      readTime: "~10–12 min"
+    }
+    // Add more chronicles here with enabled:true
+  ];
+
+  const featuredEl = document.getElementById('featuredChronicle');
+  const allListEl = document.getElementById('chronicleList');
+
+  const visible = CHRONICLES.filter(c => c.enabled);
+  const featured = visible.find(c => c.featured);
+
+  // Render Featured (only if configured)
+  if (featured && featuredEl) {
+    featuredEl.classList.remove('hidden');
+
+    featuredEl.innerHTML = `
+      <div class="flex flex-col gap-5">
+        <div class="flex items-start justify-between gap-6">
+          <div class="min-w-0">
+            <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Featured • ${featured.type}</p>
+            <h2 class="mt-2 font-display text-2xl sm:text-3xl text-stardust/95">${featured.title}</h2>
+            <p class="mt-3 text-stardust/85 leading-relaxed">${featured.blurb}</p>
+
+            <div class="mt-4 flex flex-wrap gap-2">
+              ${(featured.tags || []).map(t => `<span class="tag">${t}</span>`).join("")}
+            </div>
+          </div>
+
+          <div class="hidden sm:grid grid-cols-1 gap-3 max-w-full">
+            <div class="meta-pill">
+              <p class="text-[11px] uppercase tracking-[.18em] text-stardust/60">Status</p>
+              <p class="mt-1 text-sm text-stardust/90">${featured.status || ""}</p>
+            </div>
+            <div class="meta-pill">
+              <p class="text-[11px] uppercase tracking-[.18em] text-stardust/60">Read time</p>
+              <p class="mt-1 text-sm text-stardust/90">${featured.readTime || ""}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <a href="${featured.href}"
+             class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
+            Open Chronicle →
+          </a>
+
+          <a href="/characters/"
+             class="inline-flex items-center justify-center rounded-md border border-rift/60 bg-deep-space/20 px-5 py-3 text-sm text-stardust/85 hover:text-glow">
+            Meet the characters
+          </a>
+        </div>
+      </div>
+    `;
+  }
+
+  // Render All Chronicles list
+  if (allListEl) {
+    allListEl.innerHTML = visible.map(c => `
+      <li class="rounded-xl border border-rift/60 bg-deep-space/10 p-5">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div class="min-w-0">
+            <p class="uppercase tracking-[.18em] text-stardust/60 text-xs">${c.type}</p>
+            <h4 class="mt-2 font-display text-2xl text-stardust/95">
+              <a class="hover:text-glow underline underline-offset-4" href="${c.href}">
+                ${c.title}
+              </a>
+            </h4>
+            <p class="mt-3 text-sm text-stardust/80 leading-relaxed">${c.blurb || ""}</p>
+
+            <div class="mt-4 flex flex-wrap gap-2">
+              ${(c.tags || []).map(t => `<span class="tag">${t}</span>`).join("")}
+            </div>
+          </div>
+
+          <div class="flex flex-row gap-2 sm:flex-col sm:items-end">
+            ${c.status ? `<span class="tag">Status: ${c.status}</span>` : ""}
+            ${c.readTime ? `<span class="tag">Read: ${c.readTime}</span>` : ""}
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <a href="${c.href}"
+             class="inline-flex items-center text-sm text-stardust/80 hover:text-glow underline underline-offset-4">
+            Open chronicle →
+          </a>
+        </div>
+      </li>
+    `).join("");
+  }
+</script>
+
 </body>
 </html>
