@@ -90,190 +90,6 @@
       border-radius: 1rem;
       box-shadow: 0 6px 18px rgba(0,0,0,.12);
     }
-
-    /* --- Journal + parchment --- */
-    .journal-shell{
-      border: 1px solid rgba(20,53,69,.65);
-      background: rgba(15,34,48,.22);
-      border-radius: 1.25rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      overflow: hidden;
-    }
-    
-    .parchment{
-      position: relative;
-      border-radius: 1rem;
-      background:
-        radial-gradient(1200px 500px at 15% 10%, rgba(255,255,255,.16), transparent 55%),
-        radial-gradient(900px 600px at 85% 20%, rgba(255,255,255,.10), transparent 60%),
-        linear-gradient(180deg, rgba(247,244,239,.92), rgba(240,233,224,.90));
-      color: rgba(10,20,27,.92);
-      border: 1px solid rgba(62,76,88,.25);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
-    }
-    
-    /* Subtle “paper fibers” */
-    .parchment::before{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        repeating-radial-gradient(circle at 20% 30%, rgba(0,0,0,.025) 0 1px, transparent 1px 6px),
-        repeating-radial-gradient(circle at 70% 60%, rgba(0,0,0,.02) 0 1px, transparent 1px 7px);
-      opacity:.55;
-      pointer-events:none;
-      mix-blend-mode:multiply;
-      border-radius: 1rem;
-    }
-    
-    /* Page edge / vignette */
-    .parchment::after{
-      content:"";
-      position:absolute; inset:0;
-      box-shadow:
-        inset 0 0 0 1px rgba(0,0,0,.06),
-        inset 0 0 60px rgba(0,0,0,.12);
-      pointer-events:none;
-      border-radius: 1rem;
-    }
-    
-    /* Make your existing prose readable on parchment */
-    .prose-parchment p { margin-top: 1rem; line-height: 1.9; color: rgba(10,20,27,.92); }
-    .prose-parchment h2 { margin-top: 2.25rem; font-family: Cinzel, serif; font-size: 1.4rem; color: rgba(10,20,27,.95); }
-    .prose-parchment h3 { margin-top: 1.75rem; font-weight: 700; color: rgba(10,20,27,.95); }
-    .prose-parchment ul { margin-top: 1rem; padding-left: 1.25rem; }
-    .prose-parchment li { margin-top: .5rem; line-height: 1.8; color: rgba(10,20,27,.9); }
-    .prose-parchment hr { margin: 2rem 0; border-color: rgba(0,0,0,.12); }
-    
-    /* Page controls */
-    .page-controls{
-      display:flex; align-items:center; justify-content:space-between; gap:1rem;
-      border-top: 1px solid rgba(0,0,0,.10);
-      padding-top: .9rem;
-      margin-top: 1.2rem;
-    }
-    .page-btn{
-      border: 1px solid rgba(20,53,69,.30);
-      background: rgba(255,255,255,.38);
-      color: rgba(10,20,27,.88);
-      border-radius: .75rem;
-      padding: .55rem .9rem;
-      font-weight: 700;
-      transition: transform .12s ease, filter .12s ease;
-    }
-    .page-btn:hover{ filter: brightness(1.05); transform: translateY(-1px); }
-    .page-btn:disabled{ opacity:.45; cursor:not-allowed; transform:none; }
-    .page-indicator{ font-size:.85rem; color: rgba(10,20,27,.75); }
-    
-    /* Page flip animation */
-    .page-flip{
-      transform-origin: left center;
-      animation: flip .35s ease;
-    }
-    @keyframes flip{
-      0% { transform: rotateY(0deg); opacity:1; }
-      45% { transform: rotateY(-18deg); opacity:.85; }
-      100% { transform: rotateY(0deg); opacity:1; }
-    }
-    
-    /* Two-page spread */
-    .journal-spread{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.75rem;
-      width: 100%;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Book spine / gutter */
-    .journal-spread::before{
-      content:"";
-      position:absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-    
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.05),
-        rgba(0,0,0,0.18),
-        rgba(0,0,0,0.05)
-      );
-    
-      box-shadow:
-        0 0 12px rgba(0,0,0,0.12),
-        inset 0 0 4px rgba(255,255,255,0.15);
-    
-      pointer-events: none;
-    }
-    
-    .journal-page{
-      min-height: 640px; /* feels like a real page */
-      padding: .25rem .25rem;
-    }
-    
-    /* Optional: make it stack on mobile */
-    @media (max-width: 640px){
-      .journal-spread{ grid-template-columns: 1fr; }
-    }
-    
-    /* Inner margins near the spine */
-    #journalLeft{
-      padding-right: 1.25rem;
-      box-shadow: inset -12px 0 20px rgba(0,0,0,0.06);
-    }
-    
-    #journalRight{
-      padding-left: 1.25rem;
-      box-shadow: inset 12px 0 20px rgba(0,0,0,0.06);
-    }
-    /* Make overlay fit inside parchment and scroll */
-    .note-wrap{
-      position:absolute;
-      inset: 1.25rem;
-      display:none;
-      pointer-events:none;
-      z-index: 5;
-    }
-    
-    .note-wrap.is-active{ display:block; }
-    
-    /* Fully opaque, readable, and scrollable */
-    .note{
-      pointer-events:auto;
-      max-width: 720px;
-      margin-left:auto;
-      background: rgba(255,255,255,1);  /* 100% opaque */
-      border: 1px solid rgba(20,53,69,.22);
-      border-radius: 1rem;
-      box-shadow: 0 12px 28px rgba(0,0,0,.25);
-      padding: 1.1rem 1.1rem;
-      position: relative;
-    
-      /* critical: prevent cut-off */
-      max-height: calc(100% - 0.5rem);
-      overflow: auto;
-    }
-    
-    /* “Pinned” effect */
-    .note::before{
-      content:"";
-      position:absolute;
-      top: -10px; right: 18px;
-      width: 18px; height: 18px;
-      background: rgba(240,180,41,.92);
-      border: 1px solid rgba(0,0,0,.18);
-      border-radius: 999px;
-      box-shadow: 0 6px 14px rgba(0,0,0,.18);
-    }
-    .note h2, .note h3, .note p, .note li { color: rgba(10,20,27,.92); }
-    .note .note-title{
-      font-family: Cinzel, serif;
-      font-size: 1.2rem;
-      color: rgba(10,20,27,.95);
-    }
   </style>
 </head>
 
@@ -284,7 +100,7 @@
     <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
 
     <!-- Top Nav -->
-    <header class="relative mx-auto max-w-5xl px-6 pt-10">
+    <header class="relative mx-auto max-w-7xl px-6 pt-10">
       <div class="flex items-center justify-between gap-4">
         <a href="/" class="inline-flex items-center gap-3 group">
           <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-abyss/70 border border-rift/60">
@@ -305,7 +121,7 @@
     </header>
 
     <!-- Chronicle Header -->
-    <section class="relative mx-auto max-w-5xl px-6 pt-10 pb-6">
+    <section class="relative mx-auto max-w-7xl px-6 pt-10 pb-6">
       <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">
         Recovered Chronicle • Dreaming Tower Archives
       </p>
@@ -344,75 +160,17 @@
     </section>
 
     <!-- Divider -->
-    <div class="relative mx-auto max-w-5xl px-6">
+    <div class="relative mx-auto max-w-7xl px-6">
       <div class="h-px w-full bg-rift/60"></div>
     </div>
 
     <!-- Content Panels -->
-    <section class="relative mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 pt-8 pb-14">
+    <section class="relative mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8 pt-8 pb-14">
 
-      <!-- Journal Block -->
-         <div class="journal-shell w-full p-4 sm:p-6">
-          <div class="parchment w-full p-6 sm:p-8 relative">
-            <!-- Chronicle pages render here -->
-            <div class="journal-spread">
-              <div id="journalLeft" class="journal-page prose-parchment"></div>
-              <div id="journalRight" class="journal-page prose-parchment"></div>
-            </div>
-      
-            <!-- Analysis note overlay renders here -->
-            <div id="analysisNoteWrap" class="note-wrap">
-              <div class="note">
-                <div class="note-title">Real-World Analysis</div>
-                <div id="analysisNoteBody" class="mt-3 prose-parchment"></div>
-              </div>
-            </div>
-      
-            <!-- Page controls -->
-            <div class="page-controls">
-              <button id="btnPrevPage" class="page-btn focus-ring" type="button">← Prev</button>
-              <div id="pageIndicator" class="page-indicator">Page 1 of 1</div>
-              <button id="btnNextPage" class="page-btn focus-ring" type="button">Next →</button>
-            </div>
-          </div>
-      </section>
-      
-      <!-- Context Footer -->
-      <div class="mx-auto max-w-3xl mt-12 soft-card p-6">
-        <h3 class="font-display text-xl text-stardust/95">Appearing in this Chronicle</h3>
-        <div class="mt-3 flex flex-wrap gap-2 text-sm">
-          <a href="/characters/lorekeeper.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">The Lorekeeper</a>
-          <a href="/characters/queen-lyra.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Queen Lyra</a>
-          <a href="/characters/shade.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Shade</a>
-          <a href="/characters/cassia.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Cassia Goldthread</a>
-          <a href="/characters/valdris.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Valdris Ironheart</a>
-          <a href="/characters/pip.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Junior Archivist Pip</a>
-        </div>
-      
-        <div class="mt-6 h-px w-full bg-rift/60"></div>
-      
-        <div class="mt-6">
-          <h3 class="font-display text-xl text-stardust/95">Continue the Archive</h3>
-      
-          <!-- Full-width nav row -->
-          <div class="mt-3 flex items-center justify-between gap-4 text-sm text-stardust/80">
-            <a class="underline underline-offset-4 hover:text-glow" href="/chronicles/">← Back to Chronicles</a>
-      
-            <a id="nextChronicleLink"
-               class="underline underline-offset-4 hover:text-glow"
-               href="/chronicles/next-chronicle.html">
-              Next Chronicle →
-            </a>
-          </div>
-        </div>
-      </div>
-      <p class="mt-10 text-center text-xs text-stardust/65">
-        © <span id="year"></span> The Cyber Lorekeeper. All rights reserved.
-      </p>
+      <!-- Story Panel -->
+      <article id="panelStory" class="panel is-active">
+        <div class="mx-auto max-w-4xl prose-lore">
 
-      <!-- Hidden sources for journal rendering -->
-      <div class="hidden">
-        <div id="storySource">
           <p><strong>The Dreaming Tower shuddered.</strong></p>
 
           <p>It was not a sound that anyone else could hear, not the guards patrolling the Crown City's luminous streets below, not the Cipher Monks chanting their encryption rituals in the eastern sanctum, not even the Queen herself in her palace of glass and iron across the plaza. But the Lorekeeper felt it in his bones, a vibration that traveled through the ancient stones and into his flesh like a warning bell struck in another world.</p>
@@ -439,7 +197,7 @@
 
           <p>By the time he burst into the streets, he was already composing the message in his mind. The Secret Council would need to convene immediately.</p>
 
-          <hr class="page-break" />
+          <hr />
 
           <p>The council chamber sat beneath the Queen's palace, accessible only through a sealed vault door that required three simultaneous keys. The Lorekeeper arrived first, as he always did in emergencies, and waited in the circular stone room lit by floating orbs of pale light. Maps of the Kingdom covered every wall, enchanted to update in real-time as conditions changed.</p>
 
@@ -471,8 +229,6 @@
 
           <p>The vault door opened one final time, and Shade slipped inside like smoke made flesh. He wore his usual dark leathers, his face obscured by a hood enchanted to blur his features. Most people found him unsettling. The Lorekeeper found him necessary.</p>
 
-          <hr class="page-break" />
-          
           <p>"You're late," Valdris said.</p>
 
           <p>"I was gathering information," Shade replied, his voice like gravel wrapped in velvet. He produced a small crystal from his pocket and set it on the table. "This is from my contact in the Shadow Markets. Three days ago, a new vendor appeared selling 'master writs', authentication credentials for the Merchant's Gate. Perfect forgeries, supposedly. At least seven were sold before my contact realized what they were."</p>
@@ -513,7 +269,7 @@
 
           <p>"Agreed," they said, almost in unison.</p>
 
-          <hr class="page-break" />
+          <hr />
 
           <p>The Lorekeeper returned to the Dreaming Tower and climbed to his observation chamber, a circular room at the Tower's heart where hundreds of floating crystals displayed active monitoring data from across the Kingdom. Each crystal represented a different system, a different stream of information. Normally, they drifted in lazy patterns, their light steady.</p>
 
@@ -542,7 +298,7 @@
 
           <p>He ran.</p>
 
-          <hr class="page-break" />
+          <hr />
 
           <p>The Secret Council reconvened within twenty minutes. The Lorekeeper's projection showed them the seven points of light, and he watched their expressions shift from concern to alarm.</p>
 
@@ -608,7 +364,7 @@
 
           <p>"Do it," the Queen said.</p>
 
-          <hr class="page-break" />
+          <hr />
 
           <p>The Lorekeeper ascended the Dreaming Tower faster than he'd ever climbed before. The Tower opened passages for him, shortcuts and impossible geometries that let him reach the highest vault in minutes instead of hours.</p>
 
@@ -632,7 +388,7 @@
 
           <p>He spoke the final command, and the scroll erupted with blinding light.</p>
 
-          <hr class="page-break" />
+          <hr />
 
           <p>The effect was instantaneous and violent.</p>
 
@@ -652,7 +408,7 @@
 
           <p>But wounded.</p>
 
-          <hr class="page-break" />
+          <hr />
 
           <p>The Queen stood in the council chamber, reviewing damage reports with a grim expression. Merchant-Lord Cassia sat at the table, her usual composure shaken. High Commander Valdris paced like a caged wolf.</p>
 
@@ -686,7 +442,7 @@
 
           <p>"Let them," the Queen said, and her voice was iron. "We'll be ready."</p>
 
-          <hr class="page-break" />
+          <hr />
 
           <p>Late that night, the Lorekeeper sat in his chamber at the top of the Dreaming Tower. The city below sparkled with enchanted lights, peaceful and oblivious to how close it had come to chaos.</p>
 
@@ -721,9 +477,14 @@
           <p>And the Dreaming Tower would keep watch, as it always had.</p>
 
           <p>As it always would.</p>
+
         </div>
-      
-        <div id="analysisSource">
+      </article>
+
+      <!-- Analysis Panel -->
+      <article id="panelAnalysis" class="panel">
+        <div class="mx-auto max-w-4xl prose-lore">
+
           <h2>Story Summary</h2>
           <p>Seven coordinated attackers used forged but legitimate-looking credentials to infiltrate the Kingdom through trusted merchant access points. They positioned themselves across critical infrastructure not to steal, but to corrupt records and keys. The Lorekeeper identified the pattern as a Rot Swarm, a distributed attack. The Kingdom invoked a dangerous Purge Script, accepting loss to stop the spread.</p>
 
@@ -767,8 +528,42 @@
 
           <h2>Cost of Inaction</h2>
           <p>Organizations that treat vendor trust as a substitute for verification often discover the weakness too late. When the supply chain is the attack vector, the damage is not just technical. It hits operations, customer trust, and survivability.</p>
+
+        </div>
+      </article>
+
+      <!-- Context Footer -->
+      <div class="mx-auto max-w-3xl mt-12 soft-card p-6">
+        <h3 class="font-display text-xl text-stardust/95">Appearing in this Chronicle</h3>
+        <div class="mt-3 flex flex-wrap gap-2 text-sm">
+          <a href="/characters/lorekeeper.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">The Lorekeeper</a>
+          <a href="/characters/queen-lyra.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Queen Lyra</a>
+          <a href="/characters/shade.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Shade</a>
+          <a href="/characters/cassia.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Cassia Goldthread</a>
+          <a href="/characters/valdris.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Valdris Ironheart</a>
+          <a href="/characters/pip.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Junior Archivist Pip</a>
+        </div>
+      
+        <div class="mt-6 h-px w-full bg-rift/60"></div>
+      
+        <div class="mt-6">
+          <h3 class="font-display text-xl text-stardust/95">Continue the Archive</h3>
+      
+          <!-- Full-width nav row -->
+          <div class="mt-3 flex items-center justify-between gap-4 text-sm text-stardust/80">
+            <a class="underline underline-offset-4 hover:text-glow" href="/chronicles/">← Back to Chronicles</a>
+      
+            <a id="nextChronicleLink"
+               class="underline underline-offset-4 hover:text-glow"
+               href="/chronicles/next-chronicle.html">
+              Next Chronicle →
+            </a>
+          </div>
         </div>
       </div>
+      <p class="mt-10 text-center text-xs text-stardust/65">
+        © <span id="year"></span> The Cyber Lorekeeper. All rights reserved.
+      </p>
     </section>
   </main>
 
@@ -788,161 +583,43 @@
   }
   // --- End Next Chronicle wiring ---
 
-  // ---------- Journal paging + analysis overlay (two-page spread) ----------
-  (function () {
-    const btnStory = document.getElementById('btnStory');
-    const btnAnalysis = document.getElementById('btnAnalysis');
+  const btnStory = document.getElementById('btnStory');
+  const btnAnalysis = document.getElementById('btnAnalysis');
+  const panelStory = document.getElementById('panelStory');
+  const panelAnalysis = document.getElementById('panelAnalysis');
 
-    const journalLeft = document.getElementById('journalLeft');
-    const journalRight = document.getElementById('journalRight');
+  function showPanel(which) {
+    const toShow = which === 'analysis' ? panelAnalysis : panelStory;
+    const toHide = which === 'analysis' ? panelStory : panelAnalysis;
 
-    const analysisNoteWrap = document.getElementById('analysisNoteWrap');
-    const analysisNoteBody = document.getElementById('analysisNoteBody');
+    const y = window.scrollY;
 
-    const btnPrevPage = document.getElementById('btnPrevPage');
-    const btnNextPage = document.getElementById('btnNextPage');
-    const pageIndicator = document.getElementById('pageIndicator');
+    btnStory.setAttribute('aria-pressed', which !== 'analysis');
+    btnAnalysis.setAttribute('aria-pressed', which === 'analysis');
 
-    const storySource = document.getElementById('storySource');
-    const analysisSource = document.getElementById('analysisSource');
+    toHide.classList.remove('is-active');
+    toShow.classList.add('is-active');
 
-    // Guard: if key elements are missing, do nothing.
-    if (!btnStory || !btnAnalysis || !journalLeft || !journalRight || !btnPrevPage || !btnNextPage || !pageIndicator || !storySource) {
-      return;
-    }
-
-    let pages = [];
-    let spreadIndex = 0; // points to the LEFT page of the spread
-    let mode = 'story';  // 'story' | 'analysis'
-
-    function clamp(n, min, max) {
-      return Math.max(min, Math.min(n, max));
-    }
-
-    // Builds roughly even-length pages by grouping content blocks.
-    // Uses <p>, <h2>, <h3>, <ul>, <ol>, <blockquote> as blocks.
-    // Ignores manual page breaks so you do not have to hand-tune.
-    function buildPagesFromStoryBalanced(targetPages) {
-      const desired = clamp(Number(targetPages || 8), 6, 10);
-
-      const raw = (storySource.innerHTML || '')
-        // If you still have old <hr class="page-break">, treat them as simple separators, not hard splits
-        .replace(/<hr\s+class=["']page-break["']\s*\/?>/gi, '')
-        .trim();
-
-      if (!raw) return ['<p><em>(No story content found.)</em></p>'];
-
-      const blocks = raw.match(/<(p|h2|h3|ul|ol|blockquote)\b[^>]*>[\s\S]*?<\/\1>/gi);
-
-      // Fallback if content is not in expected blocks
-      if (!blocks || blocks.length === 0) return [raw];
-
-      const totalLen = blocks.reduce((sum, b) => sum + b.length, 0);
-      const targetLen = Math.max(900, Math.floor(totalLen / desired)); // soft target
-
-      const out = [];
-      let buf = '';
-      let bufLen = 0;
-
-      for (const b of blocks) {
-        // If adding this block would exceed target and we still need pages, push current buffer
-        if (bufLen > 0 && (bufLen + b.length) > targetLen && out.length < desired - 1) {
-          out.push(buf);
-          buf = '';
-          bufLen = 0;
-        }
-        buf += b;
-        bufLen += b.length;
-      }
-
-      if (buf.trim()) out.push(buf);
-
-      // Ensure we have at least 2 pages for a spread experience
-      if (out.length === 1) out.push('<p><em>(End of entry)</em></p>');
-
-      return out;
-    }
-
-    function renderSpread(animate) {
-      const total = Math.max(1, pages.length);
-
-      spreadIndex = clamp(spreadIndex, 0, total - 1);
-      if (spreadIndex % 2 !== 0) spreadIndex -= 1;
-
-      const left = pages[spreadIndex] || '';
-      const right = pages[spreadIndex + 1] || '<p><em>(End of entry)</em></p>';
-
-      journalLeft.innerHTML = left;
-      journalRight.innerHTML = right;
-
-      const leftNum = spreadIndex + 1;
-      const rightNum = Math.min(spreadIndex + 2, total);
-      pageIndicator.textContent = `Pages ${leftNum}–${rightNum} of ${total}`;
-
-      btnPrevPage.disabled = spreadIndex === 0;
-      btnNextPage.disabled = (spreadIndex + 2) >= total;
-
-      if (animate) {
-        journalLeft.classList.remove('page-flip');
-        journalRight.classList.remove('page-flip');
-        void journalLeft.offsetWidth;
-        journalLeft.classList.add('page-flip');
-        journalRight.classList.add('page-flip');
-      }
-    }
-
-    function setMode(nextMode) {
-      mode = nextMode;
-
-      btnStory.setAttribute('aria-pressed', String(mode === 'story'));
-      btnAnalysis.setAttribute('aria-pressed', String(mode === 'analysis'));
-
-      // Update the visible radio-dot label text
-      btnStory.textContent = `${mode === 'story' ? '◉' : '◯'} Chronicle`;
-      btnAnalysis.textContent = `${mode === 'analysis' ? '◉' : '◯'} Real-World Analysis`;
-
-      if (mode === 'analysis') {
-        if (analysisNoteWrap) analysisNoteWrap.classList.add('is-active');
-        if (analysisNoteBody && analysisSource) analysisNoteBody.innerHTML = analysisSource.innerHTML || '';
-        // Keep the current path, add hash
-        try { history.replaceState(null, '', '#analysis'); } catch (e) {}
-      } else {
-        if (analysisNoteWrap) analysisNoteWrap.classList.remove('is-active');
-        // Remove hash without changing path
-        try { history.replaceState(null, '', window.location.pathname); } catch (e) {}
-      }
-    }
-
-    // Controls
-    btnPrevPage.addEventListener('click', () => {
-      spreadIndex -= 2;
-      renderSpread(true);
+    toShow.classList.remove('fade-enter', 'fade-enter-active');
+    toShow.classList.add('fade-enter');
+    requestAnimationFrame(() => {
+      toShow.classList.add('fade-enter-active');
     });
 
-    btnNextPage.addEventListener('click', () => {
-      spreadIndex += 2;
-      renderSpread(true);
-    });
+    // Update hash for shareable links
+    if (which === 'analysis') {
+      history.replaceState(null, '', '#analysis');
+    } else {
+      history.replaceState(null, '', window.location.pathname);
+    }
 
-    btnStory.addEventListener('click', () => setMode('story'));
-    btnAnalysis.addEventListener('click', () => setMode('analysis'));
+    window.scrollTo(0, y);
+  }
 
-    // Optional: keyboard navigation (nice for a journal)
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') {
-        if (!btnPrevPage.disabled) btnPrevPage.click();
-      } else if (e.key === 'ArrowRight') {
-        if (!btnNextPage.disabled) btnNextPage.click();
-      }
-    });
+  btnStory.addEventListener('click', () => showPanel('story'));
+  btnAnalysis.addEventListener('click', () => showPanel('analysis'));
 
-    // Init
-    pages = buildPagesFromStoryBalanced(8); // pick 6–10, 8 feels good for most stories
-    renderSpread(false);
-
-    // Respect deep-link hash
-    setMode(window.location.hash === '#analysis' ? 'analysis' : 'story');
-  })();
+  if (window.location.hash === '#analysis') showPanel('analysis');
 </script>
 </body>
 </html>
