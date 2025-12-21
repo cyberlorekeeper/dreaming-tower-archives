@@ -1,3 +1,10 @@
-<main class="relative min-h-screen">
-  {{ content | safe }}
+<main class="relative min-h-screen overflow-hidden">
+  <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+  <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+
+  <div class="relative z-10">
+    {% include "header.njk" %}
+    {{ content | safe }}
+    {% include "footer.njk" %}
+  </div>
 </main>
