@@ -1,19 +1,159 @@
----
-layout: layout.njk
-title: The Breach at Merchant’s Gate
-description: A recovered chronicle from the Dreaming Tower archives.
-permalink: /chronicles/merchants-gate/
----
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <title>The Breach at Merchant’s Gate — The Cyber Lorekeeper</title>
+
+  
+    <meta name="description" content="A recovered chronicle from the Dreaming Tower archives." />
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow:{
+            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card:'0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .soft-card{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.35);
+      border-radius: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      backdrop-filter: blur(6px);
+    }
+  </style>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen overflow-hidden">
+    <!-- Background -->
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+
+    <div class="relative z-10">
+      <header class="relative mx-auto max-w-6xl px-6 pt-10 z-20">
+  <div class="flex items-center justify-between gap-4">
+    <!-- Brand -->
+    <a href="/" class="inline-flex items-center gap-3 group">
+      <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-abyss/70 border border-rift/60">
+        <img src="/images/icon.png"
+             alt="The Cyber Lorekeeper"
+             class="h-8 w-8 object-contain" />
+      </span>
+      <span class="font-display text-sm tracking-[.14em] uppercase text-stardust/80 group-hover:text-stardust">
+        The Cyber Lorekeeper
+      </span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden lg:flex items-center gap-4 text-sm text-stardust/80" aria-label="Primary navigation">
+      <a class="hover:text-glow hover:underline underline-offset-4" href="/chronicles/">Chronicles</a>
+      <a class="hover:text-glow hover:underline underline-offset-4" href="/field-notes/">Field Notes</a>
+      <a class="hover:text-glow hover:underline underline-offset-4" href="/characters/">Characters</a>
+
+      <!-- The World dropdown -->
+      <div class="relative" id="worldMenuWrap">
+        <button id="worldMenuBtn"
+                type="button"
+                class="inline-flex items-center gap-1 hover:text-glow focus-ring"
+                aria-haspopup="true"
+                aria-expanded="false">
+          The World
+          <span aria-hidden="true">▾</span>
+        </button>
+
+        <div id="worldMenu"
+             class="hidden absolute right-0 mt-2 w-56 rounded-xl border border-rift/60 bg-abyss/90 backdrop-blur-md shadow-card p-2"
+             role="menu">
+          <a role="menuitem"
+             class="block rounded-lg px-3 py-2 hover:bg-rift/40 hover:text-glow"
+             href="/world/cipheria/">
+            Cipheria
+          </a>
+          <a role="menuitem"
+             class="block rounded-lg px-3 py-2 hover:bg-rift/40 hover:text-glow"
+             href="/world/other-locations/">
+            Other Locations
+          </a>
+        </div>
+      </div>
+
+      <a class="hover:text-glow hover:underline underline-offset-4" href="/bestiary/">Bestiary</a>
+      <a class="hover:text-glow hover:underline underline-offset-4" href="/author/">Author</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button id="navToggle"
+            class="lg:hidden focus-ring rounded-md border border-rift/60 bg-abyss/30 px-3 py-2 text-sm font-semibold text-stardust/85"
+            type="button"
+            aria-expanded="false">
+      Menu
+    </button>
+  </div>
+
+  <!-- Mobile Nav -->
+  <div id="mobileNavPanel"
+       class="hidden lg:hidden mt-4 rounded-xl border border-rift/60 bg-abyss/40 backdrop-blur-md p-4">
+    <nav class="flex flex-col gap-3 text-sm text-stardust/85">
+      <a href="/chronicles/" class="hover:text-glow underline underline-offset-4">Chronicles</a>
+      <a href="/field-notes/" class="hover:text-glow underline underline-offset-4">Field Notes</a>
+      <a href="/characters/" class="hover:text-glow underline underline-offset-4">Characters</a>
+
+      <details class="rounded-lg border border-rift/60 bg-abyss/30 p-3">
+        <summary class="cursor-pointer font-semibold">The World</summary>
+        <div class="mt-2 flex flex-col gap-2 pl-2">
+          <a href="/world/cipheria/" class="hover:text-glow underline underline-offset-4">Cipheria</a>
+          <a href="/world/other-locations/" class="hover:text-glow underline underline-offset-4">Other Locations</a>
+        </div>
+      </details>
+
+      <a href="/bestiary/" class="hover:text-glow underline underline-offset-4">Bestiary</a>
+      <a href="/author/" class="hover:text-glow underline underline-offset-4">Author</a>
+    </nav>
+  </div>
+</header>
+      
 <section class="relative mx-auto max-w-6xl px-6 pt-10 pb-10">
   <!-- your chronicle hero, toggle, panels, story text, analysis text -->
 </section>
 
-{% set pageScripts %}
-<script>
-  // your toggle JS (showPanel) and NEXT_CHRONICLE_URL logic can live here
-</script>
-{% endset %}
+
     <!-- Content Panels -->
     <section class="relative mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8 pt-8 pb-14">
 
@@ -445,3 +585,71 @@ permalink: /chronicles/merchants-gate/
       showPanel('story');
     }
   </script>
+      <footer class="relative z-20 mx-auto max-w-6xl px-6 pb-10 pt-16 text-center">
+  <p class="text-sm text-stardust/70">
+    © <span id="year"></span> The Cyber Lorekeeper.
+  </p>
+
+  <p class="mt-2 text-xs text-stardust/55">
+    Recovered chronicles from the Dreaming Tower archives.
+  </p>
+
+  <div class="mt-4 flex items-center justify-center gap-4 text-xs text-stardust/65">
+    <a href="/subscribe/" class="hover:text-glow underline underline-offset-4">Subscribe</a>
+    <span aria-hidden="true">•</span>
+    <a href="/author/" class="hover:text-glow underline underline-offset-4">About the Author</a>
+  </div>
+</footer>
+    </div>
+  </main>
+
+  <script>
+    // Footer year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Header: mobile menu
+    const navToggle = document.getElementById('navToggle');
+    const mobileNavPanel = document.getElementById('mobileNavPanel');
+    if (navToggle && mobileNavPanel) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!isOpen));
+        mobileNavPanel.classList.toggle('hidden', isOpen);
+      });
+    }
+
+    // Header: desktop world dropdown
+    const worldBtn = document.getElementById('worldMenuBtn');
+    const worldMenu = document.getElementById('worldMenu');
+    const worldWrap = document.getElementById('worldMenuWrap');
+
+    function closeWorldMenu() {
+      if (!worldMenu || !worldBtn) return;
+      worldMenu.classList.add('hidden');
+      worldBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    if (worldBtn && worldMenu && worldWrap) {
+      worldBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isHidden = worldMenu.classList.contains('hidden');
+        if (isHidden) {
+          worldMenu.classList.remove('hidden');
+          worldBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          closeWorldMenu();
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!worldWrap.contains(e.target)) closeWorldMenu();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeWorldMenu();
+      });
+    }
+  </script>
+</body>
+</html>
