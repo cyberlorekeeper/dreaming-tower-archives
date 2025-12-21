@@ -91,6 +91,14 @@ permalink: /chronicles/merchants-gate/
 
 {% set pageScripts %}
 <script>
+  // --- Next Chronicle link wiring (hide unless set) ---
+  const NEXT_CHRONICLE_URL = ""; // set to real URL when ready
+  const nextLink = document.getElementById('nextChronicleLink');
+  if (nextLink) {
+    if (!NEXT_CHRONICLE_URL) nextLink.style.display = "none";
+    else nextLink.href = NEXT_CHRONICLE_URL;
+  }
+
   const btnStory = document.getElementById('btnStory');
   const btnAnalysis = document.getElementById('btnAnalysis');
   const panelStory = document.getElementById('panelStory');
@@ -544,67 +552,5 @@ permalink: /chronicles/merchants-gate/
 
         </div>
       </article>
-
-  <script>
-   
-    // --- Next Chronicle link wiring (hide unless set) ---
-    // Set this when you have a real next chronicle:
-    // const NEXT_CHRONICLE_URL = "/chronicles/crowdstrike-dragon.html";
-    const NEXT_CHRONICLE_URL = ""; // set to real URL when ready
-    const nextLink = document.getElementById('nextChronicleLink');
-  
-    if (!NEXT_CHRONICLE_URL) {
-      if (nextLink) nextLink.style.display = "none";
-    } else {
-      if (nextLink) nextLink.href = NEXT_CHRONICLE_URL;
-    }
-    // --- End Next Chronicle wiring ---
-  
-    const btnStory = document.getElementById('btnStory');
-    const btnAnalysis = document.getElementById('btnAnalysis');
-    const panelStory = document.getElementById('panelStory');
-    const panelAnalysis = document.getElementById('panelAnalysis');
-  
-    function showPanel(which) {
-      const isAnalysis = which === 'analysis';
-      const toShow = isAnalysis ? panelAnalysis : panelStory;
-      const toHide = isAnalysis ? panelStory : panelAnalysis;
-  
-      const y = window.scrollY;
-  
-      btnStory.setAttribute('aria-pressed', String(!isAnalysis));
-      btnAnalysis.setAttribute('aria-pressed', String(isAnalysis));
-  
-      // ✅ NEW: swap the "radio" icon in the button labels
-      btnStory.textContent = `${!isAnalysis ? '◉' : '◯'} Chronicle`;
-      btnAnalysis.textContent = `${isAnalysis ? '◉' : '◯'} Real-World Analysis`;
-  
-      toHide.classList.remove('is-active');
-      toShow.classList.add('is-active');
-  
-      toShow.classList.remove('fade-enter', 'fade-enter-active');
-      toShow.classList.add('fade-enter');
-      requestAnimationFrame(() => {
-        toShow.classList.add('fade-enter-active');
-      });
-  
-      // Update hash for shareable links
-      if (isAnalysis) {
-        history.replaceState(null, '', '#analysis');
-      } else {
-        history.replaceState(null, '', window.location.pathname);
-      }
-  
-      window.scrollTo(0, y);
-    }
-  
-    btnStory.addEventListener('click', () => showPanel('story'));
-    btnAnalysis.addEventListener('click', () => showPanel('analysis'));
-  
-    // ✅ NEW: ensure initial label state matches the initial panel
-    if (window.location.hash === '#analysis') {
-      showPanel('analysis');
-    } else {
-      showPanel('story');
-    }
-  </script>
+   </section>
+</section>
