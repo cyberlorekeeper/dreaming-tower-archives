@@ -4,7 +4,7 @@ module.exports = function (eleventyConfig) {
   //eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
 
   // If you currently keep images/assets at repo root, use these instead:
-  eleventyConfig.addPassthroughCopy({ "images" });
+  eleventyConfig.addPassthroughCopy({ "images" : "images"});
   // eleventyConfig.addPassthroughCopy({ "assets": "assets" });
 
   return {
