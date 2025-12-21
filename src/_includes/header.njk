@@ -1,0 +1,81 @@
+<header class="relative mx-auto max-w-6xl px-6 pt-10 z-20">
+  <div class="flex items-center justify-between gap-4">
+    <!-- Brand -->
+    <a href="/" class="inline-flex items-center gap-3 group">
+      <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-abyss/70 border border-rift/60">
+        <img src="{{ '/images/icon.png' | url }}"
+             alt="The Cyber Lorekeeper"
+             class="h-8 w-8 object-contain" />
+      </span>
+      <span class="font-display text-sm tracking-[.14em] uppercase text-stardust/80 group-hover:text-stardust">
+        The Cyber Lorekeeper
+      </span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden lg:flex items-center gap-4 text-sm text-stardust/80" aria-label="Primary navigation">
+      <a class="hover:text-glow hover:underline underline-offset-4" href="/chronicles/">Chronicles</a>
+      <a class="hover:text-glow hover:underline underline-offset-4" href="/field-notes/">Field Notes</a>
+      <a class="hover:text-glow hover:underline underline-offset-4" href="/characters/">Characters</a>
+
+      <!-- The World dropdown -->
+      <div class="relative" id="worldMenuWrap">
+        <button id="worldMenuBtn"
+                type="button"
+                class="inline-flex items-center gap-1 hover:text-glow focus-ring"
+                aria-haspopup="true"
+                aria-expanded="false">
+          The World
+          <span aria-hidden="true">▾</span>
+        </button>
+
+        <div id="worldMenu"
+             class="hidden absolute right-0 mt-2 w-56 rounded-xl border border-rift/60 bg-abyss/90 backdrop-blur-md shadow-card p-2"
+             role="menu">
+          <a role="menuitem"
+             class="block rounded-lg px-3 py-2 hover:bg-rift/40 hover:text-glow"
+             href="/world/cipheria/">
+            Cipheria
+          </a>
+          <a role="menuitem"
+             class="block rounded-lg px-3 py-2 hover:bg-rift/40 hover:text-glow"
+             href="/world/other-locations/">
+            Other Locations
+          </a>
+        </div>
+      </div>
+
+      <a class="hover:text-glow hover:underline underline-offset-4" href="/bestiary/">Bestiary</a>
+      <a class="hover:text-glow hover:underline underline-offset-4" href="/author/">Author</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button id="navToggle"
+            class="lg:hidden focus-ring rounded-md border border-rift/60 bg-abyss/30 px-3 py-2 text-sm font-semibold text-stardust/85"
+            type="button"
+            aria-expanded="false">
+      Menu
+    </button>
+  </div>
+
+  <!-- Mobile Nav -->
+  <div id="mobileNavPanel"
+       class="hidden lg:hidden mt-4 rounded-xl border border-rift/60 bg-abyss/40 backdrop-blur-md p-4">
+    <nav class="flex flex-col gap-3 text-sm text-stardust/85">
+      <a href="/chronicles/" class="hover:text-glow underline underline-offset-4">Chronicles</a>
+      <a href="/field-notes/" class="hover:text-glow underline underline-offset-4">Field Notes</a>
+      <a href="/characters/" class="hover:text-glow underline underline-offset-4">Characters</a>
+
+      <details class="rounded-lg border border-rift/60 bg-abyss/30 p-3">
+        <summary class="cursor-pointer font-semibold">The World</summary>
+        <div class="mt-2 flex flex-col gap-2 pl-2">
+          <a href="/world/cipheria/" class="hover:text-glow underline underline-offset-4">Cipheria</a>
+          <a href="/world/other-locations/" class="hover:text-glow underline underline-offset-4">Other Locations</a>
+        </div>
+      </details>
+
+      <a href="/bestiary/" class="hover:text-glow underline underline-offset-4">Bestiary</a>
+      <a href="/author/" class="hover:text-glow underline underline-offset-4">Author</a>
+    </nav>
+  </div>
+</header>
