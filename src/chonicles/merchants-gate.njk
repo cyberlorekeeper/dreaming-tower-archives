@@ -9,11 +9,114 @@ permalink: /chronicles/merchants-gate/
   <!-- your chronicle hero, toggle, panels, story text, analysis text -->
 </section>
 
+{% set pageStyles %}
+<style>
+  /* --- Merchant’s Gate page-specific styling --- */
+
+  /* Toggle styling */
+  .toggle-wrap{
+    border: 1px solid rgba(20,53,69,.65);
+    background: rgba(15,34,48,.35);
+    border-radius: .85rem;
+    padding: .35rem;
+    display: inline-flex;
+    gap: .35rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,.12);
+    backdrop-filter: blur(6px);
+  }
+  .toggle-btn{
+    border-radius: .6rem;
+    padding: .55rem .9rem;
+    font-size: .9rem;
+    color: rgba(207,229,239,.85);
+    transition: all .18s ease;
+    white-space: nowrap;
+  }
+  .toggle-btn:hover{ color: rgba(207,229,239,.98); }
+  .toggle-btn[aria-pressed="true"]{
+    background: rgba(53,198,224,.18);
+    color: rgba(207,229,239,.98);
+    box-shadow:
+      0 0 0 2px rgba(53,198,224,.18) inset,
+      0 0 18px rgba(53,198,224,.25);
+  }
+  .toggle-btn[aria-pressed="false"]{ opacity: .75; }
+
+  /* Panel behavior */
+  .panel{ display:none; }
+  .panel.is-active{ display:block; }
+
+  /* Fade-in transition */
+  .fade-enter{ opacity: 0; transform: translateY(6px); }
+  .fade-enter.fade-enter-active{
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity .22s ease, transform .22s ease;
+  }
+
+  /* Story typography */
+  .prose-chronicle p{
+    margin-top: 1.25rem;
+    line-height: 1.8;
+    color: rgba(207,229,239,.9);
+    font-size: 1.05rem;
+  }
+  .prose-chronicle h3{
+    margin-top: 2rem;
+    font-weight: 700;
+    color: rgba(207,229,239,.98);
+  }
+  .prose-chronicle em{
+    color: rgba(207,229,239,.85);
+  }
+
+  /* Optional: stronger opening line */
+  .lede{
+    font-size: 1.15rem;
+    color: rgba(207,229,239,.92);
+  }
+</style>
+{% endset %}
+
 {% set pageScripts %}
 <script>
-  // your toggle JS (showPanel) and NEXT_CHRONICLE_URL logic can live here
+  const btnStory = document.getElementById('btnStory');
+  const btnAnalysis = document.getElementById('btnAnalysis');
+  const panelStory = document.getElementById('panelStory');
+  const panelAnalysis = document.getElementById('panelAnalysis');
+
+  function showPanel(which) {
+    const isAnalysis = which === 'analysis';
+    const toShow = isAnalysis ? panelAnalysis : panelStory;
+    const toHide = isAnalysis ? panelStory : panelAnalysis;
+
+    btnStory.setAttribute('aria-pressed', String(!isAnalysis));
+    btnAnalysis.setAttribute('aria-pressed', String(isAnalysis));
+
+    btnStory.textContent = `${!isAnalysis ? '◉' : '◯'} Chronicle`;
+    btnAnalysis.textContent = `${isAnalysis ? '◉' : '◯'} Real-World Analysis`;
+
+    toHide.classList.remove('is-active');
+    toShow.classList.add('is-active');
+
+    toShow.classList.remove('fade-enter', 'fade-enter-active');
+    toShow.classList.add('fade-enter');
+    requestAnimationFrame(() => toShow.classList.add('fade-enter-active'));
+
+    if (isAnalysis) history.replaceState(null, '', '#analysis');
+    else history.replaceState(null, '', window.location.pathname);
+  }
+
+  if (btnStory && btnAnalysis) {
+    btnStory.addEventListener('click', () => showPanel('story'));
+    btnAnalysis.addEventListener('click', () => showPanel('analysis'));
+  }
+
+  if (window.location.hash === '#analysis') showPanel('analysis');
+  else showPanel('story');
 </script>
 {% endset %}
+
     <!-- Content Panels -->
     <section class="relative mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8 pt-8 pb-14">
 
