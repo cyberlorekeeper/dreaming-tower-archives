@@ -19,46 +19,40 @@
           Menu
         </button>
 
-        <!-- Nav -->
         <nav id="siteNav"
-            class="hidden lg:flex items-center gap-4 text-sm text-stardust/80"
-            aria-label="Primary">
+         class="hidden lg:flex items-center gap-4 text-sm text-stardust/80"
+         aria-label="Primary">
           <a class="hover:text-glow underline-offset-4 hover:underline" href="/chronicles/">Chronicles</a>
           <a class="hover:text-glow underline-offset-4 hover:underline" href="/field-notes/">Field Notes</a>
           <a class="hover:text-glow underline-offset-4 hover:underline" href="/characters/">Characters</a>
-
-          <!-- The World dropdown -->
-         <li class="relative group">
-          <a href="/world/" class="inline-flex items-center gap-1 hover:text-glow">
-            The World <span aria-hidden="true">▾</span>
-          </a>
         
-          <!-- Dropdown -->
-          <ul
-            class="absolute left-0 top-full mt-2 hidden min-w-[220px] rounded-lg border border-rift/60 bg-abyss/90 p-2 shadow-card backdrop-blur-md group-hover:block"
-          >
-            <li>
-              <a href="/world/cipheria.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow">
+          <!-- The World dropdown -->
+          <div class="relative group" id="worldMenuWrap">
+            <a href="/world/" class="inline-flex items-center gap-1 hover:text-glow underline-offset-4 hover:underline">
+              The World <span aria-hidden="true">▾</span>
+            </a>
+        
+            <div class="absolute left-0 top-full h-2 w-full"></div>
+        
+            <div
+              class="absolute left-0 top-full mt-2 hidden min-w-[220px] rounded-lg border border-rift/60 bg-abyss/90 p-2 shadow-card backdrop-blur-md group-hover:block group-focus-within:block"
+              role="menu"
+              aria-label="The World submenu"
+            >
+              <a href="/world/cipheria.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow" role="menuitem">
                 Cipheria's History
               </a>
-            </li>
-            <li>
-              <a href="/world/other-locations.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow">
+              <a href="/world/other-locations.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow" role="menuitem">
                 Other Locations
               </a>
-            </li>
-            <li>
-              <a href="/world/beastiary.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow">
+              <a href="/world/beastiary.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow" role="menuitem">
                 Beastiary
               </a>
-            </li>
-          </ul>
-        </li>
-        </div>
-
-          <a class="hover:text-glow underline-offset-4 hover:underline" href="/author.html">Author</a>
+            </div>
+          </div>
+            
+          <a class="hover:text-glow underline-offset-4 hover:underline" href="/author/">Author</a>
         </nav>
-      </div>
 
       <!-- Mobile nav panel -->
       <div id="mobileNavPanel"
