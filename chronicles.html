@@ -177,12 +177,10 @@
   </main>
 
   <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
   const CHRONICLES = [
     {
       enabled: true,
-      featured: false, // set to true for exactly one chronicle to show Featured box
+      featured: false,
       type: "Recovered Chronicle",
       title: "The Breach at Merchant’s Gate",
       href: "/chronicles/merchants-gate.html",
@@ -191,7 +189,6 @@
       status: "Complete",
       readTime: "~10–12 min"
     }
-    // Add more chronicles here with enabled:true
   ];
 
   const featuredEl = document.getElementById('featuredChronicle');
@@ -278,7 +275,8 @@
       </li>
     `).join("");
   }
-    async function loadPartial(targetId, url) {
+
+  async function loadPartial(targetId, url) {
     const el = document.getElementById(targetId);
     if (!el) return;
 
