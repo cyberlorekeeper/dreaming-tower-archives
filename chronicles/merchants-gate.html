@@ -708,15 +708,42 @@
       });
     })();
 
-  </script>
-
-  <script>
   async function loadPartial(id, url) {
     const el = document.getElementById(id);
     if (!el) return;
     const res = await fetch(url);
     el.innerHTML = await res.text();
   }
+    
+  async function loadPartial(targetId, url) {
+    const el = document.getElementById(targetId);
+    if (!el) return;
+
+    const res = await fetch(url, { cache: "no-cache" });
+    if (!res.ok) return;
+
+    el.innerHTML = await res.text();
+  }
+
+  function initHeaderNav() {
+    const navToggle = document.getElementById('navToggle');
+    const mobileNavPanel = document.getElementById('mobileNavPanel');
+
+    if (navToggle && mobileNavPanel) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!isOpen));
+        mobileNavPanel.classList.toggle('hidden', isOpen);
+      });
+    }
+  }
+
+  (async function () {
+    await loadPartial('site-header', '/partials/header.html');
+    initHeaderNav();
+
+    await loadPartial('site-footer', '/partials/footer.html');
+  })();
 
   loadPartial('site-header', '/partials/header.html');
   loadPartial('site-footer', '/partials/footer.html');
