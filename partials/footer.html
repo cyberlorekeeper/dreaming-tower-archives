@@ -16,4 +16,15 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+  <script>
+  const navToggle = document.getElementById('navToggle');
+  const mobileNavPanel = document.getElementById('mobileNavPanel');
+
+  if (navToggle && mobileNavPanel) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!isOpen));
+      mobileNavPanel.classList.toggle('hidden', isOpen);
+    });
+  }
 </script>
