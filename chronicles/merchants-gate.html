@@ -576,178 +576,107 @@
   <div id="site-footer"></div>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  
-    // --- Next Chronicle link wiring (hide unless set) ---
-    // Set this when you have a real next chronicle:
-    // const NEXT_CHRONICLE_URL = "/chronicles/crowdstrike-dragon.html";
-    const NEXT_CHRONICLE_URL = ""; // set to real URL when ready
-    const nextLink = document.getElementById('nextChronicleLink');
-  
-    if (!NEXT_CHRONICLE_URL) {
-      if (nextLink) nextLink.style.display = "none";
-    } else {
-      if (nextLink) nextLink.href = NEXT_CHRONICLE_URL;
-    }
-    // --- End Next Chronicle wiring ---
-  
-    const btnStory = document.getElementById('btnStory');
-    const btnAnalysis = document.getElementById('btnAnalysis');
-    const panelStory = document.getElementById('panelStory');
-    const panelAnalysis = document.getElementById('panelAnalysis');
-  
-    function showPanel(which) {
-      const isAnalysis = which === 'analysis';
-      const toShow = isAnalysis ? panelAnalysis : panelStory;
-      const toHide = isAnalysis ? panelStory : panelAnalysis;
-  
-      const y = window.scrollY;
-  
-      btnStory.setAttribute('aria-pressed', String(!isAnalysis));
-      btnAnalysis.setAttribute('aria-pressed', String(isAnalysis));
-  
-      // ✅ NEW: swap the "radio" icon in the button labels
-      btnStory.textContent = `${!isAnalysis ? '◉' : '◯'} Chronicle`;
-      btnAnalysis.textContent = `${isAnalysis ? '◉' : '◯'} Real-World Analysis`;
-  
-      toHide.classList.remove('is-active');
-      toShow.classList.add('is-active');
-  
-      toShow.classList.remove('fade-enter', 'fade-enter-active');
-      toShow.classList.add('fade-enter');
-      requestAnimationFrame(() => {
-        toShow.classList.add('fade-enter-active');
-      });
-  
-      // Update hash for shareable links
-      if (isAnalysis) {
-        history.replaceState(null, '', '#analysis');
-      } else {
-        history.replaceState(null, '', window.location.pathname);
-      }
-  
-      window.scrollTo(0, y);
-    }
-  
-    btnStory.addEventListener('click', () => showPanel('story'));
-    btnAnalysis.addEventListener('click', () => showPanel('analysis'));
-  
-    // ✅ NEW: ensure initial label state matches the initial panel
-    if (window.location.hash === '#analysis') {
-      showPanel('analysis');
-    } else {
-      showPanel('story');
-    }
-
-    // --- Site nav: mobile toggle + World dropdown ---
-    (function () {
-      const navToggle = document.getElementById('navToggle');
-      const mobilePanel = document.getElementById('mobileNavPanel');
-
-      const worldBtn = document.getElementById('worldMenuBtn');
-      const worldMenu = document.getElementById('worldMenu');
-      const worldWrap = document.getElementById('worldMenuWrap');
-
-      function closeWorldMenu() {
-        if (!worldMenu || !worldBtn) return;
-        worldMenu.classList.add('hidden');
-        worldBtn.setAttribute('aria-expanded', 'false');
-      }
-
-      function toggleWorldMenu() {
-        if (!worldMenu || !worldBtn) return;
-        const isOpen = !worldMenu.classList.contains('hidden');
-        if (isOpen) {
-          closeWorldMenu();
-        } else {
-          worldMenu.classList.remove('hidden');
-          worldBtn.setAttribute('aria-expanded', 'true');
-        }
-      }
-
-      // Mobile menu
-      if (navToggle && mobilePanel) {
-        navToggle.addEventListener('click', () => {
-          const isOpen = !mobilePanel.classList.contains('hidden');
-          mobilePanel.classList.toggle('hidden');
-          navToggle.setAttribute('aria-expanded', String(!isOpen));
-          // Close world menu if mobile opens
-          closeWorldMenu();
-        });
-      }
-
-      // World dropdown (desktop)
-      if (worldBtn && worldMenu) {
-        worldBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          toggleWorldMenu();
-        });
-      }
-
-      // Close menus when clicking outside
-      document.addEventListener('click', (e) => {
-        const target = e.target;
-        if (!(target instanceof Element)) return;
-
-        // Close world dropdown if click is outside it
-        if (worldWrap && !worldWrap.contains(target)) {
-          closeWorldMenu();
-        }
-      });
-
-      // Escape closes world dropdown and mobile menu
-      document.addEventListener('keydown', (e) => {
-        if (e.key !== 'Escape') return;
-
-        closeWorldMenu();
-
-        if (navToggle && mobilePanel && !mobilePanel.classList.contains('hidden')) {
-          mobilePanel.classList.add('hidden');
-          navToggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    })();
-
-  async function loadPartial(id, url) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const res = await fetch(url);
-    el.innerHTML = await res.text();
-  }
-    
+  // ---------- Utilities ----------
   async function loadPartial(targetId, url) {
     const el = document.getElementById(targetId);
     if (!el) return;
 
     const res = await fetch(url, { cache: "no-cache" });
-    if (!res.ok) return;
-
+    if (!res.ok) {
+      console.warn(`Failed to load partial: ${url} (${res.status})`);
+      return;
+    }
     el.innerHTML = await res.text();
   }
 
   function initHeaderNav() {
-    const navToggle = document.getElementById('navToggle');
-    const mobileNavPanel = document.getElementById('mobileNavPanel');
+    // These exist only AFTER header.html is injected
+    const navToggle = document.getElementById("navToggle");
+    const mobileNavPanel = document.getElementById("mobileNavPanel");
 
-    if (navToggle && mobileNavPanel) {
-      navToggle.addEventListener('click', () => {
-        const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', String(!isOpen));
-        mobileNavPanel.classList.toggle('hidden', isOpen);
-      });
-    }
+    if (!navToggle || !mobileNavPanel) return;
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+      navToggle.setAttribute("aria-expanded", String(!isOpen));
+      mobileNavPanel.classList.toggle("hidden", isOpen);
+    });
+
+    // Escape closes mobile menu
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      if (navToggle.getAttribute("aria-expanded") === "true") {
+        navToggle.setAttribute("aria-expanded", "false");
+        mobileNavPanel.classList.add("hidden");
+      }
+    });
   }
 
-  (async function () {
-    await loadPartial('site-header', '/partials/header.html');
+  function initStoryAnalysisToggle() {
+    const btnStory = document.getElementById("btnStory");
+    const btnAnalysis = document.getElementById("btnAnalysis");
+    const panelStory = document.getElementById("panelStory");
+    const panelAnalysis = document.getElementById("panelAnalysis");
+
+    // If this page doesn't have the toggle UI, do nothing (no crashes)
+    if (!btnStory || !btnAnalysis || !panelStory || !panelAnalysis) return;
+
+    function showPanel(which) {
+      const isAnalysis = which === "analysis";
+      const toShow = isAnalysis ? panelAnalysis : panelStory;
+      const toHide = isAnalysis ? panelStory : panelAnalysis;
+
+      const y = window.scrollY;
+
+      btnStory.setAttribute("aria-pressed", String(!isAnalysis));
+      btnAnalysis.setAttribute("aria-pressed", String(isAnalysis));
+
+      btnStory.textContent = `${!isAnalysis ? "◉" : "◯"} Chronicle`;
+      btnAnalysis.textContent = `${isAnalysis ? "◉" : "◯"} Real-World Analysis`;
+
+      toHide.classList.remove("is-active");
+      toShow.classList.add("is-active");
+
+      toShow.classList.remove("fade-enter", "fade-enter-active");
+      toShow.classList.add("fade-enter");
+      requestAnimationFrame(() => toShow.classList.add("fade-enter-active"));
+
+      // Update hash for shareable links
+      if (isAnalysis) {
+        history.replaceState(null, "", "#analysis");
+      } else {
+        history.replaceState(null, "", window.location.pathname);
+      }
+
+      window.scrollTo(0, y);
+    }
+
+    btnStory.addEventListener("click", () => showPanel("story"));
+    btnAnalysis.addEventListener("click", () => showPanel("analysis"));
+
+    // Initialize based on URL
+    if (window.location.hash === "#analysis") showPanel("analysis");
+    else showPanel("story");
+  }
+
+  function initFooterYear() {
+    const year = document.getElementById("year");
+    if (year) year.textContent = new Date().getFullYear();
+  }
+
+  // ---------- Boot ----------
+  (async function boot() {
+    // Load header first so nav elements exist when we bind listeners
+    await loadPartial("site-header", "/partials/header.html");
     initHeaderNav();
 
-    await loadPartial('site-footer', '/partials/footer.html');
+    // Load footer, then update year if present
+    await loadPartial("site-footer", "/partials/footer.html");
+    initFooterYear();
+
+    // Now init page-specific features
+    initStoryAnalysisToggle();
   })();
-
-  loadPartial('site-header', '/partials/header.html');
-  loadPartial('site-footer', '/partials/footer.html');
 </script>
-
 </body>
 </html>
