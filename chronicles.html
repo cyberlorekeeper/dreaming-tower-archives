@@ -82,26 +82,7 @@
     <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
     <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
 
-    <!-- Top Nav -->
-    <header class="relative mx-auto max-w-6xl px-6 pt-10">
-      <div class="flex items-center justify-between gap-4">
-        <a href="/" class="inline-flex items-center gap-3 group">
-          <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-abyss/70 border border-rift/60">
-            <img src="/images/icon.png" alt="Cyber Lorekeeper" class="h-8 w-8" />
-          </span>
-          <span class="font-display text-sm tracking-[.14em] uppercase text-stardust/80 group-hover:text-stardust">
-            The Cyber Lorekeeper
-          </span>
-        </a>
-
-        <nav class="flex items-center gap-4 text-sm text-stardust/80">
-          <a class="hover:text-glow underline-offset-4 hover:underline" href="/chronicles/">Chronicles</a>
-          <a class="hover:text-glow underline-offset-4 hover:underline" href="/characters/">Characters</a>
-          <a class="hover:text-glow underline-offset-4 hover:underline" href="/world/">The World</a>
-          <a class="hover:text-glow underline-offset-4 hover:underline" href="/subscribe.html">Subscribe</a>
-        </nav>
-      </div>
-    </header>
+    <div id="site-header"></div>
 
     <!-- Hero -->
     <section class="relative mx-auto max-w-6xl px-6 pt-10 pb-6">
@@ -199,6 +180,8 @@
     </section>
   </main>
 
+  <div id="site-footer"></div>
+  
   <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -301,6 +284,51 @@
       </li>
     `).join("");
   }
+
+    async function loadPartial(targetId, url) {
+    const el = document.getElementById(targetId);
+    if (!el) return;
+
+    const res = await fetch(url, { cache: "no-cache" });
+    if (!res.ok) {
+      console.warn(`Failed to load ${url}`);
+      return;
+    }
+    el.innerHTML = await res.text();
+  }
+
+  function initHeaderNav() {
+    const navToggle = document.getElementById("navToggle");
+    const mobileNavPanel = document.getElementById("mobileNavPanel");
+
+    if (!navToggle || !mobileNavPanel) return;
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+      navToggle.setAttribute("aria-expanded", String(!isOpen));
+      mobileNavPanel.classList.toggle("hidden", isOpen);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        navToggle.setAttribute("aria-expanded", "false");
+        mobileNavPanel.classList.add("hidden");
+      }
+    });
+  }
+
+  function initFooterYear() {
+    const year = document.getElementById("year");
+    if (year) year.textContent = new Date().getFullYear();
+  }
+
+  (async function boot() {
+    await loadPartial("site-header", "/partials/header.html");
+    initHeaderNav();
+
+    await loadPartial("site-footer", "/partials/footer.html");
+    initFooterYear();
+  })();
 </script>
 
 </body>
