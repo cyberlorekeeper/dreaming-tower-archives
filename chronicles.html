@@ -66,13 +66,12 @@
       background: rgba(10,20,27,.25);
       border-radius: .9rem;
       padding: .65rem .9rem;
-      min-width: 0;            /* allow it to shrink */
+      min-width: 0;
       max-width: 100%;
     }
-    @media (min-width: 640px) { /* sm and up */
+    @media (min-width: 640px) {
       .meta-pill{ min-width: 200px; }
     }
-
   </style>
 </head>
 
@@ -80,9 +79,10 @@
   <main class="relative min-h-screen">
     <!-- Background -->
     <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
-    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+    <!-- Make overlay ignore pointer events so it doesn't interfere with hover/click -->
+    <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
 
-    <!-- Top Nav -->
+    <!-- Header partial -->
     <div id="site-header"></div>
 
     <!-- Hero -->
@@ -121,14 +121,33 @@
     </div>
 
     <!-- Content -->
-    <section class="relative mx-auto max-w-6xl px-6 pt-8 pb-14">
-      <div class="grid gap-6 lg:grid-cols-3 lg:items-start">
+    <section class="relative mx-auto max-w-6xl px-6 pt-8 pb-10">
+      <!-- OPTION 1: Make the main content appear first in the DOM, sidebar second.
+           Desktop becomes 2 columns, mobile becomes 1 column with sidebar under. -->
+      <div class="grid gap-6 lg:grid-cols-[1fr_340px] lg:items-start">
 
-        <!-- Featured Chronicle -->
-        <article id="featuredChronicle" class="lg:col-span-2 soft-card p-6 hidden"></article>
+        <!-- Main column: Featured + List -->
+        <div class="flex flex-col gap-6">
+          <!-- Featured Chronicle -->
+          <article id="featuredChronicle" class="soft-card p-6 hidden"></article>
 
-        <!-- Sidebar: Subscribe / CTA -->
-        <aside class="soft-card p-6 lg:col-start-3 lg:row-span-2 lg:mt-6">
+          <!-- Chronicle List -->
+          <section id="allChronicles" class="soft-card p-6">
+            <div class="flex flex-col gap-1">
+              <h3 class="font-display text-xl text-stardust/95">All Chronicles</h3>
+              <p class="text-sm text-stardust/75">Browse recovered entries from the Tower’s archives.</p>
+            </div>
+
+            <ul id="chronicleList" class="mt-5 space-y-4"></ul>
+
+            <p class="mt-6 text-xs text-stardust/65">
+              More entries will surface as the Tower releases them.
+            </p>
+          </section>
+        </div>
+
+        <!-- Sidebar (now naturally comes after on mobile) -->
+        <aside class="soft-card p-6 lg:mt-0">
           <h3 class="font-display text-xl text-stardust/95">Receive New Chronicles</h3>
           <p class="mt-2 text-sm text-stardust/80 leading-relaxed">
             Join the Tower’s list and you’ll receive a raven when new tales and excerpts are released.
@@ -155,172 +174,155 @@
             <li>• World history and records</li>
           </ul>
         </aside>
-
-        <!-- Chronicle List (replaces placeholders) -->
-        <section id="allChronicles" class="lg:col-span-2 soft-card p-6">
-          <div class="flex flex-col gap-1">
-            <h3 class="font-display text-xl text-stardust/95">All Chronicles</h3>
-            <p class="text-sm text-stardust/75">Browse recovered entries from the Tower’s archives.</p>
-          </div>
-
-          <ul id="chronicleList" class="mt-5 space-y-4"></ul>
-
-          <p class="mt-6 text-xs text-stardust/65">
-            More entries will surface as the Tower releases them.
-          </p>
-        </section>
       </div>
-
-      <!-- Footer -->
-      <div id="site-footer"></div>
     </section>
+
+    <!-- Footer partial (outside the content section so it can breathe) -->
+    <div id="site-footer" class="relative"></div>
   </main>
 
   <script>
-  const CHRONICLES = [
-    {
-      enabled: true,
-      featured: false,
-      type: "Recovered Chronicle",
-      title: "The Breach at Merchant’s Gate",
-      href: "/chronicles/merchants-gate.html",
-      blurb: "Seven entities entered through trusted writs and moved like ink through commerce, records, keys, and vaults. The Kingdom survived, but only by invoking a dangerous Purge Script and accepting loss.",
-      tags: ["Theme: Supply Chain", "Threat: Rot Swarm", "Flip: Real-World Analysis"],
-      status: "Complete",
-      readTime: "~10–12 min"
-    }
-  ];
-
-  const featuredEl = document.getElementById('featuredChronicle');
-  const allListEl = document.getElementById('chronicleList');
-
-  const visible = CHRONICLES.filter(c => c.enabled);
-  const featured = visible.find(c => c.featured);
-
-  // Render Featured (only if configured)
-  if (featured && featuredEl) {
-    featuredEl.classList.remove('hidden');
-
-    featuredEl.innerHTML = `
-      <div class="flex flex-col gap-5">
-        <div class="flex items-start justify-between gap-6">
-          <div class="min-w-0">
-            <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Featured • ${featured.type}</p>
-            <h2 class="mt-2 font-display text-2xl sm:text-3xl text-stardust/95">${featured.title}</h2>
-            <p class="mt-3 text-stardust/85 leading-relaxed">${featured.blurb}</p>
-
-            <div class="mt-4 flex flex-wrap gap-2">
-              ${(featured.tags || []).map(t => `<span class="tag">${t}</span>`).join("")}
-            </div>
-          </div>
-
-          <div class="hidden sm:grid grid-cols-1 gap-3 max-w-full">
-            <div class="meta-pill">
-              <p class="text-[11px] uppercase tracking-[.18em] text-stardust/60">Status</p>
-              <p class="mt-1 text-sm text-stardust/90">${featured.status || ""}</p>
-            </div>
-            <div class="meta-pill">
-              <p class="text-[11px] uppercase tracking-[.18em] text-stardust/60">Read time</p>
-              <p class="mt-1 text-sm text-stardust/90">${featured.readTime || ""}</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <a href="${featured.href}"
-             class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
-            Open Chronicle →
-          </a>
-
-          <a href="/characters/"
-             class="inline-flex items-center justify-center rounded-md border border-rift/60 bg-deep-space/20 px-5 py-3 text-sm text-stardust/85 hover:text-glow">
-            Meet the characters
-          </a>
-        </div>
-      </div>
-    `;
-  }
-
-  // Render All Chronicles list
-  if (allListEl) {
-    allListEl.innerHTML = visible.map(c => `
-      <li class="rounded-xl border border-rift/60 bg-deep-space/10 p-5">
-        <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div class="min-w-0">
-            <p class="uppercase tracking-[.18em] text-stardust/60 text-xs">${c.type}</p>
-            <h4 class="mt-2 font-display text-2xl text-stardust/95">
-              <a class="hover:text-glow underline underline-offset-4" href="${c.href}">
-                ${c.title}
-              </a>
-            </h4>
-            <p class="mt-3 text-sm text-stardust/80 leading-relaxed">${c.blurb || ""}</p>
-
-            <div class="mt-4 flex flex-wrap gap-2">
-              ${(c.tags || []).map(t => `<span class="tag">${t}</span>`).join("")}
-            </div>
-          </div>
-
-          <div class="flex flex-row gap-2 sm:flex-col sm:items-end">
-            ${c.status ? `<span class="tag">Status: ${c.status}</span>` : ""}
-            ${c.readTime ? `<span class="tag">Read: ${c.readTime}</span>` : ""}
-          </div>
-        </div>
-
-        <div class="mt-5">
-          <a href="${c.href}"
-             class="inline-flex items-center text-sm text-stardust/80 hover:text-glow underline underline-offset-4">
-            Open chronicle →
-          </a>
-        </div>
-      </li>
-    `).join("");
-  }
-
-  async function loadPartial(targetId, url) {
-    const el = document.getElementById(targetId);
-    if (!el) return;
-
-    const res = await fetch(url, { cache: "no-cache" });
-    if (!res.ok) {
-      console.warn(`Failed to load ${url}`);
-      return;
-    }
-    el.innerHTML = await res.text();
-  }
-
-  function initHeaderNav() {
-    const navToggle = document.getElementById("navToggle");
-    const mobileNavPanel = document.getElementById("mobileNavPanel");
-
-    if (!navToggle || !mobileNavPanel) return;
-
-    navToggle.addEventListener("click", () => {
-      const isOpen = navToggle.getAttribute("aria-expanded") === "true";
-      navToggle.setAttribute("aria-expanded", String(!isOpen));
-      mobileNavPanel.classList.toggle("hidden", isOpen);
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        navToggle.setAttribute("aria-expanded", "false");
-        mobileNavPanel.classList.add("hidden");
+    const CHRONICLES = [
+      {
+        enabled: true,
+        featured: false,
+        type: "Recovered Chronicle",
+        title: "The Breach at Merchant’s Gate",
+        href: "/chronicles/merchants-gate.html",
+        blurb: "Seven entities entered through trusted writs and moved like ink through commerce, records, keys, and vaults. The Kingdom survived, but only by invoking a dangerous Purge Script and accepting loss.",
+        tags: ["Theme: Supply Chain", "Threat: Rot Swarm", "Flip: Real-World Analysis"],
+        status: "Complete",
+        readTime: "~10–12 min"
       }
-    });
-  }
+    ];
 
-  function initFooterYear() {
-    const year = document.getElementById("year");
-    if (year) year.textContent = new Date().getFullYear();
-  }
+    const featuredEl = document.getElementById('featuredChronicle');
+    const allListEl = document.getElementById('chronicleList');
 
-  (async function boot() {
-    await loadPartial("site-header", "/partials/header.html");
-    initHeaderNav();
+    const visible = CHRONICLES.filter(c => c.enabled);
+    const featured = visible.find(c => c.featured);
 
-    await loadPartial("site-footer", "/partials/footer.html");
-    initFooterYear();
-  })();
-</script>
+    if (featured && featuredEl) {
+      featuredEl.classList.remove('hidden');
 
+      featuredEl.innerHTML = `
+        <div class="flex flex-col gap-5">
+          <div class="flex items-start justify-between gap-6">
+            <div class="min-w-0">
+              <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Featured • ${featured.type}</p>
+              <h2 class="mt-2 font-display text-2xl sm:text-3xl text-stardust/95">${featured.title}</h2>
+              <p class="mt-3 text-stardust/85 leading-relaxed">${featured.blurb}</p>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                ${(featured.tags || []).map(t => `<span class="tag">${t}</span>`).join("")}
+              </div>
+            </div>
+
+            <div class="hidden sm:grid grid-cols-1 gap-3 max-w-full">
+              <div class="meta-pill">
+                <p class="text-[11px] uppercase tracking-[.18em] text-stardust/60">Status</p>
+                <p class="mt-1 text-sm text-stardust/90">${featured.status || ""}</p>
+              </div>
+              <div class="meta-pill">
+                <p class="text-[11px] uppercase tracking-[.18em] text-stardust/60">Read time</p>
+                <p class="mt-1 text-sm text-stardust/90">${featured.readTime || ""}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <a href="${featured.href}"
+               class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
+              Open Chronicle →
+            </a>
+
+            <a href="/characters/"
+               class="inline-flex items-center justify-center rounded-md border border-rift/60 bg-deep-space/20 px-5 py-3 text-sm text-stardust/85 hover:text-glow">
+              Meet the characters
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
+    if (allListEl) {
+      allListEl.innerHTML = visible.map(c => `
+        <li class="rounded-xl border border-rift/60 bg-deep-space/10 p-5">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div class="min-w-0">
+              <p class="uppercase tracking-[.18em] text-stardust/60 text-xs">${c.type}</p>
+              <h4 class="mt-2 font-display text-2xl text-stardust/95">
+                <a class="hover:text-glow underline underline-offset-4" href="${c.href}">
+                  ${c.title}
+                </a>
+              </h4>
+              <p class="mt-3 text-sm text-stardust/80 leading-relaxed">${c.blurb || ""}</p>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                ${(c.tags || []).map(t => `<span class="tag">${t}</span>`).join("")}
+              </div>
+            </div>
+
+            <div class="flex flex-row gap-2 sm:flex-col sm:items-end">
+              ${c.status ? `<span class="tag">Status: ${c.status}</span>` : ""}
+              ${c.readTime ? `<span class="tag">Read: ${c.readTime}</span>` : ""}
+            </div>
+          </div>
+
+          <div class="mt-5">
+            <a href="${c.href}"
+               class="inline-flex items-center text-sm text-stardust/80 hover:text-glow underline underline-offset-4">
+              Open chronicle →
+            </a>
+          </div>
+        </li>
+      `).join("");
+    }
+
+    async function loadPartial(targetId, url) {
+      const el = document.getElementById(targetId);
+      if (!el) return;
+
+      const res = await fetch(url, { cache: "no-cache" });
+      if (!res.ok) {
+        console.warn(`Failed to load ${url}`);
+        return;
+      }
+      el.innerHTML = await res.text();
+    }
+
+    function initHeaderNav() {
+      const navToggle = document.getElementById("navToggle");
+      const mobileNavPanel = document.getElementById("mobileNavPanel");
+
+      if (!navToggle || !mobileNavPanel) return;
+
+      navToggle.addEventListener("click", () => {
+        const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!isOpen));
+        mobileNavPanel.classList.toggle("hidden", isOpen);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          navToggle.setAttribute("aria-expanded", "false");
+          mobileNavPanel.classList.add("hidden");
+        }
+      });
+    }
+
+    function initFooterYear() {
+      const year = document.getElementById("year");
+      if (year) year.textContent = new Date().getFullYear();
+    }
+
+    (async function boot() {
+      await loadPartial("site-header", "/partials/header.html");
+      initHeaderNav();
+
+      await loadPartial("site-footer", "/partials/footer.html");
+      initFooterYear();
+    })();
+  </script>
 </body>
 </html>
