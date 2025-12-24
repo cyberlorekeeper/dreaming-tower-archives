@@ -28,37 +28,33 @@
           <a class="hover:text-glow underline-offset-4 hover:underline" href="/characters/">Characters</a>
 
           <!-- The World dropdown -->
-          <div class="relative" id="worldMenuWrap">
-            <button id="worldMenuBtn"
-                    class="focus-ring inline-flex items-center gap-2 hover:text-glow"
-                    type="button"
-                    aria-expanded="false"
-                    aria-haspopup="true">
-              The World
-              <span aria-hidden="true" class="text-stardust/60">▾</span>
-            </button>
-
-            <div id="worldMenu"
-                class="hidden absolute right-0 mt-2 w-56 rounded-xl border border-rift/60 bg-abyss/90 backdrop-blur-md shadow-card p-2"
-                role="menu"
-                aria-label="The World">
-              <a role="menuitem"
-                class="block rounded-lg px-3 py-2 text-sm text-stardust/85 hover:bg-rift/40 hover:text-glow"
-                href="/world/cipheria.html">
+         <li class="relative group">
+          <a href="/world/" class="inline-flex items-center gap-1 hover:text-glow">
+            The World <span aria-hidden="true">▾</span>
+          </a>
+        
+          <!-- Dropdown -->
+          <ul
+            class="absolute left-0 top-full mt-2 hidden min-w-[220px] rounded-lg border border-rift/60 bg-abyss/90 p-2 shadow-card backdrop-blur-md group-hover:block"
+          >
+            <li>
+              <a href="/world/cipheria.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow">
                 Cipheria's History
               </a>
-              <a role="menuitem"
-                class="block rounded-lg px-3 py-2 text-sm text-stardust/85 hover:bg-rift/40 hover:text-glow"
-                href="/world/other-locations.html">
+            </li>
+            <li>
+              <a href="/world/other-locations.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow">
                 Other Locations
               </a>
-              <a role="menuitem"
-                class="block rounded-lg px-3 py-2 text-sm text-stardust/85 hover:bg-rift/40 hover:text-glow"
-                href="/world/beastiary.html">
+            </li>
+            <li>
+              <a href="/world/beastiary.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow">
                 Beastiary
               </a>
-            </div>
-          </div>
+            </li>
+          </ul>
+        </li>
+        </div>
 
           <a class="hover:text-glow underline-offset-4 hover:underline" href="/author.html">Author</a>
         </nav>
