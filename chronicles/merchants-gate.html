@@ -103,6 +103,18 @@
       border-radius: 1rem;
       box-shadow: 0 6px 18px rgba(0,0,0,.12);
     }
+
+    /* Desktop hover open for The World */
+    @media (min-width: 1024px) {
+      #worldMenuWrap:hover #worldMenu {
+        display: block;
+      }
+      /* Keep aria button click behavior intact, this just adds hover */
+      #worldMenu.hidden {
+        display: none;
+      }
+    }
+
   </style>
 </head>
 
@@ -112,26 +124,7 @@
     <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
     <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
 
-    <!-- Top Nav -->
-    <header class="relative mx-auto max-w-7xl px-6 pt-10">
-      <div class="flex items-center justify-between gap-4">
-        <a href="/" class="inline-flex items-center gap-3 group">
-          <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-abyss/70 border border-rift/60">
-            <img src="/images/icon.png" alt="Cyber Lorekeeper" class="h-8 w-8" />
-          </span>
-          <span class="font-display text-sm tracking-[.14em] uppercase text-stardust/80 group-hover:text-stardust">
-            The Cyber Lorekeeper
-          </span>
-        </a>
-
-        <nav class="flex items-center gap-4 text-sm text-stardust/80">
-          <a class="hover:text-glow underline-offset-4 hover:underline" href="/chronicles/">Chronicles</a>
-          <a class="hover:text-glow underline-offset-4 hover:underline" href="/characters/">Characters</a>
-          <a class="hover:text-glow underline-offset-4 hover:underline" href="/world/">The World</a>
-          <a class="hover:text-glow underline-offset-4 hover:underline" href="/subscribe.html">Subscribe</a>
-        </nav>
-      </div>
-    </header>
+    <div id="site-header"></div>
 
     <!-- Chronicle Header -->
     <section class="relative mx-auto max-w-7xl px-6 pt-10 pb-6">
@@ -577,11 +570,10 @@
           </div>
         </div>
       </div>
-      <p class="mt-10 text-center text-xs text-stardust/65">
-        © <span id="year"></span> The Cyber Lorekeeper. All rights reserved.
-      </p>
     </section>
   </main>
+
+  <div id="site-footer"></div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -646,6 +638,89 @@
     } else {
       showPanel('story');
     }
+
+    // --- Site nav: mobile toggle + World dropdown ---
+    (function () {
+      const navToggle = document.getElementById('navToggle');
+      const mobilePanel = document.getElementById('mobileNavPanel');
+
+      const worldBtn = document.getElementById('worldMenuBtn');
+      const worldMenu = document.getElementById('worldMenu');
+      const worldWrap = document.getElementById('worldMenuWrap');
+
+      function closeWorldMenu() {
+        if (!worldMenu || !worldBtn) return;
+        worldMenu.classList.add('hidden');
+        worldBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      function toggleWorldMenu() {
+        if (!worldMenu || !worldBtn) return;
+        const isOpen = !worldMenu.classList.contains('hidden');
+        if (isOpen) {
+          closeWorldMenu();
+        } else {
+          worldMenu.classList.remove('hidden');
+          worldBtn.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      // Mobile menu
+      if (navToggle && mobilePanel) {
+        navToggle.addEventListener('click', () => {
+          const isOpen = !mobilePanel.classList.contains('hidden');
+          mobilePanel.classList.toggle('hidden');
+          navToggle.setAttribute('aria-expanded', String(!isOpen));
+          // Close world menu if mobile opens
+          closeWorldMenu();
+        });
+      }
+
+      // World dropdown (desktop)
+      if (worldBtn && worldMenu) {
+        worldBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggleWorldMenu();
+        });
+      }
+
+      // Close menus when clicking outside
+      document.addEventListener('click', (e) => {
+        const target = e.target;
+        if (!(target instanceof Element)) return;
+
+        // Close world dropdown if click is outside it
+        if (worldWrap && !worldWrap.contains(target)) {
+          closeWorldMenu();
+        }
+      });
+
+      // Escape closes world dropdown and mobile menu
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return;
+
+        closeWorldMenu();
+
+        if (navToggle && mobilePanel && !mobilePanel.classList.contains('hidden')) {
+          mobilePanel.classList.add('hidden');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+
   </script>
+
+  <script>
+  async function loadPartial(id, url) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const res = await fetch(url);
+    el.innerHTML = await res.text();
+  }
+
+  loadPartial('site-header', '/partials/header.html');
+  loadPartial('site-footer', '/partials/footer.html');
+</script>
+
 </body>
 </html>
