@@ -136,3 +136,12 @@ a:hover{ color: var(--glow); }
 #mobileNavPanel.hidden {
   display: none !important;
 }
+
+/* ===== Let the global background show through header/footer ===== */
+.site-header,
+.site-footer,
+header,
+footer {
+  background: transparent;
+}
+
