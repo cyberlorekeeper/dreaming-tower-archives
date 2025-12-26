@@ -3,6 +3,20 @@
    Put reusable “components” here so pages don’t repeat inline styles.
 */
 
+:root{
+  --n-50:  rgba(207,229,239,0.95);
+  --n-100: rgba(207,229,239,0.90);
+  --n-200: rgba(207,229,239,0.80);
+  --n-300: rgba(207,229,239,0.70);
+  --n-400: rgba(207,229,239,0.60);
+
+  --ink:   #0A141B;
+  --abyss: #0F2230;
+  --rift:  #143545;
+  --glow:  #35C6E0;
+  --violet:#7C4DFF;
+}
+
 /* Accessibility */
 .focus-ring:focus {
   outline: 2px solid #35C6E0;
