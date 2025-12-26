@@ -57,25 +57,24 @@
   </div>
 
   <!-- Mobile nav panel (separate block, NOT inside the flex row) -->
-  <div id="mobileNavPanel"
-       class="hidden lg:hidden mt-4 rounded-xl border border-rift/60 bg-abyss/40 backdrop-blur-md p-4">
-    <div class="flex flex-col gap-3 text-sm text-stardust/85">
-      <a class="hover:text-glow underline underline-offset-4" href="/chronicles/">Chronicles</a>
-      <a class="hover:text-glow underline underline-offset-4" href="/field-notes/">Field Notes</a>
-      <a class="hover:text-glow underline underline-offset-4" href="/characters/">Characters</a>
-
-      <details class="rounded-lg border border-rift/60 bg-abyss/30 p-3">
-        <summary class="cursor-pointer font-semibold text-stardust/90">
-          The World
-        </summary>
-        <div class="mt-2 flex flex-col gap-2 pl-2">
-          <a class="hover:text-glow underline underline-offset-4" href="/world/cipheria.html">Cipheria's History</a>
-          <a class="hover:text-glow underline underline-offset-4" href="/world/other-locations.html">Other Locations</a>
-          <a class="hover:text-glow underline underline-offset-4" href="/world/bestiary.html">Bestiary</a>
-        </div>
-      </details>
-
-      <a class="hover:text-glow underline underline-offset-4" href="/author.html">Author</a>
-    </div>
+  <div class="rounded-lg border border-rift/60 bg-abyss/30 p-3">
+    <!-- Main link (tap navigates to World landing page) -->
+    <a class="block font-semibold text-stardust/90 hover:text-glow underline underline-offset-4"
+       href="/world.html">
+      The World
+    </a>
+  
+    <!-- Separate toggle for submenu -->
+    <details class="mt-2">
+      <summary class="cursor-pointer text-sm text-stardust/80 hover:text-glow">
+        Sections <span aria-hidden="true">▾</span>
+      </summary>
+  
+      <div class="mt-2 flex flex-col gap-2 pl-2">
+        <a class="hover:text-glow underline underline-offset-4" href="/world/cipheria.html">Cipheria's History</a>
+        <a class="hover:text-glow underline underline-offset-4" href="/world/other-locations.html">Other Locations</a>
+        <a class="hover:text-glow underline underline-offset-4" href="/world/bestiary.html">Bestiary</a>
+      </div>
+    </details>
   </div>
 </header>
