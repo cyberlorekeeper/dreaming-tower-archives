@@ -4,30 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The World | The Dreaming Tower Archives</title>
-
+  
     <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  
+    <!-- IMPORTANT: Tailwind config must load BEFORE Tailwind CDN -->
     <script src="/assets/js/tailwind-config.js"></script>
-    
-    <!-- Global CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  
+    <!-- Global CSS (your shared component classes like soft-card, tag, etc.) -->
     <link rel="stylesheet" href="/assets/css/styles.css" />
-    
-    <!-- Optional page CSS -->
+  
+    <!-- World-only CSS -->
     <link rel="stylesheet" href="/assets/css/world.css" />
-    
+  
     <meta
       name="description"
       content="Explore the Known World: four continents, treacherous seas, the Kingdom of Cipheria, and the mysteries of the Space Besides and the Isle of 404."
     />
   </head>
+  
+  <body class="min-h-screen bg-deep-space text-stardust font-body">
 
-  <body class="bg-950 min-h-screen">
     <!-- Header partial -->
     <div id="site-header"></div>
 
