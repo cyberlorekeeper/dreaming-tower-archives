@@ -1,0 +1,34 @@
+/* /assets/css/world.css
+   Page-specific styling for World pages and sub-pages.
+   Keep it small and special.
+*/
+
+/* World hero map treatment */
+.world-map {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--n-800);
+  overflow: hidden;
+  background: var(--n-950);
+}
+
+.world-map img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Teaser cards get a slightly richer hover treatment on World pages */
+.world-teaser.card:hover {
+  background: rgba(10, 10, 10, 0.55);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Optional: subtle “section anchor” offset if you have a sticky header */
+:target {
+  scroll-margin-top: 6rem;
+}
+
+/* Optional: a softer divider on lore pages */
+.world-divider {
+  border-top: 1px solid rgba(38, 38, 38, 0.9);
+}
