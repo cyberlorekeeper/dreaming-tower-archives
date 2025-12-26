@@ -28,6 +28,9 @@
   --font-body: "Source Sans 3", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
+/* Guard: never allow "hidden" to be overridden by page CSS */
+.hidden { display: none !important; }
+
 /* ---------- Base / reset ---------- */
 * { box-sizing: border-box; }
 html, body { min-height: 100%; }
