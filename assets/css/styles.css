@@ -114,7 +114,7 @@ body{
 
 /* But don’t mess up gradient text */
 .text-gradient{
-  background: linear-gradient(90deg, var(--stardust) 0%, var(--glow) 60%, #7C4DFF 100%);
+  background: linear-gradient(#CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -137,17 +137,17 @@ a:hover{ color: var(--glow); }
 
 /* ---------- Accessibility helpers ---------- */
 .focus-ring:focus{
-  outline: 2px solid var(--glow);
+  outline: 2px solid solid #35C6E0;
   outline-offset: 3px;
 }
 
 /* ---------- Reusable components ---------- */
 .soft-card{
-  border: 1px solid var(--border);
-  background: var(--glass);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
-  backdrop-filter: blur(6px);
+   border: 1px solid rgba(20,53,69,.65);
+   background: rgba(15,34,48,.35);
+   border-radius: 1rem;
+   box-shadow: 0 6px 18px rgba(0,0,0,.12);
+   backdrop-filter: blur(6px);
 }
 
 /* Tags / chips / pills */
