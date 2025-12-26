@@ -47,11 +47,25 @@
 .card-hover{
   transition: transform .15s ease, filter .15s ease;
 }
+
 .card-hover:hover{
   transform: translateY(-2px);
   filter: brightness(1.05);
 }
 
+details { border-radius: 1rem; }
+details summary { list-style: none; cursor: pointer; user-select: none; }
+details summary::-webkit-details-marker { display:none; }
+
+.chevron { transition: transform .18s ease; }
+details[open] .chevron { transform: rotate(90deg); }
+
+.anchor { scroll-margin-top: 110px; }
+
+.appears-item + .appears-item {
+   border-top: 1px solid rgba(20,53,69,.45);
+   padding-top: .5rem;
+}
 /* ---- Tag pill style ---- */
 .tag{
   border: 1px solid rgba(20,53,69,.65);
