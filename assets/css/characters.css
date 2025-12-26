@@ -29,6 +29,11 @@
   color: transparent;
 }
 
+.prose-codex p { margin-top: 1rem; line-height: 1.9; color: rgba(207,229,239,.92); }
+.prose-codex ul { margin-top: 1rem; padding-left: 1.25rem; }
+.prose-codex li { margin-top: .5rem; line-height: 1.8; color: rgba(207,229,239,.9); }
+.prose-codex strong { color: rgba(207,229,239,.98); }
+
 /* ---- Glass card style (“soft-card”) ---- */
 .soft-card{
   border: 1px solid rgba(20,53,69,.65);
