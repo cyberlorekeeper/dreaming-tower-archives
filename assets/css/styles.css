@@ -51,15 +51,33 @@
     min-width: 200px;
   }
 
-/* =========================
-   Global Site Background
-========================= */
-body {
-  background-image: url("/images/background-1.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
+   @media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
 
+/* =========================
+      Global Site Background
+   ========================= */
+   body {
+     background-image: url("/images/background-1.png");
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+   }
+   
+   body::before {
+     content: "";
+     position: fixed;
+     inset: 0;
+     background: linear-gradient(
+       to bottom right,
+       rgba(10, 20, 27, 0.75),
+       rgba(15, 34, 48, 0.85),
+       rgba(10, 20, 27, 0.9)
+     );
+     pointer-events: none;
+     z-index: -1;
+   }
 }
