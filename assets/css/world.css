@@ -3,6 +3,50 @@
    Keep it small and special.
 */
 
+/* World page typography scale */
+   .kicker{
+     font-size: 0.75rem;
+     letter-spacing: 0.18em;
+     text-transform: uppercase;
+     color: var(--n-300);
+   }
+   
+   .h1{
+     font-family: "Cinzel", serif;
+     font-weight: 700;
+     font-size: clamp(2.25rem, 4vw, 3.75rem);
+     line-height: 1.05;
+     color: var(--n-50);
+   }
+   
+   .h2{
+     font-family: "Cinzel", serif;
+     font-weight: 700;
+     font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+     line-height: 1.15;
+     color: var(--n-50);
+   }
+   
+   .h3{
+     font-family: "Cinzel", serif;
+     font-weight: 700;
+     font-size: 1.125rem;
+     line-height: 1.25;
+     color: var(--n-100);
+   }
+   
+   .lead{
+     font-size: 1.125rem;
+     line-height: 1.7;
+     color: var(--n-100);
+   }
+   
+   .prose{
+     font-size: 1rem;
+     line-height: 1.75;
+     color: var(--n-200);
+   }
+
 /* World hero map treatment */
 .world-map {
   border-radius: var(--radius-lg);
