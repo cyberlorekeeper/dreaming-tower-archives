@@ -17,7 +17,7 @@
 
   --border: rgba(20, 53, 69, 0.65);
   --glass: rgba(15, 34, 48, 0.35);
-  --glass-2: rgba(10, 20, 27, 0.25);
+  --glass-2: rgba(15, 34, 48, 0.48); /* slightly lighter for better readability */
 
   --shadow-card: 0 6px 18px rgba(0,0,0,.12);
   --shadow-glow: 0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25);
@@ -25,7 +25,7 @@
   --radius: 1rem;
 
   --font-display: "Cinzel", serif;
-  --font-body: "Source Sans 3", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-body: "Source Sans 3", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 /* ---------- Base / reset ---------- */
@@ -38,14 +38,15 @@ body{
   font-family: var(--font-body);
   color: rgba(207,229,239,.90);
   background-color: var(--deep-space);
+
+  /* IMPORTANT:
+     We keep body background-color as a fallback only.
+     The real site background is applied via body::before so header/footer
+     (and any transparent sections) always share the same backdrop. */
   position: relative;
 }
 
 /* ===== Global fixed background layer (covers header + content + footer) ===== */
-body {
-  position: relative;
-}
-
 body::before{
   content: "";
   position: fixed;
@@ -64,24 +65,24 @@ body::before{
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-/* Optional: desktop fixed background */
-@media (min-width: 1024px){
-  body{ background-attachment: fixed, fixed; }
-}
+/* ---------- Typography defaults ---------- */
+h1, h2, h3{
+  font-family: var(--font-display);
+  color: rgba(207,229,239,.95);
+  margin: 0;
 
-/* Make headings look consistent even if Tailwind classes are missing */
-/* ===== Improve text readability over dynamic backgrounds ===== */
-body{
-  text-shadow: 0 1px 2px rgba(0,0,0,0.45);
-}
-
-h1, h2, h3,
-.font-display{
+  /* subtle readability boost without changing color */
   text-shadow:
-    0 2px 6px rgba(0,0,0,0.55),
-    0 0 18px rgba(0,0,0,0.25);
+    0 2px 10px rgba(0, 0, 0, 0.55),
+    0 0 18px rgba(0, 0, 0, 0.18);
+}
+
+p, li{
+  /* subtle readability boost for body text */
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
 }
 
 p{ margin: 0; }
@@ -114,7 +115,7 @@ a:hover{ color: var(--glow); }
   color: transparent;
 }
 
-/* Reusable card style */
+/* Reusable “glass” card style */
 .soft-card{
   border: 1px solid var(--border);
   background: var(--glass);
@@ -125,18 +126,17 @@ a:hover{ color: var(--glow); }
 
 /* Tags / pills */
 .tag{
-  border: 1px solid rgba(160, 205, 225, 0.35);
-  background: rgba(20, 55, 75, 0.55);
+  border: 1px solid var(--border);
+  background: var(--glass-2); /* slightly brighter so tags read cleanly */
   border-radius: 9999px;
-  padding: .3rem .8rem;
+  padding: .25rem .75rem;
   font-size: .75rem;
   line-height: 1;
-  color: rgba(225,245,255,0.92);
+  color: rgba(207,229,239,.90);
   white-space: nowrap;
 
-  box-shadow:
-    0 0 0 1px rgba(120,190,215,0.18),
-    inset 0 0 0 1px rgba(255,255,255,0.04);
+  /* tiny lift for legibility over bright nebula areas */
+  box-shadow: 0 1px 10px rgba(0,0,0,.18);
 }
 
 /* Meta pill (used on Chronicles, etc.) */
@@ -147,16 +147,18 @@ a:hover{ color: var(--glow); }
   padding: .65rem .9rem;
   min-width: 0;
   max-width: 100%;
+  box-shadow: 0 1px 12px rgba(0,0,0,.16);
 }
 @media (min-width: 640px){
   .meta-pill{ min-width: 200px; }
 }
+
 /* =========================
    Safety guard for mobile nav
-   (prevents accidental overrides)
+   Only hide the mobile nav panel when *it* has .hidden
+   (Do NOT define a global .hidden class in CSS)
 ========================= */
-
-#mobileNavPanel.hidden {
+#mobileNavPanel.hidden{
   display: none !important;
 }
 
@@ -164,7 +166,6 @@ a:hover{ color: var(--glow); }
 .site-header,
 .site-footer,
 header,
-footer {
-  background: transparent;
+footer{
+  background: transparent !important;
 }
-
