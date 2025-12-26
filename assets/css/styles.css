@@ -1,85 +1,44 @@
-/* assets/css/styles.css
-   Global site styles that complement Tailwind (CDN).
-   Put reusable “components” here so pages don’t repeat inline styles.
+/* /assets/css/styles.css
+   Global site styles (shared across ALL pages)
+   Works alongside Tailwind CDN classes.
 */
 
+/* ---------- Design tokens ---------- */
 :root{
-  --n-50:  rgba(207,229,239,0.95);
-  --n-100: rgba(207,229,239,0.90);
-  --n-200: rgba(207,229,239,0.80);
-  --n-300: rgba(207,229,239,0.70);
-  --n-400: rgba(207,229,239,0.60);
+  --deep-space:#0A141B;
+  --abyss:#0F2230;
+  --rift:#143545;
+  --nebula:#1E6175;
+  --glow:#35C6E0;
 
-  --ink:   #0A141B;
-  --abyss: #0F2230;
-  --rift:  #143545;
-  --glow:  #35C6E0;
-  --violet:#7C4DFF;
+  --stardust:#CFE5EF;
+  --silver:#C9D1D9;
+  --fog:#E9EDF2;
+
+  --border: rgba(20, 53, 69, 0.65);
+  --glass: rgba(15, 34, 48, 0.35);
+  --glass-2: rgba(10, 20, 27, 0.25);
+
+  --shadow-card: 0 6px 18px rgba(0,0,0,.12);
+  --shadow-glow: 0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25);
+
+  --radius: 1rem;
+
+  --font-display: "Cinzel", serif;
+  --font-body: "Source Sans 3", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* Accessibility */
-.focus-ring:focus {
-  outline: 2px solid #35C6E0;
-  outline-offset: 3px;
-}
+/* ---------- Base / reset ---------- */
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
 
-/* Typography helpers */
-.text-gradient {
-  background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+body{
+  margin: 0;
+  font-family: var(--font-body);
+  color: rgba(207,229,239,.90);
+  background-color: var(--deep-space);
 
-/* Reusable card style */
-.soft-card {
-  border: 1px solid rgba(20, 53, 69, 0.65);
-  background: rgba(15, 34, 48, 0.35);
-  border-radius: 1rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(6px);
-}
-
-/* Tags / pills */
-.tag {
-  border: 1px solid rgba(20, 53, 69, 0.65);
-  background: rgba(10, 20, 27, 0.25);
-  border-radius: 9999px;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  color: rgba(207, 229, 239, 0.85);
-  white-space: nowrap;
-}
-
-.meta-pill {
-  border: 1px solid rgba(20, 53, 69, 0.65);
-  background: rgba(10, 20, 27, 0.25);
-  border-radius: 0.9rem;
-  padding: 0.65rem 0.9rem;
-  min-width: 0;
-  max-width: 100%;
-}
-
-@media (min-width: 640px) {
-  .meta-pill {
-    min-width: 200px;
-  }
-}
-
-/* =========================
-   Global Site Background
-   (Option 1: CSS-driven)
-========================= */
-
-html, body {
-  min-height: 100%;
-}
-
-body {
-  /* fallback so you never get white */
-  background-color: #0A141B;
-
-  /* overlay + image */
+  /* Global background: gradient overlay + image */
   background-image:
     linear-gradient(
       to bottom right,
@@ -88,30 +47,83 @@ body {
       rgba(10, 20, 27, 0.90)
     ),
     url("/images/background-1.png");
-
   background-size: cover, cover;
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
   background-attachment: scroll, scroll;
 }
 
-/* desktop-only fixed background, optional */
-@media (min-width: 1024px) {
-  body {
-    background-attachment: fixed, fixed;
-  }
+/* Optional: desktop fixed background */
+@media (min-width: 1024px){
+  body{ background-attachment: fixed, fixed; }
 }
 
-/* =========================
-   Global Typography Defaults
-========================= */
+/* Make headings look consistent even if Tailwind classes are missing */
+h1,h2,h3{
+  font-family: var(--font-display);
+  color: rgba(207,229,239,.95);
+  margin: 0;
+}
+p{ margin: 0; }
 
-/* Headings get Cinzel */
-h1, h2, h3 {
-  font-family: "Cinzel", serif;
+/* Selection polish */
+::selection{
+  background: rgba(53,198,224,.20);
+  color: rgba(207,229,239,.95);
 }
 
-/* Body text gets Source Sans 3 */
-body, p, li, a, span {
-  font-family: "Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+/* Links default (so you don’t get “mystery black links”) */
+a{
+  color: rgba(207,229,239,.90);
+  text-decoration-color: rgba(53,198,224,.55);
+  text-underline-offset: 4px;
+}
+a:hover{ color: var(--glow); }
+
+/* ---------- Accessibility helpers ---------- */
+.focus-ring:focus{
+  outline: 2px solid var(--glow);
+  outline-offset: 3px;
+}
+
+/* ---------- Shared utility classes ---------- */
+.text-gradient{
+  background: linear-gradient(90deg, var(--stardust) 0%, var(--glow) 60%, #7C4DFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Reusable card style */
+.soft-card{
+  border: 1px solid var(--border);
+  background: var(--glass);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(6px);
+}
+
+/* Tags / pills */
+.tag{
+  border: 1px solid var(--border);
+  background: var(--glass-2);
+  border-radius: 9999px;
+  padding: .25rem .75rem;
+  font-size: .75rem;
+  line-height: 1;
+  color: rgba(207,229,239,.85);
+  white-space: nowrap;
+}
+
+/* Meta pill (used on Chronicles, etc.) */
+.meta-pill{
+  border: 1px solid var(--border);
+  background: var(--glass-2);
+  border-radius: .9rem;
+  padding: .65rem .9rem;
+  min-width: 0;
+  max-width: 100%;
+}
+@media (min-width: 640px){
+  .meta-pill{ min-width: 200px; }
 }
