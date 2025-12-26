@@ -50,51 +50,54 @@
   .meta-pill {
     min-width: 200px;
   }
-   
-   /* =========================
-      Global Site Background
-      (Option 1: CSS-driven)
-   ========================= */
-   
-   html, body {
-     min-height: 100%;
-   }
-   
-   body {
-     /* fallback so you never get white */
-     background-color: #0A141B;
-   
-     /* overlay + image */
-     background-image:
-       linear-gradient(
-         to bottom right,
-         rgba(10, 20, 27, 0.72),
-         rgba(15, 34, 48, 0.82),
-         rgba(10, 20, 27, 0.90)
-       ),
-       url("/images/background-1.png");
-   
-     background-size: cover, cover;
-     background-position: center, center;
-     background-repeat: no-repeat, no-repeat;
-     background-attachment: scroll, scroll;
-   }
-   
-   /* desktop-only fixed background, optional */
-   @media (min-width: 1024px) {
-     body {
-       background-attachment: fixed, fixed;
-     }
 }
-   /* =========================
-      Global Typography Defaults
-   ========================= */
-   
-   h1, h2, h3 {
-     font-family: theme(fontFamily.display);
-   }
-   
-   p {
-     font-family: theme(fontFamily.body);
-   }
+
+/* =========================
+   Global Site Background
+   (Option 1: CSS-driven)
+========================= */
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  /* fallback so you never get white */
+  background-color: #0A141B;
+
+  /* overlay + image */
+  background-image:
+    linear-gradient(
+      to bottom right,
+      rgba(10, 20, 27, 0.72),
+      rgba(15, 34, 48, 0.82),
+      rgba(10, 20, 27, 0.90)
+    ),
+    url("/images/background-1.png");
+
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: scroll, scroll;
+}
+
+/* desktop-only fixed background, optional */
+@media (min-width: 1024px) {
+  body {
+    background-attachment: fixed, fixed;
+  }
+}
+
+/* =========================
+   Global Typography Defaults
+========================= */
+
+/* Headings get Cinzel */
+h1, h2, h3 {
+  font-family: "Cinzel", serif;
+}
+
+/* Body text gets Source Sans 3 */
+body, p, li, a, span {
+  font-family: "Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
