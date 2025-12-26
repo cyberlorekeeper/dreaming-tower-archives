@@ -87,3 +87,28 @@
 #searchInput::placeholder{
   color: rgba(207,229,239,.50);
 }
+
+/* =========================================================
+   Character search input – soften the contrast
+========================================================= */
+
+#searchInput{
+  background: rgba(15, 34, 48, 0.55); /* deep glassy blue */
+  border: 1px solid rgba(20, 53, 69, 0.8);
+  color: var(--stardust);
+  backdrop-filter: blur(6px);
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+/* Placeholder tone */
+#searchInput::placeholder{
+  color: rgba(207,229,239,0.45);
+}
+
+/* Focus state – glow, not glare */
+#searchInput:focus{
+  outline: none;
+  border-color: var(--glow);
+  box-shadow: 0 0 0 2px rgba(53,198,224,0.25);
+  background: rgba(15, 34, 48, 0.65);
+}
