@@ -89,18 +89,18 @@
 }
 
 /* =========================================================
-   Character search input – soften the contrast
-========================================================= */
-
-/* =========================================================
-   Character search – lighter glass treatment
+   Character search – unified glass input
 ========================================================= */
 
 #searchInput{
-  background: rgba(24, 54, 72, 0.60); /* slightly lighter than before */
+  position: relative;
+
+  /* lighter glass base */
+  background: rgba(24, 54, 72, 0.62);
   border: 1px solid rgba(160, 205, 225, 0.35);
   color: var(--stardust);
 
+  /* soft visibility halo */
   box-shadow:
     0 0 0 1px rgba(150, 210, 235, 0.22),
     inset 0 0 0 1px rgba(255,255,255,0.04);
@@ -114,47 +114,14 @@
   color: rgba(215,235,245,0.55);
 }
 
-/* Focus state – clearer but still calm */
+/* Focus state */
 #searchInput:focus{
   outline: none;
-  background: rgba(28, 64, 86, 0.70);
+  background: rgba(28, 64, 86, 0.72);
   border-color: var(--glow);
   box-shadow:
     0 0 0 2px rgba(53,198,224,0.40),
     inset 0 0 0 1px rgba(255,255,255,0.08);
 }
 
-/* =========================================================
-   Character search – soft visibility halo
-========================================================= */
-
-#searchInput{
-  position: relative;
-  background: rgba(15, 34, 48, 0.55);
-  border: 1px solid rgba(140, 190, 210, 0.25);
-  color: var(--stardust);
-
-  /* subtle always-on highlight */
-  box-shadow:
-    0 0 0 1px rgba(120, 190, 215, 0.15),
-    inset 0 0 0 1px rgba(255,255,255,0.02);
-
-  backdrop-filter: blur(6px);
-  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
-}
-
-/* Placeholder tone */
-#searchInput::placeholder{
-  color: rgba(207,229,239,0.45);
-}
-
-/* Focus state – brighter but controlled */
-#searchInput:focus{
-  outline: none;
-  border-color: var(--glow);
-  box-shadow:
-    0 0 0 2px rgba(53,198,224,0.35),
-    inset 0 0 0 1px rgba(255,255,255,0.05);
-  background: rgba(15, 34, 48, 0.65);
-}
 
