@@ -28,9 +28,6 @@
   --font-body: "Source Sans 3", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* Guard: never allow "hidden" to be overridden by page CSS */
-.hidden { display: none !important; }
-
 /* ---------- Base / reset ---------- */
 * { box-sizing: border-box; }
 html, body { min-height: 100%; }
@@ -129,4 +126,12 @@ a:hover{ color: var(--glow); }
 }
 @media (min-width: 640px){
   .meta-pill{ min-width: 200px; }
+}
+/* =========================
+   Safety guard for mobile nav
+   (prevents accidental overrides)
+========================= */
+
+#mobileNavPanel.hidden {
+  display: none !important;
 }
