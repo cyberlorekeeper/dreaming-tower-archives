@@ -1,16 +1,53 @@
-/* /assets/css/world.css
-   World-only styles. Keep it small.
+/* /assets/css/styles.css
+   Global site styles that complement Tailwind (CDN).
+   Put reusable “components” here so pages don’t repeat inline styles.
 */
 
-.world-map {
-  border-radius: 1rem;
-  overflow: hidden;
-  border: 1px solid rgba(20, 53, 69, 0.65);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+/* Accessibility */
+.focus-ring:focus {
+  outline: 2px solid #35C6E0;
+  outline-offset: 3px;
 }
 
-.world-map img {
-  width: 100%;
-  height: auto;
-  display: block;
+/* Typography helpers */
+.text-gradient {
+  background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Reusable card style */
+.soft-card {
+  border: 1px solid rgba(20, 53, 69, 0.65);
+  background: rgba(15, 34, 48, 0.35);
+  border-radius: 1rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(6px);
+}
+
+/* Tags / pills */
+.tag {
+  border: 1px solid rgba(20, 53, 69, 0.65);
+  background: rgba(10, 20, 27, 0.25);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  color: rgba(207, 229, 239, 0.85);
+  white-space: nowrap;
+}
+
+.meta-pill {
+  border: 1px solid rgba(20, 53, 69, 0.65);
+  background: rgba(10, 20, 27, 0.25);
+  border-radius: 0.9rem;
+  padding: 0.65rem 0.9rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .meta-pill {
+    min-width: 200px;
+  }
 }
