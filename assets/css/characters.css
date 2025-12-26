@@ -1,0 +1,89 @@
+/* =========================================================
+   characters.css
+   Page-specific component styles for Character Codex
+   Extracted from characters.html inline <style>
+========================================================= */
+
+/* ---- Fallback tokens (in case global :root isn't present) ---- */
+:root{
+  --deep-space:#0A141B;
+  --abyss:#0F2230;
+  --rift:#143545;
+  --nebula:#1E6175;
+  --glow:#35C6E0;
+  --stardust:#CFE5EF;
+  --violet:#7C4DFF;
+}
+
+/* ---- Focus ring (buttons, inputs) ---- */
+.focus-ring:focus{
+  outline: 2px solid var(--glow);
+  outline-offset: 3px;
+}
+
+/* ---- Title gradient (“The Codex of Names”) ---- */
+.text-gradient{
+  background: linear-gradient(90deg, var(--stardust) 0%, var(--glow) 60%, var(--violet) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---- Glass card style (“soft-card”) ---- */
+.soft-card{
+  border: 1px solid rgba(20,53,69,.65);
+  background: rgba(15,34,48,.35);
+  border-radius: 1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  backdrop-filter: blur(6px);
+}
+
+/* ---- Hover lift on cards ---- */
+.card-hover{
+  transition: transform .15s ease, filter .15s ease;
+}
+.card-hover:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+/* ---- Tag pill style ---- */
+.tag{
+  border: 1px solid rgba(20,53,69,.65);
+  background: rgba(15,34,48,.35);
+  border-radius: 9999px;
+  padding: .25rem .75rem;
+  font-size: .75rem;
+  color: rgba(207,229,239,.85);
+  white-space: nowrap;
+}
+
+/* =========================================================
+   Extras: make filters look “selected” consistently
+   Your JS adds: ring-2 ring-glow/40. :contentReference[oaicite:2]{index=2}
+   If Tailwind isn’t providing ring colors, this keeps it visible.
+========================================================= */
+
+.filter-btn{
+  transition: color .15s ease, border-color .15s ease, filter .15s ease;
+}
+
+/* When JS adds ring-2 and ring-glow/40, provide a visible fallback */
+.ring-2{
+  box-shadow: 0 0 0 2px rgba(53,198,224,.35);
+}
+.ring-glow\/40{
+  /* noop placeholder for compatibility if you ever reference it directly */
+}
+
+/* Small nicety: selected filter reads brighter */
+.filter-btn.ring-2{
+  color: rgba(207,229,239,.95);
+}
+
+/* =========================================================
+   Input polish (matches your intent for the search input)
+========================================================= */
+#searchInput::placeholder{
+  color: rgba(207,229,239,.50);
+}
