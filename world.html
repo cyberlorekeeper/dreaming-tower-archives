@@ -341,21 +341,36 @@
 
     <!-- Partials loader -->
     <script>
-      async function loadPartial(selector, url) {
+      async function loadPartial(selector, url, onLoaded) {
         const el = document.querySelector(selector);
         if (!el) return;
+    
         try {
           const res = await fetch(url, { cache: "no-cache" });
           if (!res.ok) throw new Error(`Failed to load ${url}: ${res.status}`);
           el.innerHTML = await res.text();
+          if (typeof onLoaded === "function") onLoaded();
         } catch (err) {
           console.error(err);
         }
       }
-
-      loadPartial("#site-header", "/partials/header.html");
+    
+      function initMobileNav() {
+        const navToggle = document.getElementById("navToggle");
+        const mobileNavPanel = document.getElementById("mobileNavPanel");
+        if (!navToggle || !mobileNavPanel) return;
+    
+        navToggle.addEventListener("click", () => {
+          const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+          navToggle.setAttribute("aria-expanded", String(!isOpen));
+          mobileNavPanel.classList.toggle("hidden", isOpen);
+        });
+      }
+    
+      loadPartial("#site-header", "/partials/header.html", initMobileNav);
       loadPartial("#site-footer", "/partials/footer.html");
     </script>
+
 
     <!-- If your header's mobile menu needs an init script, include it here.
          Example:
