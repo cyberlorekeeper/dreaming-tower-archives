@@ -1,5 +1,17 @@
 // /assets/js/tailwind-config.js
 tailwind.config = {
+ safelist: [
+    "bg-deep-space",
+    "bg-abyss",
+    "bg-rift",
+    "text-stardust",
+    "text-silver",
+    "font-body",
+    "font-display",
+    "border-rift",
+    "hover:text-stardust",
+    "hover:bg-abyss"
+  ],
   theme: {
     extend: {
       colors: {
