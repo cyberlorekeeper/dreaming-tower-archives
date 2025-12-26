@@ -1,78 +1,187 @@
 /* /assets/css/world.css
-   Page-specific styling for World pages and sub-pages.
-   Keep it small and special.
+   Styles only for The World pages
 */
 
-/* World page typography scale */
-   .kicker{
-     font-size: 0.75rem;
-     letter-spacing: 0.18em;
-     text-transform: uppercase;
-     color: var(--n-300);
-   }
-   
-   .h1{
-     font-family: "Cinzel", serif;
-     font-weight: 700;
-     font-size: clamp(2.25rem, 4vw, 3.75rem);
-     line-height: 1.05;
-     color: var(--n-50);
-   }
-   
-   .h2{
-     font-family: "Cinzel", serif;
-     font-weight: 700;
-     font-size: clamp(1.6rem, 2.2vw, 2.2rem);
-     line-height: 1.15;
-     color: var(--n-50);
-   }
-   
-   .h3{
-     font-family: "Cinzel", serif;
-     font-weight: 700;
-     font-size: 1.125rem;
-     line-height: 1.25;
-     color: var(--n-100);
-   }
-   
-   .lead{
-     font-size: 1.125rem;
-     line-height: 1.7;
-     color: var(--n-100);
-   }
-   
-   .prose{
-     font-size: 1rem;
-     line-height: 1.75;
-     color: var(--n-200);
-   }
-
-/* World hero map treatment */
-.world-map {
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--n-800);
-  overflow: hidden;
-  background: var(--n-950);
+/* Layout */
+.container{
+  width: 100%;
+  max-width: 72rem;        /* ~1152px */
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-.world-map img {
+.section{
+  padding: 3rem 0;
+}
+
+.divider{
+  height: 1px;
+  width: 100%;
+  background: rgba(20,53,69,.60);
+}
+
+.world-divider{
+  margin: 0;
+}
+
+/* Simple “stack” spacing */
+.stack-3 > * + *{ margin-top: .75rem; }
+.stack-4 > * + *{ margin-top: 1rem; }
+.stack-5 > * + *{ margin-top: 1.25rem; }
+
+/* Grid helpers used by world.html */
+.grid{ display: grid; }
+.items-start{ align-items: start; }
+.gap-6{ gap: 1.5rem; }
+.gap-10{ gap: 2.5rem; }
+
+@media (min-width: 1024px){
+  .lg-grid-12{
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .lg-col-5{ grid-column: span 5 / span 5; }
+  .lg-col-7{ grid-column: span 7 / span 7; }
+  .lg-grid-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Type system that matches your site vibe */
+.kicker{
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-size: .75rem;
+  color: rgba(207,229,239,.70);
+}
+
+.h1{
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  line-height: 1.05;
+  color: rgba(207,229,239,.95);
+}
+
+.h2{
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+  line-height: 1.15;
+  color: rgba(207,229,239,.95);
+}
+
+.h3{
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.2;
+  color: rgba(207,229,239,.95);
+}
+
+.lead{
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(207,229,239,.88);
+  max-width: 48rem;
+}
+
+.prose{
+  font-size: .98rem;
+  line-height: 1.75;
+  color: rgba(207,229,239,.82);
+  max-width: 60rem;
+}
+
+/* Buttons */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .75rem 1.1rem;
+  border-radius: .75rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform .12s ease, filter .12s ease, background-color .12s ease, border-color .12s ease;
+}
+
+.btn:active{ transform: translateY(1px); }
+
+.btn-primary{
+  background: var(--glow);
+  color: var(--abyss);
+  box-shadow: var(--shadow-glow);
+}
+.btn-primary:hover{ filter: brightness(1.05); }
+
+.btn-ghost{
+  border-color: rgba(20,53,69,.60);
+  background: rgba(10,20,27,.20);
+  color: rgba(207,229,239,.85);
+}
+.btn-ghost:hover{
+  border-color: rgba(53,198,224,.55);
+  color: var(--glow);
+}
+
+/* Links inside cards */
+.link{
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-weight: 600;
+  color: rgba(207,229,239,.85);
+  text-decoration: underline;
+  text-decoration-color: rgba(53,198,224,.55);
+  text-underline-offset: 4px;
+}
+.link:hover{ color: var(--glow); }
+
+/* Callout */
+.callout{
+  border: 1px solid rgba(20,53,69,.60);
+  background: rgba(15,34,48,.22);
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  color: rgba(207,229,239,.80);
+}
+
+/* Cards */
+.card{
+  border: 1px solid rgba(20,53,69,.60);
+  background: rgba(15,34,48,.28);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,.10);
+  backdrop-filter: blur(6px);
+}
+
+.world-teaser{ position: relative; }
+
+/* Map frame */
+.world-map{
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(20,53,69,.55);
+  background: rgba(10,20,27,.22);
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+}
+.world-map img{
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
 }
 
-/* Teaser cards get a slightly richer hover treatment on World pages */
-.world-teaser.card:hover {
-  background: rgba(10, 10, 10, 0.55);
-  box-shadow: var(--shadow-soft);
+/* Small legend row under map */
+.dotline{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem 1.25rem;
+  font-size: .85rem;
+  color: rgba(207,229,239,.75);
 }
-
-/* Optional: subtle “section anchor” offset if you have a sticky header */
-:target {
-  scroll-margin-top: 6rem;
-}
-
-/* Optional: a softer divider on lore pages */
-.world-divider {
-  border-top: 1px solid rgba(38, 38, 38, 0.9);
+.dot{
+  width: .55rem;
+  height: .55rem;
+  border-radius: 9999px;
+  background: rgba(53,198,224,.75);
+  box-shadow: 0 0 0 2px rgba(53,198,224,.18);
 }
