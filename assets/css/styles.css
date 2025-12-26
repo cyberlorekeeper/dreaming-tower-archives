@@ -86,6 +86,15 @@
        background-attachment: fixed, fixed;
      }
 }
-
-
+   /* =========================
+      Global Typography Defaults
+   ========================= */
+   
+   h1, h2, h3 {
+     font-family: theme(fontFamily.display);
+   }
+   
+   p {
+     font-family: theme(fontFamily.body);
+   }
 }
