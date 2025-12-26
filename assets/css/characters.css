@@ -92,25 +92,36 @@
    Character search input – soften the contrast
 ========================================================= */
 
+/* =========================================================
+   Character search – lighter glass treatment
+========================================================= */
+
 #searchInput{
-  background: rgba(15, 34, 48, 0.55); /* deep glassy blue */
-  border: 1px solid rgba(20, 53, 69, 0.8);
+  background: rgba(24, 54, 72, 0.60); /* slightly lighter than before */
+  border: 1px solid rgba(160, 205, 225, 0.35);
   color: var(--stardust);
+
+  box-shadow:
+    0 0 0 1px rgba(150, 210, 235, 0.22),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+
   backdrop-filter: blur(6px);
-  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+  transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
 }
 
-/* Placeholder tone */
+/* Placeholder */
 #searchInput::placeholder{
-  color: rgba(207,229,239,0.45);
+  color: rgba(215,235,245,0.55);
 }
 
-/* Focus state – glow, not glare */
+/* Focus state – clearer but still calm */
 #searchInput:focus{
   outline: none;
+  background: rgba(28, 64, 86, 0.70);
   border-color: var(--glow);
-  box-shadow: 0 0 0 2px rgba(53,198,224,0.25);
-  background: rgba(15, 34, 48, 0.65);
+  box-shadow:
+    0 0 0 2px rgba(53,198,224,0.40),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
 }
 
 /* =========================================================
