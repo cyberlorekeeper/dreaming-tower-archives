@@ -31,7 +31,7 @@
 
       <!-- The World dropdown -->
       <div class="relative group" id="worldMenuWrap">
-        <a href="/world/" class="inline-flex items-center gap-1 hover:text-glow underline-offset-4 hover:underline">
+        <a href="/world.html" class="inline-flex items-center gap-1 hover:text-glow underline-offset-4 hover:underline">
           The World <span aria-hidden="true">▾</span>
         </a>
 
@@ -65,16 +65,28 @@
     </a>
   
     <!-- Separate toggle for submenu -->
-    <details class="mt-2">
-      <summary class="cursor-pointer text-sm text-stardust/80 hover:text-glow">
-        Sections <span aria-hidden="true">▾</span>
-      </summary>
-  
-      <div class="mt-2 flex flex-col gap-2 pl-2">
-        <a class="hover:text-glow underline underline-offset-4" href="/world/cipheria.html">Cipheria's History</a>
-        <a class="hover:text-glow underline underline-offset-4" href="/world/other-locations.html">Other Locations</a>
-        <a class="hover:text-glow underline underline-offset-4" href="/world/bestiary.html">Bestiary</a>
-      </div>
+    <!-- Mobile: The World link + collapsible submenu -->
+<div class="rounded-lg border border-rift/60 bg-abyss/30 p-3">
+  <a class="block font-semibold text-stardust/90 hover:text-glow underline underline-offset-4"
+     href="/world.html">
+    The World
+  </a>
+
+  <details class="mt-2">
+    <summary class="cursor-pointer text-sm text-stardust/80 hover:text-glow">
+      Sections <span aria-hidden="true">▾</span>
+    </summary>
+
+    <div class="mt-2 flex flex-col gap-2 pl-2">
+      <a class="hover:text-glow underline underline-offset-4" href="/world/cipheria.html">Cipheria&#39;s History</a>
+      <a class="hover:text-glow underline underline-offset-4" href="/world/other-locations.html">Other Locations</a>
+      <a class="hover:text-glow underline underline-offset-4" href="/world/bestiary.html">Bestiary</a>
+    </div>
+  </details>
+</div>
+
+</div>
+
     </details>
   </div>
 </header>
