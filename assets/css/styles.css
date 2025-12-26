@@ -53,36 +53,21 @@
 
    @media (max-width: 768px) {
   body {
-    background-attachment: scroll;
-  }
-
-/* =========================
-      Global Site Background
-   ========================= */
-   html, body {
-     min-height: 100%;
-   }
+       background-attachment: scroll;
+     }
    
-   body {
-     /* fallback color so you never get white */
+   /* =========================
+         Global Site Background
+      ========================= */
+      html, body {
+        min-height: 100%;
+      }
+      
      background-color: #0A141B;
-   
-     /* overlay + image in one declaration (hard to override accidentally) */
-     background-image:
-       linear-gradient(
-         to bottom right,
-         rgba(10, 20, 27, 0.75),
-         rgba(15, 34, 48, 0.85),
-         rgba(10, 20, 27, 0.9)
-       ),
-       url("/images/background-1.png");
-   
-     background-size: cover, cover;
-     background-position: center, center;
-     background-repeat: no-repeat, no-repeat;
-   
-     /* optional, but can be janky on mobile */
-     background-attachment: scroll, scroll;
+     background-image: url("/images/background-1.png");
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
    }
    
    @media (min-width: 1024px) {
