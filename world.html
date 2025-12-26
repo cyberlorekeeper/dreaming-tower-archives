@@ -539,50 +539,57 @@
         </p>
       </div>
     </section>
-  </main>
 
-  <!-- Footer (embedded) -->
-  <footer class="relative mx-auto max-w-6xl px-6 pb-14">
-    <div class="panel p-6 sm:p-8">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-        <div>
-          <div class="font-display tracking-[.14em] uppercase text-stardust/80 text-sm">
-            The Dreaming Tower Archives
-          </div>
-          <p class="mt-2 text-sm text-stardust/70">
-            Recovered tales, field notes, and records from the Digital Realm.
-          </p>
-        </div>
-
-        <div class="flex flex-wrap gap-3">
-          <a class="btn" href="/chronicles/">Chronicles</a>
-          <a class="btn" href="/characters/">Characters</a>
-          <a class="btn btn-primary" href="/world.html">The World</a>
-        </div>
-      </div>
-
-      <p class="mt-8 text-center text-xs text-stardust/60">
-        © <span id="year"></span> The Cyber Lorekeeper. All rights reserved.
-      </p>
-    </div>
-  </footer>
+    <div id="site-footer"></div>
+    
+  </main>  
 
   <script>
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Mobile nav toggle
-    (function(){
-      const btn = document.getElementById("navToggle");
-      const panel = document.getElementById("mobileNavPanel");
-      if(!btn || !panel) return;
+    async function loadPartial(targetId, url) {
+    const el = document.getElementById(targetId);
+    if (!el) return;
 
-      btn.addEventListener("click", () => {
-        const isHidden = panel.classList.contains("hidden");
-        panel.classList.toggle("hidden", !isHidden);
-        btn.setAttribute("aria-expanded", String(isHidden));
-      });
-    })();
+    const res = await fetch(url, { cache: "no-cache" });
+    if (!res.ok) {
+      console.warn(`Failed to load ${url}`);
+      return;
+    }
+    el.innerHTML = await res.text();
+  }
+
+  function initHeaderNav() {
+    const navToggle = document.getElementById("navToggle");
+    const mobileNavPanel = document.getElementById("mobileNavPanel");
+
+    if (!navToggle || !mobileNavPanel) return;
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+      navToggle.setAttribute("aria-expanded", String(!isOpen));
+      mobileNavPanel.classList.toggle("hidden", isOpen);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        navToggle.setAttribute("aria-expanded", "false");
+        mobileNavPanel.classList.add("hidden");
+      }
+    });
+  }
+
+  function initFooterYear() {
+    const year = document.getElementById("year");
+    if (year) year.textContent = new Date().getFullYear();
+  }
+
+  (async function boot() {
+    await loadPartial("site-header", "/partials/header.html");
+    initHeaderNav();
+
+    await loadPartial("site-footer", "/partials/footer.html");
+    initFooterYear();
+  })();
   </script>
 </body>
 </html>
