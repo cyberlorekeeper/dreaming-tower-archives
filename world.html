@@ -1,532 +1,509 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The World | The Dreaming Tower Archives</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The World | The Dreaming Tower Archives</title>
+    <meta
+      name="description"
+      content="The Known World of the Dreaming Tower Archives: continents, seas, Cipheria, the Space Besides, and the wandering Isle of 404."
+    />
 
-  <!-- Favicon (adjust path if yours differs) -->
-  <link rel="icon" type="image/png" href="/images/favicon.png" />
-  <link rel="apple-touch-icon" href="/images/favicon.png" />
+    <!-- Favicons -->
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <!-- Fonts (match Chronicles) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Tailwind config must be set BEFORE loading the CDN script -->
- <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'deep-space':'#0A141B',
-            'abyss':'#0F2230',
-            'rift':'#143545',
-            'nebula':'#1E6175',
-            'glow':'#35C6E0',
-            'stardust':'#CFE5EF',
-            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
-            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+    <!-- Tailwind CDN (page-local, like your original pages) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind config (match Chronicles tokens) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ["Cinzel", "serif"],
+              body: ["Source Sans 3", "ui-sans-serif", "system-ui"],
+            },
+            colors: {
+              abyss: "#071018",
+              deep: "#081827",
+              ink: "#0b2234",
+              stardust: "#d7e2ea",
+              mist: "#a9bccb",
+              rift: "#52d6ff",
+              glow: "#34c9ff",
+              ember: "#ffb86b",
+            },
+            boxShadow: {
+              soft: "0 10px 30px rgba(0,0,0,.35)",
+              card: "0 18px 50px rgba(0,0,0,.35)",
+              glow: "0 0 0 1px rgba(82,214,255,.35), 0 10px 30px rgba(0,0,0,.35)",
+            },
+            backgroundImage: {
+              nebula: "url('/images/background-1.png')",
+            },
           },
-          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
-          boxShadow:{
-            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
-            card:'0 6px 18px rgba(0,0,0,.12)'
-          }
+        },
+      };
+    </script>
+
+    <!-- Page-local theme styles (match Chronicles behavior) -->
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        font-family: "Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+        background-color: #071018;
+        background-image: url("/images/background-1.png");
+        background-size: cover;
+        background-position: top center;
+        background-attachment: fixed;
+        color: rgba(215, 226, 234, 0.92);
+      }
+
+      /* Subtle global overlay so text stays readable everywhere (Chronicles vibe) */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+            1100px 600px at 20% 10%,
+            rgba(82, 214, 255, 0.08),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 500px at 80% 20%,
+            rgba(82, 214, 255, 0.06),
+            transparent 60%
+          ),
+          linear-gradient(to bottom, rgba(7, 16, 24, 0.58), rgba(7, 16, 24, 0.78));
+        z-index: 0;
+      }
+
+      /* Make sure all page content is above overlay */
+      #site-header,
+      #site-footer,
+      main {
+        position: relative;
+        z-index: 1;
+      }
+
+      .text-gradient {
+        background: linear-gradient(90deg, rgba(215, 226, 234, 0.95), rgba(82, 214, 255, 0.9));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .panel {
+        background: rgba(8, 24, 39, 0.72);
+        border: 1px solid rgba(215, 226, 234, 0.12);
+        border-radius: 18px;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(10px);
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 999px;
+        border: 1px solid rgba(215, 226, 234, 0.22);
+        background: rgba(8, 24, 39, 0.55);
+        color: rgba(215, 226, 234, 0.9);
+      }
+
+      .btn-soft {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border-radius: 999px;
+        padding: 0.65rem 1rem;
+        border: 1px solid rgba(215, 226, 234, 0.25);
+        background: rgba(8, 24, 39, 0.45);
+        color: rgba(215, 226, 234, 0.92);
+        transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease,
+          color 0.15s ease;
+      }
+
+      .btn-soft:hover {
+        transform: translateY(-1px);
+        border-color: rgba(82, 214, 255, 0.55);
+        background: rgba(8, 24, 39, 0.6);
+        color: rgba(215, 226, 234, 0.98);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        padding: 0.9rem 1.1rem;
+        background: #34c9ff;
+        color: #06202f;
+        font-weight: 600;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        transition: transform 0.15s ease, filter 0.15s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.03);
+        color: #06202f;
+      }
+
+      /* Prevent giant blank gaps */
+      .section-tight {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .section-tight {
+          padding-top: 3rem;
+          padding-bottom: 3rem;
         }
       }
-    }
-  </script>
+    </style>
+  </head>
 
-  <!-- Page styles (embedded, global-ish defaults + world-specific helpers) -->
-  <style>
-    :root{
-      --bg0:#061019;
-      --bg1:#071522;
-      --text:#d7e1ea;
-      --muted: rgba(215,225,234,.78);
-      --muted2: rgba(215,225,234,.62);
-      --rift: rgba(27,50,67,.70);
-      --rift2: rgba(27,50,67,.45);
-      --glow: rgba(53,211,255,.55);
-      --glow2: rgba(53,211,255,.28);
-    }
-
-    html,body{height:100%}
-    body{
-      margin:0;
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 700px at 30% 10%, rgba(53,211,255,.10), transparent 60%),
-                  linear-gradient(180deg, var(--bg1), var(--bg0));
-      overflow-x:hidden;
-    }
-
-    /* Background image layer (site-wide feel) */
-    body::before{
-      content:"";
-      position: fixed;
-      inset: 0;
-      background-image: url("/images/background-1.png");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transform: translateZ(0);
-      z-index:-2;
-      opacity: 1;
-    }
-
-    /* Soft readable overlay (this is what keeps text legible over bright swirls) */
-    body::after{
-      content:"";
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(900px 520px at 18% 20%, rgba(0,0,0,.35), transparent 60%),
-        radial-gradient(1200px 700px at 70% 35%, rgba(0,0,0,.32), transparent 62%),
-        linear-gradient(180deg, rgba(0,0,0,.30), rgba(0,0,0,.44));
-      z-index:-1;
-      pointer-events:none;
-    }
-
-    /* Typography helpers */
-    .kicker{
-      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      font-size: .78rem;
-      color: rgba(215,225,234,.72);
-      text-shadow: 0 1px 10px rgba(0,0,0,.35);
-    }
-    .h1{
-      font-family: Cinzel, serif;
-      font-weight: 600;
-      letter-spacing: .02em;
-      line-height: 1.02;
-      text-shadow: 0 8px 30px rgba(0,0,0,.45);
-    }
-    .h2{
-      font-family: Cinzel, serif;
-      font-weight: 600;
-      letter-spacing: .01em;
-    }
-    .lead, .prose{
-      color: var(--muted);
-      text-shadow: 0 1px 10px rgba(0,0,0,.35);
-    }
-
-    .text-gradient{
-      background: linear-gradient(90deg, rgba(215,225,234,.95), rgba(53,211,255,.60));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    /* Cards / panels */
-    .panel{
-      border: 1px solid rgba(27,50,67,.55);
-      background: rgba(7,16,23,.45);
-      box-shadow: 0 18px 60px rgba(0,0,0,.32);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 18px;
-    }
-    .panel-inner{
-      border: 1px solid rgba(27,50,67,.45);
-      background: rgba(7,16,23,.35);
-      border-radius: 14px;
-    }
-
-    /* Buttons / tags */
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:.5rem;
-      padding:.65rem 1rem;
-      border-radius: 999px;
-      border: 1px solid rgba(215,225,234,.55);
-      background: rgba(7,16,23,.35);
-      color: rgba(215,225,234,.86);
-      text-decoration:none;
-      transition: transform .12s ease, border-color .12s ease, background .12s ease, color .12s ease, box-shadow .12s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,.18);
-      text-shadow: 0 1px 10px rgba(0,0,0,.35);
-      white-space:nowrap;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(53,211,255,.65);
-      color: rgba(215,225,234,.96);
-      box-shadow: 0 12px 36px rgba(0,0,0,.22), 0 0 0 3px rgba(53,211,255,.12);
-    }
-    .btn-primary{
-      background: rgba(53,211,255,.16);
-      border-color: rgba(53,211,255,.55);
-    }
-    .btn-primary:hover{
-      background: rgba(53,211,255,.22);
-    }
-
-    .focus-ring:focus{
-      outline:none;
-      box-shadow: 0 0 0 3px rgba(53,211,255,.22);
-    }
-
-    /* Map frame */
-    .map-frame{
-      border-radius: 18px;
-      border: 1px solid rgba(27,50,67,.55);
-      box-shadow: 0 18px 70px rgba(0,0,0,.45);
-      overflow:hidden;
-      background: rgba(7,16,23,.25);
-    }
-
-    /* Section spacing */
-    .section{ padding: 4rem 0; }
-    @media (max-width: 640px){
-      .section{ padding: 2.5rem 0; }
-    }
-  </style>
-</head>
-
-<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
-  <main class="relative min-h-screen">
-    <!-- Background -->
-    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
-    <!-- Make overlay ignore pointer events so it doesn't interfere with hover/click -->
-    <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
-
-    <!-- Header partial -->
+  <body class="min-h-screen">
+    <!-- Header partial inject -->
     <div id="site-header"></div>
 
-  <main class="relative mx-auto max-w-6xl px-6 pb-20">
-    <!-- Hero -->
-    <section class="section pt-14">
-      <div class="grid lg:grid-cols-12 gap-10 items-start">
-        <div class="lg:col-span-6">
-          <div class="kicker">The Dreaming Tower Archives</div>
-          <h1 class="h1 text-5xl sm:text-6xl mt-3 text-gradient">
-            Welcome to the Known World
-          </h1>
+    <main class="mx-auto max-w-6xl px-6">
+      <!-- HERO -->
+      <section class="section-tight pt-10 md:pt-14">
+        <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+          <div>
+            <p class="font-display text-xs tracking-[.22em] uppercase text-stardust/65">
+              The Dreaming Tower Archives
+            </p>
 
-          <p class="lead mt-6 text-lg leading-relaxed">
-            The world is vast and divided, shaped by four great continents separated by treacherous seas.
-            Order exists, but only because it is constantly defended. Civilization here survives through vigilance,
-            memory, and cooperation in the face of chaos.
-          </p>
+            <h1
+              class="mt-4 font-display text-5xl leading-[1.05] tracking-wide sm:text-6xl md:text-7xl text-gradient"
+            >
+              Welcome to the Known World
+            </h1>
 
-          <p class="lead mt-5 text-lg leading-relaxed">
-            This is a realm where castle walls are reinforced with encrypted wards, where threats take physical form,
-            and where magic and technology have blurred into the same relentless discipline: protecting what endures.
-          </p>
+            <p class="mt-6 text-lg leading-relaxed text-stardust/85 max-w-prose">
+              The world is vast and divided, shaped by four great continents separated by treacherous seas.
+              Order exists, but only because it is constantly defended. Civilization here survives through
+              vigilance, memory, and cooperation in the face of chaos.
+            </p>
 
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a class="btn btn-primary" href="#continents">Start with the Continents</a>
-            <a class="btn" href="#cipheria">Jump to Cipheria</a>
-            <a class="btn" href="#isle404">The Isle of 404</a>
+            <p class="mt-4 text-lg leading-relaxed text-stardust/85 max-w-prose">
+              This is a realm where castle walls are reinforced with encrypted wards, where threats take
+              physical form, and where magic and technology have blurred into the same relentless discipline:
+              protecting what endures.
+            </p>
+
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a class="btn-soft" href="#continents">Start with the Continents →</a>
+              <a class="btn-soft" href="#cipheria">Jump to Cipheria →</a>
+              <a class="btn-soft" href="#space-besides">The Space Besides →</a>
+              <a class="btn-soft" href="#isle-404">The Isle of 404 →</a>
+            </div>
+
+            <p class="mt-6 text-sm text-stardust/65">
+              Looking for deeper lore? Each section includes a teaser link to its dedicated page.
+            </p>
           </div>
 
-          <p class="mt-6 prose text-sm">
-            Looking for deeper lore? Each section below includes a teaser link to its dedicated page.
-          </p>
-        </div>
-
-        <div class="lg:col-span-6">
-          <div class="map-frame">
+          <div class="panel p-4">
             <img
               src="/images/world-map.png"
               alt="Map of the Known World"
-              class="w-full h-auto block"
+              class="w-full rounded-xl border border-stardust/10"
               loading="lazy"
             />
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="chip">Valorath</span>
+              <span class="chip">Sundara</span>
+              <span class="chip">Narvoss</span>
+              <span class="chip">Khal-Teryn</span>
+              <span class="chip">Fractured Waters</span>
+              <span class="chip">Wandering Tracks</span>
+            </div>
           </div>
-          <p class="mt-3 text-xs text-stardust/60">
-            Map annotations reflect current known routes, fractures, and the Wandering Tracks.
-          </p>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Continents -->
-    <section id="continents" class="section">
-      <div class="panel p-6 sm:p-8">
-        <h2 class="h2 text-3xl text-stardust">The Four Continents</h2>
-        <p class="lead mt-3">
-          Four major landmasses anchor the Known World. Each has its own balance of order, ambition, and danger.
-        </p>
+      <!-- CONTINENTS -->
+      <section id="continents" class="section-tight">
+        <div class="panel p-7 md:p-10">
+          <h2 class="font-display text-3xl md:text-4xl text-stardust">The Four Continents</h2>
+          <p class="mt-3 text-stardust/75 max-w-3xl">
+            Four landmasses shape the balance of power, trade, and threat. Valorath holds the most stable
+            network of kingdoms. Sundara thrives on trade and tradition. Narvoss endures through defense.
+            Khal-Teryn remains an unsettled question across hostile seas.
+          </p>
 
-        <div class="mt-8 grid md:grid-cols-2 gap-6">
-          <div class="panel-inner p-6">
-            <h3 class="h2 text-2xl">Valorath <span class="text-stardust/60">| The Eastern Continent</span></h3>
-            <p class="lead mt-3">
-              Politically stable and deeply interconnected, Valorath is home to established kingdoms, trade networks,
-              and sophisticated infrastructure. On its eastern shores stands Cipheria, a beacon of organized security
-              and collaborative governance.
-            </p>
-            <div class="mt-4 text-sm text-stardust/75">
-              <div class="font-semibold text-stardust/90">Notable Powers</div>
-              <ul class="mt-2 list-disc pl-5 space-y-1">
-                <li>The Kingdom of Cipheria (our focus)</li>
-                <li>The Sovereign Holds (allied city-states to the north)</li>
-                <li>The Meridian Empire (declining, legacy-bound)</li>
-                <li>The Free Cities of the Coast (merchant republics)</li>
+          <div class="mt-8 grid gap-6 md:grid-cols-2">
+            <article class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">
+                Valorath <span class="text-stardust/60">| The Eastern Continent</span>
+              </h3>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                The most politically stable and interconnected of the known continents. Established kingdoms,
+                trade networks, and layered infrastructure create a delicate balance of cooperation and rivalry.
+                Cipheria rises along the eastern coast as a beacon of organized security and governance.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2 text-sm text-stardust/70">
+                <span class="chip">Cipheria</span>
+                <span class="chip">Sovereign Holds</span>
+                <span class="chip">Meridian Empire</span>
+                <span class="chip">Free Cities</span>
+              </div>
+              <div class="mt-6">
+                <a class="btn-soft" href="/world/valorath.html">Explore Valorath →</a>
+              </div>
+            </article>
+
+            <article class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">
+                Sundara <span class="text-stardust/60">| The Southern Continent</span>
+              </h3>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                Warm, resource-rich, and culturally diverse. Merchant republics, city-states, and roaming
+                nations trade rare materials and unique traditions northward. Influence here is measured in
+                routes, pacts, and leverage more than crowns.
+              </p>
+              <div class="mt-6">
+                <a class="btn-soft" href="/world/sundara.html">Explore Sundara →</a>
+              </div>
+            </article>
+
+            <article class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">
+                Narvoss <span class="text-stardust/60">| The Northern Continent</span>
+              </h3>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                Harsh and fiercely independent. Narvoss is known for isolationist kingdoms, legendary defenses,
+                and the occasional sophisticated threat that emerges from its deep cold.
+              </p>
+              <div class="mt-6">
+                <a class="btn-soft" href="/world/narvoss.html">Explore Narvoss →</a>
+              </div>
+            </article>
+
+            <article class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">
+                Khal-Teryn <span class="text-stardust/60">| The Western Continent</span>
+              </h3>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                Shrouded in mystery across treacherous seas. Ancient civilizations, unfamiliar traditions, and
+                rare emissaries. Artifacts fetch extraordinary prices and raise more questions than answers.
+              </p>
+              <div class="mt-6">
+                <a class="btn-soft" href="/world/khal-teryn.html">Explore Khal-Teryn →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEAS -->
+      <section id="seas" class="section-tight">
+        <div class="panel p-7 md:p-10">
+          <h2 class="font-display text-3xl md:text-4xl text-stardust">The Seas Between</h2>
+          <p class="mt-3 text-stardust/75 max-w-3xl">
+            The oceans bind the world together and keep it apart. Routes exist, but certainty does not.
+          </p>
+
+          <div class="mt-8 grid gap-6 md:grid-cols-3">
+            <article class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">The Uncharted Seas</h3>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                Vast expanses remain poorly mapped. Established trade routes exist, but much lies unexplored.
+                The ocean keeps its secrets, and sometimes it keeps ships.
+              </p>
+              <div class="mt-6">
+                <a class="btn-soft" href="/world/seas.html#uncharted">Seas details →</a>
+              </div>
+            </article>
+
+            <article class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">The Fractured Waters</h3>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                In places, reality grows thin. Rifts open without warning, spilling strange creatures and
+                corrupting influence into the mortal world. Most captains detour if they can.
+              </p>
+              <div class="mt-6">
+                <a class="btn-soft" href="/world/seas.html#fractured">Rifts and routes →</a>
+              </div>
+            </article>
+
+            <article class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">The Wandering Tracks</h3>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                Ancient sightings of the Isle of 404 marked with question marks and dotted lines. Centuries of
+                contradictory reports, and the persistent hope the island can be found on purpose.
+              </p>
+              <div class="mt-6">
+                <a class="btn-soft" href="/world/isle-404.html">The Isle of 404 →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CIPHERIA -->
+      <section id="cipheria" class="section-tight">
+        <div class="panel p-7 md:p-10">
+          <h2 class="font-display text-3xl md:text-4xl text-stardust">The Kingdom of Cipheria</h2>
+          <p class="mt-3 text-stardust/75 max-w-3xl">
+            On Valorath’s eastern coast lies Cipheria, our primary focus and the home of the Dreaming Tower.
+            It is not the largest kingdom, but it is among the most vigilant.
+          </p>
+
+          <div class="mt-8 grid gap-6 lg:grid-cols-2">
+            <div class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">A Nation Built on Vigilance</h3>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                Governed by a collaborative Council balancing defense, prosperity, intelligence, history, and
+                authority, Cipheria survived crises that shattered others.
+              </p>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                The Dreaming Tower stands at the center: ancient, semi-sentient, and relentlessly observant.
+                It archives what was, warns of what is, and helps prepare for what is coming.
+              </p>
+              <div class="mt-6">
+                <a class="btn-soft" href="/world/cipheria.html">Enter Cipheria →</a>
+              </div>
+            </div>
+
+            <div class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">Cities and Regions</h3>
+              <ul class="mt-3 space-y-3 text-stardust/75 leading-relaxed">
+                <li><span class="text-stardust/90 font-semibold">Crown City:</span> capital built in rings of increasing security.</li>
+                <li><span class="text-stardust/90 font-semibold">Harbordeep and Tide’s Gate:</span> port cities where trade and infrastructure converge.</li>
+                <li><span class="text-stardust/90 font-semibold">Ironhearth:</span> industrial footholds forging tools of defense.</li>
+                <li><span class="text-stardust/90 font-semibold">Brighthollow:</span> agricultural heartlands feeding the realm.</li>
+                <li><span class="text-stardust/90 font-semibold">The Borderlands:</span> frontier towns watching the wilds.</li>
               </ul>
             </div>
-            <div class="mt-5">
-              <a class="btn" href="/world/other-locations.html">Explore locations →</a>
-            </div>
-          </div>
-
-          <div class="panel-inner p-6">
-            <h3 class="h2 text-2xl">Sundara <span class="text-stardust/60">| The Southern Continent</span></h3>
-            <p class="lead mt-3">
-              Warm, resource-rich, and culturally diverse. Sundara thrives on commerce, rare materials, and distinct
-              magical traditions that drift north along established routes.
-            </p>
-            <div class="mt-5">
-              <a class="btn" href="/world/other-locations.html#sundara">Sundara teasers →</a>
-            </div>
-          </div>
-
-          <div class="panel-inner p-6">
-            <h3 class="h2 text-2xl">Narvoss <span class="text-stardust/60">| The Northern Continent</span></h3>
-            <p class="lead mt-3">
-              Harsh and fiercely independent. Narvoss is known for isolationist kingdoms, legendary defenses,
-              and the occasional sophisticated threat that emerges from its deep cold.
-            </p>
-            <div class="mt-5">
-              <a class="btn" href="/world/other-locations.html#narvoss">Narvoss teasers →</a>
-            </div>
-          </div>
-
-          <div class="panel-inner p-6">
-            <h3 class="h2 text-2xl">Khal-Teryn <span class="text-stardust/60">| The Western Continent</span></h3>
-            <p class="lead mt-3">
-              Shrouded in mystery across treacherous seas. Khal-Teryn’s artifacts fetch extraordinary prices,
-              and the few emissaries who cross the Uncharted Seas raise more questions than answers.
-            </p>
-            <div class="mt-5">
-              <a class="btn" href="/world/other-locations.html#khal-teryn">Khal-Teryn teasers →</a>
-            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Seas -->
-    <section class="section">
-      <div class="panel p-6 sm:p-8">
-        <h2 class="h2 text-3xl text-stardust">The Seas Between</h2>
-        <p class="lead mt-3">
-          The oceans bind the world together and keep it apart. Routes exist, but certainty does not.
-        </p>
+      <!-- SPACE BESIDES -->
+      <section id="space-besides" class="section-tight">
+        <div class="panel p-7 md:p-10">
+          <h2 class="font-display text-3xl md:text-4xl text-stardust">The Space Besides</h2>
+          <p class="mt-3 text-stardust/75 max-w-3xl">
+            Reality is not as solid as it appears. Between stable places lies a liminal realm of distortion,
+            cracks, and wrongness. Most of the time, those cracks remain sealed.
+          </p>
 
-        <div class="mt-8 grid md:grid-cols-3 gap-6">
-          <div class="panel-inner p-6">
-            <h3 class="h2 text-xl">The Uncharted Seas</h3>
-            <p class="lead mt-3">
-              Vast expanses remain poorly mapped. Established trade routes exist, but much lies unexplored,
-              home to unknown dangers and undiscovered lands.
-            </p>
-          </div>
-
-          <div class="panel-inner p-6">
-            <h3 class="h2 text-xl">The Fractured Waters</h3>
-            <p class="lead mt-3">
-              In places, reality grows thin. Rifts open without warning, spilling strange creatures and corrupting
-              influences into the mortal world.
-            </p>
-          </div>
-
-          <div class="panel-inner p-6">
-            <h3 class="h2 text-xl">The Wandering Tracks</h3>
-            <p class="lead mt-3">
-              Marked on ancient maps with question marks and dotted lines, these sightings trace the Isle of 404:
-              unreliable reports and desperate hope, across centuries.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Cipheria -->
-    <section id="cipheria" class="section">
-      <div class="panel p-6 sm:p-8">
-        <h2 class="h2 text-3xl text-stardust">The Kingdom of Cipheria</h2>
-        <p class="lead mt-3">
-          On Valorath’s eastern coast lies Cipheria, our primary focus and the setting for the tales preserved in these archives.
-        </p>
-
-        <div class="mt-8 grid lg:grid-cols-12 gap-6">
-          <div class="lg:col-span-7 panel-inner p-6">
-            <h3 class="h2 text-2xl">A Nation Built on Vigilance</h3>
-            <p class="lead mt-3">
-              Cipheria is not the largest kingdom, but it is among the most secure and well-organized. A collaborative Council
-              balances military strength, prosperity, intelligence, historical wisdom, and royal authority.
-            </p>
-            <p class="lead mt-4">
-              At the heart of this success stands the Dreaming Tower: ancient, semi-sentient, and watching. It began as an
-              Observatory and became something far greater: a living repository, warning system, and symbol of learning from the past.
-            </p>
-
-            <div class="mt-5">
-              <a class="btn btn-primary" href="/world/cipheria.html">Read Cipheria’s history →</a>
+          <div class="mt-6 grid gap-6 lg:grid-cols-3">
+            <div class="panel p-6 lg:col-span-2">
+              <p class="text-stardust/75 leading-relaxed">
+                But sometimes, reality breaks. When it does, creatures slip through into the mortal world,
+                bringing corruption and chaos with them. Rifts appear most often in wild lands, disaster sites,
+                and places weakened by prolonged magical use or catastrophic events.
+              </p>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                Understanding and sealing these rifts is one of Cipheria’s ongoing burdens, requiring the
+                Dreaming Tower’s knowledge and coordinated response from the Council.
+              </p>
             </div>
-          </div>
-
-          <div class="lg:col-span-5 panel-inner p-6">
-            <h3 class="h2 text-2xl">Geography and Major Cities</h3>
-            <ul class="mt-4 space-y-2 text-stardust/80">
-              <li><span class="text-stardust/90 font-semibold">The Crown City</span> — concentric rings of increasing security, Tower visible across the skyline.</li>
-              <li><span class="text-stardust/90 font-semibold">Harbordeep / Tide’s Gate</span> — trade hubs where Cloud Spires anchor floating infrastructure.</li>
-              <li><span class="text-stardust/90 font-semibold">Ironhearth</span> — industrial footholds forging tools of defense.</li>
-              <li><span class="text-stardust/90 font-semibold">Brighthollow</span> — agricultural heartlands feeding a growing population.</li>
-              <li><span class="text-stardust/90 font-semibold">The Borderlands</span> — fortified towns watching the wild lands beyond.</li>
-            </ul>
-
-            <div class="mt-5">
-              <a class="btn" href="/world/other-locations.html">Browse locations →</a>
+            <div class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">Teaser</h3>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                Rifts do not just open. They are invited by negligence, fed by shortcuts, and widened by panic.
+              </p>
+              <div class="mt-6">
+                <a class="btn-soft" href="/world/space-besides.html">Study the Space Besides →</a>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="mt-6 panel-inner p-6">
-          <h3 class="h2 text-2xl">Threats from the Wilds and Beyond</h3>
-          <p class="lead mt-3">
-            Civilization is not the default state. Beyond the borders lie untamed territories where threats take physical form.
-            These Glitchborne are born from corruption, chaos, and the breakdown of order.
-          </p>
-          <p class="lead mt-4">
-            Some emerge from wilderness. Others slip through rifts from the Space Besides. And some are created by civilization itself:
-            corrupted experiments, mistakes, and weaponized dangers that blur the line between external threat and internal failure.
+      <!-- ISLE 404 -->
+      <section id="isle-404" class="section-tight pb-14">
+        <div class="panel p-7 md:p-10">
+          <h2 class="font-display text-3xl md:text-4xl text-stardust">The Isle of 404: Myth or Reality?</h2>
+          <p class="mt-3 text-stardust/75 max-w-3xl">
+            Ask ten scholars about the Isle of 404 and you will get ten different answers. Myth, hoax,
+            cursed land, or something stranger that slips between worlds.
           </p>
 
-          <div class="mt-5">
-            <a class="btn" href="/world/bestiary.html">Enter the Bestiary →</a>
+          <div class="mt-8 grid gap-6 lg:grid-cols-2">
+            <div class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">What the Records Suggest</h3>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                The Isle appears to phase between the known world and the Space Besides. Those who land there
+                risk being stranded when it shifts away. Inhabitants from different eras and cultures have
+                built a desperate society on a shore that may vanish at any moment.
+              </p>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                No one has determined the pattern. No map can track it reliably. Found by accident, fate,
+                or perhaps by those carrying fragments of impossible knowledge.
+              </p>
+              <div class="mt-6">
+                <a class="btn-soft" href="/world/isle-404.html">Chase the Isle →</a>
+              </div>
+            </div>
+
+            <div class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">A World of Stories</h3>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                Kingdoms rise and fall. Trade routes shift. Threats evolve. The Dreaming Tower watches,
+                records, and remembers. These archives preserve the stories that matter: crisis, response,
+                and the cost of endurance.
+              </p>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a class="btn-primary" href="/chronicles.html">Read the Chronicles</a>
+                <a class="btn-soft" href="/field-notes.html">Browse Field Notes →</a>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Space Besides -->
-    <section class="section">
-      <div class="panel p-6 sm:p-8">
-        <h2 class="h2 text-3xl text-stardust">The Space Besides</h2>
-        <p class="lead mt-3">
-          Reality is not as solid as it appears. Between the stable world exists a liminal realm of distortion and wrongness:
-          not another dimension, but the gaps in reality itself.
-        </p>
-
-        <div class="mt-6 panel-inner p-6">
-          <h3 class="h2 text-2xl">When reality cracks</h3>
-          <p class="lead mt-3">
-            Rifts appear most often in wild lands, ancient disaster sites, and places weakened by prolonged magical use or catastrophic events.
-            The Fractured Waters are the most persistent example, but smaller rifts can open anywhere, without warning.
-          </p>
-          <p class="lead mt-4">
-            Understanding and sealing these breaches remains one of Cipheria’s ongoing challenges, requiring both the Tower’s ancient knowledge
-            and the Council’s coordinated response.
+          <p class="mt-8 text-sm text-stardust/65">
+            The Tower dreams. The Kingdom endures. And the stories continue.
           </p>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- Isle of 404 -->
-    <section id="isle404" class="section">
-      <div class="panel p-6 sm:p-8">
-        <h2 class="h2 text-3xl text-stardust">The Isle of 404: Myth or Reality?</h2>
-        <p class="lead mt-3">
-          Ask any scholar, and you’ll receive a different answer. Some insist it is myth. Others point to centuries of sightings,
-          recorded by witnesses who swear they walked its shores before it vanished.
-        </p>
-
-        <div class="mt-6 panel-inner p-6">
-          <p class="lead">
-            The prevailing theory is stranger than both: the Isle of 404 slips between realities, spending time in the normal world before phasing
-            into the Space Besides, only to emerge elsewhere when it returns.
-          </p>
-          <p class="lead mt-4">
-            Those who land there risk being stranded when it phases away. The scattered inhabitants, drawn from many eras and cultures,
-            have built a fragile society on an island that may abandon them at any moment.
-          </p>
-          <p class="lead mt-4">
-            No one has mapped a reliable pattern. It remains lost, wandering, found only by accident, fate, or perhaps by those who carry fragments
-            of impossible knowledge in their broken memories.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Closing -->
-    <section class="section pt-6">
-      <div class="panel p-6 sm:p-8">
-        <h2 class="h2 text-3xl text-stardust">A World of Stories</h2>
-        <p class="lead mt-3">
-          Kingdoms rise and fall. Trade routes shift. Threats evolve. And through it all, the Dreaming Tower watches, records, and remembers.
-        </p>
-        <p class="lead mt-4">
-          These archives preserve the stories that matter: crises and response, decisions made under impossible pressure, and individuals who stand
-          against the tide of chaos.
-        </p>
-        <p class="lead mt-4">
-          The Tower dreams. The Kingdom endures. And the stories continue.
-        </p>
-      </div>
-    </section>
-
+    <!-- Footer partial inject -->
     <div id="site-footer"></div>
-    
-  </main>  
 
-  <script>
-
-    async function loadPartial(targetId, url) {
-    const el = document.getElementById(targetId);
-    if (!el) return;
-
-    const res = await fetch(url, { cache: "no-cache" });
-    if (!res.ok) {
-      console.warn(`Failed to load ${url}`);
-      return;
-    }
-    el.innerHTML = await res.text();
-  }
-
-  function initHeaderNav() {
-    const navToggle = document.getElementById("navToggle");
-    const mobileNavPanel = document.getElementById("mobileNavPanel");
-
-    if (!navToggle || !mobileNavPanel) return;
-
-    navToggle.addEventListener("click", () => {
-      const isOpen = navToggle.getAttribute("aria-expanded") === "true";
-      navToggle.setAttribute("aria-expanded", String(!isOpen));
-      mobileNavPanel.classList.toggle("hidden", isOpen);
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        navToggle.setAttribute("aria-expanded", "false");
-        mobileNavPanel.classList.add("hidden");
+    <!-- Header/Footer loader + shared JS (same approach as your other pages) -->
+    <script>
+      async function injectPartial(id, url) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const res = await fetch(url, { cache: "no-cache" });
+        el.innerHTML = await res.text();
       }
-    });
-  }
 
-  function initFooterYear() {
-    const year = document.getElementById("year");
-    if (year) year.textContent = new Date().getFullYear();
-  }
+      (async () => {
+        await injectPartial("site-header", "/partials/header.html");
+        await injectPartial("site-footer", "/partials/footer.html");
 
-  (async function boot() {
-    await loadPartial("site-header", "/partials/header.html");
-    initHeaderNav();
-
-    await loadPartial("site-footer", "/partials/footer.html");
-    initFooterYear();
-  })();
-  </script>
-</body>
+        // Set year if present
+        const yearEl = document.getElementById("year");
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+      })();
+    </script>
+  </body>
 </html>
