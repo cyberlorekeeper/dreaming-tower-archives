@@ -5,64 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cyber Lorekeeper — Character Codex</title>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-  <link rel="shortcut icon" href="/images/favicon.ico">
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  
+    <!-- IMPORTANT: Tailwind config must load BEFORE Tailwind CDN -->
+    <script src="/assets/js/tailwind-config.js?v4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  
+    <!-- Global CSS (your shared component classes like soft-card, tag, etc.) -->
+    <link rel="stylesheet" href="/assets/css/styles.css?v=4" />
+  
+    <!-- World-only CSS -->
+    <link rel="stylesheet" href="/assets/css/characters.css?v3" />
 
-  <meta name="description" content="The Character Codex of the Dreaming Tower and the Digital Realm." />
-
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'deep-space':'#0A141B',
-            'abyss':'#0F2230',
-            'rift':'#143545',
-            'nebula':'#1E6175',
-            'glow':'#35C6E0',
-            'stardust':'#CFE5EF',
-            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
-            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
-          },
-          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
-          boxShadow:{
-            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
-            card:'0 6px 18px rgba(0,0,0,.12)'
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
-    .text-gradient{
-      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-    .soft-card{
-      border: 1px solid rgba(20,53,69,.65);
-      background: rgba(15,34,48,.35);
-      border-radius: 1rem;
-      box-shadow: 0 6px 18px rgba(0,0,0,.12);
-      backdrop-filter: blur(6px);
-    }
-    .card-hover { transition: transform .15s ease, filter .15s ease; }
-    .card-hover:hover { transform: translateY(-2px); filter: brightness(1.05); }
-    .tag{
-      border: 1px solid rgba(20,53,69,.65);
-      background: rgba(15,34,48,.35);
-      border-radius: 9999px;
-      padding: .25rem .75rem;
-      font-size: .75rem;
-      color: rgba(207,229,239,.85);
-      white-space: nowrap;
-    }
-  </style>
+  <div id="site-header"></div>
 </head>
 
 <body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
@@ -120,6 +79,7 @@
   </main>
 
   <div id="site-footer"></div>
+  <script src="/assets/js/site.js?v=1"></script>
   
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
