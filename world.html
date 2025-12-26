@@ -5,38 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The World | The Dreaming Tower Archives</title>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-  <link rel="shortcut icon" href="/images/favicon.ico">
+  <!-- Favicon (adjust path if yours differs) -->
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link rel="apple-touch-icon" href="/images/favicon.png" />
 
-  <meta name="description" content="The Character Codex of the Dreaming Tower and the Digital Realm." />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind config must be set BEFORE loading the CDN script -->
   <script>
+    tailwind = window.tailwind || {};
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            'deep-space':'#0A141B',
-            'abyss':'#0F2230',
-            'rift':'#143545',
-            'nebula':'#1E6175',
-            'glow':'#35C6E0',
-            'stardust':'#CFE5EF',
-            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
-            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          fontFamily: {
+            display: ["Cinzel", "serif"],
+            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
           },
-          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
-          boxShadow:{
-            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
-            card:'0 6px 18px rgba(0,0,0,.12)'
+          colors: {
+            abyss: "#071017",
+            rift: "#1b3243",
+            stardust: "#d7e1ea",
+            glow: "#35d3ff"
+          },
+          boxShadow: {
+            card: "0 18px 60px rgba(0,0,0,.35)"
           }
         }
       }
-    }
+    };
   </script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Page styles (embedded, global-ish defaults + world-specific helpers) -->
   <style>
@@ -190,16 +191,80 @@
   </style>
 </head>
 
-<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
-  <main class="relative min-h-screen">
-    <!-- Background -->
-    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
-    <!-- Make overlay ignore pointer events so it doesn't interfere with hover/click -->
-    <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+<body>
+  <!-- Header (embedded) -->
+  <header class="relative mx-auto max-w-6xl z-50 px-6 pt-10">
+    <div class="flex items-center justify-between gap-4">
+      <a href="/" class="inline-flex items-center gap-3 group">
+        <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-abyss/70 border border-rift/60">
+          <img src="/images/icon.png" alt="Cyber Lorekeeper" class="h-8 w-8" />
+        </span>
+        <span class="font-display text-sm tracking-[.14em] uppercase text-stardust/80 group-hover:text-stardust">
+          The Cyber Lorekeeper
+        </span>
+      </a>
 
-    <!-- Header partial -->
-    <div id="site-header"></div>
-    
+      <!-- Mobile menu button -->
+      <button id="navToggle"
+        class="focus-ring inline-flex items-center justify-center rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 text-sm font-semibold text-stardust shadow-sm ring-1 ring-glow/30 hover:ring-glow/60 hover:text-glow transition lg:hidden"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobileNavPanel">
+        Menu
+      </button>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-6 text-sm text-stardust/80" aria-label="Primary">
+        <a class="hover:text-glow underline-offset-4 hover:underline" href="/chronicles/">Chronicles</a>
+        <a class="hover:text-glow underline-offset-4 hover:underline" href="/field-notes/">Field Notes</a>
+        <a class="hover:text-glow underline-offset-4 hover:underline" href="/characters/">Characters</a>
+
+        <div class="relative group">
+          <a href="/world.html" class="inline-flex items-center gap-1 hover:text-glow underline-offset-4 hover:underline">
+            The World <span aria-hidden="true">▾</span>
+          </a>
+
+          <div class="absolute left-0 top-full h-2 w-full"></div>
+          <div class="absolute z-50 left-0 top-full mt-2 hidden min-w-[220px] rounded-lg border border-rift/60 bg-abyss/90 p-2 shadow-card backdrop-blur-md group-hover:block group-focus-within:block">
+            <a href="/world/cipheria.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow">Cipheria's History</a>
+            <a href="/world/other-locations.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow">Other Locations</a>
+            <a href="/world/bestiary.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow">Bestiary</a>
+          </div>
+        </div>
+
+        <a class="hover:text-glow underline-offset-4 hover:underline" href="/author.html">Author</a>
+      </nav>
+    </div>
+
+    <!-- Mobile panel (hidden until Menu tap) -->
+    <div id="mobileNavPanel" class="mt-4 hidden lg:hidden rounded-lg border border-rift/60 bg-abyss/30 p-4">
+      <div class="flex flex-col gap-3 text-stardust/85">
+        <a class="hover:text-glow underline underline-offset-4" href="/chronicles/">Chronicles</a>
+        <a class="hover:text-glow underline underline-offset-4" href="/field-notes/">Field Notes</a>
+        <a class="hover:text-glow underline underline-offset-4" href="/characters/">Characters</a>
+
+        <div class="pt-2 border-t border-rift/50">
+          <a class="block font-semibold text-stardust/90 hover:text-glow underline underline-offset-4" href="/world.html">
+            The World
+          </a>
+          <details class="mt-2">
+            <summary class="cursor-pointer text-sm text-stardust/80 hover:text-glow">
+              Sections <span aria-hidden="true">▾</span>
+            </summary>
+            <div class="mt-2 flex flex-col gap-2 pl-2">
+              <a class="hover:text-glow underline underline-offset-4" href="/world/cipheria.html">Cipheria's History</a>
+              <a class="hover:text-glow underline underline-offset-4" href="/world/other-locations.html">Other Locations</a>
+              <a class="hover:text-glow underline underline-offset-4" href="/world/bestiary.html">Bestiary</a>
+            </div>
+          </details>
+        </div>
+
+        <a class="hover:text-glow underline underline-offset-4 pt-2 border-t border-rift/50" href="/author.html">Author</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative mx-auto max-w-6xl px-6 pb-20">
     <!-- Hero -->
     <section class="section pt-14">
       <div class="grid lg:grid-cols-12 gap-10 items-start">
@@ -476,9 +541,34 @@
   </main>
 
   <!-- Footer (embedded) -->
-  <div id="site-footer"></div>
+  <footer class="relative mx-auto max-w-6xl px-6 pb-14">
+    <div class="panel p-6 sm:p-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <div class="font-display tracking-[.14em] uppercase text-stardust/80 text-sm">
+            The Dreaming Tower Archives
+          </div>
+          <p class="mt-2 text-sm text-stardust/70">
+            Recovered tales, field notes, and records from the Digital Realm.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <a class="btn" href="/chronicles/">Chronicles</a>
+          <a class="btn" href="/characters/">Characters</a>
+          <a class="btn btn-primary" href="/world.html">The World</a>
+        </div>
+      </div>
+
+      <p class="mt-8 text-center text-xs text-stardust/60">
+        © <span id="year"></span> The Cyber Lorekeeper. All rights reserved.
+      </p>
+    </div>
+  </footer>
 
   <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
     // Mobile nav toggle
     (function(){
