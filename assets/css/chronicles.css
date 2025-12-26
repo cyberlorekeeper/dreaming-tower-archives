@@ -1,0 +1,29 @@
+/* =========================================================
+   Chronicles Pages Styles
+   Purpose: Long-form reading, archival tone, calm rhythm
+   Depends on: styles.css (global tokens + background)
+========================================================= */
+
+/* Page wrapper */
+.chronicles-page {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* Header / kicker */
+.chronicles-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  color: rgba(207,229,239,0.65);
+  margin-bottom: 0.75rem;
+}
+
+/* Main title */
+.chronicles-title {
+  font-family: "Cinzel", serif;
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  line-height: 1.1;
+  color: rgba(207,229,239,0.95);
+  margi
