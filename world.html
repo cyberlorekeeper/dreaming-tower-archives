@@ -95,7 +95,11 @@
       }
 
       /* Make sure all page content is above overlay */
-      #site-header,
+      #site-header {
+        position: relative;
+        z-index: 50;
+      }
+
       #site-footer,
       main {
         position: relative;
@@ -436,7 +440,7 @@
       </section>
 
       <!-- ISLE 404 -->
-      <section id="isle-404" class="section-tight">
+      <section id="isle-404" class="section-tight pb-14">
         <div class="panel p-7 md:p-10">
           <h2 class="font-display text-3xl md:text-4xl text-stardust">The Isle of 404: Myth or Reality?</h2>
           <p class="mt-3 text-stardust/75 max-w-3xl">
@@ -444,7 +448,7 @@
             cursed land, or something stranger that slips between worlds.
           </p>
 
-          <div class="mt-8">
+          <div class="mt-8 grid gap-6 lg:grid-cols-2">
             <div class="panel p-6">
               <h3 class="font-display text-2xl text-stardust">What the Records Suggest</h3>
               <p class="mt-3 text-stardust/75 leading-relaxed">
@@ -468,20 +472,18 @@
         </div>
       </section>
 
-      <!-- STORIES -->
-        <div class="panel p-7 md:p-10">
-          <h2 class="font-display text-3xl md:text-4xl text-stardust">A World of Stories</h2>
-          <p class="mt-3 text-stardust/75 max-w-3xl">
-            Kingdoms rise and fall. Trade routes shift. Threats evolve. The Dreaming Tower watches, records,
-            and remembers. These archives preserve the stories that matter: crisis, response, and the cost of
-            endurance.
-          </p>
-
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a class="btn-primary" href="/chronicles.html">Read the Chronicles</a>
-            <a class="btn-soft" href="/field-notes.html">Browse Field Notes →</a>
-          </div>
-        </div>
+      <div class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">A World of Stories</h3>
+              <p class="mt-3 text-stardust/75 leading-relaxed">
+                Kingdoms rise and fall. Trade routes shift. Threats evolve. The Dreaming Tower watches,
+                records, and remembers. These archives preserve the stories that matter: crisis, response,
+                and the cost of endurance.
+              </p>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a class="btn-primary" href="/chronicles.html">Read the Chronicles</a>
+                <a class="btn-soft" href="/field-notes.html">Browse Field Notes →</a>
+              </div>
+            </div>
     </main>
 
     <!-- Footer partial inject -->
