@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyber Lorekeeper — Author</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <meta name="description" content="Meet the Cyber Lorekeeper — the storyteller and security mind behind the chronicles of the Dreaming Tower." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow:{
+            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card:'0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .soft-card{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.35);
+      border-radius: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      backdrop-filter: blur(6px);
+    }
+    .card-hover { transition: transform .15s ease, filter .15s ease; }
+    .card-hover:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .tag{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.35);
+      border-radius: 9999px;
+      padding: .25rem .75rem;
+      font-size: .75rem;
+      color: rgba(207,229,239,.85);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen">
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+
+    <div id="site-header"></div>
+
+    <section class="relative mx-auto max-w-6xl px-6 pt-12 pb-8">
+      <div class="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] items-start">
+        <div class="soft-card p-8 lg:p-10 shadow-card">
+          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Author</p>
+          <h1 class="mt-2 font-display text-4xl sm:text-5xl leading-tight text-gradient">Meet the Cyber Lorekeeper</h1>
+          <p class="mt-5 text-stardust/85 leading-relaxed text-lg">
+            I’m Victoria Mosby — a storyteller, cybersecurity professional, and keeper of these chronicles.
+            The Dreaming Tower and the Digital Realm are my way of translating complex threats, resilience,
+            and human choices into legends you can feel.
+          </p>
+          <p class="mt-4 text-stardust/80 leading-relaxed">
+            By day, I guide teams through digital risk. By night, I’m weaving field notes, characters, and
+            dispatches that blur the line between security research and speculative fiction. Welcome to the
+            archive where those worlds converge.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="tag">Cybersecurity storyteller</span>
+            <span class="tag">Worldbuilder</span>
+            <span class="tag">Educator</span>
+          </div>
+        </div>
+
+        <div class="soft-card p-6 lg:p-8 shadow-card text-center">
+          <div class="relative mx-auto h-40 w-40 sm:h-48 sm:w-48">
+            <div class="absolute -inset-3 rounded-full bg-gradient-to-br from-glow/25 via-violet/20 to-ember/25 blur-2xl" aria-hidden="true"></div>
+            <div class="relative h-full w-full overflow-hidden rounded-full border border-rift/60 bg-abyss/80 flex items-center justify-center">
+              <img src="/images/icon.png" alt="Portrait of Victoria Mosby" class="h-24 w-24 sm:h-28 sm:w-28" />
+            </div>
+          </div>
+
+          <p class="mt-4 text-stardust/85 leading-relaxed">
+            I built the Lorekeeper’s archive to make security feel human — curious, imperfect, and worth protecting.
+            Thanks for stepping into the tower.
+          </p>
+
+          <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div class="rounded-lg border border-rift/60 bg-abyss/40 px-4 py-3">
+              <p class="text-xs uppercase tracking-[.16em] text-stardust/60">From</p>
+              <p class="mt-1 font-semibold text-stardust">Pacific Northwest</p>
+            </div>
+            <div class="rounded-lg border border-rift/60 bg-abyss/40 px-4 py-3">
+              <p class="text-xs uppercase tracking-[.16em] text-stardust/60">Currently</p>
+              <p class="mt-1 font-semibold text-stardust">Writing &amp; shipping lore</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative mx-auto max-w-6xl px-6 pb-14">
+      <div class="soft-card p-8 lg:p-10 shadow-card">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Connect with Me</p>
+            <h2 class="font-display text-3xl text-stardust/95 mt-1">Follow the journey beyond the tower</h2>
+            <p class="mt-2 text-stardust/80 max-w-3xl leading-relaxed">
+              Explore more of my work, security research, and creative experiments across the web.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-3 sm:mt-0">
+            <span class="tag">Newsletter</span>
+            <span class="tag">Speaking</span>
+            <span class="tag">Projects</span>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-2">
+          <a href="https://victoriamosby.com/" target="_blank" rel="noreferrer" class="soft-card card-hover p-5 sm:p-6 block border border-rift/60">
+            <p class="text-sm uppercase tracking-[.16em] text-stardust/60">Portfolio</p>
+            <div class="mt-1 flex items-center gap-2">
+              <h3 class="font-display text-2xl text-stardust">victoriamosby.com</h3>
+              <span aria-hidden="true" class="text-glow">→</span>
+            </div>
+            <p class="mt-2 text-sm text-stardust/80 leading-relaxed">Projects, experiments, and the wider creative lab behind the Lorekeeper.</p>
+          </a>
+
+          <a href="https://www.linkedin.com/in/victoriamosby/" target="_blank" rel="noreferrer" class="soft-card card-hover p-5 sm:p-6 block border border-rift/60">
+            <p class="text-sm uppercase tracking-[.16em] text-stardust/60">Professional</p>
+            <div class="mt-1 flex items-center gap-2">
+              <h3 class="font-display text-2xl text-stardust">LinkedIn</h3>
+              <span aria-hidden="true" class="text-glow">→</span>
+            </div>
+            <p class="mt-2 text-sm text-stardust/80 leading-relaxed">Security leadership, talks, and collaborations.</p>
+          </a>
+
+          <a href="https://victoriamosby.com/newsletter" target="_blank" rel="noreferrer" class="soft-card card-hover p-5 sm:p-6 block border border-rift/60">
+            <p class="text-sm uppercase tracking-[.16em] text-stardust/60">Dispatches</p>
+            <div class="mt-1 flex items-center gap-2">
+              <h3 class="font-display text-2xl text-stardust">Field Notes Newsletter</h3>
+              <span aria-hidden="true" class="text-glow">→</span>
+            </div>
+            <p class="mt-2 text-sm text-stardust/80 leading-relaxed">Inbox-only stories, recovered pages, and security reflections.</p>
+          </a>
+
+          <a href="https://github.com/victoriamosby" target="_blank" rel="noreferrer" class="soft-card card-hover p-5 sm:p-6 block border border-rift/60">
+            <p class="text-sm uppercase tracking-[.16em] text-stardust/60">Builds</p>
+            <div class="mt-1 flex items-center gap-2">
+              <h3 class="font-display text-2xl text-stardust">GitHub</h3>
+              <span aria-hidden="true" class="text-glow">→</span>
+            </div>
+            <p class="mt-2 text-sm text-stardust/80 leading-relaxed">Prototypes, automations, and lore-adjacent code experiments.</p>
+          </a>
+        </div>
+      </div>
+
+      <p class="mt-10 text-center text-xs text-stardust/65">
+        © <span id="year"></span> The Cyber Lorekeeper. All rights reserved.
+      </p>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  
+  <script>
+    function setPageYear() {
+      const year = document.getElementById('year');
+      if (year) year.textContent = new Date().getFullYear();
+    }
+
+    async function loadPartial(targetId, url) {
+      const el = document.getElementById(targetId);
+      if (!el) return;
+  
+      const res = await fetch(url, { cache: "no-cache" });
+      if (!res.ok) {
+        console.warn(`Failed to load ${url}`);
+        return;
+      }
+      el.innerHTML = await res.text();
+    }
+  
+    function initHeaderNav() {
+      const navToggle = document.getElementById("navToggle");
+      const mobileNavPanel = document.getElementById("mobileNavPanel");
+  
+      if (!navToggle || !mobileNavPanel) return;
+  
+      navToggle.addEventListener("click", () => {
+        const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!isOpen));
+        mobileNavPanel.classList.toggle("hidden", isOpen);
+      });
+  
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          navToggle.setAttribute("aria-expanded", "false");
+          mobileNavPanel.classList.add("hidden");
+        }
+      });
+    }
+  
+    function initFooterYear() {
+      const footerYear = document.querySelector('#site-footer #year');
+      if (footerYear) footerYear.textContent = new Date().getFullYear();
+    }
+  
+    (async function boot() {
+      await loadPartial("site-header", "/partials/header.html");
+      initHeaderNav();
+  
+      await loadPartial("site-footer", "/partials/footer.html");
+      initFooterYear();
+      setPageYear();
+    })();
+  </script>
+</body>
+</html>
