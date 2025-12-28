@@ -95,7 +95,11 @@
       }
 
       /* Make sure all page content is above overlay */
-      #site-header,
+      #site-header {
+        position: relative;
+        z-index: 50;
+      }
+
       #site-footer,
       main {
         position: relative;
