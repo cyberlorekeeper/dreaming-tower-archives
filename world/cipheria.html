@@ -186,24 +186,32 @@
             </div>
           </div>
 
-          <div class="panel p-4 flex flex-col gap-3 overflow-hidden">
-            <div class="image-placeholder flex flex-col items-center justify-center px-6 py-10 text-center w-full">
+          <div class="panel p-4 flex flex-col gap-3 self-start">
+          <!-- Image frame -->
+          <div class="w-full overflow-hidden rounded-xl border border-rift/60 bg-abyss/60 shadow-glow">
+            <!-- This controls height so the right panel doesn't exceed the left -->
+            <div class="w-full aspect-[3/4] max-h-[520px]">
               <img
                 src="/images/cipheria.png"
                 alt="Crown City of Cipheria"
-                class="w-full max-h-[420px] object-contain border border-rift/60 bg-abyss/60 shadow-glow"
+                class="h-full w-full object-cover"
               />
-              <p class="mt-2 text-sm text-stardust/65 leading-relaxed max-w-sm">
-                Reserve this space for a skyline rendering of the Crown City with the Dreaming Tower at the center.
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-2 text-sm text-stardust/75">
-              <span class="chip">Location: Eastern coast of Valorath</span>
-              <span class="chip">Size: Mid-sized regional power</span>
-              <span class="chip">Population: ~3–5 million</span>
-              <span class="chip">Capital: The Crown City (~800,000)</span>
             </div>
           </div>
+        
+          <p class="text-sm text-stardust/65 leading-relaxed text-center">
+            Reserve this space for a skyline rendering of the Crown City with
+            the Dreaming Tower at the center.
+          </p>
+        
+          <div class="flex flex-wrap gap-2 text-sm text-stardust/75">
+            <span class="chip">Location: Eastern coast of Valorath</span>
+            <span class="chip">Size: Mid-sized regional power</span>
+            <span class="chip">Population: ~3–5 million</span>
+            <span class="chip">Capital: The Crown City (~800,000)</span>
+          </div>
+        </div>
+
         </div>
       </section>
 
