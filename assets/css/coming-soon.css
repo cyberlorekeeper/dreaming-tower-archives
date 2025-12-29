@@ -1,0 +1,130 @@
+/* /assets/css/coming-soon.css
+   Shared styling for the reusable Coming Soon template.
+   Relies on design tokens defined in /assets/css/styles.css.
+*/
+
+.coming-shell{
+  position: relative;
+}
+
+.coming-shell::before{
+  content:"";
+  position: absolute;
+  inset:-18%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .6;
+  background-image:
+    radial-gradient(circle at 18% 20%, rgba(53,198,224,.20), transparent 45%),
+    radial-gradient(circle at 78% 8%, rgba(124,77,255,.12), transparent 45%),
+    radial-gradient(circle at 60% 75%, rgba(207,229,239,.10), transparent 50%),
+    linear-gradient(90deg, rgba(255,255,255,.02) 0%, rgba(255,255,255,.0) 50%, rgba(255,255,255,.02) 100%),
+    linear-gradient(0deg, rgba(255,255,255,.02) 0%, rgba(255,255,255,.0) 50%, rgba(255,255,255,.02) 100%);
+  background-size: auto, auto, auto, 160px 1px, 1px 160px;
+  transform: rotate(-1deg);
+  filter: saturate(1.05);
+}
+
+.coming-surface{
+  position: relative;
+  z-index: 1;
+}
+
+.coming-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .45rem .85rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--glass-2);
+  color: rgba(207,229,239,.92);
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.coming-pill .dot{
+  height: .6rem;
+  width: .6rem;
+  border-radius: 999px;
+  background: var(--glow);
+  box-shadow: 0 0 0 6px rgba(53,198,224,.12);
+}
+
+.coming-card{
+  position: relative;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+
+.coming-card::before{
+  content:"";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(53,198,224,.08), rgba(124,77,255,.04));
+  opacity: .6;
+  pointer-events: none;
+}
+
+.coming-card > *{ position: relative; z-index: 1; }
+
+.coming-check{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.6rem;
+  width: 1.6rem;
+  border-radius: 999px;
+  background: rgba(53,198,224,.14);
+  border: 1px solid rgba(53,198,224,.4);
+  color: var(--glow);
+  font-weight: 700;
+}
+
+.coming-highlight-title{
+  font-family: var(--font-display);
+  color: rgba(207,229,239,.96);
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.coming-highlight-body{
+  color: rgba(207,229,239,.80);
+  line-height: 1.7;
+  margin-top: .6rem;
+}
+
+.coming-status{
+  display: grid;
+  gap: .5rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.coming-status .tile{
+  border: 1px solid var(--border);
+  background: var(--glass-2);
+  border-radius: .9rem;
+  padding: .85rem 1rem;
+  color: rgba(207,229,239,.88);
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+}
+
+.coming-status .label{
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(207,229,239,.72);
+}
+
+.coming-status .value{
+  margin-top: .25rem;
+  font-weight: 700;
+  color: rgba(207,229,239,.95);
+}
+
+.coming-actions a{ text-decoration: none; }

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Other Locations | Coming Soon | The Cyber Lorekeeper</title>
+  <meta name="description" content="New maps and regions from the Dreaming Tower archives are being charted." />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <link rel="stylesheet" href="/assets/css/coming-soon.css" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/assets/js/tailwind-config.js"></script>
+  <script defer src="/assets/js/site.js"></script>
+</head>
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="coming-shell min-h-screen">
+    <div class="coming-surface">
+      <div id="site-header"></div>
+
+      <section class="relative mx-auto max-w-5xl px-6 pt-12 pb-6 text-center">
+        <span class="coming-pill">
+          <span class="dot" aria-hidden="true"></span>
+          Coming Soon
+        </span>
+        <h1 class="mt-3 font-display text-4xl sm:text-5xl leading-tight text-gradient">
+          <span data-page-name>Other Locations</span> are being charted
+        </h1>
+        <p class="mt-4 text-stardust/85 max-w-3xl mx-auto" data-summary>
+          Maps, cultures, and border towns beyond Cipheria are being drawn for the archives.
+        </p>
+      </section>
+
+      <section class="relative mx-auto max-w-5xl px-6 pb-16 space-y-8">
+        <div class="coming-card p-6">
+          <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+            <div class="text-left space-y-3 max-w-3xl">
+              <p class="text-xs uppercase tracking-[.18em] text-stardust/70">What we're building</p>
+              <p class="text-lg text-stardust/90 leading-relaxed" data-lede>
+                Travelogues, trade routes, and hazard flags to anchor future stories across the realm.
+              </p>
+              <ul id="promiseList" class="grid gap-3 md:grid-cols-2"></ul>
+            </div>
+            <div class="md:w-64 w-full">
+              <div class="coming-status" id="comingStatus"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-3" id="comingHighlights"></div>
+
+        <div class="coming-card p-6 text-center">
+          <p class="text-xs uppercase tracking-[.18em] text-stardust/70">Stay in the loop</p>
+          <p class="mt-2 text-stardust/85 text-sm">We’ll send a raven when new regions unlock.</p>
+          <div class="coming-actions mt-5 flex flex-wrap items-center justify-center gap-3">
+            <a data-primary-cta class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 text-abyss font-semibold shadow-glow hover:brightness-110" href="/#email">
+              Notify me
+            </a>
+            <a data-secondary-cta class="focus-ring inline-flex items-center justify-center rounded-md border border-rift/60 bg-abyss/40 px-5 py-3 text-stardust/90 hover:text-glow" href="/world.html">
+              Visit the World Hub
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div id="site-footer"></div>
+    </div>
+  </main>
+
+  <script>
+    window.COMING_SOON_PAGE = {
+      pageName: "Other Locations",
+      summary: "Maps, cultures, and border towns beyond Cipheria are being drawn for the archives.",
+      lead: "Travelogues, trade routes, and hazard flags will anchor future stories across the realm.",
+      promises: [
+        { text: "Regional profiles with customs, power players, and rumors worth chasing." },
+        { text: "Signals of conflict, trade, and alliances that tie back to Cipheria's fate." },
+        { text: "Anchors for Chronicles, Field Notes, and Character Codex entries to cross-link." },
+      ],
+      highlights: [
+        { title: "Regional snapshots", body: "Concise briefs on capitals, hidden enclaves, and the scars left by past breaches." },
+        { title: "Travel hazards", body: "Threat markers, safe paths, and who controls the roads between kingdoms." },
+        { title: "Allies & enclaves", body: "Who to trust, who to avoid, and where the Lorekeeper stashes caches." },
+      ],
+      statuses: [
+        { label: "Status", value: "Outlining" },
+        { label: "ETA", value: "Coming soon" },
+        { label: "Focus", value: "Maps & hooks" },
+      ],
+      primaryCta: { label: "Tell me when it's mapped", href: "/#email" },
+      secondaryCta: { label: "Visit the World Hub", href: "/world.html" },
+    };
+  </script>
+  <script src="/assets/js/coming-soon.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coming Soon | The Cyber Lorekeeper</title>
+  <meta name="description" content="A new Cyber Lorekeeper page is under construction." />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <link rel="stylesheet" href="/assets/css/coming-soon.css" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/assets/js/tailwind-config.js"></script>
+  <script defer src="/assets/js/site.js"></script>
+</head>
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="coming-shell min-h-screen">
+    <div class="coming-surface">
+      <div id="site-header"></div>
+
+      <section class="relative mx-auto max-w-5xl px-6 pt-12 pb-6 text-center">
+        <span class="coming-pill">
+          <span class="dot" aria-hidden="true"></span>
+          Coming Soon
+        </span>
+        <h1 class="mt-3 font-display text-4xl sm:text-5xl leading-tight text-gradient">
+          <span data-page-name>New Page</span> is being assembled
+        </h1>
+        <p class="mt-4 text-stardust/85 max-w-3xl mx-auto" data-summary>
+          We're building out this corner of the Dreaming Tower. Check back soon for the finished entry.
+        </p>
+      </section>
+
+      <section class="relative mx-auto max-w-5xl px-6 pb-16 space-y-8">
+        <div class="coming-card p-6">
+          <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+            <div class="text-left space-y-3 max-w-3xl">
+              <p class="text-xs uppercase tracking-[.18em] text-stardust/70">What we're building</p>
+              <p class="text-lg text-stardust/90 leading-relaxed" data-lede>
+                Work is underway. Here’s what we’re polishing before it opens to visitors.
+              </p>
+              <ul id="promiseList" class="grid gap-3 md:grid-cols-2"></ul>
+            </div>
+            <div class="md:w-64 w-full">
+              <div class="coming-status" id="comingStatus"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-3" id="comingHighlights"></div>
+
+        <div class="coming-card p-6 text-center">
+          <p class="text-xs uppercase tracking-[.18em] text-stardust/70">Stay in the loop</p>
+          <p class="mt-2 text-stardust/85 text-sm">Follow live sections or get a ping when this one unlocks.</p>
+          <div class="coming-actions mt-5 flex flex-wrap items-center justify-center gap-3">
+            <a data-primary-cta class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 text-abyss font-semibold shadow-glow hover:brightness-110" href="/#email">
+              Notify me
+            </a>
+            <a data-secondary-cta class="focus-ring inline-flex items-center justify-center rounded-md border border-rift/60 bg-abyss/40 px-5 py-3 text-stardust/90 hover:text-glow" href="/">
+              Return home
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div id="site-footer"></div>
+    </div>
+  </main>
+
+  <script>
+    /* Duplicate this file, adjust the config, and publish as a ready-to-use placeholder. */
+    window.COMING_SOON_PAGE = {
+      pageName: "Example Page",
+      summary: "This template keeps unfinished sections consistent while we build.",
+      lead: "Swap in your own bullet points and status chips to tell readers what to expect.",
+      promises: [
+        { text: "Explain what this section will contain when it ships." },
+        { text: "Show how readers can follow progress or send feedback." },
+        { text: "Keep the design consistent with the rest of the archives." },
+      ],
+      highlights: [
+        { title: "How to reuse", body: "Copy this file, update the COMING_SOON_PAGE object, and keep the markup intact." },
+        { title: "Narrative first", body: "Set expectations in-world, then bridge to the real-world takeaway you plan to add." },
+        { title: "Clear calls to action", body: "Point people to live pages or the notify-me form while this builds." },
+      ],
+      statuses: [
+        { label: "Status", value: "Template" },
+        { label: "ETA", value: "Ready now" },
+        { label: "Focus", value: "Copy + config" },
+      ],
+      primaryCta: { label: "Notify me", href: "/#email" },
+      secondaryCta: { label: "Return home", href: "/" },
+    };
+  </script>
+  <script src="/assets/js/coming-soon.js"></script>
+</body>
+</html>
