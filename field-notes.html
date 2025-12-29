@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Field Notes | The Dreaming Tower Archives</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <meta name="description" content="Short-form entries from across the Digital Realm: expedition logs from the Isle of 404, observations from the Dreaming Tower, and analysis connecting cybersecurity events to the patterns we chronicle in Cipheria." />
+  <meta name="keywords" content="cybersecurity stories, security fiction, field notes, expedition logs, security analysis, breach analysis, storytelling, fantasy cybersecurity" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow:{
+            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card:'0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .soft-card{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.35);
+      border-radius: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      backdrop-filter: blur(6px);
+    }
+    .category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      border-radius: 9999px;
+      padding: .35rem .75rem;
+      font-size: .78rem;
+      font-weight: 600;
+      border: 1px solid rgba(20,53,69,.5);
+      background: rgba(10,20,27,.35);
+    }
+    .accent-aera { border-color: rgba(240,180,41,.65); background: linear-gradient(135deg, rgba(240,180,41,.16), rgba(247,244,239,.08)); color: #fbe6b3; }
+    .accent-lore { border-color: rgba(30,97,117,.55); background: linear-gradient(135deg, rgba(30,97,117,.18), rgba(10,20,27,.2)); color: #cfe5ef; }
+    .accent-resonance { border-color: rgba(53,198,224,.5); background: linear-gradient(135deg, rgba(53,198,224,.18), rgba(10,20,27,.25)); color: #d8f2f8; }
+
+    .card-surface { border: 1px solid rgba(20,53,69,.65); background: rgba(15,34,48,.5); border-radius: 1rem; box-shadow: 0 6px 18px rgba(0,0,0,.12); backdrop-filter: blur(8px); }
+    .grid-auto-fit { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+
+    .entry-card:hover { transform: translateY(-3px); filter: brightness(1.03); }
+    .entry-card { transition: transform .15s ease, filter .15s ease; }
+  </style>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen">
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+
+    <div id="site-header"></div>
+
+    <!-- Hero -->
+    <section class="relative mx-auto max-w-6xl px-6 pt-10 pb-12">
+      <div class="grid gap-8 lg:grid-cols-[1.7fr_.9fr] items-start">
+        <div>
+          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Dreaming Tower Dispatches</p>
+          <h1 class="mt-2 font-display text-4xl sm:text-5xl leading-tight text-gradient">Field Notes</h1>
+          <p class="mt-3 text-lg text-stardust/80">Brief accounts from across the Digital Realm</p>
+
+          <div class="mt-5 space-y-4 text-stardust/85 leading-relaxed">
+            <p>The Archives contain more than epic tales of kingdom-wide crises. Between the Chronicles that shake nations lie countless smaller moments—each instructive, each revealing patterns that repeat across time and context.</p>
+            <p>Field Notes capture these moments in brief: expedition logs from impossible places, incident reports from the Dreaming Tower's endless vigil, and observations on how the patterns we chronicle echo in the world beyond these pages.</p>
+          </div>
+
+          <p class="mt-4 inline-flex items-center gap-2 rounded-full border border-rift/60 bg-abyss/40 px-4 py-2 text-sm text-glow">Quick reads. Deep implications. Updated regularly.</p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#latest" class="focus-ring inline-flex items-center gap-2 rounded-md bg-glow px-5 py-3 text-abyss font-semibold shadow-glow hover:brightness-110">
+              Browse Latest Entries
+            </a>
+            <a href="#subscribe" class="focus-ring inline-flex items-center gap-2 rounded-md border border-rift/60 bg-abyss/40 px-5 py-3 font-semibold text-stardust hover:text-glow">
+              Subscribe for Updates
+            </a>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-2 text-xs text-stardust/70">
+            <span class="rounded-full border border-rift/60 bg-abyss/40 px-3 py-1">Serialized + Standalone</span>
+            <span class="rounded-full border border-rift/60 bg-abyss/40 px-3 py-1">5–10 minute reads</span>
+            <span class="rounded-full border border-rift/60 bg-abyss/40 px-3 py-1">Weekly releases</span>
+          </div>
+        </div>
+
+        <div class="card-surface p-5 border border-amber-300/20 bg-gradient-to-br from-parchment/60 via-abyss/30 to-abyss/60 text-runic">
+          <h2 class="font-display text-xl text-runic">Inside the Field Notes</h2>
+          <p class="mt-2 text-sm text-runic/90">Three streams, one archive.</p>
+          <div class="mt-4 space-y-3">
+            <div class="rounded-lg border border-amber-500/20 bg-white/5 p-3">
+              <div class="category-badge accent-aera">📔 Aera's Logs</div>
+              <p class="mt-2 text-sm text-runic/90">Expedition records from the Isle of 404</p>
+            </div>
+            <div class="rounded-lg border border-nebula/30 bg-white/5 p-3">
+              <div class="category-badge accent-lore">🏛️ The Lorekeeper's Notes</div>
+              <p class="mt-2 text-sm text-runic/90">Observations from the Dreaming Tower's endless vigil</p>
+            </div>
+            <div class="rounded-lg border border-glow/30 bg-white/5 p-3">
+              <div class="category-badge accent-resonance">🌐 Real-World Resonance</div>
+              <p class="mt-2 text-sm text-runic/90">When the patterns echo beyond the Archives</p>
+            </div>
+          </div>
+          <p class="mt-4 text-xs text-runic/75">Filter by category, sort by date, and dive into quick reads between major Chronicles.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category cards -->
+    <section id="categories" class="relative mx-auto max-w-6xl px-6 pb-10">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Explore by category</p>
+          <h2 class="font-display text-3xl text-gradient">Explore by Category</h2>
+        </div>
+        <div class="flex flex-wrap gap-2 text-xs text-stardust/70">
+          <span class="rounded-full border border-rift/60 bg-abyss/40 px-3 py-1">Filterable</span>
+          <span class="rounded-full border border-rift/60 bg-abyss/40 px-3 py-1">Serialized + standalone</span>
+          <span class="rounded-full border border-rift/60 bg-abyss/40 px-3 py-1">Category styling</span>
+        </div>
+      </div>
+
+      <div class="mt-6 grid gap-4 lg:grid-cols-3">
+        <article class="card-surface entry-card border border-amber-200/30 bg-gradient-to-br from-parchment/40 via-abyss/30 to-abyss/60 p-5">
+          <div class="category-badge accent-aera">📔 Aera's Logs</div>
+          <h3 class="mt-3 font-display text-2xl text-ember">Aera's Logs</h3>
+          <p class="text-sm text-stardust/80">Expedition records from the Isle of 404</p>
+          <p class="mt-3 text-sm text-stardust/85 leading-relaxed">Junior Field Archivist Aera documents her search for the sister everyone else has forgotten. These logs chronicle her journey to the Wandering Isle alongside Cache, a fragmented entity with broken memories. Written in real-time as events unfold, filtered through grief, determination, and the creeping horror of a place that slips between realities.</p>
+          <ul class="mt-4 space-y-1 text-sm text-stardust/80">
+            <li>• First-person journal entries</li>
+            <li>• Sequential narrative (standalone friendly)</li>
+            <li>• 800-1200 words per entry</li>
+            <li>• Cache's commentary included</li>
+          </ul>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs uppercase tracking-[.16em] text-ember">Journal / Expedition</span>
+            <button data-filter="aera" class="focus-ring filter-btn rounded-md bg-ember/80 px-4 py-2 text-abyss font-semibold shadow-sm hover:brightness-110">Read Aera's Logs</button>
+          </div>
+        </article>
+
+        <article class="card-surface entry-card border border-nebula/35 bg-gradient-to-br from-abyss/40 via-abyss/55 to-deep-space/70 p-5">
+          <div class="category-badge accent-lore">🏛️ The Lorekeeper's Notes</div>
+          <h3 class="mt-3 font-display text-2xl text-nebula">The Lorekeeper's Notes</h3>
+          <p class="text-sm text-stardust/80">Observations from the Dreaming Tower's endless vigil</p>
+          <p class="mt-3 text-sm text-stardust/85 leading-relaxed">The Lorekeeper documents incidents too small for full Chronicles but too instructive to forget. Pattern recognition across centuries, historical parallels that echo today, minor breaches that reveal larger truths, and the weight of watching everything while being unable to prevent all harm.</p>
+          <ul class="mt-4 space-y-1 text-sm text-stardust/80">
+            <li>• Incident reports and observations</li>
+            <li>• Pattern analysis with historical context</li>
+            <li>• 500-800 words per entry</li>
+            <li>• Connections to larger themes</li>
+          </ul>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs uppercase tracking-[.16em] text-nebula">Tower Dispatch</span>
+            <button data-filter="lore" class="focus-ring filter-btn rounded-md bg-nebula px-4 py-2 text-abyss font-semibold shadow-sm hover:brightness-110">Read Lorekeeper's Notes</button>
+          </div>
+        </article>
+
+        <article class="card-surface entry-card border border-glow/40 bg-gradient-to-br from-abyss/40 via-abyss/55 to-deep-space/70 p-5">
+          <div class="category-badge accent-resonance">🌐 Real-World Resonance</div>
+          <h3 class="mt-3 font-display text-2xl text-glow">Real-World Resonance</h3>
+          <p class="text-sm text-stardust/80">When the patterns echo beyond the Archives</p>
+          <p class="mt-3 text-sm text-stardust/85 leading-relaxed">Sometimes the patterns we chronicle in Cipheria mirror events in our own world with unsettling precision. These notes connect recent cybersecurity incidents, breaches, and trends to themes explored in the Archives—not as prophecy, but as recognition that certain patterns repeat across contexts.</p>
+          <ul class="mt-4 space-y-1 text-sm text-stardust/80">
+            <li>• Analysis of real cybersecurity events</li>
+            <li>• Connections to Archives stories and themes</li>
+            <li>• 600-1000 words per entry</li>
+            <li>• Practical takeaways for organizations</li>
+          </ul>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs uppercase tracking-[.16em] text-glow">Applied Patterns</span>
+            <button data-filter="resonance" class="focus-ring filter-btn rounded-md border border-glow/50 bg-abyss/30 px-4 py-2 text-glow font-semibold shadow-sm hover:border-glow">Read Real-World Analysis</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section id="filters" class="relative mx-auto max-w-6xl px-6 pb-4">
+      <div class="card-surface flex flex-col gap-4 rounded-2xl border border-rift/60 bg-abyss/50 p-4 md:flex-row md:items-center md:justify-between">
+        <div class="flex flex-wrap gap-2" role="tablist" aria-label="Filter entries">
+          <button class="focus-ring filter-btn rounded-full border border-rift/60 bg-abyss/40 px-4 py-2 text-sm font-semibold text-stardust" data-filter="all" role="tab" aria-selected="true">All Entries</button>
+          <button class="focus-ring filter-btn rounded-full border border-amber-200/60 bg-abyss/30 px-4 py-2 text-sm font-semibold text-ember" data-filter="aera" role="tab">Aera's Logs</button>
+          <button class="focus-ring filter-btn rounded-full border border-nebula/60 bg-abyss/30 px-4 py-2 text-sm font-semibold text-nebula" data-filter="lore" role="tab">Lorekeeper's Notes</button>
+          <button class="focus-ring filter-btn rounded-full border border-glow/60 bg-abyss/30 px-4 py-2 text-sm font-semibold text-glow" data-filter="resonance" role="tab">Real-World Resonance</button>
+        </div>
+
+        <div class="flex flex-wrap gap-3 text-sm text-stardust/80">
+          <label class="flex items-center gap-2">
+            <span class="text-stardust/70">Search</span>
+            <input id="searchInput" type="search" placeholder="titles, themes..." class="focus-ring w-44 rounded-md border border-rift/60 bg-abyss/40 px-3 py-2 text-sm text-stardust placeholder:text-stardust/50" />
+          </label>
+          <label class="flex items-center gap-2">
+            <span class="text-stardust/70">By Date</span>
+            <select id="sortSelect" class="focus-ring rounded-md border border-rift/60 bg-abyss/40 px-3 py-2 text-sm text-stardust">
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest entries + sidebar -->
+    <section id="latest" class="relative mx-auto max-w-6xl px-6 pb-12">
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-start">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Fresh from the archive</p>
+              <h2 class="font-display text-3xl text-gradient">Latest Field Notes</h2>
+            </div>
+            <a href="#archive" class="text-sm text-glow hover:underline">View All Entries →</a>
+          </div>
+
+          <div id="featuredEntry" class="mt-5"></div>
+
+          <div class="mt-5 grid gap-4 md:grid-cols-2" id="recentEntries"></div>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#archive" class="focus-ring inline-flex items-center gap-2 rounded-md border border-rift/60 bg-abyss/40 px-4 py-2 text-sm font-semibold text-stardust hover:text-glow">View All Entries</a>
+            <a href="#entry-template" class="focus-ring inline-flex items-center gap-2 rounded-md bg-glow px-4 py-2 text-sm font-semibold text-abyss shadow-glow hover:brightness-110">Read the Full Story</a>
+          </div>
+        </div>
+
+        <aside class="w-full lg:w-80 card-surface rounded-2xl border border-rift/60 bg-abyss/50 p-5">
+          <h3 class="font-display text-2xl">What Are Field Notes?</h3>
+          <p class="mt-2 text-sm text-stardust/85 leading-relaxed">Field Notes are short-form entries (5-10 minute reads) that complement the longer Chronicles. They're designed to be:</p>
+          <ul class="mt-3 space-y-2 text-sm text-stardust/80">
+            <li class="flex items-start gap-2"><span class="text-glow">✓</span><span>Quick and accessible</span></li>
+            <li class="flex items-start gap-2"><span class="text-glow">✓</span><span>Shareable</span></li>
+            <li class="flex items-start gap-2"><span class="text-glow">✓</span><span>Regular content between major story releases</span></li>
+            <li class="flex items-start gap-2"><span class="text-glow">✓</span><span>Standalone or serialized</span></li>
+          </ul>
+          <p class="mt-3 text-xs text-stardust/70">New entries published weekly.</p>
+          <a id="subscribe" href="#footer-subscribe" class="mt-4 inline-flex w-full items-center justify-center rounded-md bg-glow px-4 py-2 text-abyss font-semibold shadow-glow hover:brightness-110">Subscribe for Updates</a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Archive -->
+    <section id="archive" class="relative mx-auto max-w-6xl px-6 pb-14">
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Reverse chronological</p>
+          <h2 class="font-display text-3xl text-gradient">All Field Notes</h2>
+        </div>
+        <p class="text-sm text-stardust/70">Filter + sort respects your selections.</p>
+      </div>
+
+      <div id="archiveList" class="mt-6 space-y-3"></div>
+
+      <div class="mt-5 flex flex-wrap gap-3">
+        <button id="loadMore" class="focus-ring inline-flex items-center gap-2 rounded-md border border-rift/60 bg-abyss/40 px-4 py-2 text-sm font-semibold text-stardust hover:text-glow">Load More</button>
+        <a href="#filters" class="text-sm text-glow hover:underline">Refine results</a>
+      </div>
+    </section>
+
+    <!-- Entry template preview -->
+    <section id="entry-template" class="relative mx-auto max-w-6xl px-6 pb-14">
+      <div class="card-surface rounded-2xl border border-rift/60 bg-abyss/55 p-6">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Reading experience</p>
+            <h2 class="font-display text-3xl text-gradient">Inside a Field Note</h2>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs text-stardust/70">
+            <span class="rounded-full border border-rift/60 bg-abyss/40 px-3 py-1">Breadcrumbs</span>
+            <span class="rounded-full border border-rift/60 bg-abyss/40 px-3 py-1">Read-time + date</span>
+            <span class="rounded-full border border-rift/60 bg-abyss/40 px-3 py-1">Social share</span>
+          </div>
+        </div>
+
+        <div class="mt-5 grid gap-4 lg:grid-cols-[1.2fr_.9fr]">
+          <div class="rounded-xl border border-rift/60 bg-abyss/40 p-4">
+            <p class="text-xs text-stardust/70">Home › Field Notes › [Category] › [Entry Title]</p>
+            <div class="mt-3 category-badge accent-lore">🏛️ Category Badge</div>
+            <h3 class="mt-3 font-display text-2xl">Entry Title</h3>
+            <p class="text-sm text-stardust/80">Subtitle or date line</p>
+            <p class="mt-2 text-xs text-stardust/65">Read time: X minutes | Published: [Date] | Category: [Category Name]</p>
+            <div class="mt-4 space-y-3 text-sm text-stardust/85 leading-relaxed">
+              <p>[Full entry text with proper formatting - paragraphs, dialogue, emphasis as needed]</p>
+              <p>Cache's commentary is styled differently for Aera's entries; tower marginalia for Lorekeeper; modern callouts for Real-World Resonance.</p>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-3 text-sm text-stardust/80">
+              <a href="#" class="inline-flex items-center gap-2 rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 hover:text-glow">Share This Entry</a>
+              <a href="#" class="inline-flex items-center gap-2 rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 hover:text-glow">Explore Related Content</a>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-rift/60 bg-abyss/40 p-4 space-y-4 text-sm text-stardust/85">
+            <div>
+              <p class="font-semibold text-stardust">Footer Actions</p>
+              <p class="text-stardust/70">Aera's Logs: ← Previous | Next →</p>
+              <p class="text-stardust/70">Lorekeeper's Notes: Related stories + view all</p>
+              <p class="text-stardust/70">Real-World Resonance: Sources + share</p>
+            </div>
+            <div class="rounded-lg border border-amber-200/40 bg-parchment/10 p-3 text-runic">
+              <p class="font-semibold text-ember">Aera + Cache</p>
+              <p class="text-sm text-runic/85">Cache's commentary uses teal/cyan accent to stand apart from Aera's handwriting-inspired prose.</p>
+            </div>
+            <div class="rounded-lg border border-nebula/40 bg-abyss/60 p-3">
+              <p class="font-semibold text-nebula">Tower Ledger</p>
+              <p class="text-sm text-stardust/80">Lorekeeper entries adopt cooler tones and structured incident-report styling.</p>
+            </div>
+            <div class="rounded-lg border border-glow/40 bg-abyss/50 p-3">
+              <p class="font-semibold text-glow">Resonance</p>
+              <p class="text-sm text-stardust/80">Modern, professional layout with clear takeaways and social sharing hooks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA footer cards -->
+    <section id="footer-subscribe" class="relative mx-auto max-w-6xl px-6 pb-16">
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div class="card-surface rounded-2xl border border-rift/60 bg-abyss/50 p-6">
+          <h3 class="font-display text-2xl">Stay Updated</h3>
+          <p class="mt-2 text-sm text-stardust/80">New Field Notes published weekly. Subscribe to be notified when new entries appear.</p>
+          <form name="field-notes-subscribe" method="POST" netlify netlify-honeypot="bot-field" action="/thanks.html" class="mt-4 grid gap-3 sm:grid-cols-[1fr_auto]">
+            <input type="hidden" name="form-name" value="field-notes-subscribe" />
+            <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+            <label class="sr-only" for="subscribe-email">Email</label>
+            <input id="subscribe-email" name="email" type="email" required placeholder="you@realm.co" class="focus-ring w-full rounded-md border border-rift/60 bg-abyss/40 px-4 py-3 text-stardust placeholder:text-stardust/60" />
+            <button type="submit" class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">Subscribe</button>
+          </form>
+          <p class="mt-2 text-xs text-stardust/65">No spam. Just dispatches from the Dreaming Tower when new notes are posted.</p>
+        </div>
+
+        <div class="card-surface rounded-2xl border border-rift/60 bg-abyss/50 p-6">
+          <h3 class="font-display text-2xl">Related Pages</h3>
+          <p class="mt-2 text-sm text-stardust/80">Explore more of the Archives.</p>
+          <div class="mt-4 grid gap-3">
+            <a href="/chronicles.html" class="rounded-lg border border-rift/60 bg-abyss/40 p-3 hover:border-glow">The Chronicles — Full-length stories from the Kingdom of Cipheria</a>
+            <a href="/world.html" class="rounded-lg border border-rift/60 bg-abyss/40 p-3 hover:border-glow">The World — Explore the Digital Realm</a>
+            <a href="/characters.html" class="rounded-lg border border-rift/60 bg-abyss/40 p-3 hover:border-glow">Characters — Meet the people who populate these tales</a>
+          </div>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm text-stardust/75">
+            <a href="#" class="rounded-md border border-rift/60 bg-abyss/40 px-3 py-2 hover:text-glow">Share This Entry</a>
+            <a href="#" class="rounded-md border border-rift/60 bg-abyss/40 px-3 py-2 hover:text-glow">Explore Related Content</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="site-footer"></div>
+  </main>
+
+  <script>
+    const categoryMeta = {
+      aera: {
+        label: "Aera's Logs",
+        icon: "📔",
+        badgeClass: "accent-aera",
+        accentText: "text-ember",
+        chip: "Journal",
+      },
+      lore: {
+        label: "The Lorekeeper's Notes",
+        icon: "🏛️",
+        badgeClass: "accent-lore",
+        accentText: "text-nebula",
+        chip: "Tower",
+      },
+      resonance: {
+        label: "Real-World Resonance",
+        icon: "🌐",
+        badgeClass: "accent-resonance",
+        accentText: "text-glow",
+        chip: "Analysis",
+      }
+    };
+
+    const entries = [
+      {
+        slug: "aeras-log-finding-cache",
+        category: "aera",
+        title: "Finding Cache",
+        subtitle: "Entry 1 - In which I discover something unexpected in Vault Seven",
+        date: new Date().toISOString().slice(0, 10),
+        readTime: 8,
+        excerpt: "The junior archivists aren't supposed to access Vault Seven alone. But Elder Scribe Maren was occupied with Pip's latest disaster (something about reorganizing the entire third floor by color instead of subject matter), and I needed a specific reference text on temporal anomalies...",
+        featured: true,
+      },
+      {
+        slug: "lorekeeper-alphabetical-incident",
+        category: "lore",
+        title: "The Incident at Archive Level Seven",
+        subtitle: "In which Junior Archivist Pip learns why complexity exists",
+        date: new Date().toISOString().slice(0, 10),
+        readTime: 5,
+        excerpt: "Junior Archivist Pip enthusiastically \"optimized\" the cross-referencing system on Archive Level Seven this morning. By noon, three centuries of carefully maintained categorical relationships had been reduced to what he cheerfully described as \"a much more efficient alphabetical structure.\"",
+      },
+      {
+        slug: "resonance-supply-chain",
+        category: "resonance",
+        title: "The Supply Chain That Wasn't Monitored",
+        subtitle: "When \"just a logging library\" becomes the breach vector",
+        date: new Date().toISOString().slice(0, 10),
+        readTime: 7,
+        excerpt: "A major software vendor discovered that compromised code had been distributed through their official update channels for six months before detection. The insertion point? A third-party component nobody was actively monitoring because it was \"just a logging library.\"",
+      },
+      {
+        slug: "aera-wandering-shorelines",
+        category: "aera",
+        title: "The Wandering Shorelines",
+        subtitle: "Entry 2 - In which the Isle of 404 moves beneath our feet",
+        date: "2024-04-18",
+        readTime: 9,
+        excerpt: "Cache insisted the shoreline was different because he remembered the salt tasting sweeter yesterday. I insisted islands do not drift overnight. We were both wrong.",
+      },
+      {
+        slug: "lorekeeper-midnight-audit",
+        category: "lore",
+        title: "The Midnight Audit",
+        subtitle: "Incident report: missing ledgers, missing hours",
+        date: "2024-03-22",
+        readTime: 6,
+        excerpt: "The Dreaming Tower does not sleep, but its auditors do blink. In the half-second between blinks, three ledgers vanished and a door appeared where no door had been the night before.",
+      },
+      {
+        slug: "resonance-signal-refraction",
+        category: "resonance",
+        title: "Signal Refraction",
+        subtitle: "When telemetry silos distort the story",
+        date: "2024-02-02",
+        readTime: 6,
+        excerpt: "Two teams stared at the same dashboard and saw opposite truths. The breach timeline bent around their org chart until the incident itself refracted into disagreement.",
+      }
+    ];
+
+    const featuredContainer = document.getElementById("featuredEntry");
+    const recentContainer = document.getElementById("recentEntries");
+    const archiveContainer = document.getElementById("archiveList");
+    const loadMoreBtn = document.getElementById("loadMore");
+    const filterButtons = Array.from(document.querySelectorAll(".filter-btn"));
+    const sortSelect = document.getElementById("sortSelect");
+    const searchInput = document.getElementById("searchInput");
+
+    let activeCategory = "all";
+    let sortOrder = "newest";
+    let searchTerm = "";
+    let archiveLimit = 6;
+
+    function formatDate(dateStr) {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+    }
+
+    function getBadge(category) {
+      const meta = categoryMeta[category];
+      if (!meta) return "";
+      return `<span class="category-badge ${meta.badgeClass}">${meta.icon} ${meta.label}</span>`;
+    }
+
+    function entryCard(entry, isFeatured = false) {
+      const meta = categoryMeta[entry.category];
+      const base = `border ${meta ? meta.accentText : "text-stardust"}`;
+      const containerClasses = isFeatured ? "card-surface rounded-2xl border border-rift/60 bg-abyss/60 p-6" : "card-surface entry-card rounded-xl border border-rift/60 bg-abyss/50 p-5";
+      return `
+        <article class="${containerClasses}" data-category="${entry.category}" data-date="${entry.date}">
+          ${getBadge(entry.category)}
+          <h3 class="mt-3 font-display ${meta ? meta.accentText : ""} ${isFeatured ? "text-3xl" : "text-2xl"}">${entry.title}</h3>
+          <p class="text-sm text-stardust/80">${entry.subtitle}</p>
+          <p class="mt-3 text-sm text-stardust/85 leading-relaxed">${entry.excerpt}</p>
+          <p class="mt-3 text-xs text-stardust/65">Read time: ${entry.readTime} minutes | Published: ${formatDate(entry.date)}</p>
+          <div class="mt-4 flex items-center justify-between text-sm text-glow">
+            <a href="#" class="inline-flex items-center gap-2 hover:underline">Read More →</a>
+            <span class="rounded-full border border-rift/60 bg-abyss/40 px-3 py-1 text-xs text-stardust/70">${meta ? meta.label : ""}</span>
+          </div>
+        </article>
+      `;
+    }
+
+    function archiveItem(entry) {
+      const meta = categoryMeta[entry.category];
+      return `
+        <article class="card-surface rounded-xl border border-rift/60 bg-abyss/45 p-4 flex flex-col gap-2 md:flex-row md:items-center md:justify-between" data-category="${entry.category}" data-date="${entry.date}">
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2">
+              ${getBadge(entry.category)}
+              <span class="rounded-full border border-rift/60 bg-abyss/40 px-3 py-1 text-xs text-stardust/70">${formatDate(entry.date)}</span>
+              <span class="rounded-full border border-rift/60 bg-abyss/40 px-3 py-1 text-xs text-stardust/70">${entry.readTime} min read</span>
+            </div>
+            <h3 class="mt-2 font-display text-xl ${meta ? meta.accentText : ""}">${entry.title}</h3>
+            <p class="text-sm text-stardust/80">${entry.subtitle}</p>
+            <p class="mt-2 text-sm text-stardust/75">${entry.excerpt}</p>
+          </div>
+          <div class="mt-3 flex items-center gap-3 md:mt-0 md:flex-col md:items-end">
+            <img src="/images/icon.png" alt="" class="h-12 w-12 rounded-lg border border-rift/60 bg-abyss/60" />
+            <a href="#" class="text-sm text-glow hover:underline whitespace-nowrap">Read More →</a>
+          </div>
+        </article>
+      `;
+    }
+
+    function applyFilters() {
+      let filtered = entries.slice();
+
+      if (activeCategory !== "all") {
+        filtered = filtered.filter(e => e.category === activeCategory);
+      }
+
+      if (searchTerm) {
+        const term = searchTerm.toLowerCase();
+        filtered = filtered.filter(e =>
+          e.title.toLowerCase().includes(term) ||
+          e.subtitle.toLowerCase().includes(term) ||
+          e.excerpt.toLowerCase().includes(term)
+        );
+      }
+
+      filtered.sort((a, b) => sortOrder === "newest" ? new Date(b.date) - new Date(a.date) : new Date(a.date) - new Date(b.date));
+
+      renderLatest(filtered);
+      renderArchive(filtered);
+    }
+
+    function renderLatest(list) {
+      if (!featuredContainer || !recentContainer) return;
+      featuredContainer.innerHTML = "";
+      recentContainer.innerHTML = "";
+
+      if (!list.length) {
+        featuredContainer.innerHTML = `<div class="card-surface rounded-xl border border-rift/60 bg-abyss/50 p-6"><p class="text-sm text-stardust/80">No entries match this filter yet. Try another category or clear search.</p></div>`;
+        return;
+      }
+
+      const featured = list[0];
+      featuredContainer.innerHTML = entryCard(featured, true);
+
+      const rest = list.slice(1, 5);
+      recentContainer.innerHTML = rest.map(entry => entryCard(entry)).join("");
+    }
+
+    function renderArchive(list) {
+      if (!archiveContainer) return;
+      archiveContainer.innerHTML = "";
+      const slice = list.slice(0, archiveLimit);
+      archiveContainer.innerHTML = slice.map(entry => archiveItem(entry)).join("");
+      if (loadMoreBtn) {
+        loadMoreBtn.classList.toggle("hidden", list.length <= archiveLimit);
+      }
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        activeCategory = btn.dataset.filter || "all";
+        filterButtons.forEach(b => b.classList.remove("ring-2", "ring-glow"));
+        btn.classList.add("ring-2", "ring-glow");
+        applyFilters();
+      });
+    });
+
+    if (sortSelect) {
+      sortSelect.addEventListener("change", () => {
+        sortOrder = sortSelect.value;
+        applyFilters();
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        searchTerm = e.target.value || "";
+        applyFilters();
+      });
+    }
+
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener("click", () => {
+        archiveLimit += 6;
+        applyFilters();
+      });
+    }
+
+    async function loadPartial(targetId, url) {
+      const el = document.getElementById(targetId);
+      if (!el) return;
+
+      const res = await fetch(url, { cache: "no-cache" });
+      if (!res.ok) {
+        console.warn(`Failed to load ${url}`);
+        return;
+      }
+      el.innerHTML = await res.text();
+    }
+
+    function initHeaderNav() {
+      const navToggle = document.getElementById("navToggle");
+      const mobileNavPanel = document.getElementById("mobileNavPanel");
+
+      if (!navToggle || !mobileNavPanel) return;
+
+      navToggle.addEventListener("click", () => {
+        const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!isOpen));
+        mobileNavPanel.classList.toggle("hidden", isOpen);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          navToggle.setAttribute("aria-expanded", "false");
+          mobileNavPanel.classList.add("hidden");
+        }
+      });
+    }
+
+    function initFooterYear() {
+      const year = document.getElementById("year");
+      if (year) year.textContent = new Date().getFullYear();
+    }
+
+    (async function boot() {
+      await loadPartial("site-header", "/partials/header.html");
+      initHeaderNav();
+
+      await loadPartial("site-footer", "/partials/footer.html");
+      initFooterYear();
+
+      applyFilters();
+    })();
+  </script>
+</body>
+</html>
