@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Entry Title] | Field Notes</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=SourceSans3:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/assets/js/site.js" defer></script>
+  <style>
+    :root {
+      --parchment-base: #f7f2e7;
+      --parchment-edge: #e8decd;
+      --ink: #1e2734;
+      --rule: rgba(26, 36, 48, 0.12);
+    }
+    body {
+      background: #0A141B url('/images/background-1.png') center/cover no-repeat fixed;
+      color: #CFE5EF;
+      font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+    }
+    .page-shell {
+      background:
+        linear-gradient(180deg, rgba(15,34,48,0.35) 0%, rgba(15,34,48,0.7) 100%),
+        radial-gradient(80% 80% at 50% 20%, rgba(53,198,224,0.08), transparent 55%),
+        rgba(10,20,27,0.85);
+    }
+    .journal {
+      background:
+        linear-gradient(var(--rule) 1px, transparent 1px) 0 42px / 100% 32px repeat-y,
+        radial-gradient(circle at 30% 20%, rgba(240,180,41,0.06), rgba(240,180,41,0) 45%),
+        linear-gradient(135deg, rgba(26, 36, 48, 0.16), transparent 45%),
+        var(--parchment-base);
+      border: 1px solid rgba(26,36,48,0.4);
+      box-shadow:
+        0 18px 46px rgba(0,0,0,0.38),
+        inset 0 0 0 1px rgba(255,255,255,0.04);
+      color: var(--ink);
+      position: relative;
+    }
+    .journal::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px dashed rgba(26,36,48,0.14);
+      border-radius: 0.85rem;
+      pointer-events: none;
+    }
+    .journal::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 1rem;
+      box-shadow: inset 0 0 48px rgba(0,0,0,0.08);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen page-shell">
+    <div id="site-header"></div>
+
+    <section class="relative mx-auto max-w-4xl px-6 py-12">
+      <nav class="text-xs text-stardust/70 mb-6">
+        Home &gt; Field Notes &gt; [Category Name] &gt; [Entry Title]
+      </nav>
+
+      <!-- Choose the category badge style you need -->
+      <!-- Aera: badge badge-aera | Lore: badge badge-lore | Resonance: badge badge-resonance -->
+      <p class="inline-flex items-center gap-2 rounded-full border border-ember/60 bg-ember/20 px-3 py-1 text-xs font-semibold text-ember">
+        📔 Aera's Logs
+      </p>
+
+      <div class="journal mt-4 rounded-2xl p-6 sm:p-8">
+        <header class="space-y-2">
+          <h1 class="font-display text-4xl text-aether">[Entry Title]</h1>
+          <p class="text-sm text-aether/70">[Subtitle or date line]</p>
+          <p class="text-xs text-aether/60">Read time: [X] minutes | Published: [YYYY-MM-DD] | Category: [Category]</p>
+        </header>
+
+        <article class="mt-6 space-y-4 text-[15px] leading-relaxed text-aether/90">
+          <p>[Opening paragraph...]</p>
+          <p>[Body paragraph...]</p>
+          <p class="italic text-ember/80">[Optional pull-quote or Cache commentary]</p>
+          <p>[Closing paragraph...]</p>
+        </article>
+
+        <footer class="mt-8 border-t border-aether/15 pt-4 text-sm text-aether/75 flex flex-wrap gap-3 justify-between">
+          <div>[← Previous Entry]</div>
+          <div>[Next Entry →]</div>
+        </footer>
+      </div>
+    </section>
+
+    <div id="site-footer"></div>
+  </main>
+
+  <script>
+    async function injectPartial(targetId, url) {
+      const el = document.getElementById(targetId);
+      if (!el) return;
+      const res = await fetch(url);
+      el.innerHTML = await res.text();
+    }
+    (async () => {
+      await injectPartial('site-header', '/partials/header.html');
+      await injectPartial('site-footer', '/partials/footer.html');
+    })();
+  </script>
+</body>
+</html>
