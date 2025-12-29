@@ -1,3 +1,9 @@
+diff --git a/pages/field-notes.html b/pages/field-notes.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..1b523bbe4267818b9a23df664bb2e355c8c4d966
+--- /dev/null
+ b/pages/field-notes.html
+@@ -0,0 1,507 @@
 <!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -12,7 +18,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="shortcut icon" href="/images/favicon.ico">
 
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=SourceSans3:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -272,8 +278,32 @@
         readTime: 8,
         excerpt: "The junior archivists aren't supposed to access Vault Seven alone...",
         featured: true,
-        href: '/field-notes/aera/2025-12-28-finding-cache.html',
+        href: '/pages/field-notes/aera/2025-12-28-finding-cache.html',
         tags: ['isle-404','memory','cache']
+      },
+      {
+        id: 'lore-2025-12-28-incident-level-seven',
+        category: 'lore',
+        title: 'The Incident at Archive Level Seven',
+        subtitle: 'In which Junior Archivist Pip learns why complexity exists',
+        date: '2025-12-28',
+        readTime: 5,
+        excerpt: 'Junior Archivist Pip enthusiastically "optimized" the cross-referencing system on Archive Level Seven this morning...',
+        featured: false,
+        href: '/pages/field-notes/lore/2025-12-28-incident-level-seven.html',
+        tags: ['pip','tower','process']
+      },
+      {
+        id: 'resonance-2025-12-28-supply-chain-not-monitored',
+        category: 'resonance',
+        title: "The Supply Chain That Wasn't Monitored",
+        subtitle: 'When "just a logging library" becomes the breach vector',
+        date: '2025-12-28',
+        readTime: 7,
+        excerpt: 'A major software vendor discovered that compromised code had been distributed through their official update channels for six months...',
+        featured: false,
+        href: '/pages/field-notes/resonance/2025-12-28-supply-chain-not-monitored.html',
+        tags: ['supply-chain','monitoring','trust']
       }
     ];
 
@@ -421,16 +451,26 @@
     }
 
     async function loadEntries() {
-      try {
-        const res = await fetch('/data/field-notes.index.json', { cache: 'no-store' });
-        if (!res.ok) throw new Error('Failed to fetch index');
-        const data = await res.json();
-        if (!Array.isArray(data)) throw new Error('Index is not an array');
-        entries = data;
-      } catch (err) {
-        console.warn('Falling back to inline entries index', err);
-        entries = fallbackEntries;
+      const candidateUrls = [
+        '/data/field-notes.index.json',
+        '../data/field-notes.index.json',
+        '../../data/field-notes.index.json'
+      ];
+
+      for (const url of candidateUrls) {
+        try {
+          const res = await fetch(url, { cache: 'no-store' });
+          if (!res.ok) throw new Error('Failed to fetch index');
+          const data = await res.json();
+          if (!Array.isArray(data)) throw new Error('Index is not an array');
+          entries = data;
+          return;
+        } catch (err) {
+          console.warn('Index fetch attempt failed', url, err);
+        }
       }
+
+      entries = fallbackEntries;
     }
 
     async function loadPartial(targetId, url) {
