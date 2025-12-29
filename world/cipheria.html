@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crown City | The Dreaming Tower Archives</title>
+    <meta
+      name="description"
+      content="A focused brief on Cipheria's Crown City—its layered design, governance, values, and the Dreaming Tower at its core."
+    />
+
+    <!-- Favicons -->
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+
+    <!-- Fonts (match site style) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind config (reuse world tokens) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ["Cinzel", "serif"],
+              body: ["Source Sans 3", "ui-sans-serif", "system-ui"],
+            },
+            colors: {
+              abyss: "#071018",
+              deep: "#081827",
+              ink: "#0b2234",
+              stardust: "#d7e2ea",
+              mist: "#a9bccb",
+              rift: "#52d6ff",
+              glow: "#34c9ff",
+              ember: "#ffb86b",
+            },
+            boxShadow: {
+              soft: "0 10px 30px rgba(0,0,0,.35)",
+              card: "0 18px 50px rgba(0,0,0,.35)",
+              glow: "0 0 0 1px rgba(82,214,255,.35), 0 10px 30px rgba(0,0,0,.35)",
+            },
+            backgroundImage: {
+              nebula: "url('/images/background-1.png')",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Page styles -->
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        font-family: "Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+        background-color: #071018;
+        background-image: url("/images/background-1.png");
+        background-size: cover;
+        background-position: top center;
+        background-attachment: fixed;
+        color: rgba(215, 226, 234, 0.92);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+            1100px 600px at 20% 10%,
+            rgba(82, 214, 255, 0.08),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 500px at 80% 20%,
+            rgba(82, 214, 255, 0.06),
+            transparent 60%
+          ),
+          linear-gradient(to bottom, rgba(7, 16, 24, 0.58), rgba(7, 16, 24, 0.78));
+        z-index: 0;
+      }
+
+      #site-header {
+        position: relative;
+        z-index: 50;
+      }
+
+      #site-footer,
+      main {
+        position: relative;
+        z-index: 1;
+      }
+
+      .text-gradient {
+        background: linear-gradient(90deg, rgba(215, 226, 234, 0.95), rgba(82, 214, 255, 0.9));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .panel {
+        background: rgba(8, 24, 39, 0.72);
+        border: 1px solid rgba(215, 226, 234, 0.12);
+        border-radius: 18px;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(10px);
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.4rem 0.85rem;
+        border-radius: 999px;
+        border: 1px solid rgba(215, 226, 234, 0.22);
+        background: rgba(8, 24, 39, 0.55);
+        color: rgba(215, 226, 234, 0.9);
+        font-size: 0.83rem;
+      }
+
+      .section-tight {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .section-tight {
+          padding-top: 3rem;
+          padding-bottom: 3rem;
+        }
+      }
+
+      .image-placeholder {
+        border: 1.5px dashed rgba(215, 226, 234, 0.35);
+        border-radius: 16px;
+        background: rgba(8, 24, 39, 0.5);
+        color: rgba(215, 226, 234, 0.7);
+        min-height: 260px;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen">
+    <div id="site-header"></div>
+
+    <main class="mx-auto max-w-6xl px-6">
+      <!-- Hero -->
+      <section class="section-tight pt-10 md:pt-14">
+        <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-stretch">
+          <div class="space-y-6">
+            <div class="inline-flex items-center gap-2 rounded-full border border-stardust/15 bg-abyss/70 px-3 py-1 text-xs uppercase tracking-[.2em] text-stardust/70">
+              <span class="inline-block h-2 w-2 rounded-full bg-glow"></span>
+              Cipheria — Crown City Brief
+            </div>
+
+            <div class="space-y-3">
+              <h1 class="font-display text-4xl leading-[1.05] tracking-wide sm:text-5xl text-gradient">
+                The Crown City &amp; the Dreaming Tower
+              </h1>
+              <p class="text-lg text-stardust/90 leading-relaxed max-w-2xl">
+                Security that enables prosperity. Prosperity that funds security. And at the center of both — the Tower that dreams.
+              </p>
+            </div>
+
+            <div class="panel p-6 space-y-3">
+              <p class="text-sm font-semibold uppercase tracking-[.18em] text-stardust/60">The Kingdom of Cipheria</p>
+              <p class="text-stardust/90 leading-relaxed">
+                Neither the largest kingdom nor the most militarily powerful, Cipheria has earned its reputation as one of the most secure, stable, and prosperous nations in the known world. At the heart of this success stands the Dreaming Tower—an ancient, semi-sentient structure that has monitored, archived, and protected the kingdom for over a thousand years.
+              </p>
+              <p class="text-stardust/90 leading-relaxed">
+                Guided by the wisdom of the Tower and governed by the collaborative Secret Council, Cipheria has survived crises that shattered other nations.
+              </p>
+            </div>
+          </div>
+
+          <div class="panel p-4 flex flex-col gap-3 h-full">
+            <div class="image-placeholder flex flex-1 flex-col items-center justify-center px-6 py-10 text-center w-full">
+              <p class="font-display text-lg text-stardust/85">Crown City Illustration</p>
+              <p class="mt-2 text-sm text-stardust/65 leading-relaxed max-w-sm">
+                Reserve this space for a skyline rendering of the Crown City with the Dreaming Tower at the center.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-sm text-stardust/75">
+              <span class="chip">Location: Eastern coast of Valorath</span>
+              <span class="chip">Size: Mid-sized regional power</span>
+              <span class="chip">Population: ~3–5 million</span>
+              <span class="chip">Capital: The Crown City (~800,000)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Overview & Geography -->
+      <section class="section-tight" aria-labelledby="overview">
+        <div class="panel p-7 md:p-10 space-y-6">
+          <div class="grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+            <div>
+              <h2 id="overview" class="font-display text-3xl md:text-4xl text-stardust">Overview</h2>
+              <p class="mt-3 text-stardust/80 leading-relaxed">
+                The Kingdom of Cipheria stands on Valorath's eastern coast as a testament to what organized vigilance and collaborative governance can achieve. The Dreaming Tower and the Secret Council anchor the realm’s stability, innovation, and adaptive defense.
+              </p>
+            </div>
+            <div class="panel p-5 space-y-2">
+              <p class="text-sm uppercase tracking-[.18em] text-stardust/60">Fast Facts</p>
+              <div class="grid gap-2 sm:grid-cols-2">
+                <div class="rounded-lg border border-stardust/10 bg-abyss/40 p-3">
+                  <p class="text-stardust/70 text-sm">Location</p>
+                  <p class="text-stardust">Eastern coast of Valorath</p>
+                </div>
+                <div class="rounded-lg border border-stardust/10 bg-abyss/40 p-3">
+                  <p class="text-stardust/70 text-sm">Population</p>
+                  <p class="text-stardust">~3–5 million</p>
+                </div>
+                <div class="rounded-lg border border-stardust/10 bg-abyss/40 p-3">
+                  <p class="text-stardust/70 text-sm">Capital</p>
+                  <p class="text-stardust">The Crown City (~800,000)</p>
+                </div>
+                <div class="rounded-lg border border-stardust/10 bg-abyss/40 p-3">
+                  <p class="text-stardust/70 text-sm">Signature Asset</p>
+                  <p class="text-stardust">The Dreaming Tower</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">Geography</h3>
+              <p class="mt-3 text-stardust/80 leading-relaxed">
+                Cipheria controls strategic coastal territory stretching from northern fishing waters to southern swamplands. Natural barriers—mountains to the northwest, forests to the north, and marshlands to the south—help define and protect the kingdom's borders.
+              </p>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                <div class="rounded-lg border border-stardust/10 bg-abyss/35 p-3">
+                  <p class="font-semibold text-stardust">The Eastern Coast</p>
+                  <p class="text-sm text-stardust/70">Deep natural harbors make Cipheria an essential maritime trade hub.</p>
+                </div>
+                <div class="rounded-lg border border-stardust/10 bg-abyss/35 p-3">
+                  <p class="font-semibold text-stardust">The Western Highlands</p>
+                  <p class="text-sm text-stardust/70">Mineral-rich mountains provide raw materials and natural defense.</p>
+                </div>
+                <div class="rounded-lg border border-stardust/10 bg-abyss/35 p-3">
+                  <p class="font-semibold text-stardust">The Central Plains</p>
+                  <p class="text-sm text-stardust/70">Fertile agricultural land feeds the kingdom's population.</p>
+                </div>
+                <div class="rounded-lg border border-stardust/10 bg-abyss/35 p-3">
+                  <p class="font-semibold text-stardust">The Borderlands</p>
+                  <p class="text-sm text-stardust/70">Fortified frontier zone where civilization meets the wild lands.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel p-6">
+              <h3 class="font-display text-2xl text-stardust">The Borderlands</h3>
+              <p class="mt-3 text-stardust/80 leading-relaxed">
+                The Borderlands form Cipheria's outer perimeter—a frontier zone of fortified towns, watchtower networks, and patrol routes where the kingdom meets the wild lands. The "Wall" is an integrated system of fortified approaches, overlapping watchtowers, and rapid communication infrastructure.
+              </p>
+              <ul class="mt-4 space-y-3 text-stardust/80 leading-relaxed">
+                <li><span class="text-stardust font-semibold">Thornwatch (Northern Border):</span> Guards against threats from the dense northern forests.</li>
+                <li><span class="text-stardust font-semibold">Dusthaven (Western Border):</span> Monitors the desert wastes and corruption storms.</li>
+                <li><span class="text-stardust font-semibold">Shadowfen (Southern Border):</span> Smallest garrison, specializing in swamp defense.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Crown City rings -->
+      <section class="section-tight" aria-labelledby="crown-city">
+        <div class="panel p-7 md:p-10 space-y-6">
+          <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-[.18em] text-stardust/60">Capital Layout</p>
+              <h2 id="crown-city" class="font-display text-3xl md:text-4xl text-stardust">The Crown City</h2>
+            </div>
+            <span class="chip">Built in concentric rings of increasing security</span>
+          </div>
+
+          <p class="text-stardust/80 leading-relaxed max-w-4xl">
+            The capital is built in concentric rings of increasing security, reflecting Cipheria's core principle: protect what matters most while remaining accessible. Above the rings, Cloud Spires float as relays and observation posts; below, Deep Vaults protect what cannot be lost.
+          </p>
+
+          <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <article class="panel p-5">
+              <h3 class="font-display text-2xl text-stardust">The Core</h3>
+              <p class="mt-2 text-stardust/80 leading-relaxed">
+                Crown Castle, the Dreaming Tower, Ministry Quarter with Deep Vaults, and High Houses of nobility and diplomats.
+              </p>
+            </article>
+            <article class="panel p-5">
+              <h3 class="font-display text-2xl text-stardust">The Inner City</h3>
+              <p class="mt-2 text-stardust/80 leading-relaxed">
+                Merchant District, Artisan Quarter, Archives District—the professional and commercial heart of the kingdom.
+              </p>
+            </article>
+            <article class="panel p-5">
+              <h3 class="font-display text-2xl text-stardust">The Outer City</h3>
+              <p class="mt-2 text-stardust/80 leading-relaxed">
+                Where most Cipherians live and work—residential quarters, trade squares, workshops, and the river dock district.
+              </p>
+            </article>
+            <article class="panel p-5">
+              <h3 class="font-display text-2xl text-stardust">The Borderwall District</h3>
+              <p class="mt-2 text-stardust/80 leading-relaxed">
+                Military garrisons, gate towns, and industrial zones where the capital meets the wilds.
+              </p>
+            </article>
+            <article class="panel p-5">
+              <h3 class="font-display text-2xl text-stardust">Above</h3>
+              <p class="mt-2 text-stardust/80 leading-relaxed">
+                Cloud Spires float at various heights, serving as communication relays, observation posts, and trade platforms.
+              </p>
+            </article>
+            <article class="panel p-5">
+              <h3 class="font-display text-2xl text-stardust">Below</h3>
+              <p class="mt-2 text-stardust/80 leading-relaxed">
+                Deep Vaults beneath major buildings house critical data, valuable materials, and secured containment facilities.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cities and governance -->
+      <section class="section-tight" aria-labelledby="cities">
+        <div class="panel p-7 md:p-10 space-y-6">
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div>
+              <p class="text-xs uppercase tracking-[.18em] text-stardust/60">Connected Hubs</p>
+              <h2 id="cities" class="font-display text-3xl md:text-4xl text-stardust">Major Cities</h2>
+              <p class="mt-3 text-stardust/80 leading-relaxed">
+                The Crown City anchors a network of specialized hubs that keep Cipheria adaptive and supplied.
+              </p>
+              <ul class="mt-4 space-y-2 text-stardust/85 leading-relaxed">
+                <li><span class="text-stardust font-semibold">Harbordeep:</span> Primary international port with Cloud Spire anchor point (~150,000).</li>
+                <li><span class="text-stardust font-semibold">Tide's Gate:</span> Fishing industry hub and domestic shipping center (~80,000).</li>
+                <li><span class="text-stardust font-semibold">Saltmarch:</span> Frontier port near the southern Borderlands (~40,000).</li>
+                <li><span class="text-stardust font-semibold">Ironhearth:</span> Industrial powerhouse in mineral-rich foothills; Valdris's birthplace (~120,000).</li>
+                <li><span class="text-stardust font-semibold">Crossroads:</span> Commercial hub at the junction of major inland trade routes (~90,000).</li>
+                <li><span class="text-stardust font-semibold">Brighthollow:</span> Agricultural center feeding the kingdom's population (~60,000).</li>
+              </ul>
+            </div>
+
+            <div class="panel p-6">
+              <p class="text-xs uppercase tracking-[.18em] text-stardust/60">Leadership</p>
+              <h3 class="font-display text-2xl text-stardust">Governance: The Secret Council</h3>
+              <p class="mt-3 text-stardust/80 leading-relaxed">
+                Cipheria is ruled by Queen Lyra Brightforge, who governs alongside the Secret Council—a structure born from the lessons of the Great Fracture: coordination beats individual heroics, and diverse perspectives prevent blind spots.
+              </p>
+              <ul class="mt-4 space-y-2 text-stardust/85 leading-relaxed">
+                <li><span class="text-stardust font-semibold">The Monarch:</span> Final authority and decision-maker.</li>
+                <li><span class="text-stardust font-semibold">The Lorekeeper:</span> Historical wisdom and connection to the Dreaming Tower.</li>
+                <li><span class="text-stardust font-semibold">The High Commander (Valdris Ironheart):</span> Military force and tactical response.</li>
+                <li><span class="text-stardust font-semibold">The Merchant-Lord (Cassia Goldthread):</span> Economic prosperity and trade.</li>
+                <li><span class="text-stardust font-semibold">The Shadow (Shade):</span> Intelligence from spaces between official channels.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Culture & economy -->
+      <section class="section-tight" aria-labelledby="culture">
+        <div class="panel p-7 md:p-10 space-y-6">
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div class="panel p-6">
+              <p class="text-xs uppercase tracking-[.18em] text-stardust/60">Values</p>
+              <h2 id="culture" class="font-display text-3xl text-stardust">Culture &amp; Principles</h2>
+              <ul class="mt-4 space-y-3 text-stardust/85 leading-relaxed">
+                <li><span class="text-stardust font-semibold">Competence Over Credentials:</span> Respect those who can do the work, not just those with impressive titles.</li>
+                <li><span class="text-stardust font-semibold">Vigilance Without Paranoia:</span> Security should enable life, not strangle it.</li>
+                <li><span class="text-stardust font-semibold">Learning from Failure:</span> The kingdom's defining crises are studied, not buried.</li>
+                <li><span class="text-stardust font-semibold">Diverse Perspectives:</span> Different viewpoints prevent blind spots.</li>
+                <li><span class="text-stardust font-semibold">Long-Term Thinking:</span> Sustainable solutions take time and patience.</li>
+              </ul>
+              <p class="mt-4 text-stardust/80 leading-relaxed">
+                Cipheria maintains relatively fluid social mobility—demonstrated competence, innovation, or service to the kingdom can elevate one's position. Public education, guild apprenticeships, and merit-based advancement provide opportunities across all classes.
+              </p>
+            </div>
+
+            <div class="panel p-6">
+              <p class="text-xs uppercase tracking-[.18em] text-stardust/60">Economy</p>
+              <h3 class="font-display text-2xl text-stardust">Economy &amp; Trade</h3>
+              <p class="mt-3 text-stardust/80 leading-relaxed">
+                Cipheria's prosperity rests on maritime trade (strategic coastal position), manufacturing (Ironhearth and industrial centers), agriculture (the central plains), and innovation (security technologies and magical research).
+              </p>
+              <p class="mt-3 text-stardust/80 leading-relaxed">
+                Major trade partners include Sundara (exotic goods and materials), the Sovereign Holds (complex rival-partner relationship), the Free Cities (bulk goods), and sporadic but valuable trade with distant Narvoss.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Defense & challenges -->
+      <section class="section-tight" aria-labelledby="defense">
+        <div class="panel p-7 md:p-10 space-y-6">
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div class="panel p-6">
+              <p class="text-xs uppercase tracking-[.18em] text-stardust/60">Defense</p>
+              <h2 id="defense" class="font-display text-3xl text-stardust">Layered Protection</h2>
+              <p class="mt-3 text-stardust/80 leading-relaxed">
+                Cipheria's military follows the principle of layered, coordinated defense: the Wardens of the Wall, the Sentinel Order, the City Guard, and specialized units for every terrain.
+              </p>
+              <ul class="mt-4 space-y-2 text-stardust/85 leading-relaxed">
+                <li><span class="text-stardust font-semibold">The Wardens of the Wall:</span> Primary military force under High Commander Valdris.</li>
+                <li><span class="text-stardust font-semibold">The Sentinel Order:</span> Monitoring and early warning specialists.</li>
+                <li><span class="text-stardust font-semibold">City Guard:</span> Urban security and population protection.</li>
+                <li><span class="text-stardust font-semibold">Specialized Units:</span> Forest patrol, desert rangers, marsh wardens, maritime defense.</li>
+              </ul>
+              <p class="mt-3 text-stardust/80 leading-relaxed">
+                The War Room in the Crown City serves as tactical command center, coordinating kingdom-wide security operations in collaboration with the Dreaming Tower.
+              </p>
+            </div>
+
+            <div class="panel p-6 space-y-3">
+              <p class="text-xs uppercase tracking-[.18em] text-stardust/60">Pressure Points</p>
+              <h3 class="font-display text-2xl text-stardust">Current Challenges</h3>
+              <ul class="mt-2 space-y-2 text-stardust/85 leading-relaxed">
+                <li>• Evolving threats that require constant innovation.</li>
+                <li>• Balancing defense spending with growth.</li>
+                <li>• Succession questions as the current Lorekeeper shows signs of age.</li>
+                <li>• Border expansion creating new vulnerabilities.</li>
+                <li>• Complex international relations.</li>
+                <li>• Maintaining vigilance fifteen years after the last major crisis.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why it matters -->
+      <section class="section-tight pb-14" aria-labelledby="why-matters">
+        <div class="panel p-7 md:p-10 space-y-4 text-center">
+          <p class="text-xs uppercase tracking-[.2em] text-stardust/60">Why Cipheria Matters</p>
+          <h2 id="why-matters" class="font-display text-3xl md:text-4xl text-stardust">Proof that Coordination Works</h2>
+          <p class="text-stardust/85 leading-relaxed max-w-3xl mx-auto">
+            In a dangerous world, Cipheria represents proof that organization works—that coordination beats heroics, that learning from failure leads to resilience, and that security can enable prosperity rather than strangling it. The Kingdom of Cipheria is not perfect. But it works. It adapts. It survives. And in a world where threats emerge from the wilds and slip through cracks in reality, that matters.
+          </p>
+        </div>
+        <p class="mt-8 text-sm text-center text-stardust/65">
+          The Tower dreams. The Kingdom endures. The Crown City stays alert.
+        </p>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script>
+      async function injectPartial(id, url) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const res = await fetch(url, { cache: "no-cache" });
+        el.innerHTML = await res.text();
+      }
+
+      (async () => {
+        await injectPartial("site-header", "/partials/header.html");
+        await injectPartial("site-footer", "/partials/footer.html");
+
+        const yearEl = document.getElementById("year");
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+      })();
+    </script>
+  </body>
+</html>
