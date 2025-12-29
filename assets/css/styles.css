@@ -189,3 +189,114 @@ footer{
 #mobileNavPanel.hidden{
   display: none !important;
 }
+
+/* ---------- "Coming Soon" template helpers ---------- */
+.coming-soon-hero{
+  position: relative;
+}
+
+.coming-soon-hero::before,
+.coming-soon-hero::after{
+  content: "";
+  position: absolute;
+  inset: -10% -5% auto;
+  height: 50%;
+  border-radius: 999px;
+  filter: blur(60px);
+  opacity: .8;
+  z-index: -1;
+}
+
+.coming-soon-hero::before{
+  background: radial-gradient(circle at 20% 30%, rgba(53,198,224,.32), transparent 60%);
+}
+
+.coming-soon-hero::after{
+  background: radial-gradient(circle at 80% 40%, rgba(124,77,255,.22), transparent 55%);
+}
+
+.coming-soon-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .4rem .8rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(15,34,48,.75), rgba(20,53,69,.65));
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .75rem;
+  color: rgba(207,229,239,.85);
+}
+
+.coming-soon-card{
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid rgba(20,53,69,.75);
+  background: linear-gradient(180deg, rgba(15,34,48,.68), rgba(10,20,27,.72));
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+}
+
+.coming-soon-card::before{
+  content:"";
+  position:absolute;
+  inset:-30% 60% 30% -30%;
+  background: radial-gradient(circle at 0% 50%, rgba(53,198,224,.12), transparent 55%);
+  pointer-events:none;
+}
+
+.coming-soon-card h2{
+  margin-top: 0;
+}
+
+.coming-soon-checklist{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: .9rem;
+}
+
+.coming-soon-checklist li{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: .75rem;
+  color: rgba(207,229,239,.88);
+}
+
+.coming-soon-status{
+  width: 10px;
+  height: 10px;
+  margin-top: .3rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 0 6px rgba(53,198,224,.08);
+}
+
+.coming-soon-status.is-complete{ background: #35C6E0; box-shadow: 0 0 0 6px rgba(53,198,224,.14); }
+.coming-soon-status.is-progress{ background: #F0B429; box-shadow: 0 0 0 6px rgba(240,180,41,.14); }
+.coming-soon-status.is-planned{ background: #7C4DFF; box-shadow: 0 0 0 6px rgba(124,77,255,.14); }
+
+.coming-soon-links{
+  display: grid;
+  gap: .5rem;
+}
+
+.coming-soon-links a{
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  text-decoration: none;
+  padding: .5rem .85rem;
+  border-radius: .75rem;
+  border: 1px solid rgba(53,198,224,.18);
+  background: rgba(15,34,48,.45);
+  color: rgba(207,229,239,.90);
+}
+
+.coming-soon-links a:hover{
+  color: var(--glow);
+  border-color: rgba(53,198,224,.45);
+}
