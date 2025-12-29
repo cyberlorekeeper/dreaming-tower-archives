@@ -1,436 +1,90 @@
 <!doctype html>
 <html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Field Notes | The Dreaming Tower Archives</title>
-
-  <meta name="description" content="Recovered field notes from the Dreaming Tower archives. Aera’s logs, Lorekeeper notes, and real-world resonance." />
-  <meta name="keywords" content="cyber lorekeeper, field notes, cybersecurity storytelling, fantasy cyberpunk, dreaming tower" />
-
-  <link rel="stylesheet" href="/css/style.css" />
-</head>
-
-<body class="bg-abyss text-stardust">
-  <!-- Header inject -->
-  <div id="site-header"></div>
-
-  <main>
-    <!-- Hero -->
-    <section class="relative mx-auto max-w-6xl px-6 pt-12 pb-8">
-      <div class="soft-card p-8">
-        <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">The Dreaming Tower Archives</p>
-        <h1 class="mt-3 font-display text-5xl text-gradient leading-tight">Field Notes</h1>
-        <p class="mt-4 text-lg text-stardust/80 leading-relaxed max-w-3xl">
-          Recovered entries from the Tower’s margins. Some are personal logs. Some are warnings. Some are reflections that echo into our world.
-        </p>
-        <p class="mt-3 text-sm text-stardust/65">
-          More entries will surface as the Tower releases them.
-        </p>
-      </div>
-    </section>
-
-    <!-- Featured + Recent -->
-    <section class="relative mx-auto max-w-6xl px-6 pb-6">
-      <div class="flex items-center justify-between gap-4 flex-wrap">
-        <div>
-          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Featured</p>
-          <h2 class="font-display text-3xl text-stardust">Highlighted Field Notes</h2>
-        </div>
-        <a href="#archive" class="text-sm font-semibold text-glow hover:underline underline-offset-4">View All Entries →</a>
-      </div>
-
-      <div class="mt-6 grid gap-6 lg:grid-cols-[1.1fr_.95fr]">
-        <article id="featuredEntry" class="soft-card p-6 hidden"></article>
-        <div id="recentEntries" class="grid gap-4 sm:grid-cols-2"></div>
-      </div>
-    </section>
-
-    <!-- Filters -->
-    <section class="relative mx-auto max-w-6xl px-6 pt-6 pb-4">
-      <div class="soft-card p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div class="flex flex-wrap gap-2 text-sm">
-          <button class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 font-semibold text-stardust/85 hover:text-glow"
-                  data-filter="all">All Entries</button>
-          <button class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 font-semibold text-stardust/85 hover:text-glow"
-                  data-filter="aera">Aera's Logs</button>
-          <button class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 font-semibold text-stardust/85 hover:text-glow"
-                  data-filter="lore">Lorekeeper's Notes</button>
-          <button class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 font-semibold text-stardust/85 hover:text-glow"
-                  data-filter="resonance">Real-World Resonance</button>
-        </div>
-
-        <div class="flex flex-wrap gap-3 items-center text-sm text-stardust/80">
-          <label for="sortOrder" class="sr-only">Sort entries</label>
-          <select id="sortOrder" class="focus-ring rounded-md border border-rift/60 bg-abyss/60 px-3 py-2 text-stardust/90">
-            <option value="newest">By Date (Newest)</option>
-            <option value="oldest">By Date (Oldest)</option>
-          </select>
-
-          <div class="relative">
-            <label for="search" class="sr-only">Search</label>
-            <input id="search" type="search" placeholder="Search..."
-                   class="focus-ring rounded-md border border-rift/60 bg-abyss/60 px-10 py-2 text-sm placeholder:text-stardust/50 text-stardust w-56" />
-            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-stardust/50">⌕</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Archive -->
-    <section id="archive" class="relative mx-auto max-w-6xl px-6 pb-12">
-      <div class="soft-card p-6">
-        <div class="flex items-center justify-between gap-3 flex-wrap">
-          <div>
-            <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Archive</p>
-            <h2 class="font-display text-3xl text-stardust">All Field Notes</h2>
-          </div>
-          <p class="text-sm text-stardust/70">Browse, filter, and trace the patterns.</p>
-        </div>
-
-        <ul id="archiveList" class="mt-6 space-y-4"></ul>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer inject -->
-  <div id="site-footer"></div>
-
-  <!-- Partials loader -->
-  <script>
-    async function loadPartial(targetId, url) {
-      const el = document.getElementById(targetId);
-      if (!el) return;
-
-      try {
-        const res = await fetch(url, { cache: "no-cache" });
-        if (!res.ok) {
-          console.warn(`Failed to load ${url}: ${res.status}`);
-          return;
-        }
-        el.innerHTML = await res.text();
-      } catch (err) {
-        console.warn(`Error loading ${url}`, err);
-      }
-    }
-
-    function initHeaderNav() {
-      const navToggle = document.getElementById("navToggle");
-      const mobileNavPanel = document.getElementById("mobileNavPanel");
-      if (!navToggle || !mobileNavPanel) return;
-
-      navToggle.addEventListener("click", () => {
-        const isOpen = navToggle.getAttribute("aria-expanded") === "true";
-        navToggle.setAttribute("aria-expanded", String(!isOpen));
-        mobileNavPanel.classList.toggle("hidden", isOpen);
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          navToggle.setAttribute("aria-expanded", "false");
-          mobileNavPanel.classList.add("hidden");
-        }
-      });
-    }
-
-    function initFooterYear() {
-      const footerYear = document.querySelector('#site-footer #year');
-      if (footerYear) footerYear.textContent = new Date().getFullYear();
-    }
-
-    (async function boot() {
-      await loadPartial("site-header", "/partials/header.html");
-      initHeaderNav();
-
-      await loadPartial("site-footer", "/partials/footer.html");
-      initFooterYear();
-    })();
-  </script>
-
-  <!-- Field Notes: JSON-powered renderer -->
-  <script>
-    (() => {
-      const INDEX_URL = "/data/field-notes.index.json";
-
-      const badgeMap = {
-        aera: { label: "Aera's Logs", className: "badge badge-aera" },
-        lore: { label: "Lorekeeper's Notes", className: "badge badge-lore" },
-        resonance: { label: "Real-World Resonance", className: "badge badge-resonance" },
-      };
-
-      const els = {
-        featured: document.getElementById("featuredEntry"),
-        recent: document.getElementById("recentEntries"),
-        archive: document.getElementById("archiveList"),
-        sort: document.getElementById("sortOrder"),
-        search: document.getElementById("search"),
-        filterBtns: Array.from(document.querySelectorAll("[data-filter]")),
-      };
-
-      if (!els.featured || !els.recent || !els.archive) {
-        console.warn("Field Notes: missing one or more required containers (#featuredEntry, #recentEntries, #archiveList).");
-        return;
-      }
-
-      let allEntries = [];
-      let activeFilter = "all";
-      let sortOrder = els.sort?.value || "newest";
-      let query = "";
-
-      const normalize = (s) => (s || "").toString().toLowerCase().trim();
-
-      function parseDateISO(dateStr) {
-        const d = new Date(dateStr);
-        return Number.isNaN(d.getTime()) ? null : d;
-      }
-
-      function formatDate(dateStr) {
-        const d = parseDateISO(dateStr);
-        if (!d) return dateStr || "";
-        return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
-      }
-
-      function highlightActiveFilter() {
-        els.filterBtns.forEach((btn) => {
-          const isActive = (btn.getAttribute("data-filter") || "all") === activeFilter;
-          btn.classList.toggle("is-active", isActive);
-          if (isActive) btn.classList.add("ring-2", "ring-glow/50");
-          else btn.classList.remove("ring-2", "ring-glow/50");
-        });
-      }
-
-      function matchesFilters(entry) {
-        if (activeFilter !== "all" && entry.category !== activeFilter) return false;
-        if (!query) return true;
-
-        const haystack = [
-          entry.title,
-          entry.subtitle,
-          entry.excerpt,
-          (entry.tags || []).join(" "),
-        ].map(normalize).join(" ");
-
-        return haystack.includes(query);
-      }
-
-      function sortEntries(list) {
-        const copy = [...list];
-        copy.sort((a, b) => {
-          const da = parseDateISO(a.date)?.getTime() ?? 0;
-          const db = parseDateISO(b.date)?.getTime() ?? 0;
-          const diff = da - db;
-          return sortOrder === "newest" ? -diff : diff;
-        });
-        return copy;
-      }
-
-      function escapeHtml(str) {
-        return (str ?? "").toString()
-          .replaceAll("&", "&amp;")
-          .replaceAll("<", "&lt;")
-          .replaceAll(">", "&gt;")
-          .replaceAll('"', "&quot;")
-          .replaceAll("'", "&#039;");
-      }
-
-      function escapeAttr(str) {
-        return (str ?? "").toString().replaceAll('"', "&quot;");
-      }
-
-      function renderFeatured(entry) {
-        if (!entry) {
-          els.featured.classList.add("hidden");
-          els.featured.innerHTML = "";
-          return;
-        }
-
-        const badge = badgeMap[entry.category] || { label: "Field Note", className: "badge" };
-        els.featured.classList.remove("hidden");
-
-        els.featured.innerHTML = `
-          <div class="flex items-start justify-between gap-4 flex-wrap">
-            <div class="${badge.className}">${escapeHtml(badge.label)}</div>
-            <p class="text-xs text-stardust/65">
-              ${escapeHtml(formatDate(entry.date))}${entry.readTime ? ` • ${entry.readTime} min read` : ""}
-            </p>
-          </div>
-
-          <h3 class="mt-3 font-display text-2xl text-stardust">
-            <a href="${escapeAttr(entry.href)}" class="hover:text-glow">${escapeHtml(entry.title)}</a>
-          </h3>
-
-          ${entry.subtitle ? `<p class="mt-2 text-sm text-stardust/75">${escapeHtml(entry.subtitle)}</p>` : ""}
-
-          ${entry.excerpt ? `<p class="mt-3 text-sm text-stardust/85 leading-relaxed">${escapeHtml(entry.excerpt)}</p>` : ""}
-
-          <div class="mt-4 flex flex-wrap gap-3 items-center justify-between">
-            <a class="focus-ring inline-flex items-center gap-2 font-semibold text-stardust/90 hover:text-glow" href="${escapeAttr(entry.href)}">
-              Read More →
-            </a>
-            <button class="focus-ring inline-flex items-center gap-2 font-semibold text-stardust/80 hover:text-glow" type="button" data-share="${escapeAttr(entry.href)}">
-              Share This Entry
-            </button>
-          </div>
-        `;
-      }
-
-      function renderRecent(list) {
-        els.recent.innerHTML = "";
-        list.slice(0, 4).forEach((entry) => {
-          const badge = badgeMap[entry.category] || { label: "Field Note", className: "badge" };
-          const card = document.createElement("article");
-          card.className = "soft-card p-4 flex flex-col gap-2";
-          card.innerHTML = `
-            <div class="${badge.className}">${escapeHtml(badge.label)}</div>
-            <h3 class="font-display text-xl text-stardust">
-              <a href="${escapeAttr(entry.href)}" class="hover:text-glow">${escapeHtml(entry.title)}</a>
-            </h3>
-            ${entry.subtitle ? `<p class="text-sm text-stardust/75">${escapeHtml(entry.subtitle)}</p>` : ""}
-            ${entry.excerpt ? `<p class="text-sm text-stardust/80 leading-relaxed line-clamp-3">${escapeHtml(entry.excerpt)}</p>` : ""}
-            <p class="text-xs text-stardust/65">
-              ${entry.readTime ? `Read time: ${entry.readTime} minutes | ` : ""}Published: ${escapeHtml(formatDate(entry.date))}
-            </p>
-            <a class="focus-ring inline-flex items-center gap-2 font-semibold text-stardust/90 hover:text-glow" href="${escapeAttr(entry.href)}">
-              Read More →
-            </a>
-          `;
-          els.recent.appendChild(card);
-        });
-      }
-
-      function renderArchive(list) {
-        els.archive.innerHTML = "";
-        list.forEach((entry) => {
-          const badge = badgeMap[entry.category] || { label: "Field Note", className: "badge" };
-          const li = document.createElement("li");
-          li.className = "rounded-xl border border-rift/70 bg-abyss/40 backdrop-blur-sm p-5";
-          li.innerHTML = `
-            <div class="flex items-start justify-between gap-4 flex-wrap">
-              <div class="${badge.className}">${escapeHtml(badge.label)}</div>
-              <p class="text-xs text-stardust/65">
-                ${escapeHtml(formatDate(entry.date))}${entry.readTime ? ` • ${entry.readTime} min read` : ""}
-              </p>
-            </div>
-
-            <h3 class="mt-3 font-display text-xl text-stardust">
-              <a href="${escapeAttr(entry.href)}" class="hover:text-glow">${escapeHtml(entry.title)}</a>
-            </h3>
-
-            ${entry.subtitle ? `<p class="mt-2 text-sm text-stardust/75">${escapeHtml(entry.subtitle)}</p>` : ""}
-
-            ${entry.excerpt ? `<p class="mt-3 text-sm text-stardust/85 leading-relaxed">${escapeHtml(entry.excerpt)}</p>` : ""}
-
-            <div class="mt-4 flex flex-wrap gap-3 items-center justify-between">
-              <a class="focus-ring inline-flex items-center gap-2 font-semibold text-stardust/90 hover:text-glow" href="${escapeAttr(entry.href)}">
-                Read More →
-              </a>
-              <button class="focus-ring inline-flex items-center gap-2 font-semibold text-stardust/80 hover:text-glow" type="button" data-share="${escapeAttr(entry.href)}">
-                Share This Entry
-              </button>
-            </div>
-          `;
-          els.archive.appendChild(li);
-        });
-      }
-
-      function update() {
-        const filtered = allEntries.filter(matchesFilters);
-        const sorted = sortEntries(filtered);
-
-        const featured = sorted.find((e) => e.featured) || sorted[0] || null;
-        const rest = featured ? sorted.filter((e) => e.id !== featured.id) : [];
-
-        renderFeatured(featured);
-        renderRecent(rest);
-        renderArchive(sorted);
-        highlightActiveFilter();
-      }
-
-      els.filterBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          activeFilter = btn.getAttribute("data-filter") || "all";
-          update();
-        });
-      });
-
-      if (els.sort) {
-        els.sort.addEventListener("change", (e) => {
-          sortOrder = e.target.value || "newest";
-          update();
-        });
-      }
-
-      if (els.search) {
-        els.search.addEventListener("input", (e) => {
-          query = normalize(e.target.value);
-          update();
-        });
-      }
-
-      document.addEventListener("click", async (e) => {
-        const btn = e.target.closest("[data-share]");
-        if (!btn) return;
-
-        const href = btn.getAttribute("data-share") || "";
-        const url = new URL(href, window.location.origin).toString();
-
-        try {
-          if (navigator.share) {
-            await navigator.share({ title: document.title, url });
-          } else {
-            await navigator.clipboard.writeText(url);
-            const original = btn.textContent;
-            btn.textContent = "Copied!";
-            setTimeout(() => (btn.textContent = original), 1200);
-          }
-        } catch (_) {
-          // ignore user cancel
-        }
-      });
-
-      async function loadIndex() {
-        try {
-          const res = await fetch(INDEX_URL, { cache: "no-cache" });
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          const data = await res.json();
-          if (!Array.isArray(data)) throw new Error("Index JSON is not an array.");
-
-          allEntries = data
-            .filter((n) => n && n.id && n.title && n.category && n.href)
-            .map((n) => ({
-              id: n.id,
-              category: n.category,
-              title: n.title,
-              subtitle: n.subtitle || "",
-              date: n.date || "",
-              readTime: typeof n.readTime === "number" ? n.readTime : null,
-              excerpt: n.excerpt || "",
-              featured: !!n.featured,
-              href: n.href,
-              tags: Array.isArray(n.tags) ? n.tags : [],
-            }));
-
-          update();
-        } catch (err) {
-          console.warn("Field Notes: failed to load index JSON", err);
-
-          els.featured.classList.remove("hidden");
-          els.featured.innerHTML = `
-            <div class="soft-card p-6">
-              <p class="text-stardust/80">
-                Could not load Field Notes right now. Check that
-                <code class="text-stardust">/data/field-notes.index.json</code>
-                exists and is accessible.
-              </p>
-            </div>
-          `;
-          els.recent.innerHTML = "";
-          els.archive.innerHTML = "";
-        }
-      }
-
-      loadIndex();
-    })();
-  </script>
-</body>
-</html>
+ <head>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>Coming Soon | The Cyber Lorekeeper</title>
+   <meta name="description" content="A placeholder page for lorekeeper sections that are still in the works." />
+ 
+   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+   <link rel="shortcut icon" href="/images/favicon.ico">
+ 
+   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source Sans 3:wght@400;600;700&display=swap" rel="stylesheet">
+   <script src="https://cdn.tailwindcss.com"></script>
+   <script>
+     tailwind.config = {
+       theme: {
+         extend: {
+           colors: {
+             'deep-space':'#0A141B',
+             'abyss':'#0F2230',
+             'rift':'#143545',
+             'nebula':'#1E6175',
+             'glow':'#35C6E0',
+             'stardust':'#CFE5EF',
+             indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+             fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+           },
+           fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+           boxShadow:{
+             glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+             card:'0 6px 18px rgba(0,0,0,.12)'
+           }
+         }
+       }
+     }
+   </script>
+   <link rel="stylesheet" href="/assets/css/styles.css" />
+   <script src="/assets/js/site.js" defer></script>
+   <script src="/assets/js/layout.js" defer></script>
+ </head>
+ 
+ <body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+   <main class="relative min-h-screen overflow-hidden">
+     <div class="absolute inset-0 bg-gradient-to-br from-deep-space/75 via-abyss/85 to-deep-space/90"></div>
+     <div class="absolute inset-0" aria-hidden="true">
+       <img src="/images/background-1.png" alt="" class="h-full w-full object-cover opacity-70" />
+     </div>
+ 
+     <div id="site-header" class="relative"></div>
+ 
+     <section class="relative mx-auto max-w-5xl px-6 pt-16 pb-14 sm:pt-20 sm:pb-16 coming-soon-hero">
+       <span class="coming-soon-badge">Coming Soon</span>
+       <h1 class="mt-4 font-display text-4xl sm:text-5xl leading-tight text-gradient">This realm is still being charted.</h1>
+       <p class="mt-4 max-w-3xl text-lg text-stardust/85 leading-relaxed">
+         The archivists are compiling the artifacts for this section. Check back soon, or explore another corner
+         of the Dreaming Tower in the meantime.
+       </p>
+ 
+       <div class="mt-8">
+         <div class="coming-soon-card p-6 flex flex-col gap-4">
+           <div>
+             <p class="uppercase tracking-[.14em] text-stardust/60 text-xs">Stay in the loop</p>
+             <h2 class="mt-2 font-display text-xl text-stardust/95">While you wait</h2>
+             <p class="mt-2 text-stardust/78 leading-relaxed">Pick a nearby destination to explore while this realm is being charted.</p>
+           </div>
+ 
+           <div class="coming-soon-links">
+             <a href="/index.html" class="hover:no-underline">
+               <span aria-hidden="true">↩</span>
+               <span>Return to the Chronicle hub</span>
+             </a>
+             <a href="/chronicles.html" class="hover:no-underline">
+               <span aria-hidden="true">✦</span>
+               <span>Read the latest Chronicle</span>
+             </a>
+             <a href="/characters.html" class="hover:no-underline">
+               <span aria-hidden="true">☍</span>
+               <span>Meet the characters</span>
+             </a>
+           </div>
+         </div>
+       </div>
+     </section>
+ 
+     <div id="site-footer" class="relative"></div>
+   </main>
+ </body>
+ </html>
