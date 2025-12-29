@@ -151,7 +151,7 @@
           Modern folklore for the digital age. Epic tales where firewalls are castle walls, threats take physical form, and the difference between magic and technology has long since blurred into irrelevance.
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-          <a href="#archives" class="focus-ring glow-button inline-flex items-center justify-center rounded-full border border-glow/70 bg-abyss/60 px-6 py-3 font-semibold text-stardust hover:text-glow">Learn More</a>
+          <a href="#archives" class="focus-ring glow-button inline-flex items-center justify-center rounded-full border border-glow/70 bg-abyss/60 px-6 py-3 font-semibold text-stardust hover:text-glow">The Making of the Realm</a>
           <a href="chronicles.html" class="focus-ring glow-button inline-flex items-center justify-center rounded-full border border-glow/70 bg-abyss/60 px-6 py-3 font-semibold text-stardust hover:text-glow">Read the Chronicles</a>
           <a href="characters.html" class="focus-ring glow-button inline-flex items-center justify-center rounded-full border border-glow/70 bg-abyss/60 px-6 py-3 font-semibold text-stardust hover:text-glow">Explore the Characters</a>
         </div>
@@ -403,5 +403,56 @@
     </section>
     <div id="site-footer"></div>
   </main>
+
+  <script>
+  async function loadPartial(targetId, url) {
+    const el = document.getElementById(targetId);
+    if (!el) return;
+
+    try {
+      const res = await fetch(url, { cache: "no-cache" });
+      if (!res.ok) {
+        console.warn(`Failed to load ${url}: ${res.status}`);
+        return;
+      }
+      el.innerHTML = await res.text();
+    } catch (err) {
+      console.warn(`Error loading ${url}`, err);
+    }
+  }
+
+  function initHeaderNav() {
+    const navToggle = document.getElementById("navToggle");
+    const mobileNavPanel = document.getElementById("mobileNavPanel");
+    if (!navToggle || !mobileNavPanel) return;
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+      navToggle.setAttribute("aria-expanded", String(!isOpen));
+      mobileNavPanel.classList.toggle("hidden", isOpen);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        navToggle.setAttribute("aria-expanded", "false");
+        mobileNavPanel.classList.add("hidden");
+      }
+    });
+  }
+
+  function initFooterYear() {
+    const footerYear = document.querySelector('#site-footer #year');
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
+  }
+
+  (async function boot() {
+    await loadPartial("site-header", "/partials/header.html");
+    initHeaderNav();
+
+    await loadPartial("site-footer", "/partials/footer.html");
+    initFooterYear();
+  })();
+</script>
+
 </body>
 </html>
