@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coming Soon | The Cyber Lorekeeper</title>
+  <meta name="description" content="A placeholder page for lorekeeper sections that are still in the works." />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow:{
+            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card:'0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/layout.js" defer></script>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/75 via-abyss/85 to-deep-space/90"></div>
+    <div class="absolute inset-0" aria-hidden="true">
+      <img src="/images/background-1.png" alt="" class="h-full w-full object-cover opacity-70" />
+    </div>
+
+    <div id="site-header" class="relative"></div>
+
+    <section class="relative mx-auto max-w-5xl px-6 pt-16 pb-14 sm:pt-20 sm:pb-16 coming-soon-hero">
+      <span class="coming-soon-badge">Coming Soon</span>
+      <h1 class="mt-4 font-display text-4xl sm:text-5xl leading-tight text-gradient">This realm is still being charted.</h1>
+      <p class="mt-4 max-w-3xl text-lg text-stardust/85 leading-relaxed">
+        The archivists are compiling the artifacts for this section. Check back soon, or explore another corner
+        of the Dreaming Tower in the meantime.
+      </p>
+
+      <div class="mt-8 grid gap-6 lg:grid-cols-3">
+        <div class="coming-soon-card p-6 lg:col-span-2">
+          <h2 class="font-display text-2xl text-stardust/95">What to expect</h2>
+          <p class="mt-2 text-stardust/80 leading-relaxed">Use this as a reusable placeholder: swap in your page title, adjust the checklist, and link to nearby content.</p>
+
+          <ul class="coming-soon-checklist mt-5">
+            <li>
+              <span class="coming-soon-status is-progress" aria-hidden="true"></span>
+              <div>
+                <p class="font-semibold text-stardust/95">Content drafted</p>
+                <p class="text-sm text-stardust/75">Narrative beats and imagery are being collected.</p>
+              </div>
+            </li>
+            <li>
+              <span class="coming-soon-status is-planned" aria-hidden="true"></span>
+              <div>
+                <p class="font-semibold text-stardust/95">Art direction</p>
+                <p class="text-sm text-stardust/75">Visual motifs and layout cues will be added next.</p>
+              </div>
+            </li>
+            <li>
+              <span class="coming-soon-status is-complete" aria-hidden="true"></span>
+              <div>
+                <p class="font-semibold text-stardust/95">Global navigation ready</p>
+                <p class="text-sm text-stardust/75">Header, footer, and background are already wired.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="coming-soon-card p-6 flex flex-col gap-4">
+          <div>
+            <p class="uppercase tracking-[.14em] text-stardust/60 text-xs">Stay in the loop</p>
+            <h2 class="mt-2 font-display text-xl text-stardust/95">While you wait</h2>
+          </div>
+
+          <div class="coming-soon-links">
+            <a href="/index.html" class="hover:no-underline">
+              <span aria-hidden="true">↩</span>
+              <span>Return to the Chronicle hub</span>
+            </a>
+            <a href="/chronicles.html" class="hover:no-underline">
+              <span aria-hidden="true">✦</span>
+              <span>Read the latest Chronicle</span>
+            </a>
+            <a href="/characters.html" class="hover:no-underline">
+              <span aria-hidden="true">☍</span>
+              <span>Meet the characters</span>
+            </a>
+          </div>
+
+          <p class="text-xs text-stardust/65">Need a quick swap? Duplicate this file, change the heading, and adjust the checklist to match your page.</p>
+        </div>
+      </div>
+    </section>
+
+    <div id="site-footer" class="relative"></div>
+  </main>
+</body>
+</html>
