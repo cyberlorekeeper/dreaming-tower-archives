@@ -177,6 +177,25 @@
       </div>
     </section>
 
+     <!-- Email capture (Netlify Forms) -->
+      <div class="mt-8 mx-auto max-w-xl">
+        <form name="early-access" method="POST" netlify netlify-honeypot="bot-field" action="/thanks.html"
+              class="grid gap-3 sm:grid-cols-[1fr_auto] text-left">
+          <input type="hidden" name="form-name" value="early-access" />
+          <!-- Honeypot -->
+          <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+
+          <label class="sr-only" for="email">Email</label>
+          <input id="email" name="email" type="email" required
+                 class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
+                 placeholder="you@realm.co" />
+          <button type="submit"
+                  class="focus-ring mt-2 sm:mt-0 inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
+            Subscribe
+          </button>
+        </form>
+      </div>
+
     <!-- Footer partial (outside the content section so it can breathe) -->
     <div id="site-footer" class="relative"></div>
   </main>
