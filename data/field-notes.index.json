@@ -1,0 +1,100 @@
+[
+  {
+    "id": "aera-2025-12-18-first-breach",
+    "category": "aera",
+    "title": "First Breach",
+    "subtitle": "Field Note I — The night the ward failed",
+    "date": "2025-12-18",
+    "readTime": 6,
+    "excerpt": "They told me the wards had never failed. They were wrong. The silence afterward was worse than the alarms.",
+    "featured": true,
+    "href": "/pages/field-notes/aera/2025-12-18-first-breach.html",
+    "tags": ["incident", "trust", "failure"]
+  },
+  {
+    "id": "aera-2025-12-28-finding-cache",
+    "category": "aera",
+    "title": "Finding Cache",
+    "subtitle": "Field Note II — Vault Seven was not empty",
+    "date": "2025-12-28",
+    "readTime": 8,
+    "excerpt": "Cache was not supposed to exist. Not like this. Not remembering things I never lived.",
+    "featured": true,
+    "href": "/pages/field-notes/aera/2025-12-28-finding-cache.html",
+    "tags": ["memory", "isle-404", "identity"]
+  },
+  {
+    "id": "aera-2026-01-07-echoes-in-the-static",
+    "category": "aera",
+    "title": "Echoes in the Static",
+    "subtitle": "Field Note III — When the Tower speaks sideways",
+    "date": "2026-01-07",
+    "readTime": 7,
+    "excerpt": "Sometimes the Tower does not warn. Sometimes it whispers, and you have to decide whether to listen.",
+    "featured": false,
+    "href": "/pages/field-notes/aera/2026-01-07-echoes-in-the-static.html",
+    "tags": ["signals", "intuition", "risk"]
+  },
+
+  {
+    "id": "lorekeeper-2025-12-20-incident-level-seven",
+    "category": "lore",
+    "title": "Incident: Level Seven",
+    "subtitle": "From the Lorekeeper’s private register",
+    "date": "2025-12-20",
+    "readTime": 5,
+    "excerpt": "This was not a failure of tools. It was a failure of belief that such a breach was possible.",
+    "featured": true,
+    "href": "/pages/field-notes/lore/2025-12-20-incident-level-seven.html",
+    "tags": ["incident-response", "complacency", "oversight"]
+  },
+  {
+    "id": "lorekeeper-2025-12-30-pattern-recognition",
+    "category": "lore",
+    "title": "On Pattern Recognition",
+    "subtitle": "Why the Tower dreams",
+    "date": "2025-12-30",
+    "readTime": 4,
+    "excerpt": "Raw data does not protect kingdoms. Patterns do.",
+    "featured": false,
+    "href": "/pages/field-notes/lore/2025-12-30-pattern-recognition.html",
+    "tags": ["monitoring", "analysis", "early-warning"]
+  },
+  {
+    "id": "lorekeeper-2026-01-12-the-cost-of-knowing",
+    "category": "lore",
+    "title": "The Cost of Knowing",
+    "subtitle": "A margin note never meant to be read",
+    "date": "2026-01-12",
+    "readTime": 6,
+    "excerpt": "To see everything is to carry everything. The Tower does not forget. Neither do I.",
+    "featured": false,
+    "href": "/pages/field-notes/lore/2026-01-12-the-cost-of-knowing.html",
+    "tags": ["burnout", "institutional-memory", "leadership"]
+  },
+
+  {
+    "id": "resonance-2025-12-22-supply-chains-dont-scream",
+    "category": "resonance",
+    "title": "Supply Chains Don’t Scream",
+    "subtitle": "They fail quietly, everywhere at once",
+    "date": "2025-12-22",
+    "readTime": 6,
+    "excerpt": "No alarms sounded. No walls fell. And yet the damage had already spread beyond containment.",
+    "featured": true,
+    "href": "/pages/field-notes/resonance/2025-12-22-supply-chains-dont-scream.html",
+    "tags": ["supply-chain", "third-party-risk", "blind-spots"]
+  },
+  {
+    "id": "resonance-2026-01-03-the-illusion-of-visibility",
+    "category": "resonance",
+    "title": "The Illusion of Visibility",
+    "subtitle": "Dashboards are not awareness",
+    "date": "2026-01-03",
+    "readTime": 5,
+    "excerpt": "We had metrics. We had charts. We did not have understanding.",
+    "featured": false,
+    "href": "/pages/field-notes/resonance/2026-01-03-the-illusion-of-visibility.html",
+    "tags": ["metrics", "false-confidence", "observability"]
+  }
+]
