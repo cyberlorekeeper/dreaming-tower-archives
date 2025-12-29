@@ -44,147 +44,359 @@
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
 
-    .parchment-callout {
-      background: radial-gradient(circle at 20% 0%, #fffaf2 0%, #f7f4ef 35%, #f1ece3 70%, #e6ddcf 100%);
-      border-radius: 0.9rem;
-      border: 1px solid rgba(26, 36, 48, 0.38); /* runic-ish */
-      box-shadow: 0 16px 40px rgba(0,0,0,0.45);
-      padding: 1.75rem 1.6rem;
-      position: relative;
-      max-width: 40rem;
-      margin-left: auto;
-      margin-right: auto;
-      transform: rotate(-0.4deg);
-    }
-
-    .parchment-callout::before {
+    .hero-pattern::after {
       content: "";
       position: absolute;
-      inset: 10px 10px auto auto;
-      border-radius: 0.7rem;
-      border: 1px dashed rgba(26, 36, 48, 0.2);
-      opacity: 0.6;
+      inset: 0;
+      background: radial-gradient(circle at 25% 20%, rgba(53,198,224,0.12), transparent 45%),
+                  radial-gradient(circle at 80% 30%, rgba(124,77,255,0.14), transparent 55%),
+                  linear-gradient(135deg, rgba(12,26,36,0.55), rgba(20,53,69,0.7));
+      mix-blend-mode: screen;
       pointer-events: none;
     }
 
-    .parchment-heading {
-      font-family: 'Cinzel','serif';
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #b5842e; /* ember-adjacent */
-      margin-bottom: 0.6rem;
+    .circuit-break {
+      background-image:
+        linear-gradient(135deg, rgba(53,198,224,0.08) 0.1rem, transparent 0.1rem),
+        linear-gradient(315deg, rgba(207,229,239,0.06) 0.1rem, transparent 0.1rem);
+      background-size: 1.2rem 1.2rem;
+      mask-image: radial-gradient(circle at center, black 55%, transparent 75%);
     }
 
-    .parchment-body {
-      font-size: 0.97rem;
-      line-height: 1.75;
-      color: #2b3440; /* runic-ish, readable on parchment */
-      font-style: italic;
+    .glow-button {
+      transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+      box-shadow: 0 0 0 1px rgba(53,198,224,0.35), 0 12px 32px rgba(0,0,0,0.35);
     }
 
-    .parchment-body + .parchment-body {
-      margin-top: 0.4rem;
-      text-indent: 0.9em;
+    .glow-button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.08);
+      box-shadow: 0 0 0 1px rgba(240,180,41,0.45), 0 18px 42px rgba(0,0,0,0.45);
+    }
+
+    .glow-button:focus-visible {
+      outline: 2px solid #35C6E0;
+      outline-offset: 3px;
     }
   </style>
 </head>
 <body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
-  <main class="relative min-h-screen flex items-center">
-    <!-- Hero background -->
-    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
-    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+  <main>
+    <!-- Hero Section -->
+    <section id="top" class="relative overflow-hidden">
+      <div class="absolute inset-0">
+        <img src="/images/background-1.png" alt="Crown City aerial view with concentric rings" class="h-full w-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-br from-aether/70 via-abyss/80 to-deep-space/85"></div>
+      </div>
+      <div class="hero-pattern absolute inset-0"></div>
 
-    <div class="relative mx-auto max-w-3xl px-6 py-16 text-center">
-      <!-- Mark -->
-      <div class="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-xl bg-abyss">
-        <img src="/images/icon.png" alt="Cyber Lorekeeper Icon" class="h-20 w-20" />
+      <div class="relative mx-auto flex min-h-screen max-w-6xl flex-col items-center px-6 pb-20 pt-28 text-center sm:pt-32">
+        <div class="flex items-center gap-3 rounded-full bg-abyss/60 px-4 py-2 text-xs tracking-[0.2em] uppercase text-stardust/80 ring-1 ring-rift/50">
+          <span class="h-2 w-2 rounded-full bg-ember"></span>
+          Enter the Digital Realm
+        </div>
+        <h1 class="mt-6 font-display text-4xl leading-tight text-gradient sm:text-5xl md:text-6xl">The Dreaming Tower Archives</h1>
+        <p class="mt-3 text-lg italic text-stardust/80 sm:text-xl">Where Cybersecurity Becomes Legend</p>
+        <p class="mt-6 max-w-3xl text-base leading-relaxed text-stardust/90 sm:text-lg">
+          Modern folklore for the digital age. Epic tales where firewalls are castle walls, threats take physical form,
+          and the difference between magic and technology has long since blurred into irrelevance.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a href="#archives" class="glow-button inline-flex items-center justify-center rounded-md bg-glow px-6 py-3 font-semibold text-abyss">Enter the Archives</a>
+          <a href="#stories" class="glow-button inline-flex items-center justify-center rounded-md bg-ember px-6 py-3 font-semibold text-aether">Read the Stories</a>
+          <a href="#world" class="glow-button inline-flex items-center justify-center rounded-md bg-rift/70 px-6 py-3 font-semibold text-stardust ring-1 ring-silver/50">Explore the World</a>
+        </div>
       </div>
 
-      <p class="uppercase tracking-[.18em] text-stardust/80 text-xs">
-        TALES FROM THE DIGITAL REALM &amp; THE DREAMING TOWER
-      </p>
-      <h1 class="mt-2 font-display text-4xl sm:text-5xl leading-tight text-gradient">The Cyber Lorekeeper</h1>
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-deep-space to-transparent"></div>
+    </section>
 
-      <!-- Parchment-style journal excerpt -->
-      <div class="mt-7 parchment-callout text-left">
-        <p class="parchment-heading">From the Lorekeeper’s Journal</p>
-        <p class="parchment-body">
-          I write these passages for the one who will follow after me.
+    <!-- Introduction -->
+    <section id="archives" class="relative bg-deep-space py-16 sm:py-20">
+      <div class="absolute inset-x-0 -top-10 h-10 circuit-break opacity-30"></div>
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="flex items-start gap-4 text-ember">
+          <span class="mt-1 h-[1.8rem] w-[1.8rem] rounded-full border border-ember/60 bg-ember/10 backdrop-blur"></span>
+          <p class="text-xs font-semibold tracking-[0.2em] uppercase">Welcome to the Digital Realm</p>
+        </div>
+        <h2 class="mt-4 font-display text-3xl text-silver sm:text-4xl">Welcome to the Digital Realm</h2>
+        <p class="mt-4 text-lg leading-relaxed text-stardust/90">
+          In a world where ancient magic meets the pulse of data, the <strong class="text-ember">Kingdom of Cipheria</strong> stands as proof that vigilance,
+          collaboration, and learning from failure can build something that endures.
         </p>
-        <p class="parchment-body">
-          This chronicle will be the archive of all I have observed, deciphered, and endured — a
-          record of the forces that shape our realm and the secrets passed down by Lorekeepers
-          long before my time.
+        <p class="mt-3 text-lg leading-relaxed text-stardust/90">
+          At the heart of this kingdom rises the <strong class="text-glow">Dreaming Tower</strong>—a thousand-year-old sentinel that has evolved from simple observatory to something far greater:
+          a semi-sentient guardian that monitors, archives, and protects. Sustained by the Tower and guided by hard-won wisdom, the <strong class="text-ember">Secret Council</strong>
+          navigates impossible choices where security, prosperity, and human cost must all be weighed.
         </p>
-        <p class="parchment-body">
-          Within these entries you will find lessons carved from my wanderings through the Dreaming
-          Tower, field notes from the unstable frontier of Glitchborne, and truths I can no longer
-          keep to myself. May these writings guide you where I once walked alone.
+        <p class="mt-3 text-lg leading-relaxed text-stardust/90">
+          These are not just fantasy tales. They are <strong class="text-silver">modern folklore</strong>—stories that make complex cybersecurity concepts accessible, memorable, and deeply human.
+          Through the lens of medieval-meets-cyberpunk adventure, we explore the real challenges organizations face: supply chain compromises, authentication failures,
+          the cost of security debt, and the weight of decisions made under pressure.
         </p>
-      </div>
-
-      <p class="mt-5 text-sm sm:text-base text-stardust/85">
-        The first public excerpts from these archives are coming soon — shared as tales, newsletters,
-        and recovered pages from the Lorekeeper’s desk.
-      </p>
-
-      <!-- Email capture (Netlify Forms) -->
-      <div class="mt-8 mx-auto max-w-xl">
-        <form name="early-access" method="POST" netlify netlify-honeypot="bot-field" action="/thanks.html"
-              class="grid gap-3 sm:grid-cols-[1fr_auto] text-left">
-          <input type="hidden" name="form-name" value="early-access" />
-          <!-- Honeypot -->
-          <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
-
-          <label class="sr-only" for="email">Email</label>
-          <input id="email" name="email" type="email" required
-                 class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
-                 placeholder="you@realm.co" />
-          <button type="submit"
-                  class="focus-ring mt-2 sm:mt-0 inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
-            Notify Me
-          </button>
-        </form>
-        <p class="mt-2 text-sm text-stardust/80">
-          No spam. Just dispatches from the Dreaming Tower when new chapters awaken.
+        <p class="mt-3 text-lg leading-relaxed text-stardust/90">
+          <strong class="text-ember">The Tower dreams. The Kingdom endures. And through these archives, we learn.</strong>
         </p>
       </div>
+    </section>
 
-      <!-- Divider -->
-      <svg aria-hidden="true" class="mx-auto my-10 h-6 w-64 text-rift/60" viewBox="0 0 256 24" fill="none">
-        <path d="M2 12H90M166 12H254" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="128" cy="12" r="3" fill="#35C6E0"/>
-        <circle cx="90" cy="12" r="2" fill="currentColor"/><circle cx="166" cy="12" r="2" fill="currentColor"/>
-      </svg>
+    <!-- Three Column Feature -->
+    <section id="stories" class="relative bg-abyss/40 py-16 sm:py-20">
+      <div class="absolute inset-0 bg-gradient-to-br from-abyss/70 via-deep-space/50 to-aether/60"></div>
+      <div class="relative mx-auto max-w-6xl px-6">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="font-display text-3xl text-silver sm:text-4xl">Choose your path through the Archives</h2>
+          <p class="mt-3 text-lg text-stardust/85">Follow the tales, explore the world, or meet the people behind every decision.</p>
+        </div>
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          <article class="rounded-xl border border-rift/60 bg-abyss/70 p-6 shadow-card backdrop-blur">
+            <div class="text-3xl">📚</div>
+            <h3 class="mt-3 font-display text-2xl text-silver">The Chronicles</h3>
+            <p class="mt-2 text-sm uppercase tracking-[0.18em] text-stardust/70">Epic tales of crisis and response</p>
+            <p class="mt-3 leading-relaxed text-stardust/90">
+              From kingdom-wide threats to personal tragedies, these stories explore security through narrative. Follow the Secret Council as they navigate sophisticated attacks,
+              impossible tradeoffs, and the human cost of protecting what matters.
+            </p>
+            <p class="mt-3 leading-relaxed text-stardust/90">
+              Each story includes real-world breakdowns connecting fantasy to actual cybersecurity incidents, making complex concepts accessible to both technical and non-technical readers.
+            </p>
+            <a href="#cta" class="mt-4 inline-flex items-center text-glow hover:underline font-semibold">Explore the Stories →</a>
+          </article>
 
-      <!-- Teaser Panel -->
-      <div class="mx-auto max-w-2xl rounded-xl border border-rift/60 bg-abyss/40 p-6 shadow-card text-left">
-        <h2 class="font-display text-2xl">What’s Coming</h2>
-        <ul class="mt-3 space-y-2 text-[15px] leading-relaxed">
-          <li>• <strong>Tales from the Digital Realm</strong> – narrative retellings of real-world cyber incidents as legends and myths.</li>
-          <li>• <strong>The Dreaming Tower Journals</strong> – in-world notes, marginalia, and experiments from the Lorekeeper’s desk.</li>
-          <li>• <strong>Glitchborne Field Reports</strong> – chronicles of expeditions into corrupted lands where magic and machines collide.</li>
-          <li>• <strong>Ongoing Chronicles</strong> – an evolving story of the Lorekeeper’s journey, stitched together through newsletters and journal excerpts.</li>
-        </ul>
+          <article class="rounded-xl border border-rift/60 bg-abyss/70 p-6 shadow-card backdrop-blur">
+            <div class="text-3xl">🌍</div>
+            <h3 class="mt-3 font-display text-2xl text-silver">The World</h3>
+            <p class="mt-2 text-sm uppercase tracking-[0.18em] text-stardust/70">A realm where threats take physical form</p>
+            <p class="mt-3 leading-relaxed text-stardust/90">
+              Discover the Kingdom of Cipheria, the four continents of the known world, and the Space Besides where reality cracks and corruption spills through. Learn about the Glitchborne—monsters born from chaos and breakdown—and the defenses that keep them at bay.
+            </p>
+            <p class="mt-3 leading-relaxed text-stardust/90">
+              Medieval fortifications meet cyberpunk innovation in a world that makes digital security tangible.
+            </p>
+            <a href="#world" class="mt-4 inline-flex items-center text-glow hover:underline font-semibold">Enter the World →</a>
+          </article>
+
+          <article class="rounded-xl border border-rift/60 bg-abyss/70 p-6 shadow-card backdrop-blur">
+            <div class="text-3xl">👥</div>
+            <h3 class="mt-3 font-display text-2xl text-silver">The Characters</h3>
+            <p class="mt-2 text-sm uppercase tracking-[0.18em] text-stardust/70">Leaders who carry impossible burdens</p>
+            <p class="mt-3 leading-relaxed text-stardust/90">
+              Meet the Secret Council: the ancient Lorekeeper who remembers every failure, the Queen who earned her crown in fire, the Commander who distrusts what he cannot see,
+              the Merchant-Lord who fights for prosperity, and the Shadow who brings truths from the darkness.
+            </p>
+            <p class="mt-3 leading-relaxed text-stardust/90">
+              Flawed, complex, human—even when they're not entirely human.
+            </p>
+            <a href="#cta" class="mt-4 inline-flex items-center text-glow hover:underline font-semibold">Meet the Council →</a>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <!-- Learn More About the Creator -->
-      <div class="mt-12 mx-auto max-w-xl text-center text-stardust/80">
-        <p class="text-sm leading-relaxed">
-          Curious about the mind behind the Lorekeeper’s chronicles?  
-          Visit <a href="https://victoriamosby.com/projects" target="_blank" 
-          class="text-glow hover:underline font-semibold">
-            Victoria Mosby
-          </a>
-          to explore more of my work, projects, and behind-the-scenes creative experiments.
+    <!-- Approach -->
+    <section class="relative bg-deep-space py-16 sm:py-20">
+      <div class="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-abyss/40 to-transparent"></div>
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="flex items-center gap-3 text-ember">
+          <span class="h-[0.9rem] w-[2.5rem] rounded-full bg-ember/60"></span>
+          <p class="text-xs font-semibold tracking-[0.2em] uppercase">The Approach</p>
+        </div>
+        <h2 class="mt-4 font-display text-3xl text-silver sm:text-4xl">Why Stories?</h2>
+        <p class="mt-3 text-lg font-semibold text-stardust/95">Cybersecurity is abstract. Stories make it real.</p>
+        <p class="mt-4 text-lg leading-relaxed text-stardust/90">
+          Reading about "supply chain compromise" is one thing. Following the Kingdom's desperate hunt for corrupted trade goods—watching characters you care about make hard calls,
+          seeing the human cost, understanding why there are no perfect solutions—that <em>sticks</em>.
+        </p>
+        <p class="mt-3 text-lg leading-relaxed text-stardust/90">
+          We learn best through narrative. We remember stories when technical details fade. And we understand complex tradeoffs when we see them through characters who must live with the consequences.
+        </p>
+        <p class="mt-3 text-lg leading-relaxed text-stardust/90 font-semibold">
+          The Dreaming Tower Archives transforms cybersecurity education into folklore you'll actually want to read.
         </p>
       </div>
+    </section>
 
-      <!-- Footer note -->
-      <p class="mt-10 text-xs text-stardust/70">© <span id="year"></span> The Cyber Lorekeeper. All rights reserved.</p>
-    </div>
+    <!-- Dual Purpose -->
+    <section class="relative overflow-hidden bg-abyss/50 py-16 sm:py-20">
+      <div class="absolute inset-0 bg-gradient-to-tr from-abyss/70 via-deep-space/60 to-aether/60"></div>
+      <div class="absolute inset-y-0 left-0 w-1/3 circuit-break opacity-10"></div>
+      <div class="relative mx-auto max-w-5xl px-6">
+        <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
+          <div>
+            <h2 class="font-display text-3xl text-silver sm:text-4xl">For Everyone</h2>
+            <p class="mt-4 text-lg leading-relaxed text-stardust/90">
+              Whether you're a cybersecurity professional seeking fresh perspectives, a business leader trying to understand security challenges, or someone who just loves great storytelling—these tales offer something valuable.
+            </p>
+            <div class="mt-4 space-y-3 text-lg leading-relaxed text-stardust/90">
+              <p><strong class="text-ember">No technical background required.</strong> The stories work as pure fantasy adventure. The real-world connections enhance understanding but aren't necessary for enjoyment.</p>
+              <p><strong class="text-ember">Accessible explanations.</strong> When we connect fantasy to reality, we use concrete examples and plain language. We respect your intelligence without assuming specialized knowledge.</p>
+              <p><strong class="text-ember">Honest about hard truths.</strong> Security has no perfect solutions. Budgets are finite. Every decision has tradeoffs. We don't sugarcoat the reality—we explore it through characters who must navigate it.</p>
+            </div>
+          </div>
+          <div class="rounded-2xl border border-glow/20 bg-deep-space/70 p-6 shadow-card">
+            <div class="flex items-center justify-between">
+              <p class="text-xs uppercase tracking-[0.2em] text-stardust/70">Design Notes</p>
+              <span class="h-2 w-2 rounded-full bg-glow shadow-[0_0_0_6px_rgba(53,198,224,0.2)]"></span>
+            </div>
+            <ul class="mt-4 space-y-3 text-sm leading-relaxed text-stardust/90">
+              <li>• Section breaks with subtle geometric patterns (circuit-board meets medieval manuscript illumination).</li>
+              <li>• Color scheme: deep blues and teals, warm golds, silver accents.</li>
+              <li>• Typography: serif display for headers, clean sans-serif for body.</li>
+              <li>• Smooth scroll, hover glows, and restrained light effects to suggest magic/data.</li>
+              <li>• Mobile-responsive three-column features collapse cleanly.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Series Overview -->
+    <section class="relative bg-deep-space py-16 sm:py-20">
+      <div class="absolute inset-x-0 top-0 h-10 circuit-break opacity-25"></div>
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="flex items-center gap-3 text-ember">
+          <span class="h-[0.9rem] w-[0.9rem] rounded-sm bg-ember"></span>
+          <p class="text-xs font-semibold tracking-[0.2em] uppercase">Series Overview</p>
+        </div>
+        <h2 class="mt-4 font-display text-3xl text-silver sm:text-4xl">Two Story Series</h2>
+        <div class="mt-6 grid gap-6 lg:grid-cols-2">
+          <div class="rounded-xl border border-rift/60 bg-abyss/50 p-6 shadow-card">
+            <h3 class="font-display text-2xl text-silver">Council Chronicles</h3>
+            <p class="mt-3 text-lg leading-relaxed text-stardust/90">
+              Strategic-level tales following the Secret Council through kingdom-wide crises. These stories explore organizational security challenges:
+              supply chain attacks, authentication infrastructure failures, the cost of security debt, and impossible leadership decisions.
+            </p>
+          </div>
+          <div class="rounded-xl border border-rift/60 bg-abyss/50 p-6 shadow-card">
+            <h3 class="font-display text-2xl text-silver">Glitchborne Tales</h3>
+            <p class="mt-3 text-lg leading-relaxed text-stardust/90">
+              Personal-impact stories focusing on individual experiences within the broader world. These narratives explore grief, memory, identity,
+              and the human cost of security failures through characters like Aera (searching for her forgotten sister) and Cache (a fragmented entity desperate to piece together broken memories).
+            </p>
+          </div>
+        </div>
+        <p class="mt-6 text-lg leading-relaxed text-stardust/90">
+          Both series enrich each other, showing how kingdom-level decisions impact individual lives and how personal struggles reflect broader organizational challenges.
+        </p>
+      </div>
+    </section>
+
+    <!-- The World & Tower -->
+    <section id="world" class="relative bg-abyss/40 py-16 sm:py-20">
+      <div class="absolute inset-0 bg-gradient-to-br from-abyss/60 via-aether/70 to-deep-space/60"></div>
+      <div class="relative mx-auto max-w-6xl px-6">
+        <div class="grid gap-8 lg:grid-cols-2">
+          <div class="rounded-2xl border border-silver/20 bg-deep-space/70 p-6 shadow-card backdrop-blur">
+            <div class="flex items-center gap-3 text-glow">
+              <span class="h-[0.9rem] w-[2rem] rounded-full bg-glow/60"></span>
+              <p class="text-xs font-semibold tracking-[0.2em] uppercase text-silver/70">The Heart of Everything</p>
+            </div>
+            <h3 class="mt-3 font-display text-3xl text-silver">The Tower</h3>
+            <p class="mt-3 text-lg leading-relaxed text-stardust/90">
+              For over a thousand years, the <strong class="text-ember">Dreaming Tower</strong> has stood watch over Cipheria. What began as a simple observatory—a tool for monitoring and archiving—has evolved into something unprecedented: a semi-sentient entity that actively dreams, protects, and guides.
+            </p>
+            <ul class="mt-4 space-y-2 text-stardust/90">
+              <li>• Archive of every significant event in Cipherian history</li>
+              <li>• Active monitoring system detecting threats across the kingdom</li>
+              <li>• Pattern recognition oracle providing warnings of emerging dangers</li>
+              <li>• Teacher of successive generations</li>
+              <li>• Guardian willing to defend itself and those it protects</li>
+            </ul>
+            <p class="mt-4 text-lg leading-relaxed text-stardust/90">
+              Every major kingdom has defenses. Many have archives. Some have sophisticated monitoring systems.
+              <strong class="text-ember">None have the Dreaming Tower.</strong>
+            </p>
+            <a href="#cta" class="mt-4 inline-flex items-center font-semibold text-glow hover:underline">Discover the Tower →</a>
+          </div>
+
+          <div class="rounded-2xl border border-ember/30 bg-abyss/70 p-6 shadow-card backdrop-blur">
+            <div class="flex items-center gap-3 text-ember">
+              <span class="h-[0.9rem] w-[2rem] rounded-full bg-ember/60"></span>
+              <p class="text-xs font-semibold tracking-[0.2em] uppercase text-amber-200/80">From Fantasy to Reality</p>
+            </div>
+            <h3 class="mt-3 font-display text-3xl text-silver">Real-World Connection</h3>
+            <p class="mt-3 text-lg leading-relaxed text-stardust/90">
+              Each story includes breakdowns showing:
+            </p>
+            <ul class="mt-4 space-y-2 text-stardust/90">
+              <li><strong class="text-ember">The Real-World Cybersecurity Concept</strong> — what security principle or incident type the story explores.</li>
+              <li><strong class="text-ember">Actual Historical Examples</strong> — real breaches and incidents with dates, impacts, and consequences.</li>
+              <li><strong class="text-ember">What This Means for Your Organization</strong> — practical guidance for both enterprises and small businesses.</li>
+              <li><strong class="text-ember">The Uncomfortable Truth</strong> — hard realities people prefer to avoid but need to understand.</li>
+              <li><strong class="text-ember">Cost of Inaction</strong> — what happens when these lessons are ignored.</li>
+            </ul>
+            <p class="mt-4 text-lg leading-relaxed text-stardust/90">
+              We don't just entertain—we educate. But we make the education so compelling you'll want to keep reading.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="cta" class="relative bg-deep-space py-16 sm:py-20">
+      <div class="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-abyss/40 to-transparent"></div>
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="text-center">
+          <h2 class="font-display text-3xl text-silver sm:text-4xl">Begin Your Journey</h2>
+          <p class="mt-3 text-lg text-stardust/85">Ready to enter the Digital Realm?</p>
+          <p class="mt-3 text-lg text-stardust/90">
+            Start with any path that calls to you:
+          </p>
+          <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <a href="#stories" class="glow-button flex items-center justify-center rounded-md bg-glow/90 px-4 py-3 text-center font-semibold text-abyss">
+              The Stories — Begin with "The Poisoned Protocol"
+            </a>
+            <a href="#world" class="glow-button flex items-center justify-center rounded-md bg-ember px-4 py-3 text-center font-semibold text-aether">
+              The World — Explore Cipheria
+            </a>
+            <a href="#stories" class="glow-button flex items-center justify-center rounded-md bg-rift/70 px-4 py-3 text-center font-semibold text-stardust ring-1 ring-silver/50">
+              The Characters — Meet the Council
+            </a>
+            <a href="#archives" class="glow-button flex items-center justify-center rounded-md bg-deep-space px-4 py-3 text-center font-semibold text-glow ring-1 ring-glow/40">
+              About the Archives
+            </a>
+          </div>
+        </div>
+
+        <!-- Subscribe -->
+        <div class="mt-10 rounded-2xl border border-glow/20 bg-abyss/60 p-6 shadow-card">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p class="text-sm uppercase tracking-[0.2em] text-stardust/70">Subscribe</p>
+              <h3 class="font-display text-2xl text-silver">Join the archives mailing list</h3>
+              <p class="mt-2 text-stardust/85">Get new story notifications and worldbuilding updates.</p>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-stardust/70">
+              <span class="h-2 w-2 rounded-full bg-emerald-300"></span>
+              Smooth scroll, hover glows, subtle particles
+            </div>
+          </div>
+          <form name="early-access" method="POST" netlify netlify-honeypot="bot-field" action="/thanks.html"
+                class="mt-6 grid gap-3 sm:grid-cols-[1fr_auto]">
+            <input type="hidden" name="form-name" value="early-access" />
+            <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" required
+                   class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/70 px-4 py-3 placeholder:text-stardust/60 text-stardust"
+                   placeholder="you@realm.co" />
+            <button type="submit"
+                    class="glow-button inline-flex items-center justify-center rounded-md bg-glow px-6 py-3 font-semibold text-abyss">
+              Join the Archives
+            </button>
+          </form>
+          <p class="mt-2 text-sm text-stardust/80">No spam. Just dispatches from the Dreaming Tower when new chapters awaken.</p>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="border-t border-rift/60 bg-abyss/60 py-6 text-center text-sm text-stardust/70">
+    <div class="mx-auto max-w-5xl px-6">
+      <p>© <span id="year"></span> The Dreaming Tower Archives. Crafted where cyber meets legend.</p>
+    </div>
+  </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
