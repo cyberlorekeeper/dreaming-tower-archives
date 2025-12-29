@@ -131,15 +131,17 @@
   </style>
 </head>
 <body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
-  <div class="absolute inset-0 floating-particles pointer-events-none"></div>
+  <div class="fixed inset-0 -z-10">
+    <img src="/images/background-1.png" alt="Crown City aerial view" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/78 via-abyss/86 to-abyss/95"></div>
+    <div class="absolute inset-0 patterned opacity-80"></div>
+    <div class="absolute inset-0 floating-particles pointer-events-none"></div>
+  </div>
+
   <main class="relative overflow-hidden">
     <!-- Hero -->
     <section class="relative min-h-screen flex items-center justify-center">
-      <img src="/images/background-1.png" alt="Crown City aerial view" class="absolute inset-0 h-full w-full object-cover" />
-      <div class="absolute inset-0 bg-gradient-to-br from-deep-space/75 via-abyss/85 to-abyss/95"></div>
-      <div class="absolute inset-0 patterned opacity-70"></div>
-
-      <div class="relative z-10 max-w-5xl mx-auto px-6 py-16 text-center space-y-6">
+      <div class="relative z-10 max-w-5xl mx-auto px-6 py-14 text-center space-y-6">
         <p class="uppercase tracking-[.18em] text-sm text-stardust/75">The Dreaming Tower Archives</p>
         <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl leading-tight text-gradient">The Dreaming Tower Archives</h1>
         <p class="text-lg sm:text-xl text-stardust/85 italic">Where Cybersecurity Becomes Legend</p>
@@ -155,11 +157,11 @@
     </section>
 
     <!-- Intro -->
-    <section id="archives" class="relative bg-abyss/70 border-t border-b border-rift/60">
+    <section id="archives" class="relative">
       <div class="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
         <div class="divider-line"></div>
       </div>
-      <div class="max-w-5xl mx-auto px-6 py-16 space-y-6">
+      <div class="max-w-5xl mx-auto px-6 py-12 space-y-6">
         <div class="text-center space-y-3">
           <p class="uppercase tracking-[.18em] text-xs text-stardust/70">Welcome to the Digital Realm</p>
           <h2 class="font-display text-3xl text-stardust">The Dreaming Tower Archives</h2>
@@ -181,28 +183,28 @@
     </section>
 
     <!-- Three Column Features -->
-    <section id="stories" class="relative bg-aether py-16 border-b border-rift/60">
-      <div class="max-w-6xl mx-auto px-6">
+    <section id="stories" class="relative">
+      <div class="max-w-6xl mx-auto px-6 py-12">
         <div class="text-center space-y-3 mb-10">
           <p class="uppercase tracking-[.18em] text-xs text-stardust/70">Choose Your Path</p>
           <h2 class="font-display text-3xl text-stardust">Explore the Archives</h2>
         </div>
         <div class="grid gap-8 md:grid-cols-3">
-          <article class="rounded-xl border border-rift/70 bg-abyss/50 p-6 shadow-card">
+          <article class="rounded-xl border border-rift/70 bg-abyss/60 backdrop-blur-sm p-6 shadow-card">
             <h3 class="font-display text-xl flex items-center gap-2">📚 The Chronicles</h3>
             <p class="mt-3 text-stardust/85 leading-relaxed"><strong>Epic tales of crisis and response</strong></p>
             <p class="mt-2 text-stardust/80 leading-relaxed">From kingdom-wide threats to personal tragedies, these stories explore security through narrative. Follow the Secret Council as they navigate sophisticated attacks, impossible tradeoffs, and the human cost of protecting what matters.</p>
             <p class="mt-2 text-stardust/80 leading-relaxed">Each story includes real-world breakdowns connecting fantasy to actual cybersecurity incidents, making complex concepts accessible to both technical and non-technical readers.</p>
             <a href="#cta" class="mt-4 inline-flex items-center text-glow font-semibold hover:underline">Explore the Stories →</a>
           </article>
-          <article id="world" class="rounded-xl border border-rift/70 bg-abyss/50 p-6 shadow-card">
+          <article id="world" class="rounded-xl border border-rift/70 bg-abyss/60 backdrop-blur-sm p-6 shadow-card">
             <h3 class="font-display text-xl flex items-center gap-2">🌍 The World</h3>
             <p class="mt-3 text-stardust/85 leading-relaxed"><strong>A realm where threats take physical form</strong></p>
             <p class="mt-2 text-stardust/80 leading-relaxed">Discover the Kingdom of Cipheria, the four continents of the known world, and the Space Besides where reality cracks and corruption spills through. Learn about the Glitchborne—monsters born from chaos and breakdown—and the defenses that keep them at bay.</p>
             <p class="mt-2 text-stardust/80 leading-relaxed">Medieval fortifications meet cyberpunk innovation in a world that makes digital security tangible.</p>
             <a href="#cta" class="mt-4 inline-flex items-center text-glow font-semibold hover:underline">Enter the World →</a>
           </article>
-          <article class="rounded-xl border border-rift/70 bg-abyss/50 p-6 shadow-card">
+          <article class="rounded-xl border border-rift/70 bg-abyss/60 backdrop-blur-sm p-6 shadow-card">
             <h3 class="font-display text-xl flex items-center gap-2">👥 The Characters</h3>
             <p class="mt-3 text-stardust/85 leading-relaxed"><strong>Leaders who carry impossible burdens</strong></p>
             <p class="mt-2 text-stardust/80 leading-relaxed">Meet the Secret Council: the ancient Lorekeeper who remembers every failure, the Queen who earned her crown in fire, the Commander who distrusts what he cannot see, the Merchant-Lord who fights for prosperity, and the Shadow who brings truths from the darkness.</p>
@@ -214,8 +216,8 @@
     </section>
 
     <!-- Approach -->
-    <section class="relative bg-abyss/70 py-16 border-b border-rift/60">
-      <div class="max-w-5xl mx-auto px-6 space-y-6">
+    <section class="relative">
+      <div class="max-w-5xl mx-auto px-6 py-12 space-y-6">
         <div class="text-center space-y-3">
           <p class="uppercase tracking-[.18em] text-xs text-stardust/70">Why Stories?</p>
           <h2 class="font-display text-3xl text-stardust">Cybersecurity is abstract. Stories make it real.</h2>
@@ -226,23 +228,13 @@
             <p>We learn best through narrative. We remember stories when technical details fade. And we understand complex tradeoffs when we see them through characters who must live with the consequences.</p>
             <p class="font-semibold text-stardust">The Dreaming Tower Archives transforms cybersecurity education into folklore you'll actually want to read.</p>
           </div>
-          <div class="rounded-xl border border-rift/70 bg-aether/80 p-6 shadow-card">
-            <h3 class="font-display text-xl text-glow mb-2">Design Notes</h3>
-            <ul class="space-y-2 text-stardust/85 text-sm leading-relaxed">
-              <li>• Color: Deep blues &amp; teals for the cyber/magic core, warm golds and silver accents.</li>
-              <li>• Typography: Serif headers for medieval gravitas; clean sans for clarity.</li>
-              <li>• Interactions: Smooth scroll, hover glows on calls-to-action, subtle particle ambiance.</li>
-              <li>• Visuals: Crown City hero image, geometric section breaks blending circuitry with illuminated manuscript motifs.</li>
-              <li>• Responsive: Three-column sections collapse gracefully on mobile for clear reading.</li>
-            </ul>
-          </div>
         </div>
       </div>
     </section>
 
     <!-- Dual Purpose -->
-    <section class="relative bg-aether py-16 border-b border-rift/60">
-      <div class="max-w-5xl mx-auto px-6 space-y-6">
+    <section class="relative">
+      <div class="max-w-5xl mx-auto px-6 py-12 space-y-6">
         <div class="text-center space-y-3">
           <p class="uppercase tracking-[.18em] text-xs text-stardust/70">For Everyone</p>
           <h2 class="font-display text-3xl text-stardust">A Journey for Every Reader</h2>
@@ -266,18 +258,18 @@
     </section>
 
     <!-- Series Overview -->
-    <section class="relative bg-abyss/70 py-16 border-b border-rift/60">
-      <div class="max-w-5xl mx-auto px-6 space-y-8">
+    <section class="relative">
+      <div class="max-w-5xl mx-auto px-6 py-12 space-y-8">
         <div class="text-center space-y-3">
           <p class="uppercase tracking-[.18em] text-xs text-stardust/70">Series Overview</p>
           <h2 class="font-display text-3xl text-stardust">Two Story Series</h2>
         </div>
         <div class="grid gap-6 lg:grid-cols-2">
-          <div class="rounded-xl border border-rift/70 bg-aether/80 p-6 shadow-card">
+          <div class="rounded-xl border border-rift/70 bg-abyss/60 backdrop-blur-sm p-6 shadow-card">
             <h3 class="font-display text-xl text-glow">Council Chronicles</h3>
             <p class="mt-2 text-stardust/85 leading-relaxed">Strategic-level tales following the Secret Council through kingdom-wide crises. These stories explore organizational security challenges: supply chain attacks, authentication infrastructure failures, the cost of security debt, and impossible leadership decisions.</p>
           </div>
-          <div class="rounded-xl border border-rift/70 bg-aether/80 p-6 shadow-card">
+          <div class="rounded-xl border border-rift/70 bg-abyss/60 backdrop-blur-sm p-6 shadow-card">
             <h3 class="font-display text-xl text-ember">Glitchborne Tales</h3>
             <p class="mt-2 text-stardust/85 leading-relaxed">Personal-impact stories focusing on individual experiences within the broader world. These narratives explore grief, memory, identity, and the human cost of security failures through characters like Aera and Cache.</p>
           </div>
@@ -287,8 +279,8 @@
     </section>
 
     <!-- The Tower -->
-    <section class="relative bg-aether py-16 border-b border-rift/60">
-      <div class="max-w-5xl mx-auto px-6 space-y-6">
+    <section class="relative">
+      <div class="max-w-5xl mx-auto px-6 py-12 space-y-6">
         <div class="text-center space-y-3">
           <p class="uppercase tracking-[.18em] text-xs text-stardust/70">The Tower</p>
           <h2 class="font-display text-3xl text-stardust">The Heart of Everything</h2>
@@ -317,14 +309,14 @@
     </section>
 
     <!-- Real World Connection -->
-    <section class="relative bg-abyss/70 py-16 border-b border-rift/60">
-      <div class="max-w-5xl mx-auto px-6 space-y-8">
+    <section class="relative">
+      <div class="max-w-5xl mx-auto px-6 py-12 space-y-8">
         <div class="text-center space-y-3">
           <p class="uppercase tracking-[.18em] text-xs text-stardust/70">From Fantasy to Reality</p>
           <h2 class="font-display text-3xl text-stardust">Every Story Leads Somewhere Real</h2>
         </div>
         <div class="grid gap-6 lg:grid-cols-2">
-          <div class="rounded-xl border border-rift/70 bg-aether/80 p-6 shadow-card space-y-3">
+          <div class="rounded-xl border border-rift/70 bg-abyss/60 backdrop-blur-sm p-6 shadow-card space-y-3">
             <h3 class="font-display text-xl text-glow">What you’ll find in each tale</h3>
             <ul class="space-y-2 text-stardust/85 leading-relaxed">
               <li><strong>The Real-World Cybersecurity Concept</strong> – The principle or incident type explored.</li>
@@ -332,7 +324,7 @@
               <li><strong>What This Means for Your Organization</strong> – Practical guidance for enterprises and small businesses.</li>
             </ul>
           </div>
-          <div class="rounded-xl border border-rift/70 bg-aether/80 p-6 shadow-card space-y-3">
+          <div class="rounded-xl border border-rift/70 bg-abyss/60 backdrop-blur-sm p-6 shadow-card space-y-3">
             <h3 class="font-display text-xl text-ember">The hard truths</h3>
             <ul class="space-y-2 text-stardust/85 leading-relaxed">
               <li><strong>The Uncomfortable Truth</strong> – Hard realities people prefer to avoid but need to understand.</li>
@@ -345,8 +337,8 @@
     </section>
 
     <!-- Call to Action -->
-    <section id="cta" class="relative bg-aether py-16">
-      <div class="max-w-5xl mx-auto px-6 space-y-10">
+    <section id="cta" class="relative">
+      <div class="max-w-5xl mx-auto px-6 py-12 space-y-10">
         <div class="text-center space-y-3">
           <p class="uppercase tracking-[.18em] text-xs text-stardust/70">Begin Your Journey</p>
           <h2 class="font-display text-3xl text-stardust">Ready to enter the Digital Realm?</h2>
