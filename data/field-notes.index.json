@@ -1,0 +1,38 @@
+[
+  {
+    "id": "aera-2025-12-28-finding-cache",
+    "category": "aera",
+    "title": "Finding Cache",
+    "subtitle": "Entry 1 — In which I discover something unexpected in Vault Seven",
+    "date": "2025-12-28",
+    "readTime": 8,
+    "excerpt": "The junior archivists aren't supposed to access Vault Seven alone...",
+    "featured": true,
+    "href": "/pages/field-notes/aera/2025-12-28-finding-cache.html",
+    "tags": ["isle-404", "memory", "cache"]
+  },
+  {
+    "id": "lore-2025-12-28-incident-level-seven",
+    "category": "lore",
+    "title": "The Incident at Archive Level Seven",
+    "subtitle": "In which Junior Archivist Pip learns why complexity exists",
+    "date": "2025-12-28",
+    "readTime": 5,
+    "excerpt": "Junior Archivist Pip enthusiastically \"optimized\" the cross-referencing system on Archive Level Seven this morning...",
+    "featured": false,
+    "href": "/pages/field-notes/lore/2025-12-28-incident-level-seven.html",
+    "tags": ["pip", "tower", "process"]
+  },
+  {
+    "id": "resonance-2025-12-28-supply-chain-not-monitored",
+    "category": "resonance",
+    "title": "The Supply Chain That Wasn't Monitored",
+    "subtitle": "When \"just a logging library\" becomes the breach vector",
+    "date": "2025-12-28",
+    "readTime": 7,
+    "excerpt": "A major software vendor discovered that compromised code had been distributed through their official update channels for six months...",
+    "featured": false,
+    "href": "/pages/field-notes/resonance/2025-12-28-supply-chain-not-monitored.html",
+    "tags": ["supply-chain", "monitoring", "trust"]
+  }
+]
