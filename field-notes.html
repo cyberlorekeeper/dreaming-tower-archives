@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Field Notes | The Dreaming Tower Archives</title>
+  <meta name="description" content="Short-form entries from across the Digital Realm: expedition logs from the Isle of 404, observations from the Dreaming Tower, and analysis connecting cybersecurity events to the patterns we chronicle in Cipheria." />
+  <meta name="keywords" content="cybersecurity stories, security fiction, field notes, expedition logs, security analysis, breach analysis, storytelling, fantasy cybersecurity" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=SourceSans3:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow:{
+            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card:'0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .soft-card{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.35);
+      border-radius: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      backdrop-filter: blur(8px);
+    }
+    .category-aera { background: radial-gradient(circle at 20% 20%, rgba(240,180,41,.12), rgba(114,75,28,.32)), rgba(33,21,12,.65); border:1px solid rgba(240,180,41,.35); }
+    .category-lore { background: radial-gradient(circle at 25% 15%, rgba(53,198,224,.1), rgba(53,83,120,.45)), rgba(11,23,38,.7); border:1px solid rgba(73,122,168,.38); }
+    .category-resonance { background: radial-gradient(circle at 22% 18%, rgba(124,77,255,.12), rgba(35,198,224,.18)), rgba(12,29,42,.72); border:1px solid rgba(35,198,224,.32); }
+    .badge { display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .7rem; border-radius:9999px; font-size:.75rem; font-weight:700; letter-spacing:.02em; }
+    .badge-aera { color:#F0B429; background:rgba(240,180,41,.15); border:1px solid rgba(240,180,41,.6); }
+    .badge-lore { color:#8EC5FF; background:rgba(53,198,224,.14); border:1px solid rgba(53,198,224,.5); }
+    .badge-resonance { color:#7C4DFF; background:rgba(124,77,255,.15); border:1px solid rgba(124,77,255,.55); }
+    .chip { border: 1px solid rgba(20,53,69,.6); background: rgba(10,20,27,.35); }
+    .gradient-border { position: relative; }
+    .gradient-border::before { content:""; position:absolute; inset:-1px; border-radius:1rem; padding:1px; background:linear-gradient(135deg, rgba(53,198,224,.7), rgba(124,77,255,.6)); -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none; }
+  </style>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen">
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/82 to-deep-space/88"></div>
+
+    <div id="site-header"></div>
+
+    <!-- Hero Section -->
+    <section class="relative mx-auto max-w-6xl px-6 pt-10 pb-10">
+      <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Dreaming Tower Archives</p>
+      <h1 class="mt-2 font-display text-4xl sm:text-5xl leading-tight text-gradient">Field Notes</h1>
+      <p class="mt-2 text-lg text-stardust/80">Brief accounts from across the Digital Realm</p>
+
+      <div class="mt-6 grid gap-6 lg:grid-cols-[1.4fr_.9fr] lg:items-start">
+        <div class="soft-card p-6">
+          <p class="text-stardust/85 leading-relaxed">
+            The Archives contain more than epic tales of kingdom-wide crises. Between the Chronicles that shake nations lie countless smaller moments—each instructive, each revealing patterns that repeat across time and context.
+          </p>
+          <p class="mt-3 text-stardust/85 leading-relaxed">
+            Field Notes capture these moments in brief: expedition logs from impossible places, incident reports from the Dreaming Tower's endless vigil, and observations on how the patterns we chronicle echo in the world beyond these pages.
+          </p>
+        </div>
+
+        <div class="soft-card p-6 gradient-border">
+          <p class="font-display text-xl">Quick reads. Deep implications. Updated regularly.</p>
+          <p class="mt-3 text-sm text-stardust/80 leading-relaxed">
+            Browse new dispatches every week, sorted by category and recency. Search is coming soon—until then, filter by category or scan the archive for the patterns you follow.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs text-stardust/70">
+            <span class="chip rounded-full px-3 py-1">5–10 minute reads</span>
+            <span class="chip rounded-full px-3 py-1">Category accents</span>
+            <span class="chip rounded-full px-3 py-1">Flip-to-analysis DNA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="relative mx-auto max-w-6xl px-6 pb-4">
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Field Notes Index</p>
+          <h2 class="font-display text-3xl text-stardust">Explore by Category</h2>
+        </div>
+        <a href="#latest" class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 text-abyss font-semibold shadow-glow hover:brightness-110">View Latest</a>
+      </div>
+
+      <div class="mt-6 grid gap-5 lg:grid-cols-3">
+        <article class="soft-card category-aera p-6 space-y-3">
+          <div class="badge badge-aera">📔 Aera's Logs</div>
+          <div>
+            <h3 class="font-display text-2xl text-ember">Aera's Logs</h3>
+            <p class="text-stardust/80">Expedition records from the Isle of 404</p>
+          </div>
+          <p class="text-sm text-stardust/85 leading-relaxed">
+            Junior Field Archivist Aera documents her search for the sister everyone else has forgotten. These logs chronicle her journey to the Wandering Isle alongside Cache, a fragmented entity with broken memories.
+          </p>
+          <ul class="text-sm text-stardust/70 space-y-1">
+            <li>• First-person journal entries</li>
+            <li>• Sequential narrative (standalone friendly)</li>
+            <li>• 800-1200 words · Cache's commentary included</li>
+          </ul>
+          <a class="focus-ring inline-flex items-center justify-center rounded-md border border-ember/60 bg-ember/20 px-4 py-2 text-ember font-semibold hover:bg-ember/30" href="#archive">Read Aera's Logs</a>
+        </article>
+
+        <article class="soft-card category-lore p-6 space-y-3">
+          <div class="badge badge-lore">🏛️ Lorekeeper's Notes</div>
+          <div>
+            <h3 class="font-display text-2xl text-stardust">The Lorekeeper's Notes</h3>
+            <p class="text-stardust/80">Observations from the Dreaming Tower's endless vigil</p>
+          </div>
+          <p class="text-sm text-stardust/85 leading-relaxed">
+            The Lorekeeper documents incidents too small for full Chronicles but too instructive to forget. Pattern recognition across centuries, historical parallels, and the weight of watching everything.
+          </p>
+          <ul class="text-sm text-stardust/70 space-y-1">
+            <li>• Incident reports and observations</li>
+            <li>• Pattern analysis with historical context</li>
+            <li>• 500-800 words · Larger theme connections</li>
+          </ul>
+          <a class="focus-ring inline-flex items-center justify-center rounded-md border border-glow/60 bg-abyss/60 px-4 py-2 text-stardust font-semibold hover:text-glow" href="#archive">Read Lorekeeper's Notes</a>
+        </article>
+
+        <article class="soft-card category-resonance p-6 space-y-3">
+          <div class="badge badge-resonance">🌐 Real-World Resonance</div>
+          <div>
+            <h3 class="font-display text-2xl text-stardust">Real-World Resonance</h3>
+            <p class="text-stardust/80">When the patterns echo beyond the Archives</p>
+          </div>
+          <p class="text-sm text-stardust/85 leading-relaxed">
+            Connections between Cipheria's patterns and current cybersecurity events. Mirror incidents, breaches, and trends with practical takeaways for modern organizations.
+          </p>
+          <ul class="text-sm text-stardust/70 space-y-1">
+            <li>• Analysis of real cybersecurity events</li>
+            <li>• 600-1000 words · Practical takeaways</li>
+            <li>• Direct links to Chronicles and themes</li>
+          </ul>
+          <a class="focus-ring inline-flex items-center justify-center rounded-md border border-violet/60 bg-abyss/60 px-4 py-2 text-stardust font-semibold hover:text-glow" href="#archive">Read Real-World Analysis</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="relative mx-auto max-w-6xl px-6 pt-6 pb-4">
+      <div class="soft-card p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex flex-wrap gap-2 text-sm">
+          <button class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/30 px-3 py-2 font-semibold text-stardust/85 hover:text-glow" data-filter="all">All Entries</button>
+          <button class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/30 px-3 py-2 font-semibold text-stardust/85 hover:text-glow" data-filter="aera">Aera's Logs</button>
+          <button class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/30 px-3 py-2 font-semibold text-stardust/85 hover:text-glow" data-filter="lore">Lorekeeper's Notes</button>
+          <button class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/30 px-3 py-2 font-semibold text-stardust/85 hover:text-glow" data-filter="resonance">Real-World Resonance</button>
+        </div>
+
+        <div class="flex flex-wrap gap-3 items-center text-sm text-stardust/80">
+          <label for="sortOrder" class="sr-only">Sort entries</label>
+          <select id="sortOrder" class="focus-ring rounded-md border border-rift/60 bg-abyss/60 px-3 py-2 text-stardust/90">
+            <option value="newest">By Date (Newest)</option>
+            <option value="oldest">By Date (Oldest)</option>
+          </select>
+          <div class="relative">
+            <label for="search" class="sr-only">Search</label>
+            <input id="search" type="search" placeholder="Search (coming soon)" class="focus-ring w-48 sm:w-60 rounded-md border border-rift/60 bg-abyss/60 px-3 py-2 text-sm placeholder:text-stardust/50 text-stardust" />
+            <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-stardust/50">⌕</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Entries -->
+    <section id="latest" class="relative mx-auto max-w-6xl px-6 pb-8">
+      <div class="flex items-center justify-between gap-3 flex-wrap">
+        <div>
+          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Dispatches</p>
+          <h2 class="font-display text-3xl text-stardust">Latest Field Notes</h2>
+        </div>
+        <a href="#archive" class="text-sm font-semibold text-glow hover:underline underline-offset-4">View All Entries →</a>
+      </div>
+
+      <div class="mt-6 grid gap-6 lg:grid-cols-[1.1fr_.95fr]">
+        <article id="featuredEntry" class="soft-card p-6 hidden"></article>
+        <div id="recentEntries" class="grid gap-4 sm:grid-cols-2"></div>
+      </div>
+    </section>
+
+    <!-- Archive -->
+    <section id="archive" class="relative mx-auto max-w-6xl px-6 pb-12">
+      <div class="soft-card p-6">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div>
+            <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Archive</p>
+            <h2 class="font-display text-3xl text-stardust">All Field Notes</h2>
+          </div>
+          <button id="loadMore" class="focus-ring inline-flex items-center justify-center rounded-md border border-rift/60 bg-abyss/50 px-4 py-2 text-sm font-semibold text-stardust/85 hover:text-glow" type="button" disabled>
+            Load More (coming soon)
+          </button>
+        </div>
+
+        <ul id="archiveList" class="mt-6 space-y-4"></ul>
+
+        <p class="mt-6 text-xs text-stardust/65">Reverse chronological ordering. Sorting and search respect the filter above.</p>
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section id="subscribe" class="relative mx-auto max-w-5xl px-6 pb-14">
+      <div class="soft-card p-6 md:p-8 text-center">
+        <h3 class="font-display text-3xl text-stardust">Stay Updated</h3>
+        <p class="mt-2 text-sm text-stardust/80">New Field Notes published weekly. Subscribe to be notified when new entries appear.</p>
+
+        <form name="field-notes-subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html" class="mt-5 grid gap-3 sm:grid-cols-[1fr_auto] text-left max-w-2xl mx-auto">
+          <input type="hidden" name="form-name" value="field-notes-subscribe" />
+          <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+
+          <label class="sr-only" for="fn-email">Email</label>
+          <input id="fn-email" name="email" type="email" required class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust" placeholder="you@realm.co" />
+          <button type="submit" class="focus-ring mt-2 sm:mt-0 inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">Subscribe</button>
+        </form>
+
+        <div class="mt-6 grid gap-4 md:grid-cols-3 text-left text-sm text-stardust/80">
+          <a href="/chronicles.html" class="rounded-lg border border-rift/60 bg-abyss/50 p-4 hover:text-glow">The Chronicles</a>
+          <a href="/world.html" class="rounded-lg border border-rift/60 bg-abyss/50 p-4 hover:text-glow">The World</a>
+          <a href="/characters.html" class="rounded-lg border border-rift/60 bg-abyss/50 p-4 hover:text-glow">Characters</a>
+        </div>
+      </div>
+    </section>
+
+    <div id="site-footer"></div>
+  </main>
+
+  <script>
+    const dateFormatter = new Intl.DateTimeFormat('en', { month: 'long', day: 'numeric', year: 'numeric' });
+    const escapeHtml = (str) => String(str ?? '').replace(/[&<>\"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[ch] || ch));
+    const badgeMap = {
+      aera: { label: "Aera's Logs", className: "badge badge-aera" },
+      lore: { label: "Lorekeeper's Notes", className: "badge badge-lore" },
+      resonance: { label: "Real-World Resonance", className: "badge badge-resonance" },
+    };
+    const getBadge = (entry) => badgeMap[entry.category] || { label: escapeHtml(entry.category || 'Entry'), className: "badge badge-resonance" };
+    let entries = [];
+
+    const fallbackEntries = [
+      {
+        id: 'aera-2025-12-28-finding-cache',
+        category: 'aera',
+        title: 'Finding Cache',
+        subtitle: 'Entry 1 — In which I discover something unexpected in Vault Seven',
+        date: '2025-12-28',
+        readTime: 8,
+        excerpt: "The junior archivists aren't supposed to access Vault Seven alone...",
+        featured: true,
+        href: '/pages/field-notes/aera/2025-12-28-finding-cache.html',
+        tags: ['isle-404','memory','cache']
+      }
+    ];
+
+    function formatDate(d) {
+      if (!d) return '';
+      return dateFormatter.format(new Date(d));
+    }
+
+    function renderFeatured(entry) {
+      const el = document.getElementById('featuredEntry');
+      if (!el || !entry) return;
+      const badge = getBadge(entry);
+      el.classList.remove('hidden');
+      el.innerHTML = `
+        <div class="flex items-start justify-between gap-3">
+          <div class="${badge.className}">${badge.label}</div>
+          <span class="text-xs text-stardust/70">Featured</span>
+        </div>
+        <h3 class="mt-3 font-display text-2xl text-stardust">${escapeHtml(entry.title)}</h3>
+        <p class="text-sm text-stardust/75">${escapeHtml(entry.subtitle)}</p>
+        <p class="mt-3 text-stardust/85 leading-relaxed">${escapeHtml(entry.excerpt)}</p>
+        <p class="mt-4 text-xs text-stardust/70">Read time: ${escapeHtml(entry.readTime)} minutes | Published: ${formatDate(entry.date)}</p>
+        <a class="focus-ring mt-4 inline-flex items-center gap-2 rounded-md bg-glow px-4 py-3 text-abyss font-semibold shadow-glow hover:brightness-110" href="${escapeHtml(entry.href || '#')}">Read More →</a>
+      `;
+    }
+
+    function renderRecent(list) {
+      const container = document.getElementById('recentEntries');
+      if (!container) return;
+      container.innerHTML = '';
+      list.slice(0, 4).forEach(entry => {
+        const badge = getBadge(entry);
+        const card = document.createElement('article');
+        card.className = 'soft-card p-4 flex flex-col gap-2';
+        card.innerHTML = `
+          <div class="${badge.className}">${badge.label}</div>
+          <h3 class="font-display text-xl text-stardust">${escapeHtml(entry.title)}</h3>
+          <p class="text-sm text-stardust/75">${escapeHtml(entry.subtitle)}</p>
+          <p class="text-sm text-stardust/80 leading-relaxed line-clamp-3">${escapeHtml(entry.excerpt)}</p>
+          <p class="text-xs text-stardust/65">Read time: ${escapeHtml(entry.readTime)} minutes | Published: ${formatDate(entry.date)}</p>
+          <a class="focus-ring inline-flex items-center gap-2 rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 text-sm font-semibold text-stardust/90 hover:text-glow" href="${escapeHtml(entry.href || '#')}">Read More →</a>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderArchive(list) {
+      const container = document.getElementById('archiveList');
+      if (!container) return;
+      container.innerHTML = '';
+      list.forEach(entry => {
+        const badge = getBadge(entry);
+        const li = document.createElement('li');
+        li.className = 'rounded-xl border border-rift/50 bg-abyss/50 p-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between';
+        li.innerHTML = `
+          <div class="flex-1 space-y-1">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="${badge.className}">${badge.label}</span>
+              <span class="text-xs text-stardust/65">${formatDate(entry.date)}</span>
+              <span class="text-xs text-stardust/65">${entry.readTime} min read</span>
+            </div>
+            <p class="font-semibold text-stardust">${escapeHtml(entry.title)}</p>
+            <p class="text-sm text-stardust/75">${escapeHtml(entry.subtitle)}</p>
+            <p class="text-sm text-stardust/70 line-clamp-2">${escapeHtml(entry.excerpt)}</p>
+            ${entry.tags ? `<p class="text-xs text-stardust/65">Tags: ${entry.tags.map(t => escapeHtml(t)).join(', ')}</p>` : ''}
+          </div>
+          <div class="mt-3 sm:mt-0 flex flex-col items-start gap-2 sm:items-end">
+            <a class="focus-ring inline-flex items-center gap-2 rounded-md bg-abyss/70 px-3 py-2 text-sm font-semibold text-stardust/90 hover:text-glow" href="${escapeHtml(entry.href || '#')}">Read More →</a>
+            <button class="focus-ring inline-flex items-center gap-2 rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 text-xs text-stardust/80 hover:text-glow" type="button">Share This Entry</button>
+          </div>
+        `;
+        container.appendChild(li);
+      });
+    }
+
+    function applyFilter(activeFilter, sortOrder, searchTerm = '') {
+      const normalizedSearch = searchTerm.trim().toLowerCase();
+      const filtered = entries.filter(entry => {
+        const matchesCategory = activeFilter === 'all' ? true : entry.category === activeFilter;
+        if (!matchesCategory) return false;
+        if (!normalizedSearch) return true;
+        const haystack = [
+          entry.title,
+          entry.subtitle,
+          entry.excerpt,
+          ...(entry.tags || [])
+        ].join(' ').toLowerCase();
+        return haystack.includes(normalizedSearch);
+      });
+      const sorted = filtered.sort((a, b) => {
+        const diff = new Date(a.date) - new Date(b.date);
+        return sortOrder === 'newest' ? -diff : diff;
+      });
+      const featured = sorted.find(e => e.featured) || sorted[0];
+      const rest = sorted.filter(e => e !== featured);
+      renderFeatured(featured);
+      renderRecent(rest.length ? rest : featured ? [featured] : []);
+      renderArchive(sorted);
+    }
+
+    function bindFilters() {
+      const buttons = Array.from(document.querySelectorAll('.filter-btn'));
+      const sortOrder = document.getElementById('sortOrder');
+      const searchInput = document.getElementById('search');
+      let active = 'all';
+      let searchTerm = '';
+
+      const sanitize = (value) => value.replace(/[<>]/g, '');
+
+      const updateActiveStyles = () => {
+        buttons.forEach(btn => {
+          const isActive = btn.dataset.filter === active;
+          btn.classList.toggle('bg-rift/40', isActive);
+          btn.classList.toggle('text-glow', isActive);
+        });
+      };
+
+      const refresh = () => applyFilter(active, sortOrder ? sortOrder.value : 'newest', searchTerm);
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          active = btn.dataset.filter || 'all';
+          updateActiveStyles();
+          refresh();
+        });
+      });
+
+      if (sortOrder) {
+        sortOrder.addEventListener('change', refresh);
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const cleaned = sanitize(e.target.value);
+          if (cleaned !== e.target.value) {
+            e.target.value = cleaned;
+          }
+          searchTerm = cleaned;
+          refresh();
+        });
+      }
+
+      updateActiveStyles();
+      refresh();
+    }
+
+    async function loadEntries() {
+      try {
+        const res = await fetch('/data/field-notes.index.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('Failed to fetch index');
+        const data = await res.json();
+        if (!Array.isArray(data)) throw new Error('Index is not an array');
+        entries = data;
+      } catch (err) {
+        console.warn('Falling back to inline entries index', err);
+        entries = fallbackEntries;
+      }
+    }
+
+    async function loadPartial(targetId, url) {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      try {
+        const res = await fetch(url);
+        target.innerHTML = await res.text();
+      } catch (err) {
+        console.error('Failed to load partial', err);
+      }
+    }
+
+    function initHeaderNav() {
+      const navToggle = document.getElementById("navToggle");
+      const mobileNavPanel = document.getElementById("mobileNavPanel");
+      if (!navToggle || !mobileNavPanel) return;
+      navToggle.addEventListener("click", () => {
+        const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!isOpen));
+        mobileNavPanel.classList.toggle("hidden", isOpen);
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          navToggle.setAttribute("aria-expanded", "false");
+          mobileNavPanel.classList.add("hidden");
+        }
+      });
+    }
+
+    (async function boot() {
+      await loadPartial('site-header', '/partials/header.html');
+      await loadPartial('site-footer', '/partials/footer.html');
+      await loadEntries();
+      initHeaderNav();
+      bindFilters();
+    })();
+  </script>
+</body>
+</html>
