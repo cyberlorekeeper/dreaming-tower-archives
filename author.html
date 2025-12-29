@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyber Lorekeeper — Author</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <meta name="description" content="Meet the Cyber Lorekeeper. Read a short bio, see the face behind the stories, and connect across the web." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow:{
+            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card:'0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .soft-card{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.35);
+      border-radius: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      backdrop-filter: blur(6px);
+    }
+    .tag{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(10,20,27,.25);
+      border-radius: 9999px;
+      padding: .25rem .75rem;
+      font-size: .75rem;
+      color: rgba(207,229,239,.85);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen">
+    <!-- Background -->
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+
+    <!-- Header partial -->
+    <div id="site-header"></div>
+
+    <!-- Hero -->
+    <section class="relative mx-auto max-w-6xl px-6 pt-12 pb-8">
+      <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Behind the Codex</p>
+      <h1 class="mt-3 font-display text-4xl sm:text-5xl leading-tight text-gradient">
+        About the Author
+      </h1>
+      <p class="mt-4 max-w-3xl text-stardust/85">
+        I’m the Cyber Lorekeeper—part storyteller, part threat researcher. I translate breaches, AI misfires,
+        and hardware gremlins into the myths and histories of Cipheria so you can see the lessons inside the legends.
+      </p>
+    </section>
+
+    <!-- Divider -->
+    <div class="relative mx-auto max-w-6xl px-6">
+      <div class="h-px w-full bg-rift/60"></div>
+    </div>
+
+    <!-- Main content -->
+    <section class="relative mx-auto max-w-6xl px-6 pt-10 pb-16 space-y-8">
+      <!-- Bio + portrait -->
+      <div class="soft-card p-6 lg:p-8 grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+        <div class="space-y-4">
+          <div class="inline-flex items-center gap-2 rounded-full border border-rift/60 bg-abyss/40 px-3 py-1 text-xs uppercase tracking-[.18em] text-stardust/70">
+            Lore + Security
+          </div>
+          <h2 class="font-display text-2xl text-stardust/95">Short Bio</h2>
+          <p class="text-stardust/85 leading-relaxed">
+            By day, I analyze complex threat chains, fractured supply routes, and the way people, process, and
+            code collide. By night, I render those patterns into Cipheria’s sagas so readers can explore the
+            consequences with curiosity instead of fear. My goal is to make security human, memorable, and a little
+            wondrous.
+          </p>
+          <p class="text-stardust/80 leading-relaxed">
+            When I’m not tracing incidents, you’ll find me drafting new chapters, sketching city maps for the Dreaming
+            Tower archives, or teaching teams how to spot the early whispers of a breach.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">Story-first security</span>
+            <span class="tag">Worldbuilding</span>
+            <span class="tag">Human-friendly AI</span>
+            <span class="tag">Applied research</span>
+          </div>
+        </div>
+
+        <div class="relative mx-auto w-full max-w-sm">
+          <div class="absolute -inset-4 rounded-2xl bg-gradient-to-br from-glow/25 via-violet/20 to-ember/25 blur-2xl opacity-70"></div>
+          <div class="relative aspect-square rounded-2xl border border-rift/60 bg-abyss/50 shadow-card overflow-hidden flex items-center justify-center">
+            <div class="absolute inset-0 bg-gradient-to-br from-abyss/40 via-deep-space/40 to-abyss/30"></div>
+            <img src="/images/icon.png" alt="Author portrait" class="relative h-32 w-32 sm:h-40 sm:w-40 rounded-full border border-rift/60 bg-abyss/60 p-4 shadow-glow">
+          </div>
+        </div>
+      </div>
+
+      <!-- Connect links -->
+      <div class="soft-card p-6 lg:p-8">
+        <div class="flex flex-col gap-2">
+          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Connect with me</p>
+          <h2 class="font-display text-2xl text-stardust/95">Stay in touch across the realms</h2>
+          <p class="text-stardust/80 max-w-3xl">
+            Choose your channel—whether you want lore updates, security essays, or live conversations about how
+            myths can teach us to build resilient systems.
+          </p>
+        </div>
+
+        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <a href="/" class="group rounded-xl border border-rift/60 bg-abyss/40 p-4 transition hover:border-glow/70 hover:shadow-glow">
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-stardust/90 font-semibold">Home Base</span>
+              <span aria-hidden="true" class="text-glow group-hover:translate-x-1 transition">→</span>
+            </div>
+            <p class="mt-2 text-sm text-stardust/75">Latest releases, chronicles, and field notes.</p>
+          </a>
+
+          <a href="/#email" class="group rounded-xl border border-rift/60 bg-abyss/40 p-4 transition hover:border-glow/70 hover:shadow-glow">
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-stardust/90 font-semibold">Newsletter</span>
+              <span aria-hidden="true" class="text-glow group-hover:translate-x-1 transition">→</span>
+            </div>
+            <p class="mt-2 text-sm text-stardust/75">Dispatches from the Tower and story drops.</p>
+          </a>
+
+          <a href="https://twitter.com" class="group rounded-xl border border-rift/60 bg-abyss/40 p-4 transition hover:border-glow/70 hover:shadow-glow">
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-stardust/90 font-semibold">X (Twitter)</span>
+              <span aria-hidden="true" class="text-glow group-hover:translate-x-1 transition">→</span>
+            </div>
+            <p class="mt-2 text-sm text-stardust/75">Quick takes on threats, tools, and lore.</p>
+          </a>
+
+          <a href="https://www.linkedin.com" class="group rounded-xl border border-rift/60 bg-abyss/40 p-4 transition hover:border-glow/70 hover:shadow-glow">
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-stardust/90 font-semibold">LinkedIn</span>
+              <span aria-hidden="true" class="text-glow group-hover:translate-x-1 transition">→</span>
+            </div>
+            <p class="mt-2 text-sm text-stardust/75">Professional updates and research threads.</p>
+          </a>
+
+          <a href="https://www.youtube.com" class="group rounded-xl border border-rift/60 bg-abyss/40 p-4 transition hover:border-glow/70 hover:shadow-glow">
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-stardust/90 font-semibold">YouTube</span>
+              <span aria-hidden="true" class="text-glow group-hover:translate-x-1 transition">→</span>
+            </div>
+            <p class="mt-2 text-sm text-stardust/75">Visual lore drops, map reveals, and walkthroughs.</p>
+          </a>
+
+          <a href="mailto:lorekeeper@example.com" class="group rounded-xl border border-rift/60 bg-abyss/40 p-4 transition hover:border-glow/70 hover:shadow-glow">
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-stardust/90 font-semibold">Direct Message</span>
+              <span aria-hidden="true" class="text-glow group-hover:translate-x-1 transition">→</span>
+            </div>
+            <p class="mt-2 text-sm text-stardust/75">Questions, collaboration ideas, or speaking requests.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer partial -->
+    <div id="site-footer" class="relative"></div>
+  </main>
+
+  <script>
+    async function loadPartial(targetId, url) {
+      const el = document.getElementById(targetId);
+      if (!el) return;
+
+      const res = await fetch(url, { cache: "no-cache" });
+      if (!res.ok) {
+        console.warn(`Failed to load ${url}`);
+        return;
+      }
+      el.innerHTML = await res.text();
+    }
+
+    function initHeaderNav() {
+      const navToggle = document.getElementById("navToggle");
+      const mobileNavPanel = document.getElementById("mobileNavPanel");
+
+      if (!navToggle || !mobileNavPanel) return;
+
+      navToggle.addEventListener("click", () => {
+        const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!isOpen));
+        mobileNavPanel.classList.toggle("hidden", isOpen);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          navToggle.setAttribute("aria-expanded", "false");
+          mobileNavPanel.classList.add("hidden");
+        }
+      });
+    }
+
+    function initFooterYear() {
+      const year = document.getElementById("year");
+      if (year) year.textContent = new Date().getFullYear();
+    }
+
+    (async function boot() {
+      await loadPartial("site-header", "/partials/header.html");
+      initHeaderNav();
+
+      await loadPartial("site-footer", "/partials/footer.html");
+      initFooterYear();
+    })();
+  </script>
+</body>
+</html>
