@@ -253,7 +253,14 @@
 
   <script>
     const dateFormatter = new Intl.DateTimeFormat('en', { month: 'long', day: 'numeric', year: 'numeric' });
-    const escapeHtml = (str) => String(str ?? '').replace(/[&<>\"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[ch] || ch));
+    const escapeHtml = (str) =>
+      String(str ?? "").replace(/[&<>"']/g, (ch) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      }[ch] || ch));
     const badgeMap = {
       aera: { label: "Aera's Logs", className: "badge badge-aera" },
       lore: { label: "Lorekeeper's Notes", className: "badge badge-lore" },
@@ -261,7 +268,7 @@
     };
     const getBadge = (entry) => badgeMap[entry.category] || { label: escapeHtml(entry.category || 'Entry'), className: "badge badge-resonance" };
     let entries = [];
-
+   
     const fallbackEntries = [
       {
         id: 'aera-2025-12-28-finding-cache',
@@ -272,7 +279,7 @@
         readTime: 8,
         excerpt: "The junior archivists aren't supposed to access Vault Seven alone...",
         featured: true,
-        href: '/pages/field-notes/aera/2025-12-28-finding-cache.html',
+        href: 'field-notes/aera/2025-12-28-finding-cache.html',
         tags: ['isle-404','memory','cache']
       },
       {
@@ -284,7 +291,7 @@
         readTime: 5,
         excerpt: 'Junior Archivist Pip enthusiastically "optimized" the cross-referencing system on Archive Level Seven this morning...',
         featured: false,
-        href: '/pages/field-notes/lore/2025-12-28-incident-level-seven.html',
+        href: 'field-notes/lore/2025-12-28-incident-level-seven.html',
         tags: ['pip','tower','process']
       },
       {
@@ -296,7 +303,7 @@
         readTime: 7,
         excerpt: 'A major software vendor discovered that compromised code had been distributed through their official update channels for six months...',
         featured: false,
-        href: '/pages/field-notes/resonance/2025-12-28-supply-chain-not-monitored.html',
+        href: 'field-notes/resonance/2025-12-28-supply-chain-not-monitored.html',
         tags: ['supply-chain','monitoring','trust']
       }
     ];
