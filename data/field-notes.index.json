@@ -8,7 +8,7 @@
     "readTime": 8,
     "excerpt": "The junior archivists aren't supposed to access Vault Seven alone...",
     "featured": true,
-    "href": "/pages/field-notes/aera/2025-12-28-finding-cache.html",
+    "href": "/field-notes/aera/2025-12-28-finding-cache.html",
     "tags": ["isle-404", "memory", "cache"]
   },
   {
@@ -20,7 +20,7 @@
     "readTime": 5,
     "excerpt": "Junior Archivist Pip enthusiastically \"optimized\" the cross-referencing system on Archive Level Seven this morning...",
     "featured": false,
-    "href": "/pages/field-notes/lore/2025-12-28-incident-level-seven.html",
+    "href": "/field-notes/lore/2025-12-28-incident-level-seven.html",
     "tags": ["pip", "tower", "process"]
   },
   {
@@ -32,7 +32,7 @@
     "readTime": 7,
     "excerpt": "A major software vendor discovered that compromised code had been distributed through their official update channels for six months...",
     "featured": false,
-    "href": "/pages/field-notes/resonance/2025-12-28-supply-chain-not-monitored.html",
+    "href": "/field-notes/resonance/2025-12-28-supply-chain-not-monitored.html",
     "tags": ["supply-chain", "monitoring", "trust"]
   }
 ]
