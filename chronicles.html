@@ -178,9 +178,22 @@
     </section>
 
      <!-- Email capture (Netlify Forms) -->
+      <!-- Email capture (Netlify Forms with JavaScript) -->
       <section id="subscribe" class="relative z-10 mt-12 mx-auto max-w-xl scroll-mt-24">  
         <div class="mt-8 mx-auto max-w-xl scroll-mt-24">
-          <form name="chronicle-subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html"
+          <!-- Success Message (hidden by default) -->
+          <div id="subscribe-success" class="hidden mb-4 rounded-md bg-nebula/20 border border-glow/40 px-6 py-4 text-center backdrop-blur transition-opacity duration-500">
+            <p class="text-glow font-semibold">📜 Inscription Complete</p>
+            <p class="mt-1 text-sm text-stardust/85">Your name has been added to the Tower's registry.</p>
+          </div>
+      
+          <!-- Error Message (hidden by default) -->
+          <div id="subscribe-error" class="hidden mb-4 rounded-md border border-red-400/60 bg-red-400/10 px-6 py-4 text-center backdrop-blur transition-opacity duration-500">
+            <p class="text-red-400 font-semibold">⚠ Something went wrong</p>
+            <p class="mt-1 text-sm text-stardust/85">Please try again or contact us if the problem persists.</p>
+          </div>
+      
+          <form id="subscribe-form" name="chronicle-subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field"
             class="grid gap-3 text-left">
             <input type="hidden" name="form-name" value="chronicle-subscribe" />
         
@@ -192,7 +205,7 @@
             <!-- Name and Email Row -->
             <div class="grid gap-3 sm:grid-cols-2">
               <div>
-                <label class="sr-only" for="name">First Name (Optional)</label>
+                <label class="sr-only" for="name">First Name</label>
                 <input id="name" name="name" type="text"
                   class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
                   placeholder="Your name (optional)"/>
@@ -206,12 +219,106 @@
               </div>
             </div>
         
-            <button type="submit" class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
+            <button type="submit" id="subscribe-button" class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed">
               Subscribe
             </button>
           </form>
+      
+          <p class="mt-3 text-center text-xs text-stardust/65">
+            No spam. Just dispatches from the Dreaming Tower when new Chronicles are released.
+          </p>
         </div>
       </section>
+      
+      <script>
+        (function() {
+          // Handle newsletter subscription
+          const form = document.getElementById('subscribe-form');
+          const successMessage = document.getElementById('subscribe-success');
+          const errorMessage = document.getElementById('subscribe-error');
+          const submitButton = document.getElementById('subscribe-button');
+      
+          if (!form) return;
+      
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+      
+            // Get form data
+            const formData = new FormData(form);
+      
+            // Disable button and show loading state
+            submitButton.disabled = true;
+            const originalButtonText = submitButton.textContent;
+            submitButton.textContent = 'Subscribing...';
+      
+            // Hide any previous messages
+            successMessage.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+      
+            try {
+              // Submit to Netlify
+              const response = await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+              });
+      
+              if (response.ok) {
+                // Show success message with fade-in
+                successMessage.classList.remove('hidden');
+                successMessage.style.opacity = '0';
+                
+                // Scroll message into view
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Trigger fade-in
+                setTimeout(() => {
+                  successMessage.style.opacity = '1';
+                }, 10);
+      
+                // Reset form
+                form.reset();
+      
+                // Fade out after 5 seconds
+                setTimeout(() => {
+                  successMessage.style.opacity = '0';
+                  setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                  }, 500);
+                }, 5000);
+      
+              } else {
+                throw new Error('Submission failed');
+              }
+            } catch (error) {
+              console.error('Error:', error);
+              
+              // Show error message
+              errorMessage.classList.remove('hidden');
+              errorMessage.style.opacity = '0';
+              
+              // Scroll message into view
+              errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              
+              setTimeout(() => {
+                errorMessage.style.opacity = '1';
+              }, 10);
+      
+              // Hide error after 7 seconds
+              setTimeout(() => {
+                errorMessage.style.opacity = '0';
+                setTimeout(() => {
+                  errorMessage.classList.add('hidden');
+                }, 500);
+              }, 7000);
+            } finally {
+              // Reset button
+              submitButton.disabled = false;
+              submitButton.textContent = originalButtonText;
+            }
+          });
+        })();
+      </script>
 
     <!-- Footer partial (outside the content section so it can breathe) -->
     <div id="site-footer" class="relative"></div>
