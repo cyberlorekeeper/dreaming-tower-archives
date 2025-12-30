@@ -178,28 +178,40 @@
     </section>
 
      <!-- Email capture (Netlify Forms) -->
-    <section id="subscribe" class="relative z-10 mt-12 mx-auto max-w-xl scroll-mt-24">  
-      <div id="subscribe" class="mt-8 mx-auto max-w-xl scroll-mt-24">
-        <form name="chronicle-subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html"
-          class="grid gap-3 sm:grid-cols-[1fr_auto] text-left">
-          <input type="hidden" name="form-name" value="chronicle-subscribe" />
-      
-          <!-- Honeypot -->
-          <p class="hidden">
-            <label>Don’t fill this out: <input name="bot-field" /></label>
-          </p>
-      
-          <label class="sr-only" for="email">Email</label>
-          <input id="email" name="email" type="email" required
-            class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
-            placeholder="you@realm.co"/>
-      
-          <button type="submit" class="focus-ring mt-2 sm:mt-0 inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
-            Subscribe
-          </button>
-        </form>
-      </div>
-    </section>
+      <section id="subscribe" class="relative z-10 mt-12 mx-auto max-w-xl scroll-mt-24">  
+        <div class="mt-8 mx-auto max-w-xl scroll-mt-24">
+          <form name="chronicle-subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html"
+            class="grid gap-3 text-left">
+            <input type="hidden" name="form-name" value="chronicle-subscribe" />
+        
+            <!-- Honeypot -->
+            <p class="hidden">
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </p>
+            
+            <!-- Name and Email Row -->
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div>
+                <label class="sr-only" for="name">First Name (Optional)</label>
+                <input id="name" name="name" type="text"
+                  class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
+                  placeholder="Your name (optional)"/>
+              </div>
+              
+              <div>
+                <label class="sr-only" for="email">Email</label>
+                <input id="email" name="email" type="email" required
+                  class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
+                  placeholder="you@realm.co"/>
+              </div>
+            </div>
+        
+            <button type="submit" class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section>
 
     <!-- Footer partial (outside the content section so it can breathe) -->
     <div id="site-footer" class="relative"></div>
