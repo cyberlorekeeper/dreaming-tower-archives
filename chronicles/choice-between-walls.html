@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Choice Between Walls | DTA Chronicle</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <meta name="description" content="A recovered chronicle from the Dreaming Tower archives. Read the tale, then flip to reveal its real-world meaning." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow:{
+            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card:'0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+
+    .prose-lore p { margin-top: 1rem; line-height: 1.9; color: rgba(207,229,239,.92); }
+    .prose-lore h2 { margin-top: 2.25rem; font-family: Cinzel, serif; font-size: 1.4rem; color: rgba(207,229,239,.95); }
+    .prose-lore h3 { margin-top: 1.75rem; font-weight: 700; color: rgba(207,229,239,.95); }
+    .prose-lore ul { margin-top: 1rem; padding-left: 1.25rem; }
+    .prose-lore li { margin-top: .5rem; line-height: 1.8; color: rgba(207,229,239,.9); }
+    .prose-lore hr { margin: 2rem 0; border-color: rgba(20,53,69,.7); }
+
+    .panel { display: none; }
+    .panel.is-active { display: block; }
+
+    .toggle-wrap{
+      display: inline-flex;
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.40);
+      border-radius: .75rem;
+      padding: .25rem;
+      gap: .25rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.16);
+      backdrop-filter: blur(6px);
+    }
+    .toggle-btn{
+      border-radius: .6rem;
+      padding: .55rem .9rem;
+      font-size: .9rem;
+      color: rgba(207,229,239,.85);
+      transition: all .18s ease;
+      white-space: nowrap;
+    }
+    .toggle-btn:hover{ color: rgba(207,229,239,.98); }
+    .toggle-btn[aria-pressed="false"]{
+      opacity: .75;
+    }
+    .toggle-btn[aria-pressed="true"]{
+      background: rgba(53,198,224,.18);
+      color: rgba(207,229,239,.98);
+      box-shadow:
+        0 0 0 2px rgba(53,198,224,.18) inset,
+        0 0 18px rgba(53,198,224,.25);
+    }
+    .toggle-btn[aria-pressed="true"]{
+      animation: togglePulse .25s ease-out;
+    }
+    
+    @keyframes togglePulse {
+      from { box-shadow: 0 0 0 0 rgba(53,198,224,.0); }
+      to   { box-shadow: 0 0 18px rgba(53,198,224,.25); }
+    }
+
+    .fade-enter { opacity: 0; transform: translateY(4px); }
+    .fade-enter-active { opacity: 1; transform: translateY(0); transition: opacity .22s ease, transform .22s ease; }
+
+    .soft-card{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.35);
+      border-radius: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+    }
+
+    /* Desktop hover open for The World */
+    @media (min-width: 1024px) {
+      #worldMenuWrap:hover #worldMenu {
+        display: block;
+      }
+      /* Keep aria button click behavior intact, this just adds hover */
+      #worldMenu.hidden {
+        display: none;
+      }
+    }
+
+  </style>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen">
+    <!-- Background -->
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+
+    <div id="site-header"></div>
+
+    <!-- Chronicle Header -->
+    <section class="relative mx-auto max-w-7xl px-6 pt-10 pb-6">
+      <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">
+        Recovered Chronicle • Dreaming Tower Archives
+      </p>
+      
+      <div class="mt-2 flex flex-col gap-5">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+          <div>
+            <h1 class="font-display text-4xl sm:text-5xl leading-tight text-gradient">
+              The Choice Between Walls
+            </h1>
+            <p class="mt-3 text-stardust/85 max-w-3xl">
+              Trusted writs. Shadow markets. Seven intruders, coordinated like a swarm.
+            </p>
+        
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Theme: Supply Chain</span>
+              <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Threat: Rot Swarm</span>
+              <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Status: Complete</span>
+            </div>
+          </div>
+
+          <div class="lg:pt-2">
+            <a href="#subscribe"
+               class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110 whitespace-nowrap">
+              Subscribe
+            </a>
+          </div>
+        </div>
+
+        <!-- Flip Toggle now sits below, aligned right -->
+        <div class="flex flex-col items-center text-center">
+          <div class="toggle-wrap" role="group" aria-label="Chronicle view toggle">
+            <button id="btnStory" class="toggle-btn focus-ring" type="button" aria-pressed="true">
+              <span class="toggle-icon" aria-hidden="true">◉</span>
+              <span>Chronicle</span>
+            </button>
+            
+            <button id="btnAnalysis" class="toggle-btn focus-ring" type="button" aria-pressed="false">
+              <span class="toggle-icon" aria-hidden="true">◯</span>
+              <span>Real-World Analysis</span>
+            </button>
+          </div>
+          <p class="mt-2 text-xs text-stardust/65">
+            Flip the page to reveal the real-world meaning.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="relative mx-auto max-w-7xl px-6">
+      <div class="h-px w-full bg-rift/60"></div>
+    </div>
+
+    <!-- Content Panels -->
+    <section class="relative mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8 pt-8 pb-14">
+
+      <!-- Story Panel -->
+      <article id="panelStory" class="panel is-active">
+        <div class="mx-auto max-w-4xl prose-lore">
+<h2>The Choice Between Walls</h2>
+
+<p>The Queen's crown burned.</p>
+
+<p>Not with heat, but with light—three of its interlocking rings pulsing angry crimson while the others flickered amber in nervous sympathy. Lyra Brightforge stood at the great window of her war room, watching the Crown City sprawl below in blissful ignorance of what was coming.</p>
+
+<p>Behind her, the Secret Council waited.</p>
+
+<p>She could feel their eyes on her back, each carrying the weight of their own certainty. Five perspectives. Five impossible truths. One decision that would define her reign—or end it.</p>
+
+<p>"Show me again," she said, not turning from the window.</p>
+
+<p>The Lorekeeper stepped forward, his staff clicking against the stone floor. He placed his palm on the central table, and an illusion bloomed above it—not a vision from the Tower this time, but cold, assembled facts.</p>
+
+<p class="italic text-stardust/90">"The entity calls itself the Unraveler," he said, his voice carrying the weight of ancient chronicles. "The Dreaming Tower has found references in records going back four centuries. It doesn't breach systems. It doesn't steal data. It unravels the trust that holds them together."</p>
+
+<p>The illusion shifted, showing a timeline. Cities. Networks. Kingdoms that no longer existed.</p>
+
+<p class="italic text-stardust/90">"Everywhere it appeared, the pattern was the same. First, small inconsistencies. A merchant's records don't match their warehouse inventory. A citizen's identity scroll shows a different birthdate than their family remembers. Authentication tokens that worked yesterday fail today. Nothing catastrophic. Nothing that screams attack."</p>
+
+<p class="italic text-stardust/90">"Just doubt," Shade said from his corner, Whisper shimmering faintly at his shoulder. "Doubt that grows like rot."</p>
+
+<p>The Lorekeeper nodded. "Within months, trust collapses. Citizens don't believe their own records. Merchants can't verify contracts. The whole system fractures under the weight of uncertainty." He paused. "Three of the kingdoms in these records fell to civil war. Two simply... dissolved. People scattered, unable to agree on basic facts about their own lives."</p>
+
+<p>Lyra's jaw tightened. "And it's here. In the Crown City."</p>
+
+<p class="italic text-stardust/90">"We detected the first inconsistencies eight days ago," High Commander Valdris said. He stood rigid, a statue of controlled fury. "Minor discrepancies in the Sentinel logs. Authentication mismatches in the Outer Provinces. At first, we thought it was clerical error."</p>
+
+<p class="italic text-stardust/90">"It wasn't," Shade said quietly. "I've been tracking similar patterns in the Shadow Markets. Deals falling apart because neither party can prove what they agreed to. Information brokers discovering their records don't match their memories. It's already spreading."</p>
+
+<p>Merchant-Lord Cassia paced, her silk robes rustling with agitation. "If this reaches the commercial sector—if merchants can't trust their contracts, if customers can't verify their purchases—the entire economy grinds to a halt. We're three weeks from the Midwinter Trade Summit. If this breaks then..." She didn't finish. She didn't have to.</p>
+
+<p>The Queen finally turned from the window. Her armor's script flickered and pulsed, struggling to display system status when the systems themselves couldn't agree on what was true.</p>
+
+<p>"Options," she said.</p>
+
+<p>The Lorekeeper gestured, and the illusion changed, showing the Crown City's infrastructure as a web of glowing lines. "Option one: we quarantine. Seal the affected systems, cut them off from the rest of the Kingdom. Halt all data exchange until we can identify and eliminate the entity."</p>
+
+<p>"For how long?" the Queen asked.</p>
+
+<p class="italic text-stardust/90">"Weeks. Possibly months."</p>
+
+<p>Cassia made a strangled sound. "That's not quarantine. That's amputation. You're talking about shutting down half the Kingdom's infrastructure. No trade. No communication with the Outer Provinces. No—"</p>
+
+<p class="italic text-stardust/90">"We'd survive," Valdris interrupted. "We have emergency protocols. Local stores. Backup systems."</p>
+
+<p class="italic text-stardust/90">"We'd survive," Cassia shot back, "but we'd be crippled. And when we came out of quarantine—if we came out—would anyone still trust us? Would the Outer Provinces even want to reconnect to a Crown City that abandoned them for months?"</p>
+
+<p>"Better crippled than dead," Valdris growled.</p>
+
+<p class="italic text-stardust/90">"Is it?" Shade asked softly. "Because the historical pattern says quarantine doesn't work. The Unraveler doesn't need data connections to spread doubt. People carry it with them. In their memories. In their uncertainty. You can't quarantine questions."</p>
+
+<p>The Lorekeeper nodded grimly. "Every kingdom that tried isolation failed anyway. The entity was patient. It waited. And when they reconnected..." His gesture made the illusion collapse into chaos.</p>
+
+<p>Lyra absorbed this. "Option two."</p>
+
+<p class="italic text-stardust/90">"We fight it directly," Valdris said. "Deploy every resource we have. The Sentinels. The Wardens. The Cipher Monks. We hunt it through every system, every record, every line of code until we find it and burn it out."</p>
+
+<p class="italic text-stardust/90">"That's your solution to everything," Cassia muttered. "Deploy forces. Burn it out."</p>
+
+<p class="italic text-stardust/90">"Because it works," Valdris snapped. "We know where the inconsistencies are appearing. We focus there, we—"</p>
+
+<p class="italic text-stardust/90">"We make it worse," the Lorekeeper said gently. "The more we search, the more we disrupt. Every system we examine, we cast doubt on. Every record we verify, we implicitly question. We'd be doing the Unraveler's work for it."</p>
+
+<p>Shade's voice cut through the tension. "And it would know we're coming. The Shadow Markets are already buzzing with rumors about Sentinels investigating 'irregularities.' Every investigation creates more uncertainty. More fear."</p>
+
+<p>Valdris's hand went to his sword hilt—a nervous habit when he felt powerless. "So we do nothing? We let it spread?"</p>
+
+<p class="italic text-stardust/90">"No," the Queen said. "We consider option three."</p>
+
+<p>The room went silent.</p>
+
+<p>The Lorekeeper's expression was unreadable. "Your Majesty, I haven't presented—"</p>
+
+<p class="italic text-stardust/90">"Option three," Lyra repeated, her voice hard as iron, "is what you're all avoiding saying out loud. The option that terrifies you so much you're hoping I don't see it."</p>
+
+<p>She walked to the table and placed both hands on its surface. The illusion responded to her touch, reshaping itself.</p>
+
+<p class="italic text-stardust/90">"We make the Kingdom forget."</p>
+
+<p>The words hung in the air like a pronouncement of execution.</p>
+
+<p>Cassia's face went pale. "You can't mean—"</p>
+
+<p class="italic text-stardust/90">"The Forgetting Protocol," Lyra said. "I know it exists. I know what it does. And I know the Lorekeeper has the key to it, locked somewhere in that Tower of his."</p>
+
+<p>The Lorekeeper's hands tightened on his staff. "Your Majesty, that protocol was created for a very specific—"</p>
+
+<p class="italic text-stardust/90">"For an entity that destroys trust by creating doubt," Lyra interrupted. "For a threat that feeds on uncertainty and inconsistency. The Forgetting Protocol would wipe the affected systems clean. Reset them to a known-good state. And yes—it would erase everyone's memory of the inconsistencies. No doubt. No uncertainty. No spreading rot."</p>
+
+<p class="italic text-stardust/90">"No memories at all," Shade said, his voice rough. Whisper pulsed at his shoulder, agitated. "You're talking about cutting away weeks of people's lives. Every transaction. Every conversation. Every—"</p>
+
+<p class="italic text-stardust/90">"Every question mark the Unraveler planted," the Queen finished. "Yes."</p>
+
+<p>Valdris was shaking his head. "The scale... Your Majesty, we're talking about hundreds of thousands of people. The Outer Provinces. The merchant networks. The—"</p>
+
+<p class="italic text-stardust/90">"The entire Kingdom," Lyra said quietly. "That's what it would take. A complete reset. We'd wake up eight days ago, before the first inconsistency appeared. We'd lose everything that happened since then, but we'd be whole. No cracks for the Unraveler to widen."</p>
+
+<p>"And the Unraveler itself?" Cassia asked, her voice barely a whisper.</p>
+
+<p class="italic text-stardust/90">"Would still be here," the Lorekeeper said heavily. "The Forgetting Protocol doesn't eliminate threats. It only erases the damage they've done. The entity would remain, unknown and undetected, ready to begin again."</p>
+
+<p class="italic text-stardust/90">"Unless," Lyra said, meeting his eyes, "someone remembered. Someone who could hunt it in the reset Kingdom before it could spread."</p>
+
+<p>The implications settled over the room like a shroud.</p>
+
+<p class="italic text-stardust/90">"You want to exclude yourself from the Forgetting," Shade said. "And the Council."</p>
+
+<p class="italic text-stardust/90">"The protocol allows for five exclusions," Lyra confirmed. "Five people who would remember what happened. Who would know what to look for. Who could stop it before the pattern repeated."</p>
+
+<p class="italic text-stardust/90">"Five people carrying a truth no one else would believe," the Lorekeeper said softly. "Hunting an entity no one else would remember. Operating against a threat the Kingdom doesn't know exists."</p>
+
+<p class="italic text-stardust/90">"Five people," Shade echoed, "lying to everyone they're supposed to protect."</p>
+
+<p>Lyra turned to face them fully. Her crown's rings pulsed in time with her heartbeat—red, amber, red, amber. The weight of command sat on her shoulders like physical pressure.</p>
+
+<p class="italic text-stardust/90">"I didn't say it was a good option," she said. "I said it was an option. So now we decide. Do we quarantine the Kingdom and hope isolation works despite history saying it won't? Do we hunt the entity openly and risk accelerating its spread? Or do we use the Forgetting Protocol and accept the cost?"</p>
+
+<p>"The cost of lying to our own people," Cassia said.</p>
+
+<p>"The cost of taking away their memories," Valdris added.</p>
+
+<p class="italic text-stardust/90">"The cost of becoming exactly what I left the Ministry to escape," Shade said, his voice hollow. "Filing false reports. Marking things 'resolved' when they're not. Hiding the truth because it's easier than facing it."</p>
+
+<p>The Lorekeeper said nothing. He simply watched the Queen with ancient, knowing eyes.</p>
+
+<p>Lyra looked at each of them in turn. "I need to know where you stand. Not because I can't make this decision alone—I can. I will. But because if we do this, we do it together. And if we don't, I need to know what you're willing to live with instead."</p>
+
+<p>She started with the person she knew would be easiest.</p>
+
+<p class="italic text-stardust/90">"Valdris. If we quarantine, can you keep the Kingdom operational?"</p>
+
+<p>The High Commander's jaw worked. "We'd have riots within two weeks. Starvation in the Outer Provinces within a month. I could keep order, but at what cost? Martial law? Mass arrests?" He shook his head. "I'm a soldier, Your Majesty, not an occupier."</p>
+
+<p class="italic text-stardust/90">"Cassia. If we hunt it openly, can the economy survive the scrutiny?"</p>
+
+<p>The Merchant-Lord laughed bitterly. "The moment you announce we're investigating system-wide inconsistencies, confidence collapses. Bank runs. Contract disputes. Trade paralysis. You'd create the very chaos you're trying to prevent."</p>
+
+<p class="italic text-stardust/90">"Lorekeeper. If we use the Forgetting Protocol, what do we lose that we'll never get back?"</p>
+
+<p>The old sage was quiet for a long moment. "Trust," he finally said. "Not the Kingdom's trust in its systems—the protocol would restore that. But our trust in ourselves. The five of us would carry a secret that would poison every interaction we have. Every decision we make would be shadowed by the knowledge that we stole weeks of people's lives to save them."</p>
+
+<p class="italic text-stardust/90">"And you, Shade?" Lyra asked. "You've already told me what it costs. Will you pay it?"</p>
+
+<p>Shade looked at Whisper, and Whisper looked back—a conversation in silence, in sensation, in the space between heartbeats.</p>
+
+<p class="italic text-stardust/90">"I left the Ministry," Shade said slowly, "because I couldn't stand being part of a system that buried truth for convenience. But this isn't convenience. This is survival." He paused. "Whisper remembers. Even if the Kingdom forgets, even if we forget our guilt, Whisper will remember. Maybe... maybe that's enough."</p>
+
+<p>The Queen closed her eyes briefly. When she opened them, they were clear. Certain.</p>
+
+<p class="italic text-stardust/90">"Then I'll make it easier for you all," she said. "I'm not asking you to choose. I'm telling you what I've decided."</p>
+
+<p>She pulled a crystal from her belt—a Queen's Cipher, glowing with her personal seal.</p>
+
+<p class="italic text-stardust/90">"We use the Forgetting Protocol. We reset the Kingdom to eight days ago. And the five of us hunt the Unraveler in secret, knowing we might never find it, knowing we might have to do this again." Her voice hardened. "Because quarantine will fail and take months to kill us. Open investigation will fail and take weeks. The Forgetting Protocol might fail too—but if it does, at least we bought time to find another answer."</p>
+
+<p>"Your Majesty—" Valdris started.</p>
+
+<p class="italic text-stardust/90">"I'm not finished," Lyra said, her voice cracking like thunder. "You asked what we lose that we can't get back. I'll tell you. We lose our innocence. We lose our certainty that we're the heroes of this story. We become the people who rewrote history because we decided we knew better."</p>
+
+<p>She held up the cipher, its light casting shadows across her face.</p>
+
+<p class="italic text-stardust/90">"But here's what we keep: the Kingdom. Whole. Functional. Alive. And maybe that's not a fair trade. Maybe in a just world, we'd find a better way. But I don't rule a just world. I rule this world, and in this world, I choose the option where the most people survive with the least suffering."</p>
+
+<p>She looked at each of them.</p>
+
+<p class="italic text-stardust/90">"If you can't live with that, leave now. I'll exclude you from the protocol. You'll wake up eight days ago with everyone else, and I'll carry this alone."</p>
+
+<p>No one moved.</p>
+
+<p>Cassia broke first. "Alone is how you fall," she said quietly. "If we're doing this, we do it together."</p>
+
+<p>Valdris nodded slowly. "I still think it's wrong. But I think the alternatives are worse."</p>
+
+<p>The Lorekeeper simply inclined his head. "The Tower will remember, Your Majesty. Even if we shouldn't."</p>
+
+<p>Shade's voice was almost inaudible. "Cohen would have refused. He would have walked away rather than bury the truth." He straightened. "But Cohen doesn't exist anymore. Shade stays."</p>
+
+<p>The Queen let out a breath she hadn't known she was holding.</p>
+
+<p class="italic text-stardust/90">"Then it's decided." She placed the cipher on the table. "Lorekeeper, you'll initiate the protocol. Valdris, you'll prepare operational continuity plans—the Kingdom will wake up confused, and we'll need to guide them through the transition smoothly. Cassia, you'll ensure the economic systems come back online without triggering panic. Shade, you and Whisper will hunt the Unraveler. Your gifts of memory and imperceptibility are our best weapons."</p>
+
+<p>"And you, Your Majesty?" the Lorekeeper asked.</p>
+
+<p>Lyra touched her crown, feeling its rings pulse with the Kingdom's failing heartbeat.</p>
+
+<p class="italic text-stardust/90">"I'll do what I always do. I'll take responsibility. If this works, no one will ever know what we did, and that's how it should be. If it fails..." She smiled without humor. "If it fails, at least I'll know I chose action over paralysis."</p>
+
+<p>She looked around the table at the four people who would share her burden.</p>
+
+<p class="italic text-stardust/90">"When we activate the protocol, we'll have approximately six hours before the Kingdom resets. That's six hours to secure the dangerous artifacts, six hours to set our affairs in order, six hours to say goodbye to the people we love without being able to tell them why."</p>
+
+<p class="italic text-stardust/90">"Six hours," Cassia whispered, "to be the only ones who know the world is about to end and begin again."</p>
+
+<p class="italic text-stardust/90">"Yes," Lyra said. She picked up her scepter, its weight familiar and terrible. "And then we'll wake up eight days ago, and we'll do what we've always done: protect the Kingdom. Only this time, we'll do it knowing what they don't—that trust is fragile, that truth can be rewritten, and that sometimes the only way to save something is to make it forget it was ever in danger."</p>
+
+<p>The Lorekeeper raised his staff. "The Tower is ready when you are, Your Majesty."</p>
+
+<p>Lyra looked one last time at the Crown City through the window. Lights sparkled in the gathering dusk. People going about their lives, unaware that their Queen was about to steal eight days from them to save them from something they'd never know existed.</p>
+
+<p>"Then let's begin," she said.</p>
+
+<p>And the crown burned brighter.</p>
+
+<p>Epilogue: Eight Days Earlier</p>
+
+<p>The Queen woke to the sound of rain against her window.</p>
+
+<p>She lay still for a moment, listening. Something felt wrong. Not dangerous—just off, like waking from a dream she couldn't quite remember.</p>
+
+<p>Her crown sat on its stand beside her bed, all rings glowing steady blue. Healthy. Normal.</p>
+
+<p>But there was a weight in her chest that hadn't been there before. Or had it? She couldn't remember.</p>
+
+<p>A soft knock at her door. "Your Majesty? The morning briefing."</p>
+
+<p>"Coming," she called.</p>
+
+<p>As she dressed, pulling on the silver armor that was both symbol and shield, she found herself pausing at the mirror. Something about her eyes looked... older. Sadder.</p>
+
+<p>She shook it off. Imagining things.</p>
+
+<p>In the war room, the Secret Council waited. The Lorekeeper stood by the window, his expression distant. Valdris reviewed reports with grim focus. Cassia paced with unusual agitation. And in the corner, barely noticeable, Shade watched them all with eyes that carried too much knowledge.</p>
+
+<p>"Good morning," Lyra said, taking her seat.</p>
+
+<p>They returned the greeting, but she noticed something odd. They all looked at each other—just for a moment, just a flicker of eye contact that said we know something.</p>
+
+<p>And then Shade spoke, his voice carefully neutral. "Your Majesty, I've received intelligence about a potential threat. An entity that manipulates trust by creating inconsistencies in records. I recommend we begin monitoring for unusual discrepancies in our systems."</p>
+
+<p>Lyra felt something stir in her mind. Not quite memory. More like... instinct.</p>
+
+<p class="italic text-stardust/90">"Do it," she said. "Quietly. And keep me informed of any patterns."</p>
+
+<p class="italic text-stardust/90">"Yes, Your Majesty."</p>
+
+<p>As the briefing continued, Lyra found her hand drifting to her crown. It felt heavier than usual. Like it carried the weight of something more than the Kingdom's present.</p>
+
+<p>Like it remembered a choice she hadn't yet made.</p>
+
+<p>Or had already made and forgotten.</p>
+
+<p>She looked at the Council—her Council—and saw the same weight in their eyes. The Lorekeeper's quiet grief. Valdris's clenched jaw. Cassia's restless energy. Shade's haunted gaze.</p>
+
+<p>We did something, she thought. Something terrible and necessary. Something we can never speak of.</p>
+
+<p>But she didn't know what.</p>
+
+<p>And maybe, she thought as she felt Whisper's presence shimmer faintly in the corner, maybe that was the point.</p>
+
+<p>"Let's keep the Kingdom safe," she said, and her voice carried an edge of determination that surprised even her.</p>
+
+<p>The Council nodded, and in their eyes, she saw an answer:</p>
+
+<p>We will. We always do.</p>
+
+<p>Even when no one remembers why.</p>
+        </div>
+      </article>
+
+      <!-- Analysis Panel -->
+      <article id="panelAnalysis" class="panel">
+        <div class="mx-auto max-w-4xl prose-lore">
+<h3>The Choice Between Walls</h3>
+
+<p>Story Summary: Queen Lyra faces three impossible choices when the "Unraveler" entity emerges—a threat that destroys trust by creating subtle inconsistencies in records. Option 1: Quarantine (isolate systems, cripple the Kingdom for months). Option 2: Hunt openly (create more doubt by investigating everything). Option 3: Use the Forgetting Protocol (reset everyone's memory of the affected period, erase the inconsistencies, but operate in secret afterward). She chooses the Forgetting Protocol, accepting the moral weight of rewriting history to save the Kingdom. The Council must then secretly hunt the Unraveler in a reset world where no one else knows it exists.</p>
+
+<p>Real-World Cybersecurity Concept: Integrity Attack / Trust Erosion / Crisis Decision-Making</p>
+
+<p>Real-World Examples:</p>
+
+<p>SolarWinds (Revisited for Different Angle): When SolarWinds was discovered, organizations faced the Queen's dilemma. The malware had been present for months. How do you trust any data from that period? Some organizations chose to:</p>
+
+<p>Quarantine approach: Rebuild everything from scratch, assuming all data from the infection period was compromised</p>
+
+<p>Hunt approach: Forensically investigate everything, which spread paranoia and consumed resources</p>
+
+<p>Quiet remediation: Some organizations quietly fixed the issue and never publicly disclosed the full extent, to avoid damaging customer trust</p>
+
+<p>Colonial Pipeline Ransomware (2021): Colonial Pipeline faced a version of this choice. Ransomware had encrypted their systems, but more importantly, they couldn't trust their operational data. They didn't know what had been modified. The choice:</p>
+
+<p>Shut down operations entirely (quarantine) - they chose this, causing fuel shortages across the US East Coast</p>
+
+<p>Try to operate with untrusted data (too risky for critical infrastructure)</p>
+
+<p>Pay ransom and hope for clean decryption (they did this too, but the decryption was so slow they rebuilt anyway)</p>
+
+<p>Impact: 5-6 day shutdown, fuel shortages, $4.4M ransom paid, $2B+ in economic impact, months to fully recover confidence in systems.</p>
+
+<p>Target Data Breach (2013): Target's breach compromised 40 million credit card numbers and 70 million customer records. The integrity question: which records were accessed? What was modified? Target faced the Unraveler's dilemma:</p>
+
+<p>Assume everything from that period is compromised (expensive, disruptive)</p>
+
+<p>Try to identify exactly what was touched (impossible to be certain)</p>
+
+<p>Operate as if nothing happened (destroyed customer trust when the truth emerged)</p>
+
+<p>They initially tried quiet remediation, but when the breach became public, customer trust collapsed. CEO and CIO resigned. $18.5M settlement. Stock dropped 11%.</p>
+
+<p>NotPetya (2017) - Maersk's Response: When NotPetya ransomware hit Maersk (the world's largest shipping company), it destroyed 4,000 servers and 45,000 PCs. But the real problem was integrity—they couldn't trust any data from infected systems. Their choice was extreme: rebuild their entire global IT infrastructure from scratch in 10 days. They chose the "total quarantine and rebuild" option because they couldn't trust anything.</p>
+
+<p>Impact: $300M+ in losses, but by accepting total data loss from the infected period and rebuilding clean, they maintained long-term trust.</p>
+
+<p>Real-World Lesson for Non-Technical Readers:</p>
+
+<p>Imagine you keep financial records for your business. One day, you discover that someone has been secretly accessing your bookkeeping system for months. They didn't steal money (that you can tell), but they had the ability to change numbers. Now, when you look at your records from the past six months, which ones can you trust? Did they change the amount owed by a key client? Modify expense reports? Alter inventory counts?</p>
+
+<p>You have three options:</p>
+
+<p>Shut everything down and manually verify every transaction from the past six months (expensive, time-consuming, disrupts business)</p>
+
+<p>Audit everything publicly, telling all your clients and vendors you're investigating possible record tampering (destroys confidence in your business)</p>
+
+<p>Quietly fix what you can find and hope you caught everything (risky, and if you miss something, it's worse when discovered later)</p>
+
+<p>None of these are good options. But you have to choose one.</p>
+
+<p>What This Means for Your Organization:</p>
+
+<p>For Enterprises:</p>
+
+<p>Integrity monitoring is critical: Systems that detect when data is modified, not just accessed</p>
+
+<p>Immutable logs: Keep audit trails that can't be changed, so you have a source of truth</p>
+
+<p>Backup strategy matters: You need "known-good" snapshots to restore from</p>
+
+<p>Incident response plans must include integrity scenarios: Not just "data stolen" but "data modified"</p>
+
+<p>Decision-making frameworks: Who has authority to make "Forgetting Protocol" level decisions? What's the process?</p>
+
+<p>Communication strategy: What do you tell customers, partners, regulators when you can't be certain what was compromised?</p>
+
+<p>For Small Businesses:</p>
+
+<p>Version control for critical data: Keep historical versions of important files/databases</p>
+
+<p>Regular backups tested for integrity: Can you prove your backup wasn't compromised too?</p>
+
+<p>Paper trail for critical transactions: Some things should have physical documentation</p>
+
+<p>Know your breaking point: At what point do you shut down operations vs. try to operate through uncertainty?</p>
+
+<p>Trust but verify: Even automated systems should have occasional manual verification</p>
+
+<p>The Uncomfortable Truth: The Forgetting Protocol represents the hardest category of cybersecurity decisions: choosing between transparency and effectiveness. Sometimes, public disclosure of a breach causes more damage than the breach itself. Sometimes, quiet remediation is the responsible choice. Sometimes, you have to operate with secrets to protect the majority.</p>
+
+<p>This is why the Council scene is so tense. Each option has moral weight:</p>
+
+<p>Quarantine: Responsible but potentially destroys what you're trying to save</p>
+
+<p>Open investigation: Transparent but creates panic and helps the threat</p>
+
+<p>Secret remediation: Effective but requires lying to those you serve</p>
+
+<p>Queen Lyra chooses effectiveness over transparency. In the real world, this decision gets CISOs fired, triggers lawsuits, violates regulations, and haunts leaders forever. But sometimes it's the right call.</p>
+
+<p>Cost of Each Choice:</p>
+
+<p>Quarantine/Shutdown:</p>
+
+<p>Target: Initially tried to continue operations, eventually had to shut down systems, lost customer trust</p>
+
+<p>Colonial Pipeline: Chose immediate shutdown, caused regional crisis but protected safety</p>
+
+<p>Lesson: Shutdown is expensive, but operating with corrupted data can be catastrophic</p>
+
+<p>Open Investigation:</p>
+
+<p>Equifax (2017): Delayed disclosure of breach affecting 147M people, tried to investigate quietly first, but when it went public the delayed notification made it worse</p>
+
+<p>Lesson: If you're going to investigate, the investigation itself can't hide the problem forever</p>
+
+<p>Secret Remediation:</p>
+
+<p>Many unnamed organizations: Quietly patch vulnerabilities and never disclose breaches</p>
+
+<p>Legal risk: Regulations like GDPR, state breach notification laws often require disclosure</p>
+
+<p>Lesson: Secrets eventually emerge, and the coverup becomes worse than the crime</p>
+
+<p>The Unraveler as a Metaphor: The entity that destroys trust through subtle inconsistencies represents modern "low and slow" attacks:</p>
+
+<p>APTs (Advanced Persistent Threats): Nation-state actors who hide in networks for years, subtly modifying data</p>
+
+<p>Supply chain poisoning: Gradual compromise of trusted systems</p>
+
+<p>Insider threats: Employees slowly stealing/modifying data over time</p>
+
+<p>Data integrity attacks: Not destroying data, but subtly altering it to influence decisions</p>
+
+<p>These are scarier than ransomware because you might never know what's real anymore.</p>
+
+<p>Why This Story Matters: Most cybersecurity training focuses on preventing breaches or detecting them. This story is about what happens when you're past prevention, past detection, and into "How do we survive this with maximum preservation of mission?"</p>
+
+<p>That's where leadership matters more than technology. Valdris can't fight his way out. The Lorekeeper can't remember a solution. Shade can't find a clean answer. Cassia can't calculate a profitable outcome.</p>
+
+<p>Only the Queen can make the call—and live with it forever.</p>
+        </div>
+      </article>
+
+      <!-- Context Footer -->
+      <div class="mx-auto max-w-3xl mt-12 soft-card p-6">
+        <h3 class="font-display text-xl text-stardust/95">Appearing in this Chronicle</h3>
+        <div class="mt-3 flex flex-wrap gap-2 text-sm">
+          <a href="/characters/lorekeeper.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">The Lorekeeper</a>
+          <a href="/characters/lyra.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Queen Lyra</a>
+          <a href="/characters/valdris.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">High Commander Valdris</a>
+          <a href="/characters/cassia.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Merchant-Lord Cassia</a>
+          <a href="/characters/shade.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Shade</a>
+          <a href="/characters/pip.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Junior Archivist Pip</a>
+        </div>
+      
+        <div class="mt-6 h-px w-full bg-rift/60"></div>
+      
+        <div class="mt-6">
+          <h3 class="font-display text-xl text-stardust/95">Continue the Archive</h3>
+      
+          <!-- Full-width nav row -->
+          <div class="mt-3 flex items-center justify-between gap-4 text-sm text-stardust/80">
+            <a class="underline underline-offset-4 hover:text-glow" href="/chronicles/">← Back to Chronicles</a>
+      
+            <a id="nextChronicleLink"
+               class="underline underline-offset-4 hover:text-glow"
+               href="/chronicles/merchants-gate.html">
+              Next Chronicle →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- Email capture (Netlify Forms with JavaScript) -->
+    <section id="subscribe" class="relative z-10 mt-12 mx-auto max-w-xl scroll-mt-24">  
+      <div class="mt-8 mx-auto max-w-xl scroll-mt-24">
+        <!-- Success Message (hidden by default) -->
+        <div id="subscribe-success" class="hidden mb-4 rounded-md bg-nebula/20 border border-glow/40 px-6 py-4 text-center backdrop-blur transition-opacity duration-500">
+          <p class="text-glow font-semibold">📜 Inscription Complete</p>
+          <p class="mt-1 text-sm text-stardust/85">Your name has been added to the Tower's registry.</p>
+        </div>
+    
+        <!-- Error Message (hidden by default) -->
+        <div id="subscribe-error" class="hidden mb-4 rounded-md border border-red-400/60 bg-red-400/10 px-6 py-4 text-center backdrop-blur transition-opacity duration-500">
+          <p class="text-red-400 font-semibold">⚠ Something went wrong</p>
+          <p class="mt-1 text-sm text-stardust/85">Please try again or contact us if the problem persists.</p>
+        </div>
+    
+        <form id="subscribe-form" name="chronicle-subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+          class="grid gap-3 text-left">
+          <input type="hidden" name="form-name" value="chronicle-subscribe" />
+      
+          <!-- Honeypot -->
+          <p class="hidden">
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </p>
+          
+          <!-- Name and Email Row -->
+          <div class="grid gap-3 sm:grid-cols-2">
+            <div>
+              <label class="sr-only" for="name">First Name</label>
+              <input id="name" name="name" type="text"
+                class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
+                placeholder="Your name (optional)"/>
+            </div>
+            
+            <div>
+              <label class="sr-only" for="email">Email</label>
+              <input id="email" name="email" type="email" required
+                class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
+                placeholder="you@realm.co"/>
+            </div>
+          </div>
+      
+          <button type="submit" id="subscribe-button" class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed">
+            Subscribe
+          </button>
+        </form>
+    
+        <p class="mt-3 text-center text-xs text-stardust/65">
+          No spam. Just dispatches from the Dreaming Tower when new Chronicles are released.
+        </p>
+      </div>
+    </section>
+    
+    <script>
+      (function() {
+        // Handle newsletter subscription
+        const form = document.getElementById('subscribe-form');
+        const successMessage = document.getElementById('subscribe-success');
+        const errorMessage = document.getElementById('subscribe-error');
+        const submitButton = document.getElementById('subscribe-button');
+    
+        if (!form) return;
+    
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+    
+          // Get form data
+          const formData = new FormData(form);
+    
+          // Disable button and show loading state
+          submitButton.disabled = true;
+          const originalButtonText = submitButton.textContent;
+          submitButton.textContent = 'Subscribing...';
+    
+          // Hide any previous messages
+          successMessage.classList.add('hidden');
+          errorMessage.classList.add('hidden');
+    
+          try {
+            // Submit to Netlify
+            const response = await fetch('/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: new URLSearchParams(formData).toString()
+            });
+    
+            if (response.ok) {
+              // Show success message with fade-in
+              successMessage.classList.remove('hidden');
+              successMessage.style.opacity = '0';
+              
+              // Scroll message into view
+              successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              
+              // Trigger fade-in
+              setTimeout(() => {
+                successMessage.style.opacity = '1';
+              }, 10);
+    
+              // Reset form
+              form.reset();
+    
+              // Fade out after 5 seconds
+              setTimeout(() => {
+                successMessage.style.opacity = '0';
+                setTimeout(() => {
+                  successMessage.classList.add('hidden');
+                }, 500);
+              }, 5000);
+    
+            } else {
+              throw new Error('Submission failed');
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            
+            // Show error message
+            errorMessage.classList.remove('hidden');
+            errorMessage.style.opacity = '0';
+            
+            // Scroll message into view
+            errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            setTimeout(() => {
+              errorMessage.style.opacity = '1';
+            }, 10);
+    
+            // Hide error after 7 seconds
+            setTimeout(() => {
+              errorMessage.style.opacity = '0';
+              setTimeout(() => {
+                errorMessage.classList.add('hidden');
+              }, 500);
+            }, 7000);
+          } finally {
+            // Reset button
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+          }
+        });
+      })();
+    </script>
+  <div id="site-footer"></div>
+</main>
+
+  <script>
+  // ---------- Utilities ----------
+  async function loadPartial(targetId, url) {
+    const el = document.getElementById(targetId);
+    if (!el) return;
+
+    const res = await fetch(url, { cache: "no-cache" });
+    if (!res.ok) {
+      console.warn(`Failed to load partial: ${url} (${res.status})`);
+      return;
+    }
+    el.innerHTML = await res.text();
+  }
+
+  function initHeaderNav() {
+    // These exist only AFTER header.html is injected
+    const navToggle = document.getElementById("navToggle");
+    const mobileNavPanel = document.getElementById("mobileNavPanel");
+
+    if (!navToggle || !mobileNavPanel) return;
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+      navToggle.setAttribute("aria-expanded", String(!isOpen));
+      mobileNavPanel.classList.toggle("hidden", isOpen);
+    });
+
+    // Escape closes mobile menu
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      if (navToggle.getAttribute("aria-expanded") === "true") {
+        navToggle.setAttribute("aria-expanded", "false");
+        mobileNavPanel.classList.add("hidden");
+      }
+    });
+  }
+
+  function initStoryAnalysisToggle() {
+    const btnStory = document.getElementById("btnStory");
+    const btnAnalysis = document.getElementById("btnAnalysis");
+    const panelStory = document.getElementById("panelStory");
+    const panelAnalysis = document.getElementById("panelAnalysis");
+
+    // If this page doesn't have the toggle UI, do nothing (no crashes)
+    if (!btnStory || !btnAnalysis || !panelStory || !panelAnalysis) return;
+
+    function showPanel(which) {
+      const isAnalysis = which === "analysis";
+      const toShow = isAnalysis ? panelAnalysis : panelStory;
+      const toHide = isAnalysis ? panelStory : panelAnalysis;
+
+      const y = window.scrollY;
+
+      btnStory.setAttribute("aria-pressed", String(!isAnalysis));
+      btnAnalysis.setAttribute("aria-pressed", String(isAnalysis));
+
+      btnStory.textContent = `${!isAnalysis ? "◉" : "◯"} Chronicle`;
+      btnAnalysis.textContent = `${isAnalysis ? "◉" : "◯"} Real-World Analysis`;
+
+      toHide.classList.remove("is-active");
+      toShow.classList.add("is-active");
+
+      toShow.classList.remove("fade-enter", "fade-enter-active");
+      toShow.classList.add("fade-enter");
+      requestAnimationFrame(() => toShow.classList.add("fade-enter-active"));
+
+      // Update hash for shareable links
+      if (isAnalysis) {
+        history.replaceState(null, "", "#analysis");
+      } else {
+        history.replaceState(null, "", window.location.pathname);
+      }
+
+      window.scrollTo(0, y);
+    }
+
+    btnStory.addEventListener("click", () => showPanel("story"));
+    btnAnalysis.addEventListener("click", () => showPanel("analysis"));
+
+    // Initialize based on URL
+    if (window.location.hash === "#analysis") showPanel("analysis");
+    else showPanel("story");
+  }
+
+  function initFooterYear() {
+    const year = document.getElementById("year");
+    if (year) year.textContent = new Date().getFullYear();
+  }
+
+  // ---------- Boot ----------
+  (async function boot() {
+    // Load header first so nav elements exist when we bind listeners
+    await loadPartial("site-header", "/partials/header.html");
+    initHeaderNav();
+
+    // Load footer, then update year if present
+    await loadPartial("site-footer", "/partials/footer.html");
+    initFooterYear();
+
+    // Now init page-specific features
+    initStoryAnalysisToggle();
+  })();
+</script>
+</body>
+</html>
