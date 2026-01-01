@@ -129,7 +129,7 @@
         <!-- Main column: Featured + List -->
         <div class="flex flex-col gap-6">
           <!-- Featured Chronicle -->
-          <article id="featuredChronicle" class="soft-card p-6 hidden"></article>
+          <article id="featuredChronicle" class="soft-card p-6 hidden overflow-hidden"></article>
 
           <!-- Chronicle List -->
           <section id="allChronicles" class="soft-card p-6">
@@ -327,7 +327,7 @@
       const CHRONICLES = [
     {
       enabled: true,
-      featured: true,
+      featured: false,
       type: "Recovered Chronicle",
       title: "The Breach at Merchant’s Gate",
       href: "/chronicles/merchants-gate.html",
@@ -382,7 +382,7 @@
 
       featuredEl.innerHTML = `
         <div class="flex flex-col gap-5">
-          <div class="flex items-start justify-between gap-6">
+          <div class="flex items-start gap-6">
             <div class="min-w-0">
               <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Featured • ${featured.type}</p>
               <h2 class="mt-2 font-display text-2xl sm:text-3xl text-stardust/95">${featured.title}</h2>
@@ -393,7 +393,7 @@
               </div>
             </div>
 
-            <div class="hidden sm:grid grid-cols-1 gap-3 max-w-full">
+            <div class="hidden sm:grid grid-cols-1 gap-3 shrink-0 sm:w-[220px]">
               <div class="meta-pill">
                 <p class="text-[11px] uppercase tracking-[.18em] text-stardust/60">Status</p>
                 <p class="mt-1 text-sm text-stardust/90">${featured.status || ""}</p>
