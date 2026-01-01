@@ -325,19 +325,53 @@
   </main>
 
   <script>
-    const CHRONICLES = [
-      {
-        enabled: true,
-        featured: false,
-        type: "Recovered Chronicle",
-        title: "The Breach at Merchant’s Gate",
-        href: "/chronicles/merchants-gate.html",
-        blurb: "Seven entities entered through trusted writs and moved like ink through commerce, records, keys, and vaults. The Kingdom survived, but only by invoking a dangerous Purge Script and accepting loss.",
-        tags: ["Theme: Supply Chain", "Threat: Rot Swarm", "Flip: Real-World Analysis"],
-        status: "Complete",
-        readTime: "~10–12 min"
-      }
-    ];
+      const CHRONICLES = [
+    {
+      enabled: true,
+      featured: true,
+      type: "Recovered Chronicle",
+      title: "The Breach at Merchant’s Gate",
+      href: "/chronicles/merchants-gate.html",
+      blurb: "Seven entities entered through trusted writs and moved like ink through commerce, records, keys, and vaults. The Kingdom survived, but only by invoking a dangerous Purge Script and accepting loss.",
+      tags: ["Theme: Supply Chain", "Threat: Rot Swarm", "Flip: Real-World Analysis"],
+      status: "Complete",
+      readTime: "~10–12 min"
+    },
+    {
+      enabled: false,
+      featured: false,
+      type: "Recovered Chronicle",
+      title: "The Choice Between Walls",
+      href: "/chronicles/choice-between-walls.html",
+      blurb: "When the Great Corruption threatens to cascade, Queen Lyra chooses between connectivity and collapse, and pays the price of certainty in real time.",
+      tags: ["Focus: Queen Lyra", "Theme: Crisis Decision", "Flip: Real-World Analysis"],
+      status: "Complete",
+      readTime: "~9–11 min"
+    },
+    {
+      enabled: false,
+      featured: false,
+      type: "Recovered Chronicle",
+      title: "The Wall That Held",
+      href: "/chronicles/the-wall-that-held.html",
+      blurb: "High Commander Valdris demands hard defenses and decisive action when hesitation becomes its own vulnerability.",
+      tags: ["Focus: Valdris", "Theme: Defense-in-Depth", "Flip: Real-World Analysis"],
+      status: "Complete",
+      readTime: "~8–10 min"
+    },
+    {
+      enabled: false,
+      featured: false,
+      type: "Recovered Chronicle",
+      title: "The Price of Certainty",
+      href: "/chronicles/the-price-of-certainty.html",
+      blurb: "Merchant-Lord Cassia weighs disruption, trust, and the cost of security decisions that ripple through every trade lane.",
+      tags: ["Focus: Cassia", "Theme: Business Impact", "Flip: Real-World Analysis"],
+      status: "Complete",
+      readTime: "~8–10 min"
+    }
+  ];
+
 
     const featuredEl = document.getElementById('featuredChronicle');
     const allListEl = document.getElementById('chronicleList');
