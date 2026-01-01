@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyber Lorekeeper - Character Codex: Queen Lyra Brightforge</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <meta name="description" content="Character Codex entry for Queen Lyra Brightforge, Sovereign of the Digital Realm and final authority of the Secret Council." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
+          boxShadow:{
+            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card:'0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+
+    .prose-codex p { margin-top: 1rem; line-height: 1.9; color: rgba(207,229,239,.92); }
+    .prose-codex ul { margin-top: 1rem; padding-left: 1.25rem; }
+    .prose-codex li { margin-top: .5rem; line-height: 1.8; color: rgba(207,229,239,.9); }
+    .prose-codex strong { color: rgba(207,229,239,.98); }
+
+    .soft-card{
+      border: 1px solid rgba(20,53,69,.65);
+      background: rgba(15,34,48,.35);
+      border-radius: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      backdrop-filter: blur(6px);
+    }
+
+    details { border-radius: 1rem; }
+    details summary { list-style: none; cursor: pointer; user-select: none; }
+    details summary::-webkit-details-marker { display:none; }
+
+    .chevron { transition: transform .18s ease; }
+    details[open] .chevron { transform: rotate(90deg); }
+
+    .anchor { scroll-margin-top: 110px; }
+
+    .appears-item + .appears-item {
+      border-top: 1px solid rgba(20,53,69,.45);
+      padding-top: .5rem;
+    }
+  </style>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen">
+    <!-- Background -->
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+
+    <div id="site-header"></div>
+
+    <!-- Hero / Codex Header -->
+    <section class="relative mx-auto max-w-6xl px-6 pt-10 pb-6">
+      <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">
+        Character Codex - Dreaming Tower Archives
+      </p>
+
+      <div class="mt-3 grid gap-6 lg:grid-cols-3 lg:items-start">
+        <!-- Identity -->
+        <div class="lg:col-span-2">
+          <h1 class="font-display text-4xl sm:text-5xl leading-tight text-gradient">
+            Queen Lyra Brightforge
+          </h1>
+
+          <p class="mt-3 text-stardust/85 max-w-3xl">
+            Sovereign of the Digital Realm, Keeper of the Crown, Final Authority of the Secret Council.
+          </p>
+          <p class="mt-3 text-sm text-stardust/80">
+            <span class="font-semibold text-stardust/90">Real-World Role:</span>
+            Chief Information Security Officer (CISO) · Executive Decision-Maker · Strategic Security Leader
+          </p>
+
+          <!-- Metadata chips -->
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Role: Monarch</span>
+            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Role: Strategic Decision-Maker</span>
+            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Role: Bearer of Impossible Choices</span>
+            <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Status: Crown-Bound</span>
+          </div>
+
+          <!-- Pull quote callout -->
+          <div class="mt-6 soft-card p-5">
+            <p class="text-sm uppercase tracking-[.18em] text-stardust/70">Excerpt</p>
+            <p class="mt-3 text-lg text-stardust/90 italic leading-relaxed">
+              “Leadership is not about making the right choice. It’s about making the necessary choice and owning what comes after.”
+            </p>
+          </div>
+        </div>
+
+        <!-- Quick Nav -->
+        <aside class="soft-card p-6">
+          <div class="text-sm text-stardust/80">
+            <p class="font-semibold text-stardust/90">Appears in</p>
+            <p class="mt-2 text-sm text-stardust/75">
+              Selected chronicles featuring the Queen.
+            </p>
+
+            <ul id="appearsInList" class="mt-4 space-y-2 text-sm"></ul>
+
+            <button id="appearsToggle"
+                    class="mt-4 focus-ring inline-flex w-full items-center justify-center rounded-md border border-rift/60 bg-abyss/30 px-4 py-2 text-sm font-semibold text-stardust/85 hover:text-glow"
+                    type="button"
+                    aria-expanded="false">
+              Show more
+            </button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="relative mx-auto max-w-6xl px-6">
+      <div class="h-px w-full bg-rift/60"></div>
+    </div>
+
+    <!-- Codex Body -->
+    <section class="relative mx-auto max-w-6xl px-6 pt-8 pb-14">
+      <div class="grid gap-6 lg:grid-cols-3 lg:items-start">
+        <!-- Main -->
+        <div class="lg:col-span-2 space-y-4">
+
+          <!-- Core Entry -->
+          <div id="core" class="anchor soft-card p-6">
+            <div class="mt-4 prose-codex">
+              <h3 class="font-display text-xl text-stardust/95">The Weight of the Crown</h3>
+
+              <p><strong>Title:</strong> Sovereign of the Digital Realm, Keeper of the Crown, Final Authority of the Secret Council</p>
+              <p><strong>Role:</strong> Monarch, Strategic Decision-Maker, Bearer of Impossible Choices</p>
+
+              <p>
+                Queen Lyra Brightforge earned her crown through fire and crisis. Fifteen years ago, during the
+                catastrophic event known as the <strong>Great Corruption</strong>, she served as Master of the Cloud Spires,
+                responsible for the Kingdom’s distributed infrastructure.
+              </p>
+
+              <p>
+                When the corruption threatened to cascade through every connected system, when advisors panicked and
+                protocols failed, Lyra made the decision that saved the Kingdom: she authorized a complete shutdown
+                of compromised systems, sacrificing weeks of connectivity to prevent total collapse.
+              </p>
+
+              <p>
+                That decision, and the competence she showed during the crisis that followed, earned her the crown.
+                She has worn it ever since, carrying the weight of a realm that depends on her ability to make
+                impossible choices with incomplete information and insufficient time.
+              </p>
+            </div>
+          </div>
+
+          <!-- Armor of Authority -->
+          <div id="armor" class="anchor soft-card p-0 overflow-hidden">
+            <details>
+              <summary class="flex items-center justify-between gap-4 px-6 py-5">
+                <div>
+                  <h2 class="font-display text-xl text-stardust/95">The Armor of Authority</h2>
+                  <p class="mt-1 text-sm text-stardust/75">Functional regalia, live status etched into steel.</p>
+                </div>
+                <span class="chevron text-stardust/70">▶</span>
+              </summary>
+              <div class="px-6 pb-6 prose-codex">
+                <p>
+                  Lyra wears distinctive silver armor, not ceremonial but functional, inscribed with living script
+                  that displays real-time system status across the Kingdom. A glance at her breastplate reveals the
+                  health of critical infrastructure.
+                </p>
+
+                <p>
+                  Her crown is constructed of interlocking rings, each one a health indicator for a major system.
+                  When all rings align and glow steady, the Kingdom is secure. When they flicker or separate,
+                  something is failing.
+                </p>
+
+                <p>
+                  She is in her mid-forties, tall and commanding, with dark hair streaked with grey earned during her
+                  fifteen years on the throne. Her presence commands attention not through decoration, but through
+                  authority earned in crisis after crisis.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <!-- Council's Arbiter -->
+          <div id="council" class="anchor soft-card p-0 overflow-hidden">
+            <details>
+              <summary class="flex items-center justify-between gap-4 px-6 py-5">
+                <div>
+                  <h2 class="font-display text-xl text-stardust/95">The Council’s Arbiter</h2>
+                  <p class="mt-1 text-sm text-stardust/75">Synthesis under pressure, tradeoffs made real.</p>
+                </div>
+                <span class="chevron text-stardust/70">▶</span>
+              </summary>
+              <div class="px-6 pb-6 prose-codex">
+                <p>
+                  Queen Lyra sits at the head of the Secret Council, the five leaders who guide the Kingdom’s security
+                  and prosperity. Her role is to listen to competing perspectives, weigh impossible tradeoffs, and make
+                  the final decision the Kingdom will follow.
+                </p>
+
+                <ul>
+                  <li><strong>The Lorekeeper</strong> brings historical context and pattern warnings.</li>
+                  <li><strong>High Commander Valdris</strong> demands action and visible defenses.</li>
+                  <li><strong>Merchant-Lord Cassia</strong> calculates economic impacts and user disruption.</li>
+                  <li><strong>Shade</strong> provides intelligence from the shadows that can’t be verified.</li>
+                </ul>
+
+                <p>
+                  Each perspective is valid. Each carries risk. Each demands different action. Lyra’s gift is synthesis,
+                  the ability to hear all voices, understand the stakes each represents, and choose the path that
+                  balances security, prosperity, functionality, and human cost.
+                </p>
+
+                <p>
+                  She does not always choose correctly. But she chooses when choice is required, and she owns the
+                  consequences.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <!-- Earned, Not Given -->
+          <div id="earned" class="anchor soft-card p-0 overflow-hidden">
+            <details>
+              <summary class="flex items-center justify-between gap-4 px-6 py-5">
+                <div>
+                  <h2 class="font-display text-xl text-stardust/95">Earned, Not Given</h2>
+                  <p class="mt-1 text-sm text-stardust/75">Competence crowned in the Kingdom’s darkest hour.</p>
+                </div>
+                <span class="chevron text-stardust/70">▶</span>
+              </summary>
+              <div class="px-6 pb-6 prose-codex">
+                <p>
+                  Lyra did not inherit her crown through bloodline. The Great Corruption killed her predecessor and
+                  threw the succession into chaos. The Kingdom chose her because she proved she could lead when
+                  everything was failing.
+                </p>
+
+                <p>
+                  Fifteen years later, she continues to prove it, crisis after crisis, impossible choice after
+                  impossible choice.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <!-- Decisive Leadership + Quotes -->
+          <div id="decisive" class="anchor soft-card p-0 overflow-hidden">
+            <details>
+              <summary class="flex items-center justify-between gap-4 px-6 py-5">
+                <div>
+                  <h2 class="font-display text-xl text-stardust/95">Decisive Leadership</h2>
+                  <p class="mt-1 text-sm text-stardust/75">When time runs out, she decides.</p>
+                </div>
+                <span class="chevron text-stardust/70">▶</span>
+              </summary>
+              <div class="px-6 pb-6 prose-codex">
+                <p>
+                  Every decision the Council debates ultimately lands on Lyra’s shoulders. When consensus fails,
+                  when the threat won’t wait for perfect information, she decides and the Kingdom follows.
+                </p>
+
+                <p>
+                  She is decisive not from arrogance but from experience. She has learned that waiting for perfect
+                  information means waiting forever, and that indecision carries its own terrible costs.
+                </p>
+
+                <div class="mt-5 soft-card p-5">
+                  <p class="text-sm uppercase tracking-[.18em] text-stardust/70">Recorded Quotations</p>
+
+                  <p class="mt-3 italic text-stardust/90">
+                    “I did not inherit this crown. I earned it in fire and crisis. Every day since, I’ve had to keep earning it.”
+                  </p>
+
+                  <p class="mt-4 italic text-stardust/90">
+                    “Every voice on the Council represents something the Kingdom needs. My job is not to choose which one is right,
+                    but to find the path that serves them all, or at least costs them least.”
+                  </p>
+
+                  <p class="mt-4 italic text-stardust/90">
+                    “Leadership is not about making the right choice. It’s about making the necessary choice and owning what comes after.”
+                  </p>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <!-- Real World Parallel -->
+          <div id="real-world" class="anchor soft-card p-0 overflow-hidden">
+            <details>
+              <summary class="flex items-center justify-between gap-4 px-6 py-5">
+                <div>
+                  <h2 class="font-display text-xl text-stardust/95">Real-World Parallel</h2>
+                  <p class="mt-1 text-sm text-stardust/75">The executive who owns the call, and the consequences.</p>
+                </div>
+                <span class="chevron text-stardust/70">▶</span>
+              </summary>
+              <div class="px-6 pb-6 prose-codex">
+                <p>
+                  Queen Lyra represents the <strong>Chief Information Security Officer (CISO)</strong> or senior executive who carries
+                  ultimate responsibility for an organization’s security posture and must make strategic decisions with incomplete
+                  information under time pressure.
+                </p>
+
+                <p>
+                  She embodies the leader who must balance competing priorities: security versus business operations, risk mitigation
+                  versus user experience, immediate response versus long-term strategy.
+                </p>
+
+                <p>
+                  In real organizations, she is the person who synthesizes input from technical teams, business leaders, compliance
+                  officers, and intelligence sources, then makes the final call the organization will follow.
+                </p>
+
+                <p>
+                  Lyra embodies the reality that cybersecurity leadership is not only technical expertise. It is decision-making under
+                  uncertainty, stakeholder translation, and the willingness to accept responsibility for outcomes you cannot fully control.
+                </p>
+              </div>
+            </details>
+          </div>
+
+        </div>
+
+        <!-- Right Rail -->
+        <aside class="space-y-6">
+          <div class="soft-card p-6">
+            <h2 class="font-display text-xl text-stardust/95">Related</h2>
+            <p class="mt-2 text-sm text-stardust/75">Figures who intersect her rule.</p>
+            <div class="mt-4 flex flex-wrap gap-2 text-sm">
+              <a class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow" href="/characters/lorekeeper.html">The Lorekeeper</a>
+              <a class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow" href="/characters/shade.html">Shade</a>
+              <!-- Uncomment when these pages exist:
+              <a class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow" href="/characters/valdris.html">High Commander Valdris</a>
+              <a class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow" href="/characters/cassia.html">Merchant-Lord Cassia</a>
+              -->
+            </div>
+          </div>
+
+          <div class="soft-card p-6">
+            <h2 class="font-display text-xl text-stardust/95">Receive New Entries</h2>
+            <p class="mt-2 text-sm text-stardust/80 leading-relaxed">
+              Join the Tower’s list. A raven will find you when new chronicles and excerpts are released.
+            </p>
+            <a href="/#email" class="mt-5 focus-ring inline-flex w-full items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
+              Subscribe
+            </a>
+            <p class="mt-3 text-xs text-stardust/65">No spam. Just dispatches.</p>
+          </div>
+
+          <div class="text-sm text-stardust/80">
+            <a href="/characters/" class="hover:text-glow underline underline-offset-4">← Back to Characters</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div id="site-footer"></div>
+  </main>
+
+  <script>
+    // Optional: open a specific accordion when arriving via hash (#armor, #council, #real-world, etc.)
+    const hash = window.location.hash?.replace('#','');
+    if (hash) {
+      const target = document.getElementById(hash);
+      const details = target?.querySelector('details');
+      if (details) details.open = true;
+    }
+
+    // --- Appears In (dynamic render + show first N) ---
+    (function () {
+      const VISIBLE_COUNT = 4;
+
+      // Only items in this array will render.
+      // Add new chronicles by adding objects here.
+      const APPEARS_IN = [
+        { title: "The Breach at Merchant’s Gate", href: "/chronicles/merchants-gate.html" },
+
+        // Future examples:
+        // { title: "The Great Corruption", href: "/chronicles/great-corruption.html" },
+        // { title: "The Council at Blackglass Hall", href: "/chronicles/blackglass-hall.html" },
+      ];
+
+      const list = document.getElementById('appearsInList');
+      const btn = document.getElementById('appearsToggle');
+      if (!list || !btn) return;
+
+      const items = APPEARS_IN.filter(x => x && typeof x.title === 'string' && x.title.trim() && typeof x.href === 'string' && x.href.trim());
+
+      if (items.length === 0) {
+        list.style.display = 'none';
+        btn.style.display = 'none';
+        return;
+      }
+
+      list.innerHTML = items.map((x) => `
+        <li class="appears-item">
+          <a class="hover:text-glow underline underline-offset-4" href="${x.href}">
+            ${x.title}
+          </a>
+        </li>
+      `).join('');
+
+      if (items.length <= VISIBLE_COUNT) {
+        btn.style.display = 'none';
+        return;
+      }
+
+      let expanded = false;
+
+      function renderCollapsed() {
+        const renderedLis = Array.from(list.querySelectorAll('.appears-item'));
+        renderedLis.forEach((li, idx) => {
+          li.style.display = (expanded || idx < VISIBLE_COUNT) ? '' : 'none';
+        });
+
+        btn.textContent = expanded ? 'Show less' : `Show more (${items.length - VISIBLE_COUNT})`;
+        btn.setAttribute('aria-expanded', String(expanded));
+      }
+
+      btn.addEventListener('click', () => {
+        expanded = !expanded;
+        renderCollapsed();
+      });
+
+      renderCollapsed();
+    })();
+
+    async function loadPartial(targetId, url) {
+      const el = document.getElementById(targetId);
+      if (!el) return;
+
+      const res = await fetch(url, { cache: "no-cache" });
+      if (!res.ok) {
+        console.warn(`Failed to load ${url}`);
+        return;
+      }
+      el.innerHTML = await res.text();
+    }
+
+    function initHeaderNav() {
+      const navToggle = document.getElementById("navToggle");
+      const mobileNavPanel = document.getElementById("mobileNavPanel");
+
+      if (!navToggle || !mobileNavPanel) return;
+
+      navToggle.addEventListener("click", () => {
+        const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!isOpen));
+        mobileNavPanel.classList.toggle("hidden", isOpen);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          navToggle.setAttribute("aria-expanded", "false");
+          mobileNavPanel.classList.add("hidden");
+        }
+      });
+    }
+
+    function initFooterYear() {
+      const year = document.getElementById("year");
+      if (year) year.textContent = new Date().getFullYear();
+    }
+
+    (async function boot() {
+      await loadPartial("site-header", "/partials/header.html");
+      initHeaderNav();
+
+      await loadPartial("site-footer", "/partials/footer.html");
+      initFooterYear();
+    })();
+  </script>
+</body>
+</html>
