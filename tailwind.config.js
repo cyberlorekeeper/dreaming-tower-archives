@@ -124,6 +124,8 @@ module.exports = {
     'items-center',
     'justify-between',
     'z-50',
+    'z-10',
+    'z-1',
     'relative',
     'absolute',
     'pointer-events-auto',
