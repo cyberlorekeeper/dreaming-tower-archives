@@ -1,8 +1,25 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./**/*.html",
-    "./**/*.js",
+    "./index.html",
+    "./chronicles.html",
+    "./characters.html",
+    "./*.html",
+    "./pages/**/*.html",
+  ],
+  safelist: [
+    // Core utilities used in site
+    'bg-deep-space',
+    'bg-abyss',
+    'bg-nebula',
+    'text-stardust',
+    'text-glow',
+    'text-gradient',
+    'border-rift',
+    'shadow-glow',
+    'shadow-card',
+    'font-display',
+    'font-body',
   ],
   theme: {
     extend: {
