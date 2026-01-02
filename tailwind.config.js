@@ -11,18 +11,97 @@ module.exports = {
     "!./_site/**",
   ],
   safelist: [
-    // Core utilities used in site
+    // === RESPONSIVE NAVIGATION CLASSES ===
+    'hidden',
+    'block',
+    'flex',
+    'lg:flex',
+    'lg:hidden',
+    'lg:block',
+    'md:flex',
+    'md:hidden',
+    'sm:flex',
+    'sm:hidden',
+    
+    // === BACKGROUND COLORS ===
     'bg-deep-space',
     'bg-abyss',
+    'bg-abyss/30',
+    'bg-abyss/40',
+    'bg-abyss/50',
+    'bg-abyss/70',
+    'bg-abyss/80',
+    'bg-abyss/90',
+    'bg-rift',
+    'bg-rift/40',
     'bg-nebula',
+    'bg-nebula/20',
+    'bg-glow',
+    'bg-glow/10',
+    'bg-glow/20',
+    'bg-deep-space/60',
+    
+    // === TEXT COLORS ===
     'text-stardust',
+    'text-stardust/60',
+    'text-stardust/70',
+    'text-stardust/80',
+    'text-stardust/85',
+    'text-stardust/90',
+    'text-stardust/95',
     'text-glow',
-    'text-gradient',
+    'text-glow/80',
+    'text-deep-space',
+    'text-abyss',
+    
+    // === BORDER COLORS ===
     'border-rift',
-    'shadow-glow',
-    'shadow-card',
+    'border-rift/60',
+    'border-rift/65',
+    'border-glow',
+    'border-glow/30',
+    'border-glow/40',
+    'border-glow/60',
+    
+    // === FONTS ===
     'font-display',
     'font-body',
+    
+    // === SHADOWS ===
+    'shadow-glow',
+    'shadow-card',
+    
+    // === RING (for focus states) ===
+    'ring-1',
+    'ring-glow/30',
+    'ring-glow/60',
+    
+    // === HOVER STATES ===
+    'hover:text-glow',
+    'hover:text-stardust',
+    'hover:bg-rift/40',
+    'hover:ring-glow/60',
+    'hover:underline',
+    'hover:brightness-110',
+    
+    // === SELECTION ===
+    'selection:bg-glow/20',
+    'selection:text-stardust',
+    
+    // === PLACEHOLDER ===
+    'placeholder:text-stardust/60',
+    
+    // === OTHER STATES ===
+    'disabled:opacity-50',
+    'disabled:cursor-not-allowed',
+    'group-hover:text-stardust',
+    'group-hover:block',
+    'group-focus-within:block',
+    'min-h-screen',
+    
+    // === BACKDROP ===
+    'backdrop-blur-md',
+    'backdrop-blur',
   ],
   theme: {
     extend: {
