@@ -15,67 +15,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'deep-space':'#0A141B',
-            'abyss':'#0F2230',
-            'rift':'#143545',
-            'nebula':'#1E6175',
-            'glow':'#35C6E0',
-            'stardust':'#CFE5EF',
-            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
-            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
-          },
-          fontFamily:{ display:['Cinzel','serif'], body:['Source Sans 3','ui-sans-serif','system-ui'] },
-          boxShadow:{
-            glow:'0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
-            card:'0 6px 18px rgba(0,0,0,.12)'
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
-    .text-gradient{
-      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-
-    .prose-codex p { margin-top: 1rem; line-height: 1.9; color: rgba(207,229,239,.92); }
-    .prose-codex ul { margin-top: 1rem; padding-left: 1.25rem; }
-    .prose-codex li { margin-top: .5rem; line-height: 1.8; color: rgba(207,229,239,.9); }
-    .prose-codex strong { color: rgba(207,229,239,.98); }
-
-    .soft-card{
-      border: 1px solid rgba(20,53,69,.65);
-      background: rgba(15,34,48,.35);
-      border-radius: 1rem;
-      box-shadow: 0 6px 18px rgba(0,0,0,.12);
-      backdrop-filter: blur(6px);
-    }
-
-    details { border-radius: 1rem; }
-    details summary { list-style: none; cursor: pointer; user-select: none; }
-    details summary::-webkit-details-marker { display:none; }
-
-    .chevron { transition: transform .18s ease; }
-    details[open] .chevron { transform: rotate(90deg); }
-
-    .anchor { scroll-margin-top: 110px; }
-
-    .appears-item + .appears-item {
-      border-top: 1px solid rgba(20,53,69,.45);
-      padding-top: .5rem;
-    }
-
-  </style>
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
 <body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">

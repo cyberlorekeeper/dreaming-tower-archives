@@ -20,174 +20,13 @@
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Tailwind CDN (page-local, like your original pages) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Tailwind config (match Chronicles tokens) -->
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              display: ["Cinzel", "serif"],
-              body: ["Source Sans 3", "ui-sans-serif", "system-ui"],
-            },
-            colors: {
-              abyss: "#071018",
-              deep: "#081827",
-              ink: "#0b2234",
-              stardust: "#d7e2ea",
-              mist: "#a9bccb",
-              rift: "#52d6ff",
-              glow: "#34c9ff",
-              ember: "#ffb86b",
-            },
-            boxShadow: {
-              soft: "0 10px 30px rgba(0,0,0,.35)",
-              card: "0 18px 50px rgba(0,0,0,.35)",
-              glow: "0 0 0 1px rgba(82,214,255,.35), 0 10px 30px rgba(0,0,0,.35)",
-            },
-            backgroundImage: {
-              nebula: "url('/images/background-1.png')",
-            },
-          },
-        },
-      };
-    </script>
-
+  
     <!-- Page-local theme styles (match Chronicles behavior) -->
-    <style>
-      html,
-      body {
-        height: 100%;
-      }
+    <link rel="stylesheet" href="/css/styles.css" />
 
-      body {
-        font-family: "Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Arial,
-          sans-serif;
-        background-color: #071018;
-        background-image: url("/images/background-1.png");
-        background-size: cover;
-        background-position: top center;
-        background-attachment: fixed;
-        color: rgba(215, 226, 234, 0.92);
-      }
-
-      /* Subtle global overlay so text stays readable everywhere (Chronicles vibe) */
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        background: radial-gradient(
-            1100px 600px at 20% 10%,
-            rgba(82, 214, 255, 0.08),
-            transparent 60%
-          ),
-          radial-gradient(
-            900px 500px at 80% 20%,
-            rgba(82, 214, 255, 0.06),
-            transparent 60%
-          ),
-          linear-gradient(to bottom, rgba(7, 16, 24, 0.58), rgba(7, 16, 24, 0.78));
-        z-index: 0;
-      }
-
-      /* Make sure all page content is above overlay */
-      #site-header {
-        position: relative;
-        z-index: 50;
-      }
-
-      #site-footer,
-      main {
-        position: relative;
-        z-index: 1;
-      }
-
-      .text-gradient {
-        background: linear-gradient(90deg, rgba(215, 226, 234, 0.95), rgba(82, 214, 255, 0.9));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
-      .panel {
-        background: rgba(8, 24, 39, 0.72);
-        border: 1px solid rgba(215, 226, 234, 0.12);
-        border-radius: 18px;
-        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-        backdrop-filter: blur(10px);
-      }
-
-      .chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.4rem 0.8rem;
-        border-radius: 999px;
-        border: 1px solid rgba(215, 226, 234, 0.22);
-        background: rgba(8, 24, 39, 0.55);
-        color: rgba(215, 226, 234, 0.9);
-      }
-
-      .btn-soft {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        border-radius: 999px;
-        padding: 0.65rem 1rem;
-        border: 1px solid rgba(215, 226, 234, 0.25);
-        background: rgba(8, 24, 39, 0.45);
-        color: rgba(215, 226, 234, 0.92);
-        transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease,
-          color 0.15s ease;
-      }
-
-      .btn-soft:hover {
-        transform: translateY(-1px);
-        border-color: rgba(82, 214, 255, 0.55);
-        background: rgba(8, 24, 39, 0.6);
-        color: rgba(215, 226, 234, 0.98);
-      }
-
-      .btn-primary {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 14px;
-        padding: 0.9rem 1.1rem;
-        background: #34c9ff;
-        color: #06202f;
-        font-weight: 600;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-        transition: transform 0.15s ease, filter 0.15s ease;
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-1px);
-        filter: brightness(1.03);
-        color: #06202f;
-      }
-
-      /* Prevent giant blank gaps */
-      .section-tight {
-        padding-top: 2.5rem;
-        padding-bottom: 2.5rem;
-      }
-
-      @media (min-width: 768px) {
-        .section-tight {
-          padding-top: 3rem;
-          padding-bottom: 3rem;
-        }
-      }
-    </style>
   </head>
 
-  <body class="min-h-screen">
+  <body class="min-h-screen page-world">
     <!-- Header partial inject -->
     <div id="site-header"></div>
 
@@ -200,7 +39,7 @@
               The Dreaming Tower Archives
             </p>
 
-            <h1 class="mt-4 font-display text-4xl leading-[1.05] tracking-wide sm:text-5xl text-gradient">
+            <h1 class="mt-4 font-display text-4xl leading-[1.05] tracking-wide sm:text-5xl text-gradient-world">
               Welcome to the Known World
             </h1>
 
