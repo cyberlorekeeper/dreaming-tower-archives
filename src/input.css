@@ -271,11 +271,11 @@
 }
 
 /* Toggle panels for story/analysis view */
-.panel {
+.story-panel {
   display: none;
 }
 
-.panel.is-active {
+.story-panel.is-active {
   display: block;
 }
 
