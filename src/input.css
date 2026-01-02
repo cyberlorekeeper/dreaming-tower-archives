@@ -228,6 +228,13 @@
   z-index: 1;
 }
 
+/* Make sure all sections inside main are visible */
+.page-world section,
+.page-cipheria section {
+  position: relative;
+  z-index: 1;
+}
+
 /* ============================================
    CHRONICLE STORY PAGE (merchants-gate.html)
    ============================================ */
