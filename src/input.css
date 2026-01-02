@@ -101,8 +101,9 @@
 /* World pages use different color scheme - scope with body class */
 .page-world,
 .page-cipheria {
-  font-family: "Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  min-height: 100vh;
   background-color: #071018;
+  background-image: url("/images/background-1.png");
   background-size: cover;
   background-position: top center;
   background-attachment: fixed;
@@ -115,16 +116,9 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(
-      1100px 600px at 20% 10%,
-      rgba(82, 214, 255, 0.08),
-      transparent 60%
-    ),
-    radial-gradient(
-      900px 500px at 80% 20%,
-      rgba(82, 214, 255, 0.06),
-      transparent 60%
-    ),
+  background: 
+    radial-gradient(1100px 600px at 20% 10%, rgba(82, 214, 255, 0.08), transparent 60%),
+    radial-gradient(900px 500px at 80% 20%, rgba(82, 214, 255, 0.06), transparent 60%),
     linear-gradient(to bottom, rgba(7, 16, 24, 0.58), rgba(7, 16, 24, 0.78));
   z-index: 0;
 }
@@ -213,9 +207,10 @@
   min-height: 260px;
 }
 
-/* World pages - z-index layering */
 .page-world #site-header,
-.page-cipheria #site-header {
+.page-cipheria #site-header,
+.page-world header,
+.page-cipheria header {
   position: relative;
   z-index: 50;
 }
@@ -233,29 +228,6 @@
 .page-cipheria section {
   position: relative;
   z-index: 1;
-}
-
-/* DEBUG: Force world page content visible */
-.page-world main,
-.page-world section,
-.page-world .panel,
-.page-world article,
-.page-world div,
-.page-cipheria main,
-.page-cipheria section,
-.page-cipheria .panel,
-.page-cipheria article,
-.page-cipheria div {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  position: relative !important;
-  z-index: 1 !important;
-}
-
-.page-world main,
-.page-cipheria main {
-  z-index: 10 !important;
 }
 
 /* ============================================

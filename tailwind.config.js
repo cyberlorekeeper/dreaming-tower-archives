@@ -22,6 +22,9 @@ module.exports = {
     'md:hidden',
     'sm:flex',
     'sm:hidden',
+    'items-center',
+    'justify-between',
+    'gap-4',
     
     // === BACKGROUND COLORS ===
     'bg-deep-space',
@@ -119,10 +122,7 @@ module.exports = {
     'mt-2',
     'mt-4',
     'p-2',
-    'gap-4',
     'gap-1',
-    'items-center',
-    'justify-between',
     'z-50',
     'z-10',
     'z-1',
