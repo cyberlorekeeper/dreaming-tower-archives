@@ -1,0 +1,38 @@
+[build]
+  command = "npm run build:css"
+  publish = "."
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+```
+
+### Step 7: Create .gitignore
+
+Create `.gitignore` to avoid committing generated files:
+```
+node_modules/
+css/styles.css
+.DS_Store
+```
+
+---
+
+## Your Project Structure Should Look Like:
+```
+cyber-lorekeeper/
+├── src/
+│   └── input.css          # Your Tailwind input
+├── css/
+│   └── styles.css         # Generated (don't commit)
+├── images/
+│   ├── background-1.png
+│   ├── icon.png
+│   └── ...
+├── index.html
+├── chronicles.html
+├── package.json
+├── tailwind.config.js
+├── netlify.toml
+└── .gitignore
