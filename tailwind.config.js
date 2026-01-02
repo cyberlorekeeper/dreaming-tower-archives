@@ -102,6 +102,39 @@ module.exports = {
     // === BACKDROP ===
     'backdrop-blur-md',
     'backdrop-blur',
+
+     // === WIDTH CLASSES (ADD THESE) ===
+    'min-w-[220px]',
+    'min-w-max',
+    'w-56',
+    'w-full',
+    'max-w-6xl',
+    'max-w-2xl',
+    'max-w-xl',
+    
+    // === OTHER LAYOUT CLASSES YOU MIGHT NEED ===
+    'mx-auto',
+    'px-6',
+    'pt-10',
+    'mt-2',
+    'mt-4',
+    'p-2',
+    'gap-4',
+    'gap-1',
+    'items-center',
+    'justify-between',
+    'z-50',
+    'relative',
+    'absolute',
+    'pointer-events-auto',
+    'left-0',
+    'top-full',
+    'rounded-lg',
+    'rounded-md',
+    'rounded-xl',
+    'px-3',
+    'py-2',
+    'underline-offset-4',
   ],
   theme: {
     extend: {
