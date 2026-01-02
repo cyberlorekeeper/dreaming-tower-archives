@@ -235,6 +235,29 @@
   z-index: 1;
 }
 
+/* DEBUG: Force world page content visible */
+.page-world main,
+.page-world section,
+.page-world .panel,
+.page-world article,
+.page-world div,
+.page-cipheria main,
+.page-cipheria section,
+.page-cipheria .panel,
+.page-cipheria article,
+.page-cipheria div {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.page-world main,
+.page-cipheria main {
+  z-index: 10 !important;
+}
+
 /* ============================================
    CHRONICLE STORY PAGE (merchants-gate.html)
    ============================================ */
