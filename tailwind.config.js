@@ -1,11 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./index.html",
-    "./chronicles.html",
-    "./characters.html",
-    "./*.html",
-    "./pages/**/*.html",
+     "./*.html",
+    "./characters/**/*.html",
+    "./chronicles/**/*.html",
+    "./world/**/*.html",
+    "./field-notes/**/*.html",
+    // Exclude node_modules and _site (build output)
+    "!./node_modules/**",
+    "!./_site/**",
   ],
   safelist: [
     // Core utilities used in site
