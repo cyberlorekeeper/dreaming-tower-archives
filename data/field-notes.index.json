@@ -8,6 +8,7 @@
     "readTime": 3,
     "excerpt": "They told me the wards had never failed. They were wrong. The silence afterward was worse than the alarms.",
     "featured": false,
+    "released": false,
     "href": "/field-notes/aera/2025-12-18-first-breach.html",
     "tags": ["incident", "trust", "failure"]
   },
@@ -20,6 +21,7 @@
     "readTime": 3,
     "excerpt": "Cache was not supposed to exist. Not like this. Not remembering things I never lived.",
     "featured": true,
+    "released": true,
     "href": "/field-notes/aera/2025-12-28-finding-cache.html",
     "tags": ["memory", "isle-404", "identity"]
   },
@@ -32,10 +34,11 @@
     "readTime": 3,
     "excerpt": "Sometimes the Tower does not warn. Sometimes it whispers, and you have to decide whether to listen.",
     "featured": false,
+    "released": false,
     "href": "/field-notes/aera/2026-01-07-echoes-in-the-static.html",
     "tags": ["signals", "intuition", "risk"]
   },
-
+ 
   {
     "id": "lorekeeper-2025-12-20-incident-level-seven",
     "category": "lore",
@@ -45,6 +48,7 @@
     "readTime": 2,
     "excerpt": "This was not a failure of tools. It was a failure of belief that such a breach was possible.",
     "featured": true,
+    "released": true,
     "href": "/field-notes/lore/2025-12-20-incident-level-seven.html",
     "tags": ["incident-response", "complacency", "oversight"]
   },
@@ -57,6 +61,7 @@
     "readTime": 2,
     "excerpt": "Raw data does not protect kingdoms. Patterns do.",
     "featured": false,
+    "released": true,
     "href": "/field-notes/lore/2025-12-30-pattern-recognition.html",
     "tags": ["monitoring", "analysis", "early-warning"]
   },
@@ -69,6 +74,7 @@
     "readTime": 2,
     "excerpt": "To see everything is to carry everything. The Tower does not forget. Neither do I.",
     "featured": false,
+    "released": true,
     "href": "/field-notes/lore/2026-01-12-the-cost-of-knowing.html",
     "tags": ["burnout", "institutional-memory", "leadership"]
   },
@@ -81,7 +87,8 @@
     "date": "2025-12-22",
     "readTime": 2,
     "excerpt": "No alarms sounded. No walls fell. And yet the damage had already spread beyond containment.",
-    "featured": true,
+    "featured": false,
+    "released": false,
     "href": "/field-notes/resonance/2025-12-22-supply-chains-dont-scream.html",
     "tags": ["supply-chain", "third-party-risk", "blind-spots"]
   },
@@ -94,6 +101,7 @@
     "readTime": 2,
     "excerpt": "We had metrics. We had charts. We did not have understanding.",
     "featured": false,
+    "released": false,
     "href": "/field-notes/resonance/2026-01-03-the-illusion-of-visibility.html",
     "tags": ["metrics", "false-confidence", "observability"]
   },
@@ -105,7 +113,8 @@
     "date": "2024-07-19",
     "readTime": 2,
     "excerpt": "The Falcon did not fail because it was weak. It failed because it was trusted.",
-    "featured": false,
+    "featured": true,
+    "released": true,
     "href": "/field-notes/resonance/2024-07-19-guardians-betrayal.html",
     "tags": ["supply-chain", "third-party-risk", "trust"],
     "realWorldLink": "https://thesmokingprinter.com/blog/crowdstrike-dragon-digital-guardians-turn-against-realm"
@@ -119,6 +128,7 @@
     "readTime": 2,
     "excerpt": "They did not breach walls. They did not batter gates. They simply became part of what kingdoms already trusted.",
     "featured": false,
+    "released": true,
     "href": "/field-notes/resonance/2020-12-13-patience-of-shadows.html",
     "tags": ["supply-chain", "apt", "trust"],
     "realWorldLink": "https://thesmokingprinter.com/blog/solarwinds-siege"
@@ -132,6 +142,7 @@
     "readTime": 2,
     "excerpt": "She saw the cracks. She spoke clearly. She was ignored.",
     "featured": false,
+    "released": true,
     "href": "/field-notes/resonance/2017-09-07-oracles-lament.html",
     "tags": ["vulnerability", "ignored-warnings", "leadership"],
     "realWorldLink": "https://thesmokingprinter.com/blog/the-equifax-oracle-prophets-warning"
@@ -145,6 +156,7 @@
     "readTime": 2,
     "excerpt": "The Jester carried no sword. He commanded no army. He simply knocked on the gate until the guards grew weary.",
     "featured": false,
+    "released": true,
     "href": "/field-notes/resonance/2022-09-15-fools-and-kings.html",
     "tags": ["social-engineering", "mfa-fatigue", "human-factor"],
     "realWorldLink": "https://thesmokingprinter.com/blog/court-jesters-gambit"

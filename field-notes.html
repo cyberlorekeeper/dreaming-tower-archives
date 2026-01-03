@@ -8,14 +8,30 @@
   <meta name="description" content="Recovered field notes from the Dreaming Tower archives. Aera's logs, Lorekeeper notes, and real-world resonance." />
   <meta name="keywords" content="cyber lorekeeper, field notes, cybersecurity storytelling, fantasy cyberpunk, dreaming tower" />
 
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Global Styles -->
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
-<body class="bg-abyss text-stardust">
+<body class="bg-deep-space text-stardust font-body min-h-screen selection:bg-glow/20 selection:text-stardust">
+  
+  <!-- Background -->
+  <div class="fixed inset-0 -z-10">
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover opacity-40" aria-hidden="true" />
+    <div class="absolute inset-0 bg-gradient-to-b from-deep-space/70 via-abyss/80 to-deep-space/95"></div>
+  </div>
   <!-- Header inject -->
   <div id="site-header"></div>
 
-  <main>
+  <main class="relative">
     <!-- Hero -->
     <section class="relative mx-auto max-w-6xl px-6 pt-12 pb-8">
       <div class="soft-card p-8">
@@ -378,8 +394,9 @@
           const data = await res.json();
           if (!Array.isArray(data)) throw new Error("Index JSON is not an array.");
 
+          // FILTER: Only include entries where released: true
           allEntries = data
-            .filter((n) => n && n.id && n.title && n.category && n.href)
+            .filter((n) => n && n.id && n.title && n.category && n.href && n.released === true)
             .map((n) => ({
               id: n.id,
               category: n.category,
