@@ -86,8 +86,8 @@
     "date": "2025-12-01",
     "readTime": 2,
     "excerpt": "The credentials were perfect. The merchants were not.",
-    "featured": false,
-    "released": false,
+    "featured": true,
+    "released": true,
     "href": "/field-notes/lore/2025-12-01-on-trusted-writs.html",
     "tags": [
       "supply-chain",
@@ -106,7 +106,7 @@
     "readTime": 3,
     "excerpt": "The Tower remembers what the Kingdom cannot. This is both its purpose and its curse.",
     "featured": false,
-    "released": false,
+    "released": true,
     "href": "/field-notes/lore/2025-11-15-on-forgetting.html",
     "tags": [
       "integrity",
