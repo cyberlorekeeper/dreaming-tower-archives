@@ -161,50 +161,93 @@
 
   <!-- Scripts -->
   <script>
-    async function loadPartial(targetId, url) {
-      const el = document.getElementById(targetId);
-      if (!el) return;
-      try {
-        const res = await fetch(url, { cache: "no-cache" });
-        if (!res.ok) return;
-        el.innerHTML = await res.text();
-      } catch (err) {
-        console.warn(`Error loading ${url}`, err);
+  async function loadPartial(targetId, url) {
+    const el = document.getElementById(targetId);
+    if (!el) return;
+    try {
+      const res = await fetch(url, { cache: "no-cache" });
+      if (!res.ok) return;
+      el.innerHTML = await res.text();
+    } catch (err) {
+      console.warn(`Error loading ${url}`, err);
+    }
+  }
+
+  function initHeaderNav() {
+    const navToggle = document.getElementById("navToggle");
+    const mobileNavPanel = document.getElementById("mobileNavPanel");
+    if (!navToggle || !mobileNavPanel) return;
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+      navToggle.setAttribute("aria-expanded", String(!isOpen));
+      mobileNavPanel.classList.toggle("hidden", isOpen);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        navToggle.setAttribute("aria-expanded", "false");
+        mobileNavPanel.classList.add("hidden");
       }
+    });
+  }
+
+  async function initDynamicNav() {
+    const article = document.querySelector('[data-note-id]');
+    if (!article) return;
+    
+    const currentId = article.dataset.noteId;
+    
+    try {
+      const res = await fetch('/data/field-notes.index.json', { cache: 'no-cache' });
+      if (!res.ok) {
+        console.warn('Failed to fetch field-notes.index.json:', res.status);
+        return;
+      }
+      
+      const allNotes = await res.json();
+      
+      const releasedNotes = allNotes
+        .filter(n => n.released === true)
+        .sort((a, b) => new Date(a.date) - new Date(b.date));
+      
+      const currentIndex = releasedNotes.findIndex(n => n.id === currentId);
+      if (currentIndex === -1) {
+        console.warn('Current note not found in index:', currentId);
+        return;
+      }
+      
+      const nextNote = releasedNotes[currentIndex + 1];
+      
+      const nextLink = document.getElementById('nextNoteLink');
+      const nextTitle = document.getElementById('nextNoteTitle');
+      
+      if (nextNote && nextLink && nextTitle) {
+        nextLink.href = nextNote.href;
+        nextTitle.textContent = nextNote.title;
+        nextLink.style.display = 'flex';
+      }
+    } catch (err) {
+      console.warn('Could not load field notes index for navigation', err);
     }
+  }
 
-    function initHeaderNav() {
-      const navToggle = document.getElementById("navToggle");
-      const mobileNavPanel = document.getElementById("mobileNavPanel");
-      if (!navToggle || !mobileNavPanel) return;
+  function initFooterYear() {
+    const footerYear = document.querySelector('#site-footer #year');
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
+  }
 
-      navToggle.addEventListener("click", () => {
-        const isOpen = navToggle.getAttribute("aria-expanded") === "true";
-        navToggle.setAttribute("aria-expanded", String(!isOpen));
-        mobileNavPanel.classList.toggle("hidden", isOpen);
-      });
+  (async function boot() {
+    await loadPartial("site-header", "/partials/header.html");
+    initHeaderNav();
 
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          navToggle.setAttribute("aria-expanded", "false");
-          mobileNavPanel.classList.add("hidden");
-        }
-      });
-    }
-
-    function initFooterYear() {
-      const footerYear = document.querySelector('#site-footer #year');
-      if (footerYear) footerYear.textContent = new Date().getFullYear();
-    }
-
-    (async function boot() {
-      await loadPartial("site-header", "/partials/header.html");
-      initHeaderNav();
-
-      await loadPartial("site-footer", "/partials/footer.html");
-      initFooterYear();
-    })();
-  </script>
+    await loadPartial("site-footer", "/partials/footer.html");
+    initFooterYear();
+    
+    // Initialize dynamic navigation
+    await initDynamicNav();
+  })();
+</script>
 
 </body>
 </html>
