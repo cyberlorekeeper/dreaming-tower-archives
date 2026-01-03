@@ -33,7 +33,7 @@
     "status": "complete",
     "featured": false,
     "released": false,
-    "href": "/chronicles/the-poisoned-protocol.html",
+    "href": "/chronicles/poisoned-protocol.html",
     "relatedFieldNotes": [
       "/field-notes/resonance/2024-12-15-the-logging-library.html"
     ],
@@ -54,7 +54,7 @@
     "status": "planned",
     "featured": false,
     "released": false,
-    "href": "/chronicles/the-wall-that-held.html",
+    "href": "/chronicles/wall-that-held.html",
     "relatedFieldNotes": [],
     "realWorldParallels": ["Mirai Botnet", "GitHub DDoS 2018"]
   },
@@ -73,7 +73,7 @@
     "status": "planned",
     "featured": false,
     "released": true,
-    "href": "/chronicles/the-choice-between-walls.html",
+    "href": "/chronicles/choice-between-walls.html",
     "relatedFieldNotes": [],
     "realWorldParallels": ["NotPetya", "WannaCry"]
   },
@@ -92,7 +92,7 @@
     "status": "planned",
     "featured": false,
     "released": false,
-    "href": "/chronicles/the-shadows-price.html",
+    "href": "/chronicles/shadows-price.html",
     "relatedFieldNotes": [],
     "realWorldParallels": []
   },
@@ -111,7 +111,7 @@
     "status": "planned",
     "featured": false,
     "released": false,
-    "href": "/chronicles/the-harvest-festival-incident.html",
+    "href": "/chronicles/harvest-festival-incident.html",
     "relatedFieldNotes": [
       "/field-notes/resonance/2017-09-07-oracles-lament.html"
     ],
@@ -132,7 +132,7 @@
     "status": "planned",
     "featured": false,
     "released": false,
-    "href": "/chronicles/the-first-waking.html",
+    "href": "/chronicles/first-waking.html",
     "relatedFieldNotes": [],
     "realWorldParallels": []
   }
