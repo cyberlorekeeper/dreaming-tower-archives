@@ -795,7 +795,7 @@ details[open] .chevron {
 
 /* External link styling - for links leaving the site */
 .field-note-external-link {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   gap: 0.35rem;
   margin-top: 1.5rem;
@@ -808,6 +808,7 @@ details[open] .chevron {
   border-radius: 0.5rem;
   text-decoration: none;
   transition: all 0.2s ease;
+  width: fit-content;
 }
 
 .field-note-external-link:hover {
