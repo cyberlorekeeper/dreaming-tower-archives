@@ -63,16 +63,8 @@
     <!-- Filters -->
     <section class="relative mx-auto max-w-6xl px-6 pt-6 pb-4">
       <div class="soft-card p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div class="flex flex-wrap gap-2 text-sm">
-          <button class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 font-semibold text-stardust/85 hover:text-glow"
-                  data-filter="all">All Entries</button>
-          <button class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 font-semibold text-stardust/85 hover:text-glow"
-                  data-filter="aera">Aera's Logs</button>
-          <button class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 font-semibold text-stardust/85 hover:text-glow"
-                  data-filter="lore">Lorekeeper's Notes</button>
-          <button class="filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 font-semibold text-stardust/85 hover:text-glow"
-                  data-filter="resonance">Real-World Resonance</button>
-        </div>
+        <!-- Filter buttons will be dynamically generated based on available categories -->
+        <div id="filterButtons" class="flex flex-wrap gap-2 text-sm"></div>
 
         <div class="flex flex-wrap gap-3 items-center text-sm text-stardust/80">
           <label for="sortOrder" class="sr-only">Sort entries</label>
@@ -167,6 +159,14 @@
       const INDEX_URL = "/data/field-notes.index.json";
       const MAX_FEATURED = 3; // Limit featured entries to 3
 
+      // Filter button configuration - only shown if category has released entries
+      const filterConfig = {
+        all: { label: "All Entries", alwaysShow: true },
+        aera: { label: "Aera's Logs" },
+        lore: { label: "Lorekeeper's Notes" },
+        resonance: { label: "Real-World Resonance" },
+      };
+
       const badgeMap = {
         aera: { label: "Aera's Logs", className: "badge badge-aera" },
         lore: { label: "Lorekeeper's Notes", className: "badge badge-lore" },
@@ -176,9 +176,9 @@
       const els = {
         featured: document.getElementById("featuredEntries"),
         archive: document.getElementById("archiveList"),
+        filterContainer: document.getElementById("filterButtons"),
         sort: document.getElementById("sortOrder"),
         search: document.getElementById("search"),
-        filterBtns: Array.from(document.querySelectorAll("[data-filter]")),
       };
 
       if (!els.featured || !els.archive) {
@@ -204,8 +204,37 @@
         return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
       }
 
+      // Build filter buttons dynamically based on what categories have entries
+      function buildFilterButtons() {
+        if (!els.filterContainer) return;
+        
+        els.filterContainer.innerHTML = "";
+        
+        // Get unique categories from released entries
+        const availableCategories = new Set(allEntries.map(e => e.category));
+        
+        // Create buttons for each filter
+        Object.entries(filterConfig).forEach(([key, config]) => {
+          // Skip category filters that have no released entries (unless alwaysShow)
+          if (!config.alwaysShow && !availableCategories.has(key)) return;
+          
+          const btn = document.createElement("button");
+          btn.className = "filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 font-semibold text-stardust/85 hover:text-glow";
+          btn.setAttribute("data-filter", key);
+          btn.textContent = config.label;
+          
+          btn.addEventListener("click", () => {
+            activeFilter = key;
+            update();
+          });
+          
+          els.filterContainer.appendChild(btn);
+        });
+      }
+
       function highlightActiveFilter() {
-        els.filterBtns.forEach((btn) => {
+        const filterBtns = Array.from(document.querySelectorAll("[data-filter]"));
+        filterBtns.forEach((btn) => {
           const isActive = (btn.getAttribute("data-filter") || "all") === activeFilter;
           btn.classList.toggle("is-active", isActive);
           btn.setAttribute("aria-pressed", String(isActive));
@@ -345,13 +374,6 @@
         highlightActiveFilter();
       }
 
-      els.filterBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          activeFilter = btn.getAttribute("data-filter") || "all";
-          update();
-        });
-      });
-
       if (els.sort) {
         els.sort.addEventListener("change", (e) => {
           sortOrder = e.target.value || "newest";
@@ -410,6 +432,8 @@
               tags: Array.isArray(n.tags) ? n.tags : [],
             }));
 
+          // Build filter buttons based on available categories
+          buildFilterButtons();
           update();
         } catch (err) {
           console.warn("Field Notes: failed to load index JSON", err);

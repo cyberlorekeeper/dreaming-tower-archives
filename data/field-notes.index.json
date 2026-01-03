@@ -20,8 +20,8 @@
     "date": "2025-12-28",
     "readTime": 3,
     "excerpt": "Cache was not supposed to exist. Not like this. Not remembering things I never lived.",
-    "featured": true,
-    "released": true,
+    "featured": false,
+    "released": false,
     "href": "/field-notes/aera/2025-12-28-finding-cache.html",
     "tags": ["memory", "isle-404", "identity"]
   },
@@ -74,7 +74,7 @@
     "readTime": 2,
     "excerpt": "To see everything is to carry everything. The Tower does not forget. Neither do I.",
     "featured": false,
-    "released": true,
+    "released": false,
     "href": "/field-notes/lore/2026-01-12-the-cost-of-knowing.html",
     "tags": ["burnout", "institutional-memory", "leadership"]
   },
@@ -160,5 +160,18 @@
     "href": "/field-notes/resonance/2022-09-15-fools-and-kings.html",
     "tags": ["social-engineering", "mfa-fatigue", "human-factor"],
     "realWorldLink": "https://thesmokingprinter.com/blog/court-jesters-gambit"
-  }
+  },
+  {
+  "id": "resonance-2024-12-15-the-logging-library",
+  "category": "resonance",
+  "title": "The Logging Library",
+  "subtitle": "On threats too small to notice",
+  "date": "2024-12-15",
+  "readTime": 3,
+  "excerpt": "It was just a logging library. Nobody monitors logging libraries. That was precisely the point.",
+  "featured": false,
+  "released": false,
+  "href": "/field-notes/resonance/2024-12-15-the-logging-library.html",
+  "tags": ["supply-chain", "third-party-risk", "blind-spots", "monitoring"]
+}
 ]
