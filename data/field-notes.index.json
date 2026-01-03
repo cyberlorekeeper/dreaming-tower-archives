@@ -47,8 +47,8 @@
     "date": "2025-12-20",
     "readTime": 2,
     "excerpt": "This was not a failure of tools. It was a failure of belief that such a breach was possible.",
-    "featured": true,
-    "released": true,
+    "featured": false,
+    "released": false,
     "href": "/field-notes/lore/2025-12-20-incident-level-seven.html",
     "tags": ["incident-response", "complacency", "oversight"]
   },
