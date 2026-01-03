@@ -892,6 +892,88 @@ details[open] .chevron {
 }
 
 /* ============================================
+   FIELD NOTES LISTING PAGE STYLES
+   ============================================
+   
+   Add these to your src/input.css file
+   (Add before or after the FIELD NOTES STYLES section)
+   
+   These styles are for the field-notes.html listing page
+   that uses the JSON index to display entries.
+   
+   ============================================ */
+
+/* Base badge style */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(207, 229, 239, 0.25);
+  background: rgba(15, 34, 48, 0.5);
+  color: rgba(207, 229, 239, 0.85);
+}
+
+/* Aera badge - Teal/Cyan */
+.badge-aera {
+  color: #35C6E0;
+  background: rgba(53, 198, 224, 0.12);
+  border-color: rgba(53, 198, 224, 0.35);
+}
+
+/* Lorekeeper badge - Gold/Amber */
+.badge-lore {
+  color: #F0B429;
+  background: rgba(240, 180, 41, 0.12);
+  border-color: rgba(240, 180, 41, 0.35);
+}
+
+/* Resonance badge - Purple/Violet */
+.badge-resonance {
+  color: #7C4DFF;
+  background: rgba(124, 77, 255, 0.12);
+  border-color: rgba(124, 77, 255, 0.35);
+}
+
+/* Filter button base styles */
+.filter-btn {
+  transition: all 0.15s ease;
+}
+
+.filter-btn:hover {
+  border-color: rgba(53, 198, 224, 0.5);
+}
+
+/* Active filter button state */
+.filter-btn.is-active,
+.filter-btn[aria-pressed="true"] {
+  background: rgba(53, 198, 224, 0.15);
+  border-color: rgba(53, 198, 224, 0.5);
+  color: #35C6E0;
+}
+
+/* Line clamp utility for excerpt truncation */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============================================
    NAVIGATION ENHANCEMENTS
    ============================================ */
 
