@@ -13,8 +13,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="shortcut icon" href="/images/favicon.ico">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts - includes Alex Brush for signature -->
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <!-- Global Styles -->
@@ -35,7 +34,8 @@
   <main class="relative px-6 py-12 md:py-16">
     
     <!-- Field Note Container -->
-    <article class="field-note-container">
+    <!-- data-note-id must match the id in field-notes.index.json -->
+    <article class="field-note-container" data-note-id="lorekeeper-2025-12-20-incident-level-seven" data-note-category="lore">
       
       <!-- The Parchment Paper -->
       <div class="field-note-paper">
@@ -136,18 +136,17 @@
           <span class="field-note-nav-label">← Back</span>
           <span class="field-note-nav-title">All Field Notes</span>
         </a>
-        <a href="/field-notes/lore/2025-12-30-pattern-recognition.html" class="field-note-nav-link" style="text-align: right;">
+        <!-- Dynamic next link - populated by JavaScript -->
+        <a id="nextNoteLink" href="#" class="field-note-nav-link hidden" style="text-align: right;">
           <span class="field-note-nav-label">Next →</span>
-          <span class="field-note-nav-title">On Pattern Recognition</span>
+          <span id="nextNoteTitle" class="field-note-nav-title"></span>
         </a>
       </nav>
       
     </article>
-    
-  </main>
-
-  <!-- Footer -->
+    <!-- Footer -->
   <div id="site-footer"></div>
+  </main>
 
   <!-- Scripts -->
   <script>
@@ -163,12 +162,55 @@
       }
     }
 
+    async function initDynamicNav() {
+      const article = document.querySelector('[data-note-id]');
+      if (!article) return;
+      
+      const currentId = article.dataset.noteId;
+      const currentCategory = article.dataset.noteCategory;
+      
+      try {
+        const res = await fetch('/data/field-notes.index.json', { cache: 'no-cache' });
+        if (!res.ok) return;
+        
+        const allNotes = await res.json();
+        
+        // Filter to same category, released only, sorted by date
+        const categoryNotes = allNotes
+          .filter(n => n.category === currentCategory && n.released === true)
+          .sort((a, b) => new Date(a.date) - new Date(b.date));
+        
+        // Find current index
+        const currentIndex = categoryNotes.findIndex(n => n.id === currentId);
+        if (currentIndex === -1) return;
+        
+        // Get next note (if exists)
+        const nextNote = categoryNotes[currentIndex + 1];
+        
+        if (nextNote) {
+          const nextLink = document.getElementById('nextNoteLink');
+          const nextTitle = document.getElementById('nextNoteTitle');
+          
+          if (nextLink && nextTitle) {
+            nextLink.href = nextNote.href;
+            nextTitle.textContent = nextNote.title;
+            nextLink.classList.remove('hidden');
+          }
+        }
+      } catch (err) {
+        console.warn('Could not load field notes index for navigation', err);
+      }
+    }
+
     (async function boot() {
       await loadPartial("site-header", "/partials/header.html");
       await loadPartial("site-footer", "/partials/footer.html");
       
       const footerYear = document.querySelector('#site-footer #year');
       if (footerYear) footerYear.textContent = new Date().getFullYear();
+      
+      // Initialize dynamic navigation
+      await initDynamicNav();
     })();
   </script>
 
