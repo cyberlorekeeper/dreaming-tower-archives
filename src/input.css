@@ -520,6 +520,378 @@ details[open] .chevron {
 }
 
 /* ============================================
+   FIELD NOTES STYLES
+   ============================================
+   
+   Add these to your src/input.css file
+   (Add after the LAUNCH INDEX PAGE STYLES section)
+   
+   ============================================ */
+
+/* Field note page container */
+.field-note-container {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Parchment paper background for field notes */
+.field-note-paper {
+  background: 
+    linear-gradient(to bottom, 
+      rgba(247, 244, 239, 0.97) 0%, 
+      rgba(241, 236, 227, 0.98) 50%, 
+      rgba(230, 221, 207, 0.97) 100%
+    );
+  border-radius: 0.75rem;
+  border: 1px solid rgba(26, 36, 48, 0.25);
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Aged paper texture overlay */
+.field-note-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* Torn/rough edge effect on left side */
+.field-note-paper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom,
+    rgba(181, 132, 46, 0.4) 0%,
+    rgba(181, 132, 46, 0.6) 25%,
+    rgba(181, 132, 46, 0.5) 50%,
+    rgba(181, 132, 46, 0.7) 75%,
+    rgba(181, 132, 46, 0.4) 100%
+  );
+  border-radius: 0.75rem 0 0 0.75rem;
+}
+
+/* Field note header section */
+.field-note-header {
+  padding: 2rem 2rem 1.5rem;
+  border-bottom: 1px dashed rgba(26, 36, 48, 0.15);
+}
+
+/* Category badge (Aera, Lorekeeper, Resonance) */
+.field-note-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid;
+}
+
+.field-note-category-aera {
+  color: #1E6175;
+  background: rgba(30, 97, 117, 0.1);
+  border-color: rgba(30, 97, 117, 0.3);
+}
+
+.field-note-category-lore {
+  color: #b5842e;
+  background: rgba(181, 132, 46, 0.1);
+  border-color: rgba(181, 132, 46, 0.3);
+}
+
+.field-note-category-resonance {
+  color: #7C4DFF;
+  background: rgba(124, 77, 255, 0.1);
+  border-color: rgba(124, 77, 255, 0.3);
+}
+
+/* Field note title */
+.field-note-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1a2430;
+  line-height: 1.3;
+  margin-top: 1rem;
+}
+
+/* Field note subtitle */
+.field-note-subtitle {
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(43, 52, 64, 0.75);
+  margin-top: 0.5rem;
+}
+
+/* Field note metadata (date, read time) */
+.field-note-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: rgba(43, 52, 64, 0.6);
+}
+
+.field-note-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Field note body content */
+.field-note-body {
+  padding: 1.5rem 2rem 2rem;
+  color: #2b3440;
+}
+
+/* Prose styling for field note content */
+.prose-field-note p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #2b3440;
+  margin-top: 1rem;
+}
+
+.prose-field-note p:first-child {
+  margin-top: 0;
+}
+
+/* Opening quote/epigraph styling */
+.prose-field-note .epigraph {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: rgba(43, 52, 64, 0.85);
+  border-left: 3px solid rgba(181, 132, 46, 0.5);
+  padding-left: 1rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.prose-field-note strong {
+  color: #1a2430;
+  font-weight: 600;
+}
+
+.prose-field-note em {
+  font-style: italic;
+}
+
+.prose-field-note ul,
+.prose-field-note ol {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+.prose-field-note li {
+  margin-top: 0.5rem;
+  line-height: 1.75;
+  color: #2b3440;
+}
+
+.prose-field-note hr {
+  border: none;
+  border-top: 1px dashed rgba(26, 36, 48, 0.2);
+  margin: 2rem 0;
+}
+
+.prose-field-note blockquote {
+  font-style: italic;
+  color: rgba(43, 52, 64, 0.8);
+  border-left: 3px solid rgba(181, 132, 46, 0.4);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+}
+
+/* Field note signature/sign-off */
+.field-note-signature {
+  font-family: 'Cinzel', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: rgba(43, 52, 64, 0.7);
+  text-align: right;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(26, 36, 48, 0.15);
+}
+
+/* Tags at bottom of field note */
+.field-note-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1.25rem 2rem;
+  border-top: 1px solid rgba(26, 36, 48, 0.1);
+  background: rgba(230, 221, 207, 0.3);
+  border-radius: 0 0 0.75rem 0.75rem;
+}
+
+.field-note-tag {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  background: rgba(26, 36, 48, 0.08);
+  color: rgba(43, 52, 64, 0.7);
+  border: 1px solid rgba(26, 36, 48, 0.12);
+}
+
+/* Link to full chronicle (for resonance notes) */
+.field-note-chronicle-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(53, 198, 224, 0.08);
+  border: 1px solid rgba(53, 198, 224, 0.25);
+  border-radius: 0.5rem;
+  color: #1E6175;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.field-note-chronicle-link:hover {
+  background: rgba(53, 198, 224, 0.15);
+  border-color: rgba(53, 198, 224, 0.4);
+  color: #143545;
+}
+
+/* Navigation between field notes */
+.field-note-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(20, 53, 69, 0.3);
+}
+
+.field-note-nav-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 34, 48, 0.35);
+  border: 1px solid rgba(20, 53, 69, 0.5);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  max-width: 45%;
+}
+
+.field-note-nav-link:hover {
+  border-color: rgba(53, 198, 224, 0.5);
+  background: rgba(15, 34, 48, 0.5);
+}
+
+.field-note-nav-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(207, 229, 239, 0.6);
+}
+
+.field-note-nav-title {
+  font-size: 0.9rem;
+  color: rgba(207, 229, 239, 0.9);
+  font-weight: 500;
+}
+
+/* Coming soon page styles */
+.coming-soon-hero {
+  text-align: left;
+}
+
+.coming-soon-badge {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  background: rgba(53, 198, 224, 0.15);
+  border: 1px solid rgba(53, 198, 224, 0.4);
+  color: #35C6E0;
+}
+
+.coming-soon-card {
+  background: rgba(15, 34, 48, 0.5);
+  border: 1px solid rgba(20, 53, 69, 0.6);
+  border-radius: 1rem;
+  backdrop-filter: blur(8px);
+}
+
+.coming-soon-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.coming-soon-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  background: rgba(10, 20, 27, 0.4);
+  border: 1px solid rgba(20, 53, 69, 0.5);
+  border-radius: 0.5rem;
+  color: rgba(207, 229, 239, 0.85);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.coming-soon-links a:hover {
+  border-color: rgba(53, 198, 224, 0.5);
+  color: #35C6E0;
+  background: rgba(10, 20, 27, 0.6);
+}
+
+/* Responsive adjustments for field notes */
+@media (max-width: 640px) {
+  .field-note-header {
+    padding: 1.5rem 1.25rem 1.25rem;
+  }
+  
+  .field-note-body {
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+  
+  .field-note-title {
+    font-size: 1.4rem;
+  }
+  
+  .field-note-tags {
+    padding: 1rem 1.25rem;
+  }
+  
+  .field-note-nav {
+    flex-direction: column;
+  }
+  
+  .field-note-nav-link {
+    max-width: 100%;
+  }
+}
+
+/* ============================================
    NAVIGATION ENHANCEMENTS
    ============================================ */
 

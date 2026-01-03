@@ -162,6 +162,12 @@ module.exports = {
     'text-silver',
     'bg-glow',
     'text-abyss',
+
+    // === FIELD NOTES PAGE CLASSES ===
+    'scroll-smooth',
+    'py-12',
+    'py-16',
+    'md:py-16',
   ],
   theme: {
     extend: {
