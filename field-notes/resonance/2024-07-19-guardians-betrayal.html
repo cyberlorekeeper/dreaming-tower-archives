@@ -162,35 +162,38 @@
       if (!article) return;
       
       const currentId = article.dataset.noteId;
-      const currentCategory = article.dataset.noteCategory;
       
       try {
         const res = await fetch('/data/field-notes.index.json', { cache: 'no-cache' });
-        if (!res.ok) return;
+        if (!res.ok) {
+          console.warn('Failed to fetch field-notes.index.json:', res.status);
+          return;
+        }
         
         const allNotes = await res.json();
         
-        // Filter to same category, released only, sorted by date
-        const categoryNotes = allNotes
-          .filter(n => n.category === currentCategory && n.released === true)
+        // Filter to released only, sorted by date (all categories)
+        const releasedNotes = allNotes
+          .filter(n => n.released === true)
           .sort((a, b) => new Date(a.date) - new Date(b.date));
         
         // Find current index
-        const currentIndex = categoryNotes.findIndex(n => n.id === currentId);
-        if (currentIndex === -1) return;
+        const currentIndex = releasedNotes.findIndex(n => n.id === currentId);
+        if (currentIndex === -1) {
+          console.warn('Current note not found in index:', currentId);
+          return;
+        }
         
         // Get next note (if exists)
-        const nextNote = categoryNotes[currentIndex + 1];
+        const nextNote = releasedNotes[currentIndex + 1];
         
-        if (nextNote) {
-          const nextLink = document.getElementById('nextNoteLink');
-          const nextTitle = document.getElementById('nextNoteTitle');
-          
-          if (nextLink && nextTitle) {
-            nextLink.href = nextNote.href;
-            nextTitle.textContent = nextNote.title;
-            nextLink.classList.remove('hidden');
-          }
+        const nextLink = document.getElementById('nextNoteLink');
+        const nextTitle = document.getElementById('nextNoteTitle');
+        
+        if (nextNote && nextLink && nextTitle) {
+          nextLink.href = nextNote.href;
+          nextTitle.textContent = nextNote.title;
+          nextLink.style.display = 'flex';
         }
       } catch (err) {
         console.warn('Could not load field notes index for navigation', err);

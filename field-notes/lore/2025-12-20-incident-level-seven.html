@@ -35,7 +35,7 @@
     
     <!-- Field Note Container -->
     <!-- data-note-id must match the id in field-notes.index.json -->
-    <article class="field-note-container" data-note-id="lorekeeper-2025-12-20-incident-level-seven" data-note-category="lore">
+    <article class="field-note-container" data-note-id="lorekeeper-2025-12-20-incident-level-seven">
       
       <!-- The Parchment Paper -->
       <div class="field-note-paper">
@@ -137,16 +137,18 @@
           <span class="field-note-nav-title">All Field Notes</span>
         </a>
         <!-- Dynamic next link - populated by JavaScript, hidden until valid next entry exists -->
-        <a id="nextNoteLink" href="#" class="field-note-nav-link hidden" style="display: none; text-align: right;">
+        <a id="nextNoteLink" href="#" class="field-note-nav-link" style="display: none; text-align: right;">
           <span class="field-note-nav-label">Next →</span>
           <span id="nextNoteTitle" class="field-note-nav-title"></span>
         </a>
       </nav>
       
     </article>
-    <!-- Footer -->
-  <div id="site-footer"></div>
+    
   </main>
+
+  <!-- Footer -->
+  <div id="site-footer"></div>
 
   <!-- Scripts -->
   <script>
@@ -167,35 +169,38 @@
       if (!article) return;
       
       const currentId = article.dataset.noteId;
-      const currentCategory = article.dataset.noteCategory;
       
       try {
         const res = await fetch('/data/field-notes.index.json', { cache: 'no-cache' });
-        if (!res.ok) return;
+        if (!res.ok) {
+          console.warn('Failed to fetch field-notes.index.json:', res.status);
+          return;
+        }
         
         const allNotes = await res.json();
         
-        // Filter to same category, released only, sorted by date
-        const categoryNotes = allNotes
-          .filter(n => n.category === currentCategory && n.released === true)
+        // Filter to released only, sorted by date (all categories)
+        const releasedNotes = allNotes
+          .filter(n => n.released === true)
           .sort((a, b) => new Date(a.date) - new Date(b.date));
         
         // Find current index
-        const currentIndex = categoryNotes.findIndex(n => n.id === currentId);
-        if (currentIndex === -1) return;
+        const currentIndex = releasedNotes.findIndex(n => n.id === currentId);
+        if (currentIndex === -1) {
+          console.warn('Current note not found in index:', currentId);
+          return;
+        }
         
         // Get next note (if exists)
-        const nextNote = categoryNotes[currentIndex + 1];
+        const nextNote = releasedNotes[currentIndex + 1];
         
-        if (nextNote) {
-          const nextLink = document.getElementById('nextNoteLink');
-          const nextTitle = document.getElementById('nextNoteTitle');
-          
-          if (nextLink && nextTitle) {
-            nextLink.href = nextNote.href;
-            nextTitle.textContent = nextNote.title;
-            nextLink.classList.remove('hidden');
-          }
+        const nextLink = document.getElementById('nextNoteLink');
+        const nextTitle = document.getElementById('nextNoteTitle');
+        
+        if (nextNote && nextLink && nextTitle) {
+          nextLink.href = nextNote.href;
+          nextTitle.textContent = nextNote.title;
+          nextLink.style.display = 'flex';
         }
       } catch (err) {
         console.warn('Could not load field notes index for navigation', err);
