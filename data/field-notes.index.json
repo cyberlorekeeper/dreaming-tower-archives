@@ -128,7 +128,7 @@
     "readTime": 2,
     "excerpt": "They did not breach walls. They did not batter gates. They simply became part of what kingdoms already trusted.",
     "featured": false,
-    "released": true,
+    "released": false,
     "href": "/field-notes/resonance/2020-12-13-patience-of-shadows.html",
     "tags": ["supply-chain", "apt", "trust"],
     "realWorldLink": "https://thesmokingprinter.com/blog/solarwinds-siege"
@@ -142,7 +142,7 @@
     "readTime": 2,
     "excerpt": "She saw the cracks. She spoke clearly. She was ignored.",
     "featured": false,
-    "released": true,
+    "released": false,
     "href": "/field-notes/resonance/2017-09-07-oracles-lament.html",
     "tags": ["vulnerability", "ignored-warnings", "leadership"],
     "realWorldLink": "https://thesmokingprinter.com/blog/the-equifax-oracle-prophets-warning"
@@ -156,7 +156,7 @@
     "readTime": 2,
     "excerpt": "The Jester carried no sword. He commanded no army. He simply knocked on the gate until the guards grew weary.",
     "featured": false,
-    "released": true,
+    "released": false,
     "href": "/field-notes/resonance/2022-09-15-fools-and-kings.html",
     "tags": ["social-engineering", "mfa-fatigue", "human-factor"],
     "realWorldLink": "https://thesmokingprinter.com/blog/court-jesters-gambit"
