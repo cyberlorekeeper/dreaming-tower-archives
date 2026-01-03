@@ -62,24 +62,41 @@
   },
   {
     "id": "chronicle-choice-between-walls",
-    "type": "Character Chronicle",
+    "type": "Council Chronicle",
     "title": "The Choice Between Walls",
-    "subtitle": "How Queen Lyra earned her crown",
-    "date": "2025-12-09",
-    "readTime": 10,
-    "blurb": "During the Great Corruption, a young princess faced an impossible choice: save the outer districts or protect the Crown City core. The decision she made—and the price she paid—defined both her reign and her relationship with the Dreaming Tower.",
-    "featuring": ["Queen Lyra", "The Lorekeeper"],
-    "theme": "Incident Response / Triage",
-    "threat": "Great Corruption",
-    "tags": ["incident-response", "triage", "character-chronicle", "lyra-origin"],
-    "status": "planned",
+    "subtitle": "When the only way to save trust was to erase it",
+    "date": "2025-12-10",
+    "readTime": 12,
+    "blurb": "The Unraveler doesn't breach systems—it unravels the trust that holds them together. When subtle inconsistencies begin spreading through the Kingdom's records, Queen Lyra faces three impossible choices: quarantine and cripple the Kingdom, hunt openly and accelerate the doubt, or use the forbidden Forgetting Protocol to reset everyone's memory and hunt the entity in secret.",
+    "featuring": [
+      "Queen Lyra",
+      "The Lorekeeper",
+      "Valdris",
+      "Cassia",
+      "Shade"
+    ],
+    "theme": "Integrity Attack / Crisis Decision-Making",
+    "threat": "The Unraveler",
+    "tags": [
+      "integrity",
+      "trust-erosion",
+      "crisis-response",
+      "forgetting-protocol",
+      "council-chronicle"
+    ],
+    "status": "complete",
     "featured": false,
     "released": true,
     "href": "/chronicles/choice-between-walls.html",
     "relatedFieldNotes": [
       "/field-notes/lore/2025-11-15-on-forgetting.html"
     ],
-    "realWorldParallels": ["NotPetya", "WannaCry"]
+    "realWorldParallels": [
+      "SolarWinds",
+      "Colonial Pipeline",
+      "Target Breach",
+      "NotPetya/Maersk"
+    ]
   },
   {
     "id": "chronicle-shadows-price",
