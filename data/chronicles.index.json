@@ -33,8 +33,8 @@
     "threat": "Silent Corruption",
     "tags": ["supply-chain", "third-party-risk", "monitoring-gaps", "council-chronicle"],
     "status": "complete",
-    "featured": true,
-    "released": true,
+    "featured": false,
+    "released": false,
     "href": "/chronicles/poisoned-protocol.html",
     "relatedFieldNotes": [
       "/field-notes/resonance/2024-12-15-the-logging-library.html"
@@ -65,7 +65,7 @@
     "type": "Character Chronicle",
     "title": "The Choice Between Walls",
     "subtitle": "How Queen Lyra earned her crown",
-    "date": null,
+    "date": "2025-12-09",
     "readTime": 10,
     "blurb": "During the Great Corruption, a young princess faced an impossible choice: save the outer districts or protect the Crown City core. The decision she made—and the price she paid—defined both her reign and her relationship with the Dreaming Tower.",
     "featuring": ["Queen Lyra", "The Lorekeeper"],
