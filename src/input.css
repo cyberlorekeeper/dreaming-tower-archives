@@ -719,8 +719,8 @@ details[open] .chevron {
 
 /* Field note signature/sign-off - Lorekeeper signature style */
 .field-note-signature {
-  font-family: 'Caveat', cursive;
-  font-size: 1.6rem;
+  font-family: 'Alex Brush', cursive;
+  font-size: 1.8rem;
   font-weight: 600;
   color: #1E6175; /* nebula blue */
   text-align: left;
