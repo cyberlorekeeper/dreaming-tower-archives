@@ -78,7 +78,44 @@
     "href": "/field-notes/lore/2026-01-12-the-cost-of-knowing.html",
     "tags": ["burnout", "institutional-memory", "leadership"]
   },
-
+  {
+    "id": "lorekeeper-2025-12-01-on-trusted-writs",
+    "category": "lore",
+    "title": "On Trusted Writs",
+    "subtitle": "A margin note following the Merchant's Gate incident",
+    "date": "2025-12-01",
+    "readTime": 2,
+    "excerpt": "The credentials were perfect. The merchants were not.",
+    "featured": false,
+    "released": false,
+    "href": "/field-notes/lore/2025-12-01-on-trusted-writs.html",
+    "tags": [
+      "supply-chain",
+      "authentication",
+      "incident-response",
+      "trust"
+    ],
+    "relatedChronicle": "/chronicles/merchants-gate.html"
+  },
+ {
+    "id": "lorekeeper-2025-11-15-on-forgetting",
+    "category": "lore",
+    "title": "On Forgetting",
+    "subtitle": "A record of what no one else remembers",
+    "date": "2025-11-15",
+    "readTime": 3,
+    "excerpt": "The Tower remembers what the Kingdom cannot. This is both its purpose and its curse.",
+    "featured": false,
+    "released": false,
+    "href": "/field-notes/lore/2025-11-15-on-forgetting.html",
+    "tags": [
+      "integrity",
+      "crisis-response",
+      "secrets",
+      "forgetting-protocol"
+    ],
+    "relatedChronicle": "/chronicles/choice-between-walls.html"
+  },
   {
     "id": "resonance-2025-12-22-supply-chains-dont-scream",
     "category": "resonance",

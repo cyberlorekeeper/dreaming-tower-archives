@@ -15,7 +15,9 @@
     "featured": false,
     "released": true,
     "href": "/chronicles/merchants-gate.html",
-    "relatedFieldNotes": [],
+    "relatedFieldNotes": [
+      "/field-notes/lore/2025-12-01-on-trusted-writs.html"
+    ],
     "realWorldParallels": ["SolarWinds", "Kaseya"]
   },
   {
@@ -31,8 +33,8 @@
     "threat": "Silent Corruption",
     "tags": ["supply-chain", "third-party-risk", "monitoring-gaps", "council-chronicle"],
     "status": "complete",
-    "featured": false,
-    "released": false,
+    "featured": true,
+    "released": true,
     "href": "/chronicles/poisoned-protocol.html",
     "relatedFieldNotes": [
       "/field-notes/resonance/2024-12-15-the-logging-library.html"
@@ -74,7 +76,9 @@
     "featured": false,
     "released": true,
     "href": "/chronicles/choice-between-walls.html",
-    "relatedFieldNotes": [],
+    "relatedFieldNotes": [
+      "/field-notes/lore/2025-11-15-on-forgetting.html"
+    ],
     "realWorldParallels": ["NotPetya", "WannaCry"]
   },
   {
