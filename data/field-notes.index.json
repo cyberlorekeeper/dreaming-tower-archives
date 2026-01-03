@@ -105,7 +105,7 @@
     "date": "2024-07-19",
     "readTime": 2,
     "excerpt": "The Falcon did not fail because it was weak. It failed because it was trusted.",
-    "featured": true,
+    "featured": false,
     "href": "/field-notes/resonance/2024-07-19-guardians-betrayal.html",
     "tags": ["supply-chain", "third-party-risk", "trust"],
     "realWorldLink": "https://thesmokingprinter.com/blog/crowdstrike-dragon-digital-guardians-turn-against-realm"
@@ -118,7 +118,7 @@
     "date": "2020-12-13",
     "readTime": 2,
     "excerpt": "They did not breach walls. They did not batter gates. They simply became part of what kingdoms already trusted.",
-    "featured": true,
+    "featured": false,
     "href": "/field-notes/resonance/2020-12-13-patience-of-shadows.html",
     "tags": ["supply-chain", "apt", "trust"],
     "realWorldLink": "https://thesmokingprinter.com/blog/solarwinds-siege"
