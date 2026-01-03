@@ -721,7 +721,6 @@ details[open] .chevron {
 .field-note-signature {
   font-family: 'Alex Brush', cursive;
   font-size: 1.8rem;
-  font-weight: 600;
   color: #1E6175; /* nebula blue */
   text-align: left;
   margin-top: 2rem;
@@ -767,15 +766,18 @@ details[open] .chevron {
   border: 1px solid rgba(26, 36, 48, 0.12);
 }
 
-/* Link to full chronicle (for resonance notes) */
+/* Link to full chronicle (for lore notes linking to chronicles) */
 .field-note-chronicle-link {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   margin-top: 1.5rem;
-  padding: 0.75rem 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  padding: 0.75rem 1.25rem;
   background: rgba(53, 198, 224, 0.08);
   border: 1px solid rgba(53, 198, 224, 0.25);
+  border-left: 3px solid rgba(30, 97, 117, 0.6);
   border-radius: 0.5rem;
   color: #1E6175;
   font-weight: 600;
@@ -787,7 +789,60 @@ details[open] .chevron {
 .field-note-chronicle-link:hover {
   background: rgba(53, 198, 224, 0.15);
   border-color: rgba(53, 198, 224, 0.4);
+  border-left-color: rgba(30, 97, 117, 0.8);
   color: #143545;
+}
+
+/* External link styling - for links leaving the site */
+.field-note-external-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 1.5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(53, 198, 224, 0.08);
+  border: 1px solid rgba(53, 198, 224, 0.25);
+  border-left: 3px solid rgba(124, 77, 255, 0.6);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.field-note-external-link:hover {
+  background: rgba(53, 198, 224, 0.15);
+  border-color: rgba(53, 198, 224, 0.4);
+  border-left-color: rgba(124, 77, 255, 0.8);
+}
+
+.field-note-external-link-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(43, 52, 64, 0.6);
+}
+
+.field-note-external-link-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #1E6175;
+}
+
+.field-note-external-link:hover .field-note-external-link-title {
+  color: #143545;
+}
+
+.field-note-external-link-domain {
+  font-size: 0.75rem;
+  color: rgba(43, 52, 64, 0.55);
+  font-weight: 400;
 }
 
 /* Navigation between field notes */
@@ -896,6 +951,23 @@ details[open] .chevron {
     font-size: 1.4rem;
   }
   
+  .field-note-signature {
+    font-size: 1.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  
+  .field-note-signature::after {
+    left: 1.25rem;
+    width: 100px;
+  }
+  
+  .field-note-chronicle-link,
+  .field-note-external-link {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+  
   .field-note-tags {
     padding: 1rem 1.25rem;
   }
@@ -906,17 +978,6 @@ details[open] .chevron {
   
   .field-note-nav-link {
     max-width: 100%;
-  }
-
-  .field-note-signature {
-    font-size: 1.4rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-  
-  .field-note-signature::after {
-    left: 1.25rem;
-    width: 100px;
   }
 }
 
