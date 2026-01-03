@@ -717,16 +717,34 @@ details[open] .chevron {
   margin: 1.5rem 0;
 }
 
-/* Field note signature/sign-off */
+/* Field note signature/sign-off - Lorekeeper signature style */
 .field-note-signature {
-  font-family: 'Cinzel', serif;
-  font-style: italic;
-  font-size: 0.95rem;
-  color: rgba(43, 52, 64, 0.7);
-  text-align: right;
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #1E6175; /* nebula blue */
+  text-align: left;
   margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px dashed rgba(26, 36, 48, 0.15);
+  padding: 1.5rem 2rem 0.5rem 2rem;
+  letter-spacing: 0.02em;
+  position: relative;
+}
+
+/* Ink flourish underline effect */
+.field-note-signature::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 2rem;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(30, 97, 117, 0.6) 0%,
+    rgba(30, 97, 117, 0.3) 60%,
+    transparent 100%
+  );
+  border-radius: 1px;
 }
 
 /* Tags at bottom of field note */
@@ -888,6 +906,17 @@ details[open] .chevron {
   
   .field-note-nav-link {
     max-width: 100%;
+  }
+
+  .field-note-signature {
+    font-size: 1.4rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  
+  .field-note-signature::after {
+    left: 1.25rem;
+    width: 100px;
   }
 }
 
