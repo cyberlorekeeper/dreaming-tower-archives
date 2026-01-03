@@ -3,414 +3,156 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cyber Lorekeeper — Chronicles</title>
+  <title>Chronicles | The Dreaming Tower Archives</title>
+  
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="shortcut icon" href="/images/favicon.ico">
+  
   <meta name="description" content="Recovered chronicles from the Dreaming Tower archives. Read tales from the Digital Realm and flip to real-world analysis." />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Global Styles -->
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
-<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
-  <main class="relative min-h-screen">
-    <!-- Background -->
-    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
-    <!-- Make overlay ignore pointer events so it doesn't interfere with hover/click -->
-    <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+<body class="bg-deep-space text-stardust font-body min-h-screen selection:bg-glow/20 selection:text-stardust">
+  
+  <!-- Background -->
+  <div class="fixed inset-0 -z-10">
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover opacity-40" aria-hidden="true" />
+    <div class="absolute inset-0 bg-gradient-to-b from-deep-space/70 via-abyss/80 to-deep-space/95"></div>
+  </div>
 
-    <!-- Header partial -->
-    <div id="site-header"></div>
+  <!-- Header -->
+  <div id="site-header"></div>
 
+  <main class="relative">
+    
     <!-- Hero -->
-    <section class="relative mx-auto max-w-6xl px-6 pt-10 pb-6">
-      <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">
-        Dreaming Tower Archives
-      </p>
-      <h1 class="mt-2 font-display text-4xl sm:text-5xl leading-tight text-gradient">
-        Chronicles
-      </h1>
-      <p class="mt-4 max-w-3xl text-stardust/85">
-        Recovered tales from the Digital Realm, recorded by the Lorekeeper. Open a chronicle to read the story,
-        then flip the page to reveal its real-world meaning.
-      </p>
+    <section class="relative mx-auto max-w-6xl px-6 pt-12 pb-8">
+      <div class="soft-card p-8">
+        <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">The Dreaming Tower Archives</p>
+        <h1 class="mt-3 font-display text-5xl text-gradient leading-tight">Chronicles</h1>
+        <p class="mt-4 text-lg text-stardust/80 leading-relaxed max-w-3xl">
+          Recovered tales from the Digital Realm, recorded by the Lorekeeper. Open a chronicle to read the story, then flip the page to reveal its real-world meaning.
+        </p>
+        <p class="mt-3 text-sm text-stardust/65">
+          More entries will surface as the Tower releases them.
+        </p>
+      </div>
+    </section>
 
-      <!-- Utility row -->
-      <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div class="flex flex-wrap gap-2 text-xs text-stardust/80">
-          <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1">Flip-to-Analysis</span>
-          <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1">Lore + Lessons</span>
-          <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1">New entries incoming</span>
+    <!-- Featured Section -->
+    <section id="featuredSection" class="relative mx-auto max-w-6xl px-6 pb-6 hidden">
+      <div class="flex items-center justify-between gap-4 flex-wrap">
+        <div>
+          <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Featured</p>
+          <h2 class="font-display text-3xl text-stardust">Latest Chronicle</h2>
         </div>
+        <a href="#archive" class="text-sm font-semibold text-glow hover:underline underline-offset-4">View All Chronicles →</a>
+      </div>
 
-        <!-- Placeholder filters (Phase 2) -->
-        <div class="text-sm text-stardust/70">
-          <span class="inline-flex items-center gap-2 rounded-lg border border-rift/60 bg-abyss/30 px-3 py-2">
-            Filters (coming soon)
-          </span>
+      <!-- Featured chronicle card -->
+      <div id="featuredChronicle" class="mt-6"></div>
+    </section>
+
+    <!-- Filters -->
+    <section class="relative mx-auto max-w-6xl px-6 pt-6 pb-4">
+      <div class="soft-card p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <!-- Filter buttons -->
+        <div id="filterButtons" class="flex flex-wrap gap-2 text-sm"></div>
+
+        <div class="flex flex-wrap gap-3 items-center text-sm text-stardust/80">
+          <label for="sortOrder" class="sr-only">Sort chronicles</label>
+          <select id="sortOrder" class="focus-ring rounded-md border border-rift/60 bg-abyss/60 px-3 py-2 text-stardust/90">
+            <option value="newest">By Date (Newest)</option>
+            <option value="oldest">By Date (Oldest)</option>
+          </select>
+
+          <div class="relative">
+            <label for="search" class="sr-only">Search</label>
+            <input id="search" type="search" placeholder="Search..."
+                   class="focus-ring rounded-md border border-rift/60 bg-abyss/60 px-10 py-2 text-sm placeholder:text-stardust/50 text-stardust w-56" />
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-stardust/50">⌕</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Divider -->
-    <div class="relative mx-auto max-w-6xl px-6">
-      <div class="h-px w-full bg-rift/60"></div>
-    </div>
+    <!-- Archive -->
+    <section id="archive" class="relative mx-auto max-w-6xl px-6 pb-12">
+      <div class="soft-card p-6">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div>
+            <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Archive</p>
+            <h2 class="font-display text-3xl text-stardust">All Chronicles</h2>
+          </div>
+          <p id="resultCount" class="text-sm text-stardust/60"></p>
+        </div>
 
-    <!-- Content -->
-    <section class="relative mx-auto max-w-6xl px-6 pt-8 pb-10">
-      <!-- OPTION 1: Make the main content appear first in the DOM, sidebar second.
-           Desktop becomes 2 columns, mobile becomes 1 column with sidebar under. -->
-      <div class="grid gap-6 lg:grid-cols-[1fr_340px] lg:items-start">
+        <ul id="chronicleList" class="mt-6 space-y-6"></ul>
 
-        <!-- Main column: Featured + List -->
-        <div class="flex flex-col gap-6">
-          <!-- Featured Chronicle -->
-          <article id="featuredChronicle" class="soft-card p-6 hidden overflow-hidden"></article>
+        <p class="mt-8 text-xs text-stardust/65 text-center">
+          More entries will surface as the Tower releases them.
+        </p>
+      </div>
+    </section>
 
-          <!-- Chronicle List -->
-          <section id="allChronicles" class="soft-card p-6">
-            <div class="flex flex-col gap-1">
-              <h3 class="font-display text-xl text-stardust/95">All Chronicles</h3>
-              <p class="text-sm text-stardust/75">Browse recovered entries from the Tower’s archives.</p>
-            </div>
-
-            <ul id="chronicleList" class="mt-5 space-y-4"></ul>
-
-            <p class="mt-6 text-xs text-stardust/65">
-              More entries will surface as the Tower releases them.
+    <!-- Subscribe CTA -->
+    <section class="relative mx-auto max-w-4xl px-6 pb-16">
+      <div class="soft-card p-8">
+        <div class="grid gap-6 md:grid-cols-[1.2fr_1fr] items-center">
+          <div>
+            <h3 class="font-display text-2xl text-stardust">Receive New Chronicles</h3>
+            <p class="mt-2 text-stardust/80 leading-relaxed">
+              Join the Tower's list and receive a raven when new tales and excerpts are released.
             </p>
-          </section>
-        </div>
-
-        <!-- Sidebar (now naturally comes after on mobile) -->
-        <aside class="soft-card p-6 lg:mt-0">
-          <h3 class="font-display text-xl text-stardust/95">Receive New Chronicles</h3>
-          <p class="mt-2 text-sm text-stardust/80 leading-relaxed">
-            Join the Tower’s list and you’ll receive a raven when new tales and excerpts are released.
-          </p>
-
-          <div class="mt-5">
-            <a href="#subscribe"
-               class="focus-ring inline-flex w-full items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
-              Subscribe
-            </a>
           </div>
-
-          <p class="mt-3 text-xs text-stardust/65">
-            No spam. Just dispatches from the Dreaming Tower when new Chronicles are released.
-          </p>
-
-          <div class="mt-6 h-px w-full bg-rift/60"></div>
-
-          <h4 class="mt-6 font-display text-lg text-stardust/95">Coming Soon</h4>
-          <ul class="mt-3 space-y-2 text-sm text-stardust/80">
-            <li>• Additional recovered Chronicles</li>
-            <li>• Journal excerpts from the Lorekeeper</li>
-            <li>• Glitchborne field notes</li>
-            <li>• World history and records</li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-      <!-- Email capture (Netlify Forms with JavaScript) -->
-      <section id="subscribe" class="relative z-10 mt-12 mx-auto max-w-xl scroll-mt-24">  
-        <div class="mt-8 mx-auto max-w-xl scroll-mt-24">
-          <!-- Success Message (hidden by default) -->
-          <div id="subscribe-success" class="hidden mb-4 rounded-md bg-nebula/20 border border-glow/40 px-6 py-4 text-center backdrop-blur transition-opacity duration-500">
-            <p class="text-glow font-semibold">📜 Inscription Complete</p>
-            <p class="mt-1 text-sm text-stardust/85">Your name has been added to the Tower's registry.</p>
-          </div>
-      
-          <!-- Error Message (hidden by default) -->
-          <div id="subscribe-error" class="hidden mb-4 rounded-md border border-red-400/60 bg-red-400/10 px-6 py-4 text-center backdrop-blur transition-opacity duration-500">
-            <p class="text-red-400 font-semibold">⚠ Something went wrong</p>
-            <p class="mt-1 text-sm text-stardust/85">Please try again or contact us if the problem persists.</p>
-          </div>
-      
-          <form id="subscribe-form" name="chronicle-subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-            class="grid gap-3 text-left">
+          <form name="chronicle-subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html"
+                class="grid gap-3 sm:grid-cols-[1fr_auto]">
             <input type="hidden" name="form-name" value="chronicle-subscribe" />
-        
-            <!-- Honeypot -->
-            <p class="hidden">
-              <label>Don't fill this out: <input name="bot-field" /></label>
-            </p>
+            <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
             
-            <!-- Name and Email Row -->
-            <div class="grid gap-3 sm:grid-cols-2">
-              <div>
-                <label class="sr-only" for="name">First Name</label>
-                <input id="name" name="name" type="text"
-                  class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
-                  placeholder="Your name (optional)"/>
-              </div>
-              
-              <div>
-                <label class="sr-only" for="email">Email</label>
-                <input id="email" name="email" type="email" required
-                  class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
-                  placeholder="you@realm.co"/>
-              </div>
-            </div>
-        
-            <button type="submit" id="subscribe-button" class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed">
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" required
+                   class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
+                   placeholder="you@realm.co" />
+            <button type="submit"
+                    class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
               Subscribe
             </button>
           </form>
-      
-          <p class="mt-3 text-center text-xs text-stardust/65">
-            No spam. Just dispatches from the Dreaming Tower when new Chronicles are released.
-          </p>
         </div>
-      </section>
-      
-      <script>
-        (function() {
-          // Handle newsletter subscription
-          const form = document.getElementById('subscribe-form');
-          const successMessage = document.getElementById('subscribe-success');
-          const errorMessage = document.getElementById('subscribe-error');
-          const submitButton = document.getElementById('subscribe-button');
-      
-          if (!form) return;
-      
-          form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-      
-            // Get form data
-            const formData = new FormData(form);
-      
-            // Disable button and show loading state
-            submitButton.disabled = true;
-            const originalButtonText = submitButton.textContent;
-            submitButton.textContent = 'Subscribing...';
-      
-            // Hide any previous messages
-            successMessage.classList.add('hidden');
-            errorMessage.classList.add('hidden');
-      
-            try {
-              // Submit to Netlify
-              const response = await fetch('/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData).toString()
-              });
-      
-              if (response.ok) {
-                // Show success message with fade-in
-                successMessage.classList.remove('hidden');
-                successMessage.style.opacity = '0';
-                
-                // Scroll message into view
-                successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                
-                // Trigger fade-in
-                setTimeout(() => {
-                  successMessage.style.opacity = '1';
-                }, 10);
-      
-                // Reset form
-                form.reset();
-      
-                // Fade out after 5 seconds
-                setTimeout(() => {
-                  successMessage.style.opacity = '0';
-                  setTimeout(() => {
-                    successMessage.classList.add('hidden');
-                  }, 500);
-                }, 5000);
-      
-              } else {
-                throw new Error('Submission failed');
-              }
-            } catch (error) {
-              console.error('Error:', error);
-              
-              // Show error message
-              errorMessage.classList.remove('hidden');
-              errorMessage.style.opacity = '0';
-              
-              // Scroll message into view
-              errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-              
-              setTimeout(() => {
-                errorMessage.style.opacity = '1';
-              }, 10);
-      
-              // Hide error after 7 seconds
-              setTimeout(() => {
-                errorMessage.style.opacity = '0';
-                setTimeout(() => {
-                  errorMessage.classList.add('hidden');
-                }, 500);
-              }, 7000);
-            } finally {
-              // Reset button
-              submitButton.disabled = false;
-              submitButton.textContent = originalButtonText;
-            }
-          });
-        })();
-      </script>
+      </div>
+    </section>
 
-    <!-- Footer partial (outside the content section so it can breathe) -->
-    <div id="site-footer" class="relative"></div>
   </main>
 
+  <!-- Footer -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
   <script>
-      const CHRONICLES = [
-    {
-      enabled: true,
-      featured: false,
-      type: "Recovered Chronicle",
-      title: "The Breach at Merchant’s Gate",
-      href: "/chronicles/merchants-gate.html",
-      blurb: "Seven entities entered through trusted writs and moved like ink through commerce, records, keys, and vaults. The Kingdom survived, but only by invoking a dangerous Purge Script and accepting loss.",
-      tags: ["Theme: Supply Chain", "Threat: Rot Swarm", "Flip: Real-World Analysis"],
-      status: "Complete",
-      readTime: "~10–12 min"
-    },
-    {
-      enabled: true,
-      featured: false,
-      type: "Recovered Chronicle",
-      title: "The Choice Between Walls",
-      href: "/chronicles/choice-between-walls.html",
-      blurb: "When the Great Corruption threatens to cascade, Queen Lyra chooses between connectivity and collapse, and pays the price of certainty in real time.",
-      tags: ["Focus: Queen Lyra", "Theme: Crisis Decision", "Flip: Real-World Analysis"],
-      status: "Complete",
-      readTime: "~9–11 min"
-    },
-    {
-      enabled: false,
-      featured: false,
-      type: "Recovered Chronicle",
-      title: "The Wall That Held",
-      href: "/chronicles/the-wall-that-held.html",
-      blurb: "High Commander Valdris demands hard defenses and decisive action when hesitation becomes its own vulnerability.",
-      tags: ["Focus: Valdris", "Theme: Defense-in-Depth", "Flip: Real-World Analysis"],
-      status: "Complete",
-      readTime: "~8–10 min"
-    },
-    {
-      enabled: false,
-      featured: false,
-      type: "Recovered Chronicle",
-      title: "The Price of Certainty",
-      href: "/chronicles/the-price-of-certainty.html",
-      blurb: "Merchant-Lord Cassia weighs disruption, trust, and the cost of security decisions that ripple through every trade lane.",
-      tags: ["Focus: Cassia", "Theme: Business Impact", "Flip: Real-World Analysis"],
-      status: "Complete",
-      readTime: "~8–10 min"
-    }
-  ];
-
-    const featuredEl = document.getElementById('featuredChronicle');
-    const allListEl = document.getElementById('chronicleList');
-
-    const visible = CHRONICLES.filter(c => c.enabled);
-    const featured = visible.find(c => c.featured);
-
-    if (featured && featuredEl) {
-      featuredEl.classList.remove('hidden');
-
-      featuredEl.innerHTML = `
-        <div class="flex flex-col gap-5">
-          <div class="flex items-start gap-6">
-            <div class="min-w-0">
-              <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">Featured • ${featured.type}</p>
-              <h2 class="mt-2 font-display text-2xl sm:text-3xl text-stardust/95">${featured.title}</h2>
-              <p class="mt-3 text-stardust/85 leading-relaxed">${featured.blurb}</p>
-
-              <div class="mt-4 flex flex-wrap gap-2">
-                ${(featured.tags || []).map(t => `<span class="tag">${t}</span>`).join("")}
-              </div>
-            </div>
-
-            <div class="hidden sm:grid grid-cols-1 gap-3 shrink-0 sm:w-[220px]">
-              <div class="meta-pill">
-                <p class="text-[11px] uppercase tracking-[.18em] text-stardust/60">Status</p>
-                <p class="mt-1 text-sm text-stardust/90">${featured.status || ""}</p>
-              </div>
-              <div class="meta-pill">
-                <p class="text-[11px] uppercase tracking-[.18em] text-stardust/60">Read time</p>
-                <p class="mt-1 text-sm text-stardust/90">${featured.readTime || ""}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <a href="${featured.href}"
-               class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
-              Open Chronicle →
-            </a>
-
-            <a href="/characters/"
-               class="inline-flex items-center justify-center rounded-md border border-rift/60 bg-deep-space/20 px-5 py-3 text-sm text-stardust/85 hover:text-glow">
-              Meet the characters
-            </a>
-          </div>
-        </div>
-      `;
-    }
-
-    if (allListEl) {
-      allListEl.innerHTML = visible.map(c => `
-        <li class="rounded-xl border border-rift/60 bg-deep-space/10 p-5">
-          <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-            <div class="min-w-0">
-              <p class="uppercase tracking-[.18em] text-stardust/60 text-xs">${c.type}</p>
-              <h4 class="mt-2 font-display text-2xl text-stardust/95">
-                <a class="hover:text-glow underline underline-offset-4" href="${c.href}">
-                  ${c.title}
-                </a>
-              </h4>
-              <p class="mt-3 text-sm text-stardust/80 leading-relaxed">${c.blurb || ""}</p>
-
-              <div class="mt-4 flex flex-wrap gap-2">
-                ${(c.tags || []).map(t => `<span class="tag">${t}</span>`).join("")}
-              </div>
-            </div>
-
-            <div class="flex flex-row gap-2 sm:flex-col sm:items-end">
-              ${c.status ? `<span class="tag">Status: ${c.status}</span>` : ""}
-              ${c.readTime ? `<span class="tag">Read: ${c.readTime}</span>` : ""}
-            </div>
-          </div>
-
-          <div class="mt-5">
-            <a href="${c.href}"
-               class="inline-flex items-center text-sm text-stardust/80 hover:text-glow underline underline-offset-4">
-              Open chronicle →
-            </a>
-          </div>
-        </li>
-      `).join("");
-    }
-
+    // Partials loading
     async function loadPartial(targetId, url) {
       const el = document.getElementById(targetId);
       if (!el) return;
-
-      const res = await fetch(url, { cache: "no-cache" });
-      if (!res.ok) {
-        console.warn(`Failed to load ${url}`);
-        return;
+      try {
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) return;
+        el.innerHTML = await res.text();
+      } catch (err) {
+        console.warn(`Error loading ${url}`, err);
       }
-      el.innerHTML = await res.text();
     }
 
     function initHeaderNav() {
       const navToggle = document.getElementById("navToggle");
       const mobileNavPanel = document.getElementById("mobileNavPanel");
-
       if (!navToggle || !mobileNavPanel) return;
 
       navToggle.addEventListener("click", () => {
@@ -428,8 +170,8 @@
     }
 
     function initFooterYear() {
-      const year = document.getElementById("year");
-      if (year) year.textContent = new Date().getFullYear();
+      const footerYear = document.querySelector('#site-footer #year');
+      if (footerYear) footerYear.textContent = new Date().getFullYear();
     }
 
     (async function boot() {
@@ -440,5 +182,356 @@
       initFooterYear();
     })();
   </script>
+
+  <!-- Chronicles: JSON-powered renderer -->
+  <script>
+    (() => {
+      const INDEX_URL = "/data/chronicles.index.json";
+
+      // Filter configuration - dynamically show based on available types
+      const filterConfig = {
+        all: { label: "All Chronicles", alwaysShow: true },
+        "Council Chronicle": { label: "Council Chronicles" },
+        "Character Chronicle": { label: "Character Chronicles" },
+        "Origin Chronicle": { label: "Origin Stories" },
+      };
+
+      // Status display mapping
+      const statusDisplay = {
+        complete: { label: "Complete", class: "text-green-400" },
+        "in-progress": { label: "In Progress", class: "text-amber-400" },
+        planned: { label: "Coming Soon", class: "text-stardust/60" },
+      };
+
+      const els = {
+        featuredSection: document.getElementById("featuredSection"),
+        featured: document.getElementById("featuredChronicle"),
+        archive: document.getElementById("chronicleList"),
+        filterContainer: document.getElementById("filterButtons"),
+        sort: document.getElementById("sortOrder"),
+        search: document.getElementById("search"),
+        resultCount: document.getElementById("resultCount"),
+      };
+
+      if (!els.archive) {
+        console.warn("Chronicles: missing required container (#chronicleList).");
+        return;
+      }
+
+      let allChronicles = [];
+      let activeFilter = "all";
+      let sortOrder = els.sort?.value || "newest";
+      let query = "";
+
+      const normalize = (s) => (s || "").toString().toLowerCase().trim();
+
+      function parseDateISO(dateStr) {
+        if (!dateStr) return null;
+        const d = new Date(dateStr);
+        return Number.isNaN(d.getTime()) ? null : d;
+      }
+
+      function formatDate(dateStr) {
+        const d = parseDateISO(dateStr);
+        if (!d) return "";
+        return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+      }
+
+      // Build filter buttons dynamically based on available types
+      function buildFilterButtons() {
+        if (!els.filterContainer) return;
+        
+        els.filterContainer.innerHTML = "";
+        
+        // Get unique types from released chronicles
+        const availableTypes = new Set(allChronicles.map(c => c.type));
+        
+        Object.entries(filterConfig).forEach(([key, config]) => {
+          // Skip type filters that have no released chronicles (unless alwaysShow)
+          if (!config.alwaysShow && !availableTypes.has(key)) return;
+          
+          const btn = document.createElement("button");
+          btn.className = "filter-btn focus-ring rounded-md border border-rift/60 bg-abyss/50 px-3 py-2 font-semibold text-stardust/85 hover:text-glow";
+          btn.setAttribute("data-filter", key);
+          btn.textContent = config.label;
+          
+          btn.addEventListener("click", () => {
+            activeFilter = key;
+            update();
+          });
+          
+          els.filterContainer.appendChild(btn);
+        });
+      }
+
+      function highlightActiveFilter() {
+        const filterBtns = Array.from(document.querySelectorAll("[data-filter]"));
+        filterBtns.forEach((btn) => {
+          const isActive = (btn.getAttribute("data-filter") || "all") === activeFilter;
+          btn.classList.toggle("is-active", isActive);
+          btn.setAttribute("aria-pressed", String(isActive));
+        });
+      }
+
+      function escapeHtml(str) {
+        const div = document.createElement("div");
+        div.textContent = str || "";
+        return div.innerHTML;
+      }
+
+      function escapeAttr(str) {
+        return (str || "").replace(/"/g, "&quot;");
+      }
+
+      function matchesFilters(chronicle) {
+        if (activeFilter !== "all" && chronicle.type !== activeFilter) return false;
+        if (!query) return true;
+
+        const searchable = [
+          chronicle.title,
+          chronicle.subtitle,
+          chronicle.blurb,
+          chronicle.theme,
+          chronicle.type,
+          ...(chronicle.tags || []),
+          ...(chronicle.featuring || []),
+          ...(chronicle.realWorldParallels || []),
+        ].join(" ");
+
+        return normalize(searchable).includes(query);
+      }
+
+      function sortChronicles(list) {
+        return [...list].sort((a, b) => {
+          const dateA = parseDateISO(a.date);
+          const dateB = parseDateISO(b.date);
+          
+          // Put chronicles without dates at the end
+          if (!dateA && !dateB) return 0;
+          if (!dateA) return 1;
+          if (!dateB) return -1;
+          
+          return sortOrder === "newest" 
+            ? dateB.getTime() - dateA.getTime() 
+            : dateA.getTime() - dateB.getTime();
+        });
+      }
+
+      function renderFeatured(chronicles) {
+        const featured = chronicles.find(c => c.featured);
+        
+        if (!featured || !els.featured || !els.featuredSection) {
+          if (els.featuredSection) els.featuredSection.classList.add("hidden");
+          return;
+        }
+
+        els.featuredSection.classList.remove("hidden");
+        
+        const status = statusDisplay[featured.status] || { label: featured.status, class: "" };
+        const featuringList = (featured.featuring || []).slice(0, 3).join(", ");
+        
+        els.featured.innerHTML = `
+          <article class="soft-card p-6 md:p-8">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-3 text-xs">
+                  <span class="uppercase tracking-[.18em] text-stardust/70">${escapeHtml(featured.type)}</span>
+                  ${featured.theme ? `<span class="tag">${escapeHtml(featured.theme)}</span>` : ""}
+                </div>
+                
+                <h2 class="mt-3 font-display text-2xl md:text-3xl text-stardust/95">
+                  <a href="${escapeAttr(featured.href)}" class="hover:text-glow transition-colors">
+                    ${escapeHtml(featured.title)}
+                  </a>
+                </h2>
+                
+                ${featured.subtitle ? `<p class="mt-2 text-stardust/75 italic">${escapeHtml(featured.subtitle)}</p>` : ""}
+                
+                <p class="mt-4 text-stardust/85 leading-relaxed">${escapeHtml(featured.blurb)}</p>
+                
+                <div class="mt-4 flex flex-wrap gap-2">
+                  ${(featured.tags || []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("")}
+                </div>
+              </div>
+              
+              <div class="flex flex-row lg:flex-col gap-3 lg:text-right flex-shrink-0">
+                <div class="meta-pill">
+                  <p class="text-[11px] uppercase tracking-[.18em] text-stardust/60">Read Time</p>
+                  <p class="mt-1 text-sm text-stardust/90">~${featured.readTime || "?"} min</p>
+                </div>
+                ${featuringList ? `
+                <div class="meta-pill">
+                  <p class="text-[11px] uppercase tracking-[.18em] text-stardust/60">Featuring</p>
+                  <p class="mt-1 text-sm text-stardust/90">${escapeHtml(featuringList)}</p>
+                </div>
+                ` : ""}
+              </div>
+            </div>
+            
+            <div class="mt-6 flex flex-col sm:flex-row gap-3">
+              <a href="${escapeAttr(featured.href)}"
+                 class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
+                Open Chronicle →
+              </a>
+              <a href="/characters.html"
+                 class="focus-ring inline-flex items-center justify-center rounded-md border border-rift/60 bg-deep-space/20 px-5 py-3 text-sm text-stardust/85 hover:text-glow">
+                Meet the Characters
+              </a>
+            </div>
+          </article>
+        `;
+      }
+
+      function renderArchive(chronicles) {
+        if (!els.archive) return;
+
+        // Update result count
+        if (els.resultCount) {
+          els.resultCount.textContent = `${chronicles.length} chronicle${chronicles.length !== 1 ? "s" : ""}`;
+        }
+
+        if (chronicles.length === 0) {
+          els.archive.innerHTML = `
+            <li class="text-center py-8 text-stardust/60">
+              No chronicles match your search. Try different terms or clear your filters.
+            </li>
+          `;
+          return;
+        }
+
+        els.archive.innerHTML = "";
+
+        chronicles.forEach((chronicle) => {
+          const li = document.createElement("li");
+          li.className = "rounded-xl border border-rift/60 bg-deep-space/20 p-5 md:p-6";
+          
+          const status = statusDisplay[chronicle.status] || { label: chronicle.status, class: "" };
+          const featuringList = (chronicle.featuring || []).slice(0, 2).join(", ");
+          const dateStr = formatDate(chronicle.date);
+          
+          li.innerHTML = `
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                  <span class="uppercase tracking-[.18em] text-stardust/60">${escapeHtml(chronicle.type)}</span>
+                  ${dateStr ? `<span class="text-stardust/50">•</span><span class="text-stardust/60">${dateStr}</span>` : ""}
+                </div>
+                
+                <h3 class="mt-2 font-display text-xl md:text-2xl text-stardust/95">
+                  <a href="${escapeAttr(chronicle.href)}" class="hover:text-glow underline underline-offset-4 transition-colors">
+                    ${escapeHtml(chronicle.title)}
+                  </a>
+                </h3>
+                
+                ${chronicle.subtitle ? `<p class="mt-1 text-sm text-stardust/70 italic">${escapeHtml(chronicle.subtitle)}</p>` : ""}
+                
+                <p class="mt-3 text-sm text-stardust/80 leading-relaxed">${escapeHtml(chronicle.blurb)}</p>
+                
+                <div class="mt-4 flex flex-wrap gap-2">
+                  ${chronicle.theme ? `<span class="tag">${escapeHtml(chronicle.theme)}</span>` : ""}
+                  ${(chronicle.tags || []).slice(0, 3).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("")}
+                </div>
+              </div>
+              
+              <div class="flex flex-row md:flex-col gap-2 md:items-end flex-shrink-0">
+                <span class="tag">~${chronicle.readTime || "?"} min</span>
+                ${featuringList ? `<span class="tag">${escapeHtml(featuringList)}</span>` : ""}
+              </div>
+            </div>
+            
+            <div class="mt-5 pt-4 border-t border-rift/40 flex items-center justify-between">
+              <a href="${escapeAttr(chronicle.href)}"
+                 class="inline-flex items-center text-sm text-stardust/80 hover:text-glow font-semibold transition-colors">
+                Open Chronicle →
+              </a>
+              ${chronicle.realWorldParallels && chronicle.realWorldParallels.length > 0 ? `
+                <span class="text-xs text-stardust/50">
+                  Real-world: ${chronicle.realWorldParallels.slice(0, 2).join(", ")}
+                </span>
+              ` : ""}
+            </div>
+          `;
+          
+          els.archive.appendChild(li);
+        });
+      }
+
+      function update() {
+        const filtered = allChronicles.filter(matchesFilters);
+        const sorted = sortChronicles(filtered);
+
+        renderFeatured(sorted);
+        renderArchive(sorted);
+        highlightActiveFilter();
+      }
+
+      // Event listeners
+      if (els.sort) {
+        els.sort.addEventListener("change", (e) => {
+          sortOrder = e.target.value || "newest";
+          update();
+        });
+      }
+
+      if (els.search) {
+        els.search.addEventListener("input", (e) => {
+          query = normalize(e.target.value);
+          update();
+        });
+      }
+
+      async function loadIndex() {
+        try {
+          const res = await fetch(INDEX_URL, { cache: "no-cache" });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          if (!Array.isArray(data)) throw new Error("Index JSON is not an array.");
+
+          // FILTER: Only include chronicles where released: true
+          allChronicles = data
+            .filter((c) => c && c.id && c.title && c.href && c.released === true)
+            .map((c) => ({
+              id: c.id,
+              type: c.type || "Chronicle",
+              title: c.title,
+              subtitle: c.subtitle || "",
+              date: c.date || "",
+              readTime: typeof c.readTime === "number" ? c.readTime : null,
+              blurb: c.blurb || "",
+              featuring: Array.isArray(c.featuring) ? c.featuring : [],
+              theme: c.theme || "",
+              threat: c.threat || "",
+              tags: Array.isArray(c.tags) ? c.tags : [],
+              status: c.status || "complete",
+              featured: !!c.featured,
+              href: c.href,
+              relatedFieldNotes: Array.isArray(c.relatedFieldNotes) ? c.relatedFieldNotes : [],
+              realWorldParallels: Array.isArray(c.realWorldParallels) ? c.realWorldParallels : [],
+            }));
+
+          // Build filter buttons based on available types
+          buildFilterButtons();
+          update();
+        } catch (err) {
+          console.warn("Chronicles: failed to load index JSON", err);
+
+          if (els.archive) {
+            els.archive.innerHTML = `
+              <li class="text-center py-8">
+                <p class="text-stardust/80">
+                  Could not load Chronicles right now. Check that
+                  <code class="text-stardust">/data/chronicles.index.json</code>
+                  exists and is accessible.
+                </p>
+              </li>
+            `;
+          }
+        }
+      }
+
+      loadIndex();
+    })();
+  </script>
+
 </body>
 </html>

@@ -463,18 +463,15 @@
         <div class="mt-6 h-px w-full bg-rift/60"></div>
       
         <div class="mt-6">
-          <h3 class="font-display text-xl text-stardust/95">Continue the Archive</h3>
-      
-          <!-- Full-width nav row -->
-          <div class="mt-3 flex items-center justify-between gap-4 text-sm text-stardust/80">
-            <a class="underline underline-offset-4 hover:text-glow" href="/chronicles/">← Back to Chronicles</a>
-      
-            <a id="nextChronicleLink"
-               class="underline underline-offset-4 hover:text-glow"
-               href="/chronicles/next-chronicle.html">
-              Next Chronicle →
-            </a>
-          </div>
+          <a href="/chronicles.html" class="inline-flex items-center gap-3 group text-stardust/80 hover:text-glow transition-colors">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-stardust/60 group-hover:text-glow transition-colors">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+            <span>
+              <span class="text-xs uppercase tracking-wider text-stardust/60 block">Back to</span>
+              <span class="font-display text-stardust/90 group-hover:text-glow transition-colors">All Chronicles</span>
+            </span>
+          </a>
         </div>
       </div>
     </section>
@@ -623,6 +620,17 @@
   <div id="site-footer"></div>
 </main>
 
+  <!-- Return to Top Button -->
+  <button 
+    id="returnToTop" 
+    class="fixed bottom-6 right-6 z-50 hidden focus-ring rounded-full bg-abyss/90 border border-rift/60 p-3 shadow-glow hover:border-glow/60 hover:bg-abyss transition-all group"
+    aria-label="Return to top"
+    title="Return to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-stardust/80 group-hover:text-glow transition-colors">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
   <script>
   // ---------- Utilities ----------
   async function loadPartial(targetId, url) {
@@ -724,7 +732,30 @@
 
     // Now init page-specific features
     initStoryAnalysisToggle();
+    
+    // Return to Top button
+    initReturnToTop();
   })();
+
+  function initReturnToTop() {
+    const returnToTopBtn = document.getElementById('returnToTop');
+    
+    if (!returnToTopBtn) return;
+
+    // Show/hide based on scroll position
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        returnToTopBtn.classList.remove('hidden');
+      } else {
+        returnToTopBtn.classList.add('hidden');
+      }
+    }, { passive: true });
+
+    // Scroll to top on click
+    returnToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 </script>
 </body>
 </html>
