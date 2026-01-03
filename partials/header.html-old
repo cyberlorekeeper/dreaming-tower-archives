@@ -28,7 +28,30 @@
       <a class="hover:text-glow underline-offset-4 hover:underline" href="/chronicles.html">Chronicles</a>
       <a class="hover:text-glow underline-offset-4 hover:underline" href="/field-notes.html">Field Notes</a>
       <a class="hover:text-glow underline-offset-4 hover:underline" href="/characters.html">Characters</a>
-      <a class="hover:text-glow underline-offset-4 hover:underline" href="/world.html">The World</a>
+
+      <!-- The World dropdown -->
+      <div class="relative group" id="worldMenuWrap">
+        <a href="/world.html" class="inline-flex items-center gap-1 hover:text-glow underline-offset-4 hover:underline">
+          The World <span aria-hidden="true">▾</span>
+        </a>
+
+        <!-- Hover buffer -->
+        <div class="absolute left-0 top-full h-2 w-full"></div>
+
+        <div id="worldMenu"class="absolute pointer-events-auto z-50 left-0 top-full mt-2 hidden min-w-[220px] rounded-lg border border-rift/60 bg-abyss/90 p-2 shadow-card backdrop-blur-md group-hover:block group-focus-within:block">
+
+          <a href="/world/cipheria.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow" role="menuitem">
+            Cipheria's History
+          </a>
+          <span class="block rounded-md px-3 py-2 italic text-stardust/50 cursor-default" role="menuitem">
+            Other Locations (coming soon)
+          </span>
+          <span class="block rounded-md px-3 py-2 italic text-stardust/50 cursor-default" role="menuitem">
+            Bestiary (coming soon)
+          </span>
+        </div>
+      </div>
+
       <a class="hover:text-glow underline-offset-4 hover:underline" href="/author.html">Author</a>
     </nav>
   </div>
@@ -54,9 +77,32 @@
       </a>
   
       <!-- The World (link + sections) -->
-        <a href="/world.html" class="font-semibold hover:text-glow">
-        The World
+      <div class="rounded-lg border border-rift/60 bg-abyss/30 p-3">
+        <a
+          href="/world.html"
+          class="block font-semibold text-stardust/90 hover:text-glow underline underline-offset-4"
+        >
+          The World
         </a>
+  
+        <details class="mt-2">
+          <summary class="cursor-pointer text-sm text-stardust/80 hover:text-glow">
+            Sections <span aria-hidden="true">▾</span>
+          </summary>
+  
+          <div class="mt-2 flex flex-col gap-2 pl-2">
+            <a href="/world/cipheria.html" class="hover:text-glow underline underline-offset-4">
+              Cipheria's History
+            </a>
+            <span class="italic text-stardust/50">
+              Other Locations (coming soon)
+            </span>
+            <span class="italic text-stardust/50">
+              Bestiary (coming soon)
+            </span>
+          </div>
+        </details>
+      </div>
   
       <!-- Author -->
       <a href="/author.html" class="font-semibold hover:text-glow">
