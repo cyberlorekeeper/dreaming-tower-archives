@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Field Notes | The Dreaming Tower Archives</title>
 
-  <meta name="description" content="Recovered field notes from the Dreaming Tower archives. Aera’s logs, Lorekeeper notes, and real-world resonance." />
+  <meta name="description" content="Recovered field notes from the Dreaming Tower archives. Aera's logs, Lorekeeper notes, and real-world resonance." />
   <meta name="keywords" content="cyber lorekeeper, field notes, cybersecurity storytelling, fantasy cyberpunk, dreaming tower" />
 
   <link rel="stylesheet" href="/css/styles.css" />
@@ -22,7 +22,7 @@
         <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">The Dreaming Tower Archives</p>
         <h1 class="mt-3 font-display text-5xl text-gradient leading-tight">Field Notes</h1>
         <p class="mt-4 text-lg text-stardust/80 leading-relaxed max-w-3xl">
-          Recovered entries from the Tower’s margins. Some are personal logs. Some are warnings. Some are reflections that echo into our world.
+          Recovered entries from the Tower's margins. Some are personal logs. Some are warnings. Some are reflections that echo into our world.
         </p>
         <p class="mt-3 text-sm text-stardust/65">
           More entries will surface as the Tower releases them.
@@ -30,7 +30,7 @@
       </div>
     </section>
 
-    <!-- Featured + Recent -->
+    <!-- Featured Section -->
     <section class="relative mx-auto max-w-6xl px-6 pb-6">
       <div class="flex items-center justify-between gap-4 flex-wrap">
         <div>
@@ -40,10 +40,8 @@
         <a href="#archive" class="text-sm font-semibold text-glow hover:underline underline-offset-4">View All Entries →</a>
       </div>
 
-      <div class="mt-6 grid gap-6 lg:grid-cols-[1.1fr_.95fr]">
-        <article id="featuredEntry" class="soft-card p-6 hidden"></article>
-        <div id="recentEntries" class="grid gap-4 sm:grid-cols-2"></div>
-      </div>
+      <!-- Featured entries grid - balanced 3-column layout -->
+      <div id="featuredEntries" class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
     </section>
 
     <!-- Filters -->
@@ -151,6 +149,7 @@
   <script>
     (() => {
       const INDEX_URL = "/data/field-notes.index.json";
+      const MAX_FEATURED = 3; // Limit featured entries to 3
 
       const badgeMap = {
         aera: { label: "Aera's Logs", className: "badge badge-aera" },
@@ -159,16 +158,15 @@
       };
 
       const els = {
-        featured: document.getElementById("featuredEntry"),
-        recent: document.getElementById("recentEntries"),
+        featured: document.getElementById("featuredEntries"),
         archive: document.getElementById("archiveList"),
         sort: document.getElementById("sortOrder"),
         search: document.getElementById("search"),
         filterBtns: Array.from(document.querySelectorAll("[data-filter]")),
       };
 
-      if (!els.featured || !els.recent || !els.archive) {
-        console.warn("Field Notes: missing one or more required containers (#featuredEntry, #recentEntries, #archiveList).");
+      if (!els.featured || !els.archive) {
+        console.warn("Field Notes: missing one or more required containers (#featuredEntries, #archiveList).");
         return;
       }
 
@@ -194,112 +192,101 @@
         els.filterBtns.forEach((btn) => {
           const isActive = (btn.getAttribute("data-filter") || "all") === activeFilter;
           btn.classList.toggle("is-active", isActive);
-          if (isActive) btn.classList.add("ring-2", "ring-glow/50");
-          else btn.classList.remove("ring-2", "ring-glow/50");
+          btn.setAttribute("aria-pressed", String(isActive));
         });
+      }
+
+      function escapeHtml(str) {
+        const div = document.createElement("div");
+        div.textContent = str || "";
+        return div.innerHTML;
+      }
+
+      function escapeAttr(str) {
+        return (str || "").replace(/"/g, "&quot;");
       }
 
       function matchesFilters(entry) {
         if (activeFilter !== "all" && entry.category !== activeFilter) return false;
         if (!query) return true;
 
-        const haystack = [
-          entry.title,
-          entry.subtitle,
-          entry.excerpt,
-          (entry.tags || []).join(" "),
-        ].map(normalize).join(" ");
-
+        const haystack = normalize(
+          [entry.title, entry.subtitle, entry.excerpt, ...entry.tags].join(" ")
+        );
         return haystack.includes(query);
       }
 
       function sortEntries(list) {
-        const copy = [...list];
-        copy.sort((a, b) => {
-          const da = parseDateISO(a.date)?.getTime() ?? 0;
-          const db = parseDateISO(b.date)?.getTime() ?? 0;
-          const diff = da - db;
-          return sortOrder === "newest" ? -diff : diff;
+        return [...list].sort((a, b) => {
+          const da = parseDateISO(a.date);
+          const db = parseDateISO(b.date);
+          if (!da && !db) return 0;
+          if (!da) return 1;
+          if (!db) return -1;
+          return sortOrder === "oldest" ? da - db : db - da;
         });
-        return copy;
       }
 
-      function escapeHtml(str) {
-        return (str ?? "").toString()
-          .replaceAll("&", "&amp;")
-          .replaceAll("<", "&lt;")
-          .replaceAll(">", "&gt;")
-          .replaceAll('"', "&quot;")
-          .replaceAll("'", "&#039;");
-      }
-
-      function escapeAttr(str) {
-        return (str ?? "").toString().replaceAll('"', "&quot;");
-      }
-
-      function renderFeatured(entry) {
-        if (!entry) {
-          els.featured.classList.add("hidden");
-          els.featured.innerHTML = "";
+      // Render featured entries - limited to MAX_FEATURED, only entries with featured: true
+      function renderFeatured(allSortedEntries) {
+        els.featured.innerHTML = "";
+        
+        // Get only entries marked as featured, limited to MAX_FEATURED
+        const featuredEntries = allSortedEntries
+          .filter((e) => e.featured)
+          .slice(0, MAX_FEATURED);
+        
+        if (featuredEntries.length === 0) {
+          // If no featured entries, hide the section or show a message
+          els.featured.innerHTML = `
+            <p class="text-stardust/60 text-sm col-span-full">No featured entries at this time.</p>
+          `;
           return;
         }
 
-        const badge = badgeMap[entry.category] || { label: "Field Note", className: "badge" };
-        els.featured.classList.remove("hidden");
-
-        els.featured.innerHTML = `
-          <div class="flex items-start justify-between gap-4 flex-wrap">
-            <div class="${badge.className}">${escapeHtml(badge.label)}</div>
-            <p class="text-xs text-stardust/65">
-              ${escapeHtml(formatDate(entry.date))}${entry.readTime ? ` • ${entry.readTime} min read` : ""}
-            </p>
-          </div>
-
-          <h3 class="mt-3 font-display text-2xl text-stardust">
-            <a href="${escapeAttr(entry.href)}" class="hover:text-glow">${escapeHtml(entry.title)}</a>
-          </h3>
-
-          ${entry.subtitle ? `<p class="mt-2 text-sm text-stardust/75">${escapeHtml(entry.subtitle)}</p>` : ""}
-
-          ${entry.excerpt ? `<p class="mt-3 text-sm text-stardust/85 leading-relaxed">${escapeHtml(entry.excerpt)}</p>` : ""}
-
-          <div class="mt-4 flex flex-wrap gap-3 items-center justify-between">
-            <a class="focus-ring inline-flex items-center gap-2 font-semibold text-stardust/90 hover:text-glow" href="${escapeAttr(entry.href)}">
-              Read More →
-            </a>
-            <button class="focus-ring inline-flex items-center gap-2 font-semibold text-stardust/80 hover:text-glow" type="button" data-share="${escapeAttr(entry.href)}">
-              Share This Entry
-            </button>
-          </div>
-        `;
-      }
-
-      function renderRecent(list) {
-        els.recent.innerHTML = "";
-        list.slice(0, 4).forEach((entry) => {
+        featuredEntries.forEach((entry) => {
           const badge = badgeMap[entry.category] || { label: "Field Note", className: "badge" };
           const card = document.createElement("article");
-          card.className = "soft-card p-4 flex flex-col gap-2";
+          card.className = "soft-card p-5 flex flex-col gap-3";
           card.innerHTML = `
-            <div class="${badge.className}">${escapeHtml(badge.label)}</div>
+            <div class="flex items-start justify-between gap-3 flex-wrap">
+              <div class="${badge.className}">${escapeHtml(badge.label)}</div>
+              <p class="text-xs text-stardust/65">
+                ${escapeHtml(formatDate(entry.date))}${entry.readTime ? ` • ${entry.readTime} min read` : ""}
+              </p>
+            </div>
+
             <h3 class="font-display text-xl text-stardust">
               <a href="${escapeAttr(entry.href)}" class="hover:text-glow">${escapeHtml(entry.title)}</a>
             </h3>
+
             ${entry.subtitle ? `<p class="text-sm text-stardust/75">${escapeHtml(entry.subtitle)}</p>` : ""}
-            ${entry.excerpt ? `<p class="text-sm text-stardust/80 leading-relaxed line-clamp-3">${escapeHtml(entry.excerpt)}</p>` : ""}
-            <p class="text-xs text-stardust/65">
-              ${entry.readTime ? `Read time: ${entry.readTime} minutes | ` : ""}Published: ${escapeHtml(formatDate(entry.date))}
-            </p>
-            <a class="focus-ring inline-flex items-center gap-2 font-semibold text-stardust/90 hover:text-glow" href="${escapeAttr(entry.href)}">
-              Read More →
-            </a>
+
+            ${entry.excerpt ? `<p class="text-sm text-stardust/85 leading-relaxed line-clamp-3">${escapeHtml(entry.excerpt)}</p>` : ""}
+
+            <div class="mt-auto pt-2 flex flex-wrap gap-3 items-center justify-between">
+              <a class="focus-ring inline-flex items-center gap-2 font-semibold text-stardust/90 hover:text-glow" href="${escapeAttr(entry.href)}">
+                Read More →
+              </a>
+              <button class="focus-ring inline-flex items-center gap-2 font-semibold text-stardust/80 hover:text-glow text-sm" type="button" data-share="${escapeAttr(entry.href)}">
+                Share
+              </button>
+            </div>
           `;
-          els.recent.appendChild(card);
+          els.featured.appendChild(card);
         });
       }
 
       function renderArchive(list) {
         els.archive.innerHTML = "";
+        
+        if (list.length === 0) {
+          els.archive.innerHTML = `
+            <li class="text-stardust/60 text-sm">No entries match your current filters.</li>
+          `;
+          return;
+        }
+        
         list.forEach((entry) => {
           const badge = badgeMap[entry.category] || { label: "Field Note", className: "badge" };
           const li = document.createElement("li");
@@ -337,11 +324,7 @@
         const filtered = allEntries.filter(matchesFilters);
         const sorted = sortEntries(filtered);
 
-        const featured = sorted.find((e) => e.featured) || sorted[0] || null;
-        const rest = featured ? sorted.filter((e) => e.id !== featured.id) : [];
-
-        renderFeatured(featured);
-        renderRecent(rest);
+        renderFeatured(sorted);
         renderArchive(sorted);
         highlightActiveFilter();
       }
@@ -414,9 +397,8 @@
         } catch (err) {
           console.warn("Field Notes: failed to load index JSON", err);
 
-          els.featured.classList.remove("hidden");
           els.featured.innerHTML = `
-            <div class="soft-card p-6">
+            <div class="soft-card p-6 col-span-full">
               <p class="text-stardust/80">
                 Could not load Field Notes right now. Check that
                 <code class="text-stardust">/data/field-notes.index.json</code>
@@ -424,7 +406,6 @@
               </p>
             </div>
           `;
-          els.recent.innerHTML = "";
           els.archive.innerHTML = "";
         }
       }
