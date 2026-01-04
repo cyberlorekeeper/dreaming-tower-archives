@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bestiary | The Dreaming Tower Archives</title>
+    <meta
+      name="description"
+      content="The Glitchborne — hostile entities that threaten the Kingdom of Cipheria. From stealthy Wraiths to devastating Corruption Storms, learn what lurks in the digital realm."
+    />
+
+    <!-- Favicons -->
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <style>
+      .threat-card {
+        background: rgba(10, 20, 27, 0.6);
+        border: 1px solid rgba(20, 53, 69, 0.5);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        transition: all 0.2s ease;
+      }
+      .threat-card:hover {
+        border-color: rgba(53, 198, 224, 0.4);
+        background: rgba(10, 20, 27, 0.75);
+      }
+      .threat-name {
+        font-family: 'Cinzel', serif;
+        font-size: 1.25rem;
+        color: #cfe5ef;
+        margin-bottom: 0.5rem;
+      }
+      .threat-description {
+        color: rgba(207, 229, 239, 0.85);
+        line-height: 1.7;
+        margin-bottom: 0.75rem;
+      }
+      .threat-parallel {
+        font-size: 0.8rem;
+        color: rgba(207, 229, 239, 0.55);
+        font-style: italic;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(20, 53, 69, 0.4);
+      }
+      .apex-card {
+        background: linear-gradient(135deg, rgba(10, 20, 27, 0.8) 0%, rgba(30, 15, 35, 0.6) 100%);
+        border: 1px solid rgba(124, 77, 255, 0.3);
+      }
+      .apex-card:hover {
+        border-color: rgba(124, 77, 255, 0.5);
+      }
+      .apex-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: rgba(124, 77, 255, 0.9);
+        background: rgba(124, 77, 255, 0.15);
+        padding: 0.25rem 0.6rem;
+        border-radius: 9999px;
+        margin-bottom: 0.75rem;
+      }
+      .lorekeeper-quote {
+        background: rgba(10, 20, 27, 0.5);
+        border-left: 3px solid rgba(53, 198, 224, 0.5);
+        padding: 1.25rem 1.5rem;
+        border-radius: 0 0.5rem 0.5rem 0;
+        margin: 2rem 0;
+      }
+      .lorekeeper-quote p {
+        font-style: italic;
+        color: rgba(207, 229, 239, 0.9);
+        line-height: 1.7;
+      }
+      .lorekeeper-quote cite {
+        display: block;
+        margin-top: 0.75rem;
+        font-size: 0.85rem;
+        color: rgba(207, 229, 239, 0.6);
+        font-style: normal;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen page-cipheria">
+    <div id="site-header"></div>
+
+    <main class="mx-auto max-w-6xl px-6">
+      <!-- Hero -->
+      <section class="section-tight pt-10 md:pt-14">
+        <div class="space-y-6 max-w-4xl">
+          <div class="inline-flex items-center gap-2 rounded-full border border-stardust/15 bg-abyss/70 px-3 py-1 text-xs uppercase tracking-[.2em] text-stardust/70">
+            <span class="inline-block h-2 w-2 rounded-full bg-rift"></span>
+            World — Bestiary
+          </div>
+
+          <div class="space-y-3">
+            <h1 class="font-display text-4xl leading-[1.05] tracking-wide sm:text-5xl text-gradient-world">
+              The Glitchborne
+            </h1>
+            <p class="text-lg text-stardust/90 leading-relaxed max-w-3xl">
+              Hostile entities that threaten the Kingdom. They emerge from the wild lands, slip through rifts from the Space Besides, or are inadvertently created by civilization's own mistakes. Drawn to concentrations of activity and data, they seek out populated areas with relentless hunger.
+            </p>
+          </div>
+
+          <div class="lorekeeper-quote">
+            <p>"They are corruption given form, manifestations of broken logic and malicious intent."</p>
+            <cite>— The Lorekeeper</cite>
+          </div>
+        </div>
+      </section>
+
+      <!-- Threat Classifications -->
+      <section class="section-tight" aria-labelledby="classifications">
+        <div class="panel p-7 md:p-10 space-y-6">
+          <div>
+            <p class="text-xs uppercase tracking-[.18em] text-stardust/60">Threat Classifications</p>
+            <h2 id="classifications" class="font-display text-3xl md:text-4xl text-stardust mt-1">Common Threats</h2>
+            <p class="mt-3 text-stardust/80 leading-relaxed max-w-3xl">
+              These are the threats most frequently encountered by the Kingdom's defenders. Each type requires different tactics, different expertise, and different responses.
+            </p>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-2">
+            <!-- Wraiths -->
+            <div class="threat-card">
+              <h3 class="threat-name">Wraiths</h3>
+              <p class="threat-description">
+                Stealthy malware that moves unseen through systems, extracting data or altering records gradually. Often detected only after significant damage is done. They prefer shadows and patience over direct confrontation.
+              </p>
+              <p class="threat-parallel">
+                <strong>Real-world parallel:</strong> Spyware, data exfiltration malware, credential stealers, keyloggers
+              </p>
+            </div>
+
+            <!-- Siege Engines -->
+            <div class="threat-card">
+              <h3 class="threat-name">Siege Engines</h3>
+              <p class="threat-description">
+                Massive, coordinated assaults that overwhelm defenses through sheer volume. Obvious when they strike—systems slow or fail under the crushing load. What they lack in subtlety, they make up for in devastating force.
+              </p>
+              <p class="threat-parallel">
+                <strong>Real-world parallel:</strong> DDoS (Distributed Denial of Service) attacks
+              </p>
+            </div>
+
+            <!-- Mimics -->
+            <div class="threat-card">
+              <h3 class="threat-name">Mimics</h3>
+              <p class="threat-description">
+                Threats that disguise themselves as trusted entities. They forge credentials, impersonate allies, and manipulate people rather than systems. Often succeed before detection—their victims don't realize they've been deceived until it's too late.
+              </p>
+              <p class="threat-parallel">
+                <strong>Real-world parallel:</strong> Phishing attacks, business email compromise, social engineering, impersonation
+              </p>
+            </div>
+
+            <!-- Rot -->
+            <div class="threat-card">
+              <h3 class="threat-name">Rot</h3>
+              <p class="threat-description">
+                Unpatched vulnerabilities that weaken structures from within. Not an active attacker but a slow decay—security debt made manifest. Left untreated, Rot spreads until defenses crumble under the slightest pressure.
+              </p>
+              <p class="threat-parallel">
+                <strong>Real-world parallel:</strong> Unpatched systems, technical debt, legacy vulnerabilities
+              </p>
+            </div>
+
+            <!-- Shadow Walkers -->
+            <div class="threat-card">
+              <h3 class="threat-name">Shadow Walkers</h3>
+              <p class="threat-description">
+                Sophisticated, patient threats that establish persistent presence within systems. They move slowly, learn defenses, and strike only when ready. The most dangerous because they're the hardest to detect and remove—by the time you know they're there, they've been there for months.
+              </p>
+              <p class="threat-parallel">
+                <strong>Real-world parallel:</strong> APTs (Advanced Persistent Threats), nation-state actors
+              </p>
+            </div>
+
+            <!-- Corruption Storms -->
+            <div class="threat-card">
+              <h3 class="threat-name">Corruption Storms</h3>
+              <p class="threat-description">
+                Devastating attacks that transform everything they touch. Systems don't just fail—they're twisted into weapons against their owners. Highly visible, highly destructive, and deeply traumatic for those caught in their path.
+              </p>
+              <p class="threat-parallel">
+                <strong>Real-world parallel:</strong> Ransomware, destructive malware, wipers
+              </p>
+            </div>
+
+            <!-- Broken Protocols -->
+            <div class="threat-card">
+              <h3 class="threat-name">Broken Protocols</h3>
+              <p class="threat-description">
+                Chaos born from well-meaning mistakes. Misconfigurations, automation errors, and procedures that don't account for edge cases. Not malicious in origin, but dangerous nonetheless—sometimes the greatest threats come from within.
+              </p>
+              <p class="threat-parallel">
+                <strong>Real-world parallel:</strong> Misconfigurations, human error, automation failures
+              </p>
+            </div>
+
+            <!-- Rot Swarms -->
+            <div class="threat-card">
+              <h3 class="threat-name">Rot Swarms</h3>
+              <p class="threat-description">
+                Coordinated distributed attacks using many small, individually weak vectors that combine into overwhelming force. No single element is dangerous alone, but together they can bring down even the most fortified defenses.
+              </p>
+              <p class="threat-parallel">
+                <strong>Real-world parallel:</strong> Botnet attacks, coordinated vulnerability exploitation
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Apex-Tier Threats -->
+      <section class="section-tight" aria-labelledby="apex">
+        <div class="panel p-7 md:p-10 space-y-6">
+          <div>
+            <p class="text-xs uppercase tracking-[.18em] text-stardust/60">Apex-Tier Threats</p>
+            <h2 id="apex" class="font-display text-3xl md:text-4xl text-stardust mt-1">The Nightmares</h2>
+            <p class="mt-3 text-stardust/80 leading-relaxed max-w-3xl">
+              Beyond the common Glitchborne lurk entities of terrifying power. These apex predators are rare, but encounters with them are invariably catastrophic. The Lorekeeper's archives contain few complete records—most witnesses did not survive to provide testimony.
+            </p>
+          </div>
+
+          <div class="grid gap-4">
+            <!-- The Redactor -->
+            <div class="threat-card apex-card">
+              <span class="apex-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                Apex-Tier
+              </span>
+              <h3 class="threat-name">The Redactor</h3>
+              <p class="threat-description">
+                A memory predator of terrifying power. Unlike other Glitchborne that corrupt or destroy, The Redactor <em>consumes</em> and <em>erases</em>—leaving no trace, no backup, no recovery possibility. It manifests as a slithering shadow-mass with data-deletion tendrils. Where it passes, records blur and fade. Proximity causes memory degradation in living beings.
+              </p>
+              <p class="threat-parallel">
+                <strong>Real-world parallel:</strong> Sophisticated data destruction malware, targeted deletion attacks, evidence erasure operations
+              </p>
+            </div>
+
+            <!-- Memory Blooms -->
+            <div class="threat-card apex-card">
+              <span class="apex-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                Apex-Tier
+              </span>
+              <h3 class="threat-name">Memory Blooms</h3>
+              <p class="threat-description">
+                Sentient masses of half-formed, corrupted memories that lure victims by offering false emotional moments. They emerge when corrupted memory crystals are stored improperly, cross-contaminating until achieving malevolent semi-consciousness. Beautiful and terrible, they feed on emotional attachment and can overwrite core memories if victims accept their bargains.
+              </p>
+              <p class="threat-parallel">
+                <strong>Real-world parallel:</strong> Phishing exploiting emotional vulnerabilities, deepfakes, "too good to be true" recovery offers
+              </p>
+            </div>
+
+            <!-- The Echoes -->
+            <div class="threat-card apex-card">
+              <span class="apex-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                Apex-Tier
+              </span>
+              <h3 class="threat-name">The Echoes</h3>
+              <p class="threat-description">
+                Translucent, whispering remnants of deleted conversations and abandoned thoughts. Not truly conscious—more like corrupted recordings stuck on loop. Mostly harmless but unsettling. Found in abundance on the Isle of 404 and sites of major deletion events. Their presence often indicates something worse has passed through.
+              </p>
+              <p class="threat-parallel">
+                <strong>Real-world parallel:</strong> Cached data fragments, temp files, metadata shadows, digital footprints
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Closing -->
+      <section class="section-tight pb-14">
+        <div class="panel p-7 md:p-10 space-y-4 text-center">
+          <p class="text-xs uppercase tracking-[.2em] text-stardust/60">A Warning from the Archives</p>
+          <h2 class="font-display text-3xl md:text-4xl text-stardust">Know Your Enemy</h2>
+          <p class="text-stardust/85 leading-relaxed max-w-3xl mx-auto">
+            The Glitchborne evolve. They adapt. What worked against them yesterday may fail tomorrow. The Tower's archives exist not to provide certainty, but to offer patterns—glimpses of how threats have manifested before, so we might recognize them when they return wearing new faces.
+          </p>
+        </div>
+        <p class="mt-8 text-sm text-center text-stardust/65">
+          The Tower watches. The Kingdom defends. The Glitchborne hunger.
+        </p>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script>
+      async function injectPartial(id, url) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const res = await fetch(url, { cache: "no-cache" });
+        el.innerHTML = await res.text();
+      }
+
+      function initHeaderNav() {
+        const navToggle = document.getElementById("navToggle");
+        const mobileNavPanel = document.getElementById("mobileNavPanel");
+        if (!navToggle || !mobileNavPanel) return;
+
+        navToggle.addEventListener("click", () => {
+          const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+          navToggle.setAttribute("aria-expanded", String(!isOpen));
+          mobileNavPanel.classList.toggle("hidden", isOpen);
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            navToggle.setAttribute("aria-expanded", "false");
+            mobileNavPanel.classList.add("hidden");
+          }
+        });
+      }
+
+      (async () => {
+        await injectPartial("site-header", "/partials/header.html");
+        initHeaderNav();
+        
+        await injectPartial("site-footer", "/partials/footer.html");
+
+        const yearEl = document.getElementById("year");
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+      })();
+    </script>
+  </body>
+</html>

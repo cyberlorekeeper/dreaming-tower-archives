@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codex | The Dreaming Tower Archives</title>
+    <meta
+      name="description"
+      content="The Codex — how the Kingdom of Cipheria functions. Technology and magic intertwined, from glyphs and sigils to memory crystals and enchantments."
+    />
+
+    <!-- Favicons -->
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <style>
+      .codex-card {
+        background: rgba(10, 20, 27, 0.6);
+        border: 1px solid rgba(20, 53, 69, 0.5);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        transition: all 0.2s ease;
+      }
+      .codex-card:hover {
+        border-color: rgba(53, 198, 224, 0.4);
+        background: rgba(10, 20, 27, 0.75);
+      }
+      .codex-name {
+        font-family: 'Cinzel', serif;
+        font-size: 1.25rem;
+        color: #cfe5ef;
+        margin-bottom: 0.5rem;
+      }
+      .codex-description {
+        color: rgba(207, 229, 239, 0.85);
+        line-height: 1.7;
+        margin-bottom: 0.75rem;
+      }
+      .codex-parallel {
+        font-size: 0.8rem;
+        color: rgba(207, 229, 239, 0.55);
+        font-style: italic;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(20, 53, 69, 0.4);
+      }
+      .lorekeeper-quote {
+        background: rgba(10, 20, 27, 0.5);
+        border-left: 3px solid rgba(53, 198, 224, 0.5);
+        padding: 1.25rem 1.5rem;
+        border-radius: 0 0.5rem 0.5rem 0;
+        margin: 2rem 0;
+      }
+      .lorekeeper-quote p {
+        font-style: italic;
+        color: rgba(207, 229, 239, 0.9);
+        line-height: 1.7;
+      }
+      .lorekeeper-quote cite {
+        display: block;
+        margin-top: 0.75rem;
+        font-size: 0.85rem;
+        color: rgba(207, 229, 239, 0.6);
+        font-style: normal;
+      }
+      .guild-card {
+        background: linear-gradient(135deg, rgba(10, 20, 27, 0.7) 0%, rgba(20, 40, 50, 0.5) 100%);
+        border: 1px solid rgba(53, 198, 224, 0.2);
+      }
+      .guild-card:hover {
+        border-color: rgba(53, 198, 224, 0.4);
+      }
+      .guild-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: rgba(53, 198, 224, 0.9);
+        background: rgba(53, 198, 224, 0.15);
+        padding: 0.25rem 0.6rem;
+        border-radius: 9999px;
+        margin-bottom: 0.75rem;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen page-cipheria">
+    <div id="site-header"></div>
+
+    <main class="mx-auto max-w-6xl px-6">
+      <!-- Hero -->
+      <section class="section-tight pt-10 md:pt-14">
+        <div class="space-y-6 max-w-4xl">
+          <div class="inline-flex items-center gap-2 rounded-full border border-stardust/15 bg-abyss/70 px-3 py-1 text-xs uppercase tracking-[.2em] text-stardust/70">
+            <span class="inline-block h-2 w-2 rounded-full bg-glow"></span>
+            World — Codex
+          </div>
+
+          <div class="space-y-3">
+            <h1 class="font-display text-4xl leading-[1.05] tracking-wide sm:text-5xl text-gradient-world">
+              The Codex
+            </h1>
+            <p class="text-lg text-stardust/90 leading-relaxed max-w-3xl">
+              How the Kingdom functions. In Cipheria, technology and magic are not separate disciplines but intertwined aspects of the same underlying reality. The same principles that govern enchantments also govern the flow of information through the realm's infrastructure.
+            </p>
+          </div>
+
+          <div class="lorekeeper-quote">
+            <p>"Understanding how our systems work is the first step toward protecting them. The enemy studies our methods constantly—we must know them better."</p>
+            <cite>— The Lorekeeper</cite>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technology & Magic -->
+      <section class="section-tight" aria-labelledby="tech-magic">
+        <div class="panel p-7 md:p-10 space-y-6">
+          <div>
+            <p class="text-xs uppercase tracking-[.18em] text-stardust/60">Fundamentals</p>
+            <h2 id="tech-magic" class="font-display text-3xl md:text-4xl text-stardust mt-1">Technology & Magic</h2>
+            <p class="mt-3 text-stardust/80 leading-relaxed max-w-3xl">
+              The tools and systems that power the Kingdom's infrastructure. Each serves a specific purpose in the realm's defense and daily operations.
+            </p>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-2">
+            <!-- Glyphs and Sigils -->
+            <div class="codex-card">
+              <h3 class="codex-name">Glyphs and Sigils</h3>
+              <p class="codex-description">
+                Visual representations of code, scripts, and configurations. Written, carved, or projected, they form the basis of the Kingdom's magical-technical infrastructure. A skilled glyph-writer can create complex automated processes; a corrupted sigil can bring systems crashing down.
+              </p>
+              <p class="codex-parallel">
+                <strong>Real-world parallel:</strong> Code, scripts, configuration files
+              </p>
+            </div>
+
+            <!-- Monitoring Crystals -->
+            <div class="codex-card">
+              <h3 class="codex-name">Monitoring Crystals</h3>
+              <p class="codex-description">
+                Devices that display system status, communications, and alerts. Found throughout the Kingdom, with the most sophisticated array in the Tower's Observatory. The Sentinel Order spends their shifts watching these crystals for signs of trouble.
+              </p>
+              <p class="codex-parallel">
+                <strong>Real-world parallel:</strong> Dashboards, monitoring tools, status displays
+              </p>
+            </div>
+
+            <!-- Memory Crystals -->
+            <div class="codex-card">
+              <h3 class="codex-name">Memory Crystals</h3>
+              <p class="codex-description">
+                Storage devices that hold data, records, and sometimes actual memories. Can be corrupted, creating dangerous side effects—including the emergence of Memory Blooms when improperly stored crystals cross-contaminate. The Tower's archives contain memory crystals dating back centuries.
+              </p>
+              <p class="codex-parallel">
+                <strong>Real-world parallel:</strong> Storage media, databases
+              </p>
+            </div>
+
+            <!-- Ledger Crystals -->
+            <div class="codex-card">
+              <h3 class="codex-name">Ledger Crystals</h3>
+              <p class="codex-description">
+                Specialized crystals showing real-time economic data. Merchant-Lord Cassia carries one constantly, its surface flickering with transaction volumes, trade flows, and market indicators. Invaluable for understanding the Kingdom's economic health at a glance.
+              </p>
+              <p class="codex-parallel">
+                <strong>Real-world parallel:</strong> Financial dashboards, transaction monitoring
+              </p>
+            </div>
+
+            <!-- Enchantments -->
+            <div class="codex-card">
+              <h3 class="codex-name">Enchantments</h3>
+              <p class="codex-description">
+                Magical protections applied to systems, structures, and objects. Security controls made manifest. Enchantments range from simple access restrictions to complex ward matrices that can detect and respond to threats autonomously.
+              </p>
+              <p class="codex-parallel">
+                <strong>Real-world parallel:</strong> Security controls, access restrictions, encryption
+              </p>
+            </div>
+
+            <!-- The Command Seal -->
+            <div class="codex-card">
+              <h3 class="codex-name">The Command Seal</h3>
+              <p class="codex-description">
+                High Commander Valdris's artifact that activates emergency protocols and authenticates his authority during crises. When the Seal is invoked, the entire defense apparatus of the Kingdom responds. Used sparingly—its activation signals that normal procedures have failed.
+              </p>
+              <p class="codex-parallel">
+                <strong>Real-world parallel:</strong> Emergency access credentials, break-glass procedures
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Guilds & Orders -->
+      <section class="section-tight" aria-labelledby="guilds">
+        <div class="panel p-7 md:p-10 space-y-6">
+          <div>
+            <p class="text-xs uppercase tracking-[.18em] text-stardust/60">Organizations</p>
+            <h2 id="guilds" class="font-display text-3xl md:text-4xl text-stardust mt-1">Guilds & Orders</h2>
+            <p class="mt-3 text-stardust/80 leading-relaxed max-w-3xl">
+              The specialized organizations that keep the Kingdom running. Each guild maintains expertise in a specific domain, and coordination between them is essential for effective defense.
+            </p>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-2">
+            <!-- Wardens of the Wall -->
+            <div class="codex-card guild-card">
+              <span class="guild-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                Defense Guild
+              </span>
+              <h3 class="codex-name">Wardens of the Wall</h3>
+              <p class="codex-description">
+                The Kingdom's perimeter defense force, responsible for maintaining the outer barriers and gates. They are the first line of defense against external threats, controlling what enters and exits the realm.
+              </p>
+              <p class="codex-parallel">
+                <strong>Real-world parallel:</strong> Firewall administrators, perimeter security teams
+              </p>
+            </div>
+
+            <!-- Sentinel Order -->
+            <div class="codex-card guild-card">
+              <span class="guild-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <line x1="21.17" y1="8" x2="12" y2="8"/>
+                  <line x1="3.95" y1="6.06" x2="8.54" y2="14"/>
+                  <line x1="10.88" y1="21.94" x2="15.46" y2="14"/>
+                </svg>
+                Defense Guild
+              </span>
+              <h3 class="codex-name">Sentinel Order</h3>
+              <p class="codex-description">
+                The Kingdom's monitoring specialists. Sentinels watch the monitoring crystals around the clock, analyzing patterns, detecting anomalies, and raising alerts. Their vigilance is the Kingdom's early warning system.
+              </p>
+              <p class="codex-parallel">
+                <strong>Real-world parallel:</strong> Security Operations Center (SOC), threat monitoring teams
+              </p>
+            </div>
+
+            <!-- Cipher Monks -->
+            <div class="codex-card guild-card">
+              <span class="guild-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                Specialist Guild
+              </span>
+              <h3 class="codex-name">Cipher Monks</h3>
+              <p class="codex-description">
+                Masters of encryption and secure communication. The Cipher Monks maintain the Kingdom's cryptographic infrastructure, ensuring that sensitive information remains protected even if intercepted. Led by the eccentric Cipher-Master Veila.
+              </p>
+              <p class="codex-parallel">
+                <strong>Real-world parallel:</strong> Cryptography teams, PKI administrators
+              </p>
+            </div>
+
+            <!-- Guild of Archivists -->
+            <div class="codex-card guild-card">
+              <span class="guild-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+                Support Guild
+              </span>
+              <h3 class="codex-name">Guild of Archivists</h3>
+              <p class="codex-description">
+                Keepers of the Kingdom's records and backups. Archivists ensure that critical data is preserved, replicated, and recoverable. When disaster strikes, it's the Archivists who restore what was lost—if restoration is possible.
+              </p>
+              <p class="codex-parallel">
+                <strong>Real-world parallel:</strong> Data management, backup and recovery teams
+              </p>
+            </div>
+
+            <!-- Compliance Scribes -->
+            <div class="codex-card guild-card">
+              <span class="guild-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 11l3 3L22 4"/>
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                </svg>
+                Support Guild
+              </span>
+              <h3 class="codex-name">Compliance Scribes</h3>
+              <p class="codex-description">
+                The Kingdom's auditors and record-keepers of adherence. Compliance Scribes ensure that security practices meet established standards, document exceptions, and provide evidence when the Council needs to understand what went wrong.
+              </p>
+              <p class="codex-parallel">
+                <strong>Real-world parallel:</strong> Audit teams, compliance officers, GRC specialists
+              </p>
+            </div>
+
+            <!-- Access Keepers -->
+            <div class="codex-card guild-card">
+              <span class="guild-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+                </svg>
+                Specialist Guild
+              </span>
+              <h3 class="codex-name">Access Keepers</h3>
+              <p class="codex-description">
+                Controllers of identity and authorization. Access Keepers verify credentials, manage permissions, and ensure that only authorized individuals can reach sensitive areas and systems. The gate guards of the digital realm.
+              </p>
+              <p class="codex-parallel">
+                <strong>Real-world parallel:</strong> Identity and Access Management (IAM) teams
+              </p>
+            </div>
+
+            <!-- Patch Smiths -->
+            <div class="codex-card guild-card">
+              <span class="guild-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+                Specialist Guild
+              </span>
+              <h3 class="codex-name">Patch Smiths</h3>
+              <p class="codex-description">
+                The Kingdom's vulnerability managers. Patch Smiths identify weaknesses in the realm's infrastructure and apply fixes before enemies can exploit them. They wage constant war against Rot, knowing that unpatched systems invite disaster.
+              </p>
+              <p class="codex-parallel">
+                <strong>Real-world parallel:</strong> Vulnerability management, patch management teams
+              </p>
+            </div>
+
+            <!-- Protocol Engineers -->
+            <div class="codex-card guild-card">
+              <span class="guild-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+                Specialist Guild
+              </span>
+              <h3 class="codex-name">Protocol Engineers</h3>
+              <p class="codex-description">
+                Architects of the Kingdom's communication infrastructure. Protocol Engineers design and maintain the pathways through which information flows, ensuring reliability, security, and efficiency across all connected systems.
+              </p>
+              <p class="codex-parallel">
+                <strong>Real-world parallel:</strong> Network architects, infrastructure engineers
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Closing -->
+      <section class="section-tight pb-14">
+        <div class="panel p-7 md:p-10 space-y-4 text-center">
+          <p class="text-xs uppercase tracking-[.2em] text-stardust/60">The Foundation of Defense</p>
+          <h2 class="font-display text-3xl md:text-4xl text-stardust">Knowledge is Protection</h2>
+          <p class="text-stardust/85 leading-relaxed max-w-3xl mx-auto">
+            Every system, every guild, every enchantment exists for a purpose. Understanding how they work together—and how they can fail—is essential for anyone who would defend the Kingdom. The Codex grows with each crisis survived, each lesson learned.
+          </p>
+        </div>
+        <p class="mt-8 text-sm text-center text-stardust/65">
+          The Tower records. The Kingdom learns. The defenses strengthen.
+        </p>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script>
+      async function injectPartial(id, url) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const res = await fetch(url, { cache: "no-cache" });
+        el.innerHTML = await res.text();
+      }
+
+      function initHeaderNav() {
+        const navToggle = document.getElementById("navToggle");
+        const mobileNavPanel = document.getElementById("mobileNavPanel");
+        if (!navToggle || !mobileNavPanel) return;
+
+        navToggle.addEventListener("click", () => {
+          const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+          navToggle.setAttribute("aria-expanded", String(!isOpen));
+          mobileNavPanel.classList.toggle("hidden", isOpen);
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            navToggle.setAttribute("aria-expanded", "false");
+            mobileNavPanel.classList.add("hidden");
+          }
+        });
+      }
+
+      (async () => {
+        await injectPartial("site-header", "/partials/header.html");
+        initHeaderNav();
+        
+        await injectPartial("site-footer", "/partials/footer.html");
+
+        const yearEl = document.getElementById("year");
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+      })();
+    </script>
+  </body>
+</html>
