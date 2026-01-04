@@ -30,16 +30,23 @@
       <a class="hover:text-glow underline-offset-4 hover:underline" href="/characters/">Characters</a>
 
       <!-- The World dropdown -->
-      <div class="absolute pointer-events-auto z-50 left-0 top-full mt-2 hidden min-w-[220px] rounded-lg border border-rift/60 bg-abyss/90 p-2 shadow-card backdrop-blur-md group-hover:block group-focus-within:block">
-        <a href="/world/cipheria.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow" role="menuitem">
-          Cipheria's History
+      <div class="relative group" id="worldMenuWrap">
+        <a href="/world/" class="inline-flex items-center gap-1 hover:text-glow underline-offset-4 hover:underline">
+          The World <span aria-hidden="true">▾</span>
         </a>
-        <a href="/world/bestiary.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow" role="menuitem">
-          Bestiary
-        </a>
-        <a href="/world/codex.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow" role="menuitem">
-          Codex
-        </a>
+
+        <!-- Hover buffer -->
+        <div class="absolute left-0 top-full h-2 w-full"></div>
+
+        <div class="absolute pointer-events-auto z-50 left-0 top-full mt-2 hidden min-w-[220px] rounded-lg border border-rift/60 bg-abyss/90 p-2 shadow-card backdrop-blur-md group-hover:block group-focus-within:block">
+
+          <a href="/world/codex.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow" role="menuitem">
+            Codex
+          </a>
+          <a href="/world/bestiary.html" class="block rounded-md px-3 py-2 hover:bg-rift/40 hover:text-glow" role="menuitem">
+            Bestiary
+          </a>
+        </div>
       </div>
 
       <a class="hover:text-glow underline-offset-4 hover:underline" href="/author.html">Author</a>
@@ -67,14 +74,15 @@
       </a>
   
       <!-- The World (link + sections) -->
-      <div class="rounded-lg border border-rift/60 bg-abyss/30 p-3">
-        <a href="/world.html" class="block font-semibold text-stardust/90 hover:text-glow underline underline-offset-4">
+      <div>
+        <a
+          href="/world.html"
+          class="block font-semibold text-stardust/90 hover:text-glow underline underline-offset-4"
+        >
           The World
         </a>
+  
         <div class="mt-2 flex flex-col gap-2 pl-4 text-sm">
-          <a href="/world/cipheria.html" class="text-stardust/70 hover:text-glow">
-            Cipheria's History
-          </a>
           <a href="/world/bestiary.html" class="text-stardust/70 hover:text-glow">
             Bestiary
           </a>
