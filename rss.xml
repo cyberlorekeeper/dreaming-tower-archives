@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" 
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:tower="https://www.cyberlorekeeper.com/rss/tower">
+  <channel>
+    <title>The Dreaming Tower Archives</title>
+    <link>https://www.cyberlorekeeper.com</link>
+    <description>Tales from the Digital Realm — Cybersecurity wisdom through fantasy storytelling. Follow the Secret Council of the Kingdom of Cipheria as they defend against threats that mirror our modern digital challenges.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 Jan 2026 20:04:32 GMT</lastBuildDate>
+    <atom:link href="https://www.cyberlorekeeper.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://www.cyberlorekeeper.com/images/favicon-96x96.png</url>
+      <title>The Dreaming Tower Archives</title>
+      <link>https://www.cyberlorekeeper.com</link>
+    </image>
+    
+    <item>
+      <title>The Choice Between Walls</title>
+      <link>https://www.cyberlorekeeper.com/chronicles/choice-between-walls.html</link>
+      <description>The Unraveler doesn&apos;t breach systems—it unravels the trust that holds them together. When subtle inconsistencies begin spreading through the Kingdom&apos;s records, Queen Lyra faces three impossible choices: quarantine and cripple the Kingdom, hunt openly and accelerate the doubt, or use the forbidden Forgetting Protocol to reset everyone&apos;s memory and hunt the entity in secret.</description>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://www.cyberlorekeeper.com/chronicles/choice-between-walls.html</guid>
+      <category>Council Chronicle</category>
+      <tower:theme>Integrity Attack / Crisis Decision-Making</tower:theme>
+      <tower:threat>The Unraveler</tower:threat>
+      <tower:featuring>Queen Lyra, The Lorekeeper, Valdris, Cassia &amp; Shade</tower:featuring>
+      <tower:readTime>12 minutes</tower:readTime>
+      <tower:hasAnalysis>true</tower:hasAnalysis>
+    </item>
+    
+    <item>
+      <title>The Breach at Merchant&apos;s Gate</title>
+      <link>https://www.cyberlorekeeper.com/chronicles/merchants-gate.html</link>
+      <description>A routine security assessment reveals how a single compromised credential can cascade through interconnected systems. The Secret Council must balance commerce and security as darkness spreads through the trade networks.</description>
+      <pubDate>Mon, 15 Dec 2025 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://www.cyberlorekeeper.com/chronicles/merchants-gate.html</guid>
+      <category>Council Chronicle</category>
+      <tower:theme>Credential Security</tower:theme>
+      <tower:threat>Credential Compromise</tower:threat>
+      <tower:featuring>The Lorekeeper, Queen Lyra, Valdris &amp; Cassia</tower:featuring>
+      <tower:readTime>15 minutes</tower:readTime>
+      <tower:hasAnalysis>true</tower:hasAnalysis>
+      <tower:lorekeeperNote>A single key, carelessly kept, can open more doors than its holder ever imagined. The merchants learned this lesson at great cost.</tower:lorekeeperNote>
+    </item>
+    
+  </channel>
+</rss>
