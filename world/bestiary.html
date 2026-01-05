@@ -310,41 +310,50 @@
     <div id="site-footer"></div>
 
     <script>
-      async function injectPartial(id, url) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const res = await fetch(url, { cache: "no-cache" });
-        el.innerHTML = await res.text();
+      async function loadPartial(targetId, url) {
+      const el = document.getElementById(targetId);
+      if (!el) return;
+  
+      const res = await fetch(url, { cache: "no-cache" });
+      if (!res.ok) {
+        console.warn(`Failed to load ${url}`);
+        return;
       }
-
-      function initHeaderNav() {
-        const navToggle = document.getElementById("navToggle");
-        const mobileNavPanel = document.getElementById("mobileNavPanel");
-        if (!navToggle || !mobileNavPanel) return;
-
-        navToggle.addEventListener("click", () => {
-          const isOpen = navToggle.getAttribute("aria-expanded") === "true";
-          navToggle.setAttribute("aria-expanded", String(!isOpen));
-          mobileNavPanel.classList.toggle("hidden", isOpen);
-        });
-
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") {
-            navToggle.setAttribute("aria-expanded", "false");
-            mobileNavPanel.classList.add("hidden");
-          }
-        });
-      }
-
-      (async () => {
-        await injectPartial("site-header", "/partials/header.html");
-        initHeaderNav();
-        
-        await injectPartial("site-footer", "/partials/footer.html");
-
-        const yearEl = document.getElementById("year");
-        if (yearEl) yearEl.textContent = new Date().getFullYear();
-      })();
+      el.innerHTML = await res.text();
+    }
+  
+    function initHeaderNav() {
+      const navToggle = document.getElementById("navToggle");
+      const mobileNavPanel = document.getElementById("mobileNavPanel");
+  
+      if (!navToggle || !mobileNavPanel) return;
+  
+      navToggle.addEventListener("click", () => {
+        const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!isOpen));
+        mobileNavPanel.classList.toggle("hidden", isOpen);
+      });
+  
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          navToggle.setAttribute("aria-expanded", "false");
+          mobileNavPanel.classList.add("hidden");
+        }
+      });
+    }
+  
+    function initFooterYear() {
+      const year = document.getElementById("year");
+      if (year) year.textContent = new Date().getFullYear();
+    }
+  
+    (async function boot() {
+      await loadPartial("site-header", "/partials/header.html");
+      initHeaderNav();
+  
+      await loadPartial("site-footer", "/partials/footer.html");
+      initFooterYear();
+    })();
     </script>
   </body>
 </html>
