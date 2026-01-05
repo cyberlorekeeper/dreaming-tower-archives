@@ -328,66 +328,42 @@
         el.innerHTML = await res.text();
       }
 
-      function initHeaderNav() {
-        const navToggle = document.getElementById("navToggle");
-        const mobileNavPanel = document.getElementById("mobileNavPanel");
-        if (!navToggle || !mobileNavPanel) return;
-
-        navToggle.addEventListener("click", () => {
-          const isOpen = navToggle.getAttribute("aria-expanded") === "true";
-          navToggle.setAttribute("aria-expanded", String(!isOpen));
-          mobileNavPanel.classList.toggle("hidden", isOpen);
-        });
-
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") {
-            navToggle.setAttribute("aria-expanded", "false");
-            mobileNavPanel.classList.add("hidden");
+      // ---------- Boot ----------
+      (async function boot() {
+        // Load header first so nav elements exist when we bind listeners
+        await loadPartial("site-header", "/partials/header.html");
+        initHeaderNav();
+    
+        // Load footer, then update year if present
+        await loadPartial("site-footer", "/partials/footer.html");
+        initFooterYear();
+    
+        // Now init page-specific features
+        initStoryAnalysisToggle();
+        
+        // Return to Top button
+        initReturnToTop();
+      })();
+    
+      function initReturnToTop() {
+        const returnToTopBtn = document.getElementById('returnToTop');
+        
+        if (!returnToTopBtn) return;
+    
+        // Show/hide based on scroll position
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 400) {
+            returnToTopBtn.classList.remove('hidden');
+          } else {
+            returnToTopBtn.classList.add('hidden');
           }
+        }, { passive: true });
+    
+        // Scroll to top on click
+        returnToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
-
-      function initFooterYear() {
-      const year = document.getElementById("year");
-      if (year) year.textContent = new Date().getFullYear();
-    }
-  
-    // ---------- Boot ----------
-    (async function boot() {
-      // Load header first so nav elements exist when we bind listeners
-      await loadPartial("site-header", "/partials/header.html");
-      initHeaderNav();
-  
-      // Load footer, then update year if present
-      await loadPartial("site-footer", "/partials/footer.html");
-      initFooterYear();
-  
-      // Now init page-specific features
-      initStoryAnalysisToggle();
-      
-      // Return to Top button
-      initReturnToTop();
-    })();
-  
-    function initReturnToTop() {
-      const returnToTopBtn = document.getElementById('returnToTop');
-      
-      if (!returnToTopBtn) return;
-  
-      // Show/hide based on scroll position
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 400) {
-          returnToTopBtn.classList.remove('hidden');
-        } else {
-          returnToTopBtn.classList.add('hidden');
-        }
-      }, { passive: true });
-  
-      // Scroll to top on click
-      returnToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-  </script>
+    </script>
   </body>
 </html>
