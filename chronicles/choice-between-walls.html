@@ -559,18 +559,7 @@
     </script>
   <div id="site-footer"></div>
 </main>
-
-<button 
-    id="returnToTop" 
-    class="fixed bottom-6 right-6 z-50 hidden focus-ring rounded-full bg-abyss/90 border border-rift/60 p-3 shadow-glow hover:border-glow/60 hover:bg-abyss transition-all group"
-    aria-label="Return to top"
-    title="Return to top">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-stardust/80 group-hover:text-glow transition-colors">
-      <polyline points="18 15 12 9 6 15"/>
-    </svg>
-  </button>
-
-      <script>
+    <script>
       (function() {
         // Handle newsletter subscription
         const form = document.getElementById('subscribe-form');
@@ -661,18 +650,6 @@
     </script>
   <div id="site-footer"></div>
 </main>
-
-  <!-- Return to Top Button -->
-  <button 
-    id="returnToTop" 
-    class="fixed bottom-6 right-6 z-50 hidden focus-ring rounded-full bg-abyss/90 border border-rift/60 p-3 shadow-glow hover:border-glow/60 hover:bg-abyss transition-all group"
-    aria-label="Return to top"
-    title="Return to top">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-stardust/80 group-hover:text-glow transition-colors">
-      <polyline points="18 15 12 9 6 15"/>
-    </svg>
-  </button>
-
   <script>
   // ---------- Utilities ----------
   async function loadPartial(targetId, url) {
@@ -778,25 +755,6 @@
     // Return to Top button
     initReturnToTop();
   })();
-
-  function initReturnToTop() {
-    const returnToTopBtn = document.getElementById('returnToTop');
-    
-    if (!returnToTopBtn) return;
-
-    // Show/hide based on scroll position
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) {
-        returnToTopBtn.classList.remove('hidden');
-      } else {
-        returnToTopBtn.classList.add('hidden');
-      }
-    }, { passive: true });
-
-    // Scroll to top on click
-    returnToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
   }
 </script>
 </body>
