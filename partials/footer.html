@@ -9,25 +9,6 @@
   </svg>
 </button>
 
-<script>
-(function() {
-  const returnToTopBtn = document.getElementById('returnToTop');
-  if (!returnToTopBtn) return;
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-      returnToTopBtn.classList.remove('hidden');
-    } else {
-      returnToTopBtn.classList.add('hidden');
-    }
-  }, { passive: true });
-
-  returnToTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-</script>
-
 <footer class="relative z-20 mx-auto max-w-7xl px-6 py-16 text-center">
   <p class="text-sm text-stardust/70">
     © <span id="year"></span> The Cyber Lorekeeper
@@ -38,23 +19,32 @@
   </p>
 
   <div class="mt-4 flex justify-center gap-4 text-xs text-stardust/65">
-    <a href="/subscribe/" class="hover:text-glow">Subscribe</a>
+    <a href="#subscribe" class="hover:text-glow">Subscribe</a>
     <span>•</span>
-    <a href="/author/" class="hover:text-glow">About the Author</a>
+    <a href="/author.html" class="hover:text-glow">About the Author</a>
   </div>
 </footer>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
- 
-  const navToggle = document.getElementById('navToggle');
-  const mobileNavPanel = document.getElementById('mobileNavPanel');
+  // Year
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  if (navToggle && mobileNavPanel) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!isOpen));
-      mobileNavPanel.classList.toggle('hidden', isOpen);
+  // Return to Top - use setTimeout to ensure DOM is ready after injection
+  setTimeout(() => {
+    const returnToTopBtn = document.getElementById('returnToTop');
+    if (!returnToTopBtn) return;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        returnToTopBtn.classList.remove('hidden');
+      } else {
+        returnToTopBtn.classList.add('hidden');
+      }
+    }, { passive: true });
+
+    returnToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-  }
+  }, 0);
 </script>
