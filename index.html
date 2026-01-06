@@ -251,13 +251,10 @@
           <!-- Name and Email Row -->
           <div class="grid gap-3 sm:grid-cols-2">
             <div>
-              <label class="sr-only" for="fullName">Your Name</label>
-              <input id="fullName" type="text"
+              <label class="sr-only" for="name">First Name</label>
+              <input id="name" name="name" type="text"
                 class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
                 placeholder="Your name (optional)"/>
-              <!-- Hidden fields for Netlify/Mailchimp -->
-              <input type="hidden" name="first_name" id="firstName" />
-              <input type="hidden" name="last_name" id="lastName" />
             </div>
             
             <div>
@@ -271,6 +268,7 @@
           <button type="submit" id="subscribe-button" class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed">
             Join the Archive
           </button>
+        </form>
     
         <p class="mt-3 text-center text-xs text-stardust/65">
           No spam. Just dispatches from the Dreaming Tower when new Chronicles are released.
@@ -290,19 +288,7 @@
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
     
-          // Split full name into first/last
-          const fullNameInput = document.getElementById('fullName');
-          const firstNameInput = document.getElementById('firstName');
-          const lastNameInput = document.getElementById('lastName');
-          
-          if (fullNameInput && firstNameInput && lastNameInput) {
-            const fullName = fullNameInput.value.trim();
-            const nameParts = fullName.split(/\s+/); // Split on whitespace
-            firstNameInput.value = nameParts[0] || '';
-            lastNameInput.value = nameParts.slice(1).join(' ') || '';
-          }
-
-          // Get form data (now includes populated hidden fields)
+          // Get form data
           const formData = new FormData(form);
     
           // Disable button and show loading state
