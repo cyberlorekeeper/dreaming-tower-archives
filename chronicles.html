@@ -115,17 +115,45 @@
               Join the Tower's list and receive a raven when new tales and excerpts are released.
             </p>
           </div>
-          <form name="chronicle-subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html"
-                class="grid gap-3 sm:grid-cols-[1fr_auto]">
+          <div class="mt-8 mx-auto max-w-xl scroll-mt-24">
+          <!-- Success Message (hidden by default) -->
+          <div id="subscribe-success" class="hidden mb-4 rounded-md bg-nebula/20 border border-glow/40 px-6 py-4 text-center backdrop-blur transition-opacity duration-500">
+            <p class="text-glow font-semibold">📜 Inscription Complete</p>
+            <p class="mt-1 text-sm text-stardust/85">Your name has been added to the Tower's registry.</p>
+          </div>
+      
+          <!-- Error Message (hidden by default) -->
+          <div id="subscribe-error" class="hidden mb-4 rounded-md border border-red-400/60 bg-red-400/10 px-6 py-4 text-center backdrop-blur transition-opacity duration-500">
+            <p class="text-red-400 font-semibold">⚠ Something went wrong</p>
+            <p class="mt-1 text-sm text-stardust/85">Please try again or contact us if the problem persists.</p>
+          </div>
+          
+          <form id="chronicle-subscribe-form" name="chronicle-subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+                class="grid gap-3">
             <input type="hidden" name="form-name" value="chronicle-subscribe" />
             <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
             
-            <label class="sr-only" for="email">Email</label>
-            <input id="email" name="email" type="email" required
-                   class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
-                   placeholder="you@realm.co" />
-            <button type="submit"
-                    class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110">
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div>
+                <label class="sr-only" for="chronicle-fullName">Your Name</label>
+                <input id="chronicle-fullName" type="text"
+                       class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
+                       placeholder="Your name (optional)" />
+                <!-- Hidden fields for Netlify/Mailchimp -->
+                <input type="hidden" name="first_name" id="chronicle-firstName" />
+                <input type="hidden" name="last_name" id="chronicle-lastName" />
+              </div>
+              
+              <div>
+                <label class="sr-only" for="chronicle-email">Email</label>
+                <input id="chronicle-email" name="email" type="email" required
+                       class="focus-ring w-full rounded-md border border-rift/60 bg-deep-space/60 px-4 py-3 placeholder:text-stardust/60 text-stardust"
+                       placeholder="you@realm.co" />
+              </div>
+            </div>
+            
+            <button type="submit" id="chronicle-subscribe-button"
+                    class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed">
               Subscribe
             </button>
           </form>
@@ -154,6 +182,27 @@
     function initHeaderNav() {
       const navToggle = document.getElementById("navToggle");
       const mobileNavPanel = document.getElementById("mobileNavPanel");
+   
+    // Chronicle subscribe form - name splitting
+    (function() {
+      const form = document.getElementById('chronicle-subscribe-form');
+      if (!form) return;
+
+      form.addEventListener('submit', function(e) {
+        const fullNameInput = document.getElementById('chronicle-fullName');
+        const firstNameInput = document.getElementById('chronicle-firstName');
+        const lastNameInput = document.getElementById('chronicle-lastName');
+        
+        if (fullNameInput && firstNameInput && lastNameInput) {
+          const fullName = fullNameInput.value.trim();
+          const nameParts = fullName.split(/\s+/);
+          firstNameInput.value = nameParts[0] || '';
+          lastNameInput.value = nameParts.slice(1).join(' ') || '';
+        }
+        // Form continues to submit normally to Netlify
+      });
+    })();
+      
       if (!navToggle || !mobileNavPanel) return;
 
       navToggle.addEventListener("click", () => {
