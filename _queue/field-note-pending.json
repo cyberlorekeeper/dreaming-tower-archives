@@ -1,0 +1,92 @@
+{
+  "selected_articles": [
+    {
+      "original_title": "South Korean giant Kyowon confirms data theft in ransomware attack",
+      "original_url": "https://www.bleepingcomputer.com/news/security/south-korean-giant-kyowon-confirms-data-theft-in-ransomware-attack/",
+      "selection_reasoning": "A major conglomerate falling to ransomware demonstrates the universal pattern of corruption holding kingdoms hostage - regardless of size or resources, inadequate preparation leads to similar outcomes",
+      "field_note": {
+        "title": "The Corruption That Holds Kingdoms Hostage",
+        "subtitle": "When Even Giants Fall to the Ancient Pattern",
+        "readTime": 3,
+        "excerpt": "Size and prosperity offer no immunity when the fundamental wards remain weak.",
+        "tags": ["ransomware", "breach", "corruption"],
+        "epigraph": "The mightiest fortress falls not to siege engines, but to the <em>corruption</em> that spreads within unguarded halls.",
+        "body_paragraphs": [
+          "A great conglomerate of the eastern kingdoms has confirmed what the Lorekeeper has witnessed countless times across the ages: corruption cares not for the size of your treasury or the span of your influence. The entity known for its vast educational and publishing empire found its operations disrupted, its ledgers compromised, and its people's trust shaken by the same dark enchantment that has felled merchant guilds and village councils alike.",
+          "The pattern remains unchanged—malevolent forces infiltrate the pathways, seize the most precious records, and demand tribute for their return. What strikes the observer is not the novelty of the attack, but its inevitability. Like water finding every crack in a dam, these corruptions flow toward the places where protective wards have grown thin through neglect or overconfidence.",
+          "This particular corruption appears to have achieved what the invaders truly sought: not merely disruption, but the theft of memories themselves. Customer records, those intimate ledgers of trust between kingdom and citizen, have been spirited away to unknown vaults. The admission comes reluctantly, as it always does, after the fires have already spread through the archive halls.",
+          "The Lorekeeper notes with familiar sadness how prosperity breeds its own vulnerabilities. Large kingdoms, confident in their established trade routes and proven systems, often fail to strengthen their wards against evolving threats. They fortify against yesterday's siege engines while tomorrow's corruption seeps through unguarded doorways.",
+          "As always, the citizens bear the burden of their leaders' unpreparedness. Their personal histories, their transactions and trust, become currency in markets they never agreed to enter. The kingdom must now rebuild not only its defenses but the more precious commodity of public faith—a reconstruction that takes far longer than any physical restoration."
+        ],
+        "has_hr": true,
+        "slug": "corruption-holds-kingdoms-hostage"
+      }
+    },
+    {
+      "original_title": "France fines Free Mobile €42 million over 2024 data breach incident",
+      "original_url": "https://www.bleepingcomputer.com/news/security/france-fines-free-mobile-42-million-over-2024-data-breach-incident/",
+      "selection_reasoning": "Shows the consequences of inadequate protection and regulatory accountability - a cautionary tale about the cost of failing to maintain proper defenses",
+      "field_note": {
+        "title": "The Price of Broken Trust",
+        "subtitle": "When Guardians Demand Accounting for Failed Wards",
+        "readTime": 3,
+        "excerpt": "The realm's protectors have spoken: negligence in safeguarding the people's memories comes with a price measured in gold.",
+        "tags": ["breach", "regulation", "accountability"],
+        "epigraph": "A kingdom's true wealth lies not in its coffers, but in the <em>trust</em> of those it pledges to protect.",
+        "body_paragraphs": [
+          "The High Council of the western realms has rendered its judgment, and the gavel's weight is measured in millions of gold pieces. A great communications guild that promised swift and secure message-carrying to its citizens has been found wanting in its most sacred duty—the protection of personal records entrusted to its care.",
+          "The sum is substantial: forty-two million pieces of gold, extracted not in fury but in measured justice. The Council's investigation revealed what the Lorekeeper has observed in kingdoms throughout history—when protective enchantments grow weak through neglect, the consequences ripple far beyond the initial breach. Here was inadequate warding against known threats, insufficient monitoring of the pathways, and delays in detecting the intrusion that cost precious time.",
+          "What makes this judgment particularly instructive is its precedent-setting nature. The Council did not merely fine the guild for the breach itself, but for the fundamental failure to maintain adequate protections against cyber threats. This distinction matters greatly—it transforms the conversation from accident to accountability, from misfortune to negligence.",
+          "The guild's response reveals the eternal tension between cost and security. Like castle builders who scrimp on the thickness of walls to save on stone, communications networks often allocate insufficient resources to protective wards, gambling that threats will strike elsewhere. The western realm's judgment makes clear this gamble carries quantifiable risks.",
+          "For the Lorekeeper, this represents a hopeful evolution in the ancient patterns. Where once breached organizations faced only reputational damage and citizen exodus, now they face direct financial consequence proportional to their failure. The Council's message echoes through the halls of every guild: the cost of inadequate protection is no longer a future possibility but a present calculation."
+        ],
+        "has_hr": true,
+        "slug": "price-of-broken-trust"
+      }
+    },
+    {
+      "original_title": "Critical Node.js Vulnerability Can Cause Server Crashes via async_hooks Stack Overflow",
+      "original_url": "https://thehackernews.com/2026/01/critical-nodejs-vulnerability-can-cause.html",
+      "selection_reasoning": "Affects virtually every production app using this foundation - shows how fundamental infrastructure flaws can impact entire ecosystems, creating widespread vulnerabilities",
+      "field_note": {
+        "title": "When Foundation Stones Crack",
+        "subtitle": "The Vulnerability That Lives in Every Tower",
+        "readTime": 3,
+        "excerpt": "A flaw in the very bedrock threatens to topple towers across countless kingdoms.",
+        "tags": ["vulnerability", "infrastructure", "foundations"],
+        "epigraph": "The strongest towers fall not from storms above, but from the slow <em>erosion</em> of the stones beneath.",
+        "body_paragraphs": [
+          "Deep in the foundations of countless digital towers lies a flaw so fundamental that its discoverers declared it affects \"virtually every production tower\" built upon this particular bedrock. The Lorekeeper has witnessed such moments before—when a crack appears not in a single wall, but in the very stones from which ten thousand walls are built.",
+          "This foundation, known to its builders as a runtime environment, has served as the base layer for countless applications across the realms. Like the standardized stones of an ancient empire, its widespread adoption created both strength through uniformity and vulnerability through concentration. When the master stonemasons discovered the flaw in how their material handles recursive stress, the implications rippled outward to every structure built upon it.",
+          "The technical manifestation reads like something from the deepest engineering texts: async_hooks triggering stack overflow conditions that cause entire towers to collapse. But the Lorekeeper sees the human pattern beneath the technical terminology—a cascade failure that transforms legitimate operational stress into systematic collapse, turning the foundation's attempt at graceful recovery into a denial of service.",
+          "What makes this discovery particularly troubling is its location in the infrastructure most towers have come to depend upon for basic operations. The frameworks that kingdoms rely on for service availability have built their own recovery mechanisms atop this flawed foundation, creating a house of cards where the failure of one critical component brings down systems that seemed entirely separate.",
+          "The master builders have released their repairs, as they always do. But the Lorekeeper wonders, as always, about the towers built on older stones whose keepers have not yet heard the warning bells. In the digital realm, unlike the physical world, foundations can be replaced without rebuilding everything above—but only if the builders act swiftly and systematically to apply the necessary repairs."
+        ],
+        "has_hr": true,
+        "slug": "foundation-stones-crack"
+      }
+    }
+  ],
+  "rejected_articles": [
+    {
+      "title": "OpenAI's hidden ChatGPT Translate tool takes on Google Translate",
+      "reason": "Product announcement without security implications or broader lessons"
+    },
+    {
+      "title": "Verizon Wireless outage puts phones in SOS mode without cell service",
+      "reason": "Service outage without clear security lesson or organizational failure pattern"
+    },
+    {
+      "title": "Microsoft updates Windows DLL that triggered security alerts",
+      "reason": "Technical fix for false positives, lacks broader narrative significance"
+    },
+    {
+      "title": "Cloud marketplace Pax8 accidentally exposes data on 1,800 MSP partners",
+      "reason": "Minor accidental exposure to limited audience, lacks systemic implications"
+    },
+    {
+      "title": "New Research: 64% of 3rd-Party Applications Access Sensitive Data Without Justification",
+      "reason": "Research report/statistics rather than specific incident with clear lessons"
+    }
+  ]
+}
