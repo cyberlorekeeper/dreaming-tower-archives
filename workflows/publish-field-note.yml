@@ -1,0 +1,345 @@
+name: Publish Approved Field Note
+
+on:
+  push:
+    paths:
+      - '_queue/pending-field-note.json'
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Read and process pending field note
+        id: process
+        run: |
+          # Read the pending file
+          CONTENT=$(cat _queue/pending-field-note.json)
+          
+          # Decode if base64 (GitHub stores as base64)
+          if echo "$CONTENT" | jq -e . >/dev/null 2>&1; then
+            DATA="$CONTENT"
+          else
+            DATA=$(echo "$CONTENT" | base64 -d)
+          fi
+          
+          # Extract fields
+          NOTE_ID=$(echo "$DATA" | jq -r '.noteId')
+          FILENAME=$(echo "$DATA" | jq -r '.filename')
+          DATE=$(echo "$DATA" | jq -r '.date')
+          TITLE=$(echo "$DATA" | jq -r '.field_note.title')
+          SUBTITLE=$(echo "$DATA" | jq -r '.field_note.subtitle')
+          EXCERPT=$(echo "$DATA" | jq -r '.field_note.excerpt')
+          READ_TIME=$(echo "$DATA" | jq -r '.field_note.readTime')
+          EPIGRAPH=$(echo "$DATA" | jq -r '.field_note.epigraph')
+          SLUG=$(echo "$DATA" | jq -r '.field_note.slug')
+          ORIGINAL_URL=$(echo "$DATA" | jq -r '.originalUrl')
+          
+          # Save to environment
+          echo "NOTE_ID=$NOTE_ID" >> $GITHUB_OUTPUT
+          echo "FILENAME=$FILENAME" >> $GITHUB_OUTPUT
+          echo "DATE=$DATE" >> $GITHUB_OUTPUT
+          echo "TITLE=$TITLE" >> $GITHUB_OUTPUT
+          echo "SUBTITLE=$SUBTITLE" >> $GITHUB_OUTPUT
+          echo "EXCERPT=$EXCERPT" >> $GITHUB_OUTPUT
+          echo "READ_TIME=$READ_TIME" >> $GITHUB_OUTPUT
+          echo "SLUG=$SLUG" >> $GITHUB_OUTPUT
+          echo "ORIGINAL_URL=$ORIGINAL_URL" >> $GITHUB_OUTPUT
+          
+          # Save full data for later steps
+          echo "$DATA" > /tmp/field-note-data.json
+      
+      - name: Generate HTML file
+        run: |
+          DATA=$(cat /tmp/field-note-data.json)
+          
+          # Extract arrays as JSON strings
+          TAGS=$(echo "$DATA" | jq -c '.field_note.tags')
+          PARAGRAPHS=$(echo "$DATA" | jq -c '.field_note.body_paragraphs')
+          
+          # Build tags HTML
+          TAGS_HTML=""
+          for tag in $(echo "$TAGS" | jq -r '.[]'); do
+            TAGS_HTML="$TAGS_HTML          <span class=\"field-note-tag\">$tag</span>\n"
+          done
+          
+          # Build paragraphs HTML
+          BODY_HTML=""
+          while IFS= read -r para; do
+            BODY_HTML="$BODY_HTML          <p>\n            $para\n          </p>\n\n"
+          done < <(echo "$DATA" | jq -r '.field_note.body_paragraphs[]')
+          
+          # Format display date
+          DISPLAY_DATE=$(date -d "${{ steps.process.outputs.DATE }}" "+%B %d, %Y")
+          
+          # Create HTML file
+          cat > "field-notes/resonance/${{ steps.process.outputs.FILENAME }}" << 'HTMLEOF'
+          <!doctype html>
+          <html lang="en" class="scroll-smooth">
+          <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            
+            <title>${{ steps.process.outputs.TITLE }} | Field Notes | The Dreaming Tower Archives</title>
+            <meta name="description" content="${{ steps.process.outputs.SUBTITLE }} — ${{ steps.process.outputs.EXCERPT }}" />
+            
+            <!-- Favicons -->
+            <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+            <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+            <link rel="shortcut icon" href="/images/favicon.ico">
+
+            <!-- Fonts -->
+            <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+            
+            <!-- Global Styles -->
+            <link rel="stylesheet" href="/css/styles.css" />
+          </head>
+
+          <body class="bg-deep-space text-stardust font-body min-h-screen selection:bg-glow/20 selection:text-stardust">
+            
+            <!-- Background -->
+            <div class="fixed inset-0 -z-10">
+              <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover opacity-40" aria-hidden="true" />
+              <div class="absolute inset-0 bg-gradient-to-b from-deep-space/70 via-abyss/80 to-deep-space/95"></div>
+            </div>
+
+            <!-- Header -->
+            <div id="site-header"></div>
+
+            <main class="relative px-6 py-12 md:py-16">
+              
+              <!-- Field Note Container -->
+              <article class="field-note-container" data-note-id="${{ steps.process.outputs.NOTE_ID }}">
+                
+                <!-- The Parchment Paper -->
+                <div class="field-note-paper">
+                  
+                  <!-- Header Section -->
+                  <header class="field-note-header">
+                    
+                    <!-- Category Badge -->
+                    <span class="field-note-category field-note-category-resonance">
+                      <span aria-hidden="true">⚡</span>
+                      Resonance
+                    </span>
+                    
+                    <!-- Title & Subtitle -->
+                    <h1 class="field-note-title">${{ steps.process.outputs.TITLE }}</h1>
+                    <p class="field-note-subtitle">${{ steps.process.outputs.SUBTITLE }}</p>
+                    
+                    <!-- Metadata -->
+                    <div class="field-note-meta">
+                      <span class="field-note-meta-item">
+                        <span aria-hidden="true">📅</span>
+                        DISPLAY_DATE_PLACEHOLDER
+                      </span>
+                      <span class="field-note-meta-item">
+                        <span aria-hidden="true">⏱</span>
+                        ${{ steps.process.outputs.READ_TIME }} min read
+                      </span>
+                      <span class="field-note-meta-item">
+                        <span aria-hidden="true">🔗</span>
+                        Based on real events
+                      </span>
+                    </div>
+                  </header>
+                  
+                  <!-- Body Content -->
+                  <div class="field-note-body prose-field-note">
+                    
+                    <!-- Opening Epigraph -->
+                    <p class="epigraph">
+                      EPIGRAPH_PLACEHOLDER
+                    </p>
+                    
+                    <!-- Main Content -->
+                    BODY_PLACEHOLDER
+
+                    <hr />
+                    
+                  </div>
+
+                  <!-- Signature -->
+                  <p class="field-note-signature">— The Lorekeeper</p>
+                    
+                  <!-- External link -->
+                  <a href="${{ steps.process.outputs.ORIGINAL_URL }}" class="field-note-external-link" target="_blank" rel="noopener">
+                    <span class="field-note-external-link-label">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                      </svg>
+                      External Article
+                    </span>
+                    <span class="field-note-external-link-title">
+                      Read the full analysis
+                      <span class="field-note-external-link-domain">→ Source</span>
+                    </span>
+                  </a>
+                  
+                  <!-- Tags -->
+                  <div class="field-note-tags">
+                    TAGS_PLACEHOLDER
+                  </div>
+                  
+                </div>
+                <!-- End Parchment Paper -->
+                
+                <!-- Navigation Between Notes -->
+                <nav class="field-note-nav" aria-label="Field note navigation">
+                  <a href="/field-notes.html" class="field-note-nav-link">
+                    <span class="field-note-nav-label">← Back</span>
+                    <span class="field-note-nav-title">All Field Notes</span>
+                  </a>
+
+                  <a id="nextNoteLink" href="#" class="field-note-nav-link" style="display: none; text-align: right;">
+                    <span class="field-note-nav-label">Next →</span>
+                    <span id="nextNoteTitle" class="field-note-nav-title"></span>
+                  </a>
+                </nav>
+                
+              </article>
+              
+              <!-- Footer -->
+              <div id="site-footer"></div>
+            </main>
+
+            <!-- Scripts -->
+            <script>
+            async function loadPartial(targetId, url) {
+              const el = document.getElementById(targetId);
+              if (!el) return;
+              try {
+                const res = await fetch(url, { cache: "no-cache" });
+                if (!res.ok) return;
+                el.innerHTML = await res.text();
+              } catch (err) {
+                console.warn(`Error loading ${url}`, err);
+              }
+            }
+
+            function initHeaderNav() {
+              const navToggle = document.getElementById("navToggle");
+              const mobileNavPanel = document.getElementById("mobileNavPanel");
+              if (!navToggle || !mobileNavPanel) return;
+
+              navToggle.addEventListener("click", () => {
+                const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+                navToggle.setAttribute("aria-expanded", String(!isOpen));
+                mobileNavPanel.classList.toggle("hidden", isOpen);
+              });
+
+              document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                  navToggle.setAttribute("aria-expanded", "false");
+                  mobileNavPanel.classList.add("hidden");
+                }
+              });
+            }
+
+            async function initDynamicNav() {
+              const article = document.querySelector('[data-note-id]');
+              if (!article) return;
+              
+              const currentId = article.dataset.noteId;
+              
+              try {
+                const res = await fetch('/data/field-notes.index.json', { cache: 'no-cache' });
+                if (!res.ok) return;
+                
+                const allNotes = await res.json();
+                
+                const releasedNotes = allNotes
+                  .filter(n => n.released === true)
+                  .sort((a, b) => new Date(a.date) - new Date(b.date));
+                
+                const currentIndex = releasedNotes.findIndex(n => n.id === currentId);
+                if (currentIndex === -1) return;
+                
+                const nextNote = releasedNotes[currentIndex + 1];
+                
+                const nextLink = document.getElementById('nextNoteLink');
+                const nextTitle = document.getElementById('nextNoteTitle');
+                
+                if (nextNote && nextLink && nextTitle) {
+                  nextLink.href = nextNote.href;
+                  nextTitle.textContent = nextNote.title;
+                  nextLink.style.display = 'flex';
+                }
+              } catch (err) {
+                console.warn('Could not load field notes index for navigation', err);
+              }
+            }
+
+            function initFooterYear() {
+              const footerYear = document.querySelector('#site-footer #year');
+              if (footerYear) footerYear.textContent = new Date().getFullYear();
+            }
+
+            (async function boot() {
+              await loadPartial("site-header", "/partials/header.html");
+              initHeaderNav();
+
+              await loadPartial("site-footer", "/partials/footer.html");
+              initFooterYear();
+              
+              await initDynamicNav();
+            })();
+            </script>
+
+          </body>
+          </html>
+          HTMLEOF
+          
+          # Replace placeholders
+          sed -i "s|DISPLAY_DATE_PLACEHOLDER|$DISPLAY_DATE|g" "field-notes/resonance/${{ steps.process.outputs.FILENAME }}"
+          sed -i "s|EPIGRAPH_PLACEHOLDER|$(echo "$DATA" | jq -r '.field_note.epigraph')|g" "field-notes/resonance/${{ steps.process.outputs.FILENAME }}"
+          
+      - name: Update field-notes.index.json
+        run: |
+          DATA=$(cat /tmp/field-note-data.json)
+          TAGS=$(echo "$DATA" | jq -c '.field_note.tags')
+          
+          # Create new entry
+          NEW_ENTRY=$(jq -n \
+            --arg id "${{ steps.process.outputs.NOTE_ID }}" \
+            --arg title "${{ steps.process.outputs.TITLE }}" \
+            --arg subtitle "${{ steps.process.outputs.SUBTITLE }}" \
+            --arg date "${{ steps.process.outputs.DATE }}" \
+            --arg readTime "${{ steps.process.outputs.READ_TIME }}" \
+            --arg excerpt "${{ steps.process.outputs.EXCERPT }}" \
+            --arg href "/field-notes/resonance/${{ steps.process.outputs.FILENAME }}" \
+            --arg realWorldLink "${{ steps.process.outputs.ORIGINAL_URL }}" \
+            --argjson tags "$TAGS" \
+            '{
+              id: $id,
+              category: "resonance",
+              title: $title,
+              subtitle: $subtitle,
+              date: $date,
+              readTime: ($readTime | tonumber),
+              excerpt: $excerpt,
+              featured: true,
+              released: true,
+              href: $href,
+              tags: $tags,
+              realWorldLink: $realWorldLink
+            }')
+          
+          # Append to index
+          jq --argjson newEntry "$NEW_ENTRY" '. += [$newEntry]' data/field-notes.inde
