@@ -92,7 +92,7 @@
     "date": "2026-01-12",
     "readTime": 2,
     "excerpt": "To see everything is to carry everything. The Tower does not forget. Neither do I.",
-    "featured": true,
+    "featured": false,
     "released": true,
     "href": "/field-notes/lore/2026-01-12-the-cost-of-knowing.html",
     "tags": [
@@ -271,7 +271,7 @@
     "date": "2026-01-17",
     "readTime": 3,
     "excerpt": "Size and prosperity offer no immunity when the fundamental wards remain weak.",
-    "featured": true,
+    "featured": false,
     "released": true,
     "href": "/field-notes/resonance/2026-01-17-corruption-holds-kingdoms-hostage.html",
     "tags": [
@@ -289,7 +289,7 @@
     "date": "",
     "readTime": 3,
     "excerpt": "A flaw in the very bedrock threatens to topple towers across countless kingdoms.",
-    "featured": true,
+    "featured": false,
     "released": true,
     "href": "/field-notes/resonance/foundation-stones-crack.html",
     "tags": [
@@ -298,5 +298,23 @@
       "foundations"
     ],
     "realWorldLink": "https://thehackernews.com/2026/01/critical-nodejs-vulnerability-can-cause.html"
+  },
+  {
+    "id": "the-corruption-that-holds-kingdoms-hostage_227a37",
+    "category": "resonance",
+    "title": "The Corruption That Holds Kingdoms Hostage",
+    "subtitle": "When Even Giants Fall to the Ancient Pattern",
+    "date": "",
+    "readTime": 3,
+    "excerpt": "Size and prosperity offer no immunity when the fundamental wards remain weak.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/corruption-holds-kingdoms-hostage.html",
+    "tags": [
+      "ransomware",
+      "breach",
+      "corruption"
+    ],
+    "realWorldLink": "https://www.bleepingcomputer.com/news/security/south-korean-giant-kyowon-confirms-data-theft-in-ransomware-attack/"
   }
 ]
