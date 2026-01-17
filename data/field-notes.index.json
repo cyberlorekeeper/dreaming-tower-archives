@@ -109,7 +109,7 @@
     "date": "2025-12-01",
     "readTime": 2,
     "excerpt": "The credentials were perfect. The merchants were not.",
-    "featured": true,
+    "featured": false,
     "released": true,
     "href": "/field-notes/lore/2025-12-01-on-trusted-writs.html",
     "tags": [
@@ -181,7 +181,7 @@
     "date": "2024-07-19",
     "readTime": 2,
     "excerpt": "The Falcon did not fail because it was weak. It failed because it was trusted.",
-    "featured": true,
+    "featured": false,
     "released": true,
     "href": "/field-notes/resonance/2024-07-19-guardians-betrayal.html",
     "tags": [
@@ -271,7 +271,7 @@
     "date": "2026-01-17",
     "readTime": 3,
     "excerpt": "Size and prosperity offer no immunity when the fundamental wards remain weak.",
-    "featured": true,
+    "featured": false,
     "released": true,
     "href": "/field-notes/resonance/2026-01-17-corruption-holds-kingdoms-hostage.html",
     "tags": [
@@ -280,5 +280,23 @@
       "corruption"
     ],
     "realWorldLink": "https://www.bleepingcomputer.com/news/security/south-korean-giant-kyowon-confirms-data-theft-in-ransomware-attack/"
+  },
+  {
+    "id": "when-foundation-stones-crack_242855",
+    "category": "resonance",
+    "title": "When Foundation Stones Crack",
+    "subtitle": "The Vulnerability That Lives in Every Tower",
+    "date": "",
+    "readTime": 3,
+    "excerpt": "A flaw in the very bedrock threatens to topple towers across countless kingdoms.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/foundation-stones-crack.html",
+    "tags": [
+      "vulnerability",
+      "infrastructure",
+      "foundations"
+    ],
+    "realWorldLink": "https://thehackernews.com/2026/01/critical-nodejs-vulnerability-can-cause.html"
   }
 ]
