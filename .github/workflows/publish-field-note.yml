@@ -34,6 +34,11 @@ jobs:
           echo "ARCHIVED_FILE=_queue/archived/${{ inputs.note_id }}.json" >> $GITHUB_ENV
           echo "PROCESSED_FILE=_queue/processed/${{ inputs.note_id }}.json" >> $GITHUB_ENV
 
+      - name: Debug inputs
+        run: |
+          echo "decision=${{ inputs.decision }}"
+          echo "note_id=${{ inputs.note_id }}"
+
       - name: Verify pending file exists
         run: |
           test -f "$PENDING_FILE" || (echo "Missing pending file: $PENDING_FILE" && exit 1)
