@@ -54,56 +54,62 @@ jobs:
         run: |
           cat "$PENDING_FILE" > /tmp/field-note-data.json
 
-      - name: Approve - extract fields
+      - name: Approve - extract canonical fields (NY time)
         if: ${{ inputs.decision == 'approve' }}
         id: process
         run: |
           DATA=$(cat /tmp/field-note-data.json)
 
-          # Support either naming convention (your current GH flow vs new Step 6)
-          NOTE_ID=$(echo "$DATA" | jq -r '(.noteId // .note_id // .id // "")')
-          DATE=$(echo "$DATA" | jq -r '(.date // .field_note.date // "")')
           TITLE=$(echo "$DATA" | jq -r '(.field_note.title // "")')
           SUBTITLE=$(echo "$DATA" | jq -r '(.field_note.subtitle // "")')
           EXCERPT=$(echo "$DATA" | jq -r '(.field_note.excerpt // "")')
           READ_TIME=$(echo "$DATA" | jq -r '(.field_note.readTime // .field_note.read_time // "0")')
-
-          # Original link (support multiple keys)
           ORIGINAL_URL=$(echo "$DATA" | jq -r '(.originalUrl // .original_url // "")')
+          TAGS=$(echo "$DATA" | jq -c '(.field_note.tags // [])')
 
-          # If your JSON contains filename, use it; else derive from slug or note id
-          SLUG=$(echo "$DATA" | jq -r '(.field_note.slug // "")')
-          FILENAME=$(echo "$DATA" | jq -r '(.filename // "")')
-
-          if [ -z "$FILENAME" ] || [ "$FILENAME" = "null" ]; then
-            if [ -n "$SLUG" ] && [ "$SLUG" != "null" ]; then
-              FILENAME="${SLUG}.html"
-            else
-              # Fall back to note_id.html if no slug provided
-              FILENAME="${{ inputs.note_id }}.html"
-            fi
+          # Date: prefer field_note.date, then top-level date, else "today" in America/New_York
+          DATE=$(echo "$DATA" | jq -r '(.field_note.date // .date // "")' | cut -c1-10)
+          if [ -z "$DATE" ] || [ "$DATE" = "null" ]; then
+            DATE=$(TZ=America/New_York date +"%Y-%m-%d")
           fi
 
-          # NOTE_ID fallback
-          if [ -z "$NOTE_ID" ] || [ "$NOTE_ID" = "null" ]; then
-            NOTE_ID="${{ inputs.note_id }}"
+          # Slugify title (fallback to note_id if title is empty)
+          SOURCE_FOR_SLUG="$TITLE"
+          if [ -z "$SOURCE_FOR_SLUG" ] || [ "$SOURCE_FOR_SLUG" = "null" ]; then
+            SOURCE_FOR_SLUG="${{ inputs.note_id }}"
           fi
 
-          echo "NOTE_ID=$NOTE_ID" >> $GITHUB_OUTPUT
+          SLUG=$(echo "$SOURCE_FOR_SLUG" | tr '[:upper:]' '[:lower:]' \
+            | sed "s/[’'“”\\\"]//g" \
+            | sed 's/[^a-z0-9]\\+/-/g' \
+            | sed 's/^-//; s/-$//')
+
+          CATEGORY="resonance"
+          CANONICAL_ID="${CATEGORY}-${DATE}-${SLUG}"
+          PAGE_FILENAME="${DATE}-${SLUG}.html"
+          HREF="/field-notes/${CATEGORY}/${PAGE_FILENAME}"
+
           echo "DATE=$DATE" >> $GITHUB_OUTPUT
           echo "TITLE=$TITLE" >> $GITHUB_OUTPUT
           echo "SUBTITLE=$SUBTITLE" >> $GITHUB_OUTPUT
           echo "EXCERPT=$EXCERPT" >> $GITHUB_OUTPUT
           echo "READ_TIME=$READ_TIME" >> $GITHUB_OUTPUT
-          echo "FILENAME=$FILENAME" >> $GITHUB_OUTPUT
           echo "ORIGINAL_URL=$ORIGINAL_URL" >> $GITHUB_OUTPUT
+          echo "TAGS=$TAGS" >> $GITHUB_OUTPUT
+
+          echo "SLUG=$SLUG" >> $GITHUB_OUTPUT
+          echo "CATEGORY=$CATEGORY" >> $GITHUB_OUTPUT
+          echo "CANONICAL_ID=$CANONICAL_ID" >> $GITHUB_OUTPUT
+          echo "PAGE_FILENAME=$PAGE_FILENAME" >> $GITHUB_OUTPUT
+          echo "HREF=$HREF" >> $GITHUB_OUTPUT
 
       - name: Approve - generate HTML file
         if: ${{ inputs.decision == 'approve' }}
         env:
-          FILENAME: ${{ steps.process.outputs.FILENAME }}
-          NOTE_ID: ${{ steps.process.outputs.NOTE_ID }}
+          NOTE_ID: ${{ steps.process.outputs.CANONICAL_ID }}
           NOTE_DATE: ${{ steps.process.outputs.DATE }}
+          CATEGORY: ${{ steps.process.outputs.CATEGORY }}
+          FILENAME: ${{ steps.process.outputs.PAGE_FILENAME }}
           ORIGINAL_URL: ${{ steps.process.outputs.ORIGINAL_URL }}
         run: |
           node > /tmp/generate-html.log 2>&1 << 'ENDSCRIPT'
@@ -123,11 +129,18 @@ jobs:
             .map(para => "                    <p>" + para + "</p>")
             .join("\n\n");
 
-          const dateStr = (data.date || fieldNote.date || process.env.NOTE_DATE || "").slice(0, 10);
-          const dateObj = dateStr ? new Date(dateStr + "T00:00:00") : new Date();
-          const displayDate = dateObj.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+          const dateStr = (fieldNote.date || data.date || process.env.NOTE_DATE || "").slice(0, 10);
+          const safeDate = dateStr || new Date().toISOString().slice(0, 10);
 
-          const noteId = data.noteId || data.note_id || data.id || process.env.NOTE_ID;
+          // Render display date explicitly in America/New_York
+          const displayDate = new Intl.DateTimeFormat("en-US", {
+            timeZone: "America/New_York",
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+          }).format(new Date(safeDate + "T12:00:00Z"));
+
+          const noteId = process.env.NOTE_ID;
           const originalUrl = data.originalUrl || data.original_url || process.env.ORIGINAL_URL || "#";
 
           const title = fieldNote.title || "Field Note";
@@ -137,128 +150,128 @@ jobs:
           const epigraph = (fieldNote.epigraph || "").replace(/<\/?em>/g, "_");
 
           const html =
-            `<!doctype html>
-            <html lang="en" class="scroll-smooth">
-            <head>
-              <meta charset="utf-8" />
-              <meta name="viewport" content="width=device-width, initial-scale=1" />
-            
-              <title>${title} | Field Notes | The Dreaming Tower Archives</title>
-              <meta name="description" content="${subtitle} — ${excerpt}" />
-            
-              <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-              <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
-              <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-              <link rel="shortcut icon" href="/images/favicon.ico">
-            
-              <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-              <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-            
-              <link rel="stylesheet" href="/css/styles.css" />
-            </head>
-            
-            <body class="bg-deep-space text-stardust font-body min-h-screen selection:bg-glow/20 selection:text-stardust">
-              <div class="fixed inset-0 -z-10">
-                <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover opacity-40" aria-hidden="true" />
-                <div class="absolute inset-0 bg-gradient-to-b from-deep-space/70 via-abyss/80 to-deep-space/95"></div>
-              </div>
-            
-              <div id="site-header"></div>
-            
-              <main class="relative px-6 py-12 md:py-16">
-                <article class="field-note-container" data-note-id="${noteId}">
-                  <div class="field-note-paper">
-                    <header class="field-note-header">
-                      <span class="field-note-category field-note-category-resonance">
-                        <span aria-hidden="true">⚡</span>
-                        Resonance
-                      </span>
-            
-                      <h1 class="field-note-title">${title}</h1>
-                      <p class="field-note-subtitle">${subtitle}</p>
-            
-                      <div class="field-note-meta">
-                        <span class="field-note-meta-item"><span aria-hidden="true">📅</span> ${displayDate}</span>
-                        <span class="field-note-meta-item"><span aria-hidden="true">⏱</span> ${readTime} min read</span>
-                        <span class="field-note-meta-item"><span aria-hidden="true">🔗</span> Based on real events</span>
-                      </div>
-                    </header>
-            
-                    <div class="field-note-body prose-field-note">
-                      <p class="epigraph">"${epigraph}"</p>
-                      ${bodyHtml}
-                      <hr />
+          `<!doctype html>
+          <html lang="en" class="scroll-smooth">
+          <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+          
+            <title>${title} | Field Notes | The Dreaming Tower Archives</title>
+            <meta name="description" content="${subtitle} — ${excerpt}" />
+          
+            <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+            <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+            <link rel="shortcut icon" href="/images/favicon.ico">
+          
+            <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+          
+            <link rel="stylesheet" href="/css/styles.css" />
+          </head>
+          
+          <body class="bg-deep-space text-stardust font-body min-h-screen selection:bg-glow/20 selection:text-stardust">
+            <div class="fixed inset-0 -z-10">
+              <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover opacity-40" aria-hidden="true" />
+              <div class="absolute inset-0 bg-gradient-to-b from-deep-space/70 via-abyss/80 to-deep-space/95"></div>
+            </div>
+          
+            <div id="site-header"></div>
+          
+            <main class="relative px-6 py-12 md:py-16">
+              <article class="field-note-container" data-note-id="${noteId}">
+                <div class="field-note-paper">
+                  <header class="field-note-header">
+                    <span class="field-note-category field-note-category-resonance">
+                      <span aria-hidden="true">⚡</span>
+                      Resonance
+                    </span>
+          
+                    <h1 class="field-note-title">${title}</h1>
+                    <p class="field-note-subtitle">${subtitle}</p>
+          
+                    <div class="field-note-meta">
+                      <span class="field-note-meta-item"><span aria-hidden="true">📅</span> ${displayDate}</span>
+                      <span class="field-note-meta-item"><span aria-hidden="true">⏱</span> ${readTime} min read</span>
+                      <span class="field-note-meta-item"><span aria-hidden="true">🔗</span> Based on real events</span>
                     </div>
-            
-                    <p class="field-note-signature">— The Lorekeeper</p>
-            
-                    <a href="${originalUrl}" class="field-note-external-link" target="_blank" rel="noopener">
-                      <span class="field-note-external-link-label">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                          <polyline points="15 3 21 3 21 9"/>
-                          <line x1="10" y1="14" x2="21" y2="3"/>
-                        </svg>
-                        External Article
-                      </span>
-                      <span class="field-note-external-link-title">
-                        Read the full analysis
-                        <span class="field-note-external-link-domain">→ Source</span>
-                      </span>
-                    </a>
-            
-                    <div class="field-note-tags">
-                      ${tagsHtml}
-                    </div>
-            
+                  </header>
+          
+                  <div class="field-note-body prose-field-note">
+                    <p class="epigraph">"${epigraph}"</p>
+                    ${bodyHtml}
+                    <hr />
                   </div>
-            
-                  <nav class="field-note-nav" aria-label="Field note navigation">
-                    <a href="/field-notes.html" class="field-note-nav-link">
-                      <span class="field-note-nav-label">← Back</span>
-                      <span class="field-note-nav-title">All Field Notes</span>
-                    </a>
-            
-                    <a id="nextNoteLink" href="#" class="field-note-nav-link" style="display: none; text-align: right;">
-                      <span class="field-note-nav-label">Next →</span>
-                      <span id="nextNoteTitle" class="field-note-nav-title"></span>
-                    </a>
-                  </nav>
-                </article>
-            
-                <div id="site-footer"></div>
-              </main>
-            
-              <script>
-              async function loadPartial(targetId, url) {
-                const el = document.getElementById(targetId);
-                if (!el) return;
-                try {
-                  const res = await fetch(url, { cache: "no-cache" });
-                  if (!res.ok) return;
-                  el.innerHTML = await res.text();
-                } catch (err) {
-                  console.warn("Error loading " + url, err);
-                }
+          
+                  <p class="field-note-signature">— The Lorekeeper</p>
+          
+                  <a href="${originalUrl}" class="field-note-external-link" target="_blank" rel="noopener">
+                    <span class="field-note-external-link-label">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                      </svg>
+                      External Article
+                    </span>
+                    <span class="field-note-external-link-title">
+                      Read the full analysis
+                      <span class="field-note-external-link-domain">→ Source</span>
+                    </span>
+                  </a>
+          
+                  <div class="field-note-tags">
+                    ${tagsHtml}
+                  </div>
+          
+                </div>
+          
+                <nav class="field-note-nav" aria-label="Field note navigation">
+                  <a href="/field-notes.html" class="field-note-nav-link">
+                    <span class="field-note-nav-label">← Back</span>
+                    <span class="field-note-nav-title">All Field Notes</span>
+                  </a>
+          
+                  <a id="nextNoteLink" href="#" class="field-note-nav-link" style="display: none; text-align: right;">
+                    <span class="field-note-nav-label">Next →</span>
+                    <span id="nextNoteTitle" class="field-note-nav-title"></span>
+                  </a>
+                </nav>
+              </article>
+          
+              <div id="site-footer"></div>
+            </main>
+          
+            <script>
+            async function loadPartial(targetId, url) {
+              const el = document.getElementById(targetId);
+              if (!el) return;
+              try {
+                const res = await fetch(url, { cache: "no-cache" });
+                if (!res.ok) return;
+                el.innerHTML = await res.text();
+              } catch (err) {
+                console.warn("Error loading " + url, err);
               }
-            
-              function initHeaderNav() {
-                const navToggle = document.getElementById("navToggle");
-                const mobileNavPanel = document.getElementById("mobileNavPanel");
-                if (!navToggle || !mobileNavPanel) return;
-        
-            navToggle.addEventListener("click", () => {
-              const isOpen = navToggle.getAttribute("aria-expanded") === "true";
-              navToggle.setAttribute("aria-expanded", String(!isOpen));
-              mobileNavPanel.classList.toggle("hidden", isOpen);
-            });
-        
-            document.addEventListener("keydown", (e) => {
-              if (e.key === "Escape") {
-                navToggle.setAttribute("aria-expanded", "false");
-                mobileNavPanel.classList.add("hidden");
-              }
-            });
+            }
+          
+            function initHeaderNav() {
+              const navToggle = document.getElementById("navToggle");
+              const mobileNavPanel = document.getElementById("mobileNavPanel");
+              if (!navToggle || !mobileNavPanel) return;
+
+          navToggle.addEventListener("click", () => {
+            const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+            navToggle.setAttribute("aria-expanded", String(!isOpen));
+            mobileNavPanel.classList.toggle("hidden", isOpen);
+          });
+      
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+              navToggle.setAttribute("aria-expanded", "false");
+              mobileNavPanel.classList.add("hidden");
+            }
+          });
           }
         
           async function initDynamicNav() {
@@ -276,9 +289,9 @@ jobs:
               const releasedNotes = allNotes
                 .filter(n => n.released === true)
                 .sort((a, b) => new Date(a.date) - new Date(b.date));
-
-              const currentIndex = releasedNotes.findIndex(n => n.id === currentId);
-              if (currentIndex === -1) return;
+          
+                const currentIndex = releasedNotes.findIndex(n => n.id === currentId);
+                if (currentIndex === -1) return;
         
               const nextNote = releasedNotes[currentIndex + 1];
         
@@ -313,11 +326,11 @@ jobs:
         
           </body>
           </html>`;
+  
+            const dir = "field-notes/resonance";
+            if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
-          const dir = "field-notes/resonance";
-          if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-
-          const filename = process.env.FILENAME || (fieldNote.slug ? fieldNote.slug + ".html" : "field-note.html");
+          const filename = process.env.FILENAME;
           fs.writeFileSync(dir + "/" + filename, html);
           console.log("Created:", dir + "/" + filename);
           ENDSCRIPT
@@ -332,17 +345,15 @@ jobs:
       - name: Approve - update field-notes.index.json
         if: ${{ inputs.decision == 'approve' }}
         run: |
-          DATA=$(cat /tmp/field-note-data.json)
-          TAGS=$(echo "$DATA" | jq -c '(.field_note.tags // [])')
-
-          NOTE_ID="${{ steps.process.outputs.NOTE_ID }}"
+          NOTE_ID="${{ steps.process.outputs.CANONICAL_ID }}"
           TITLE="${{ steps.process.outputs.TITLE }}"
           SUBTITLE="${{ steps.process.outputs.SUBTITLE }}"
           DATE="${{ steps.process.outputs.DATE }}"
           READ_TIME="${{ steps.process.outputs.READ_TIME }}"
           EXCERPT="${{ steps.process.outputs.EXCERPT }}"
-          FILENAME="${{ steps.process.outputs.FILENAME }}"
           ORIGINAL_URL="${{ steps.process.outputs.ORIGINAL_URL }}"
+          TAGS='${{ steps.process.outputs.TAGS }}'
+          HREF="${{ steps.process.outputs.HREF }}"
 
           NEW_ENTRY=$(jq -n \
             --arg id "$NOTE_ID" \
@@ -351,7 +362,7 @@ jobs:
             --arg date "$DATE" \
             --arg readTime "$READ_TIME" \
             --arg excerpt "$EXCERPT" \
-            --arg href "/field-notes/resonance/$FILENAME" \
+            --arg href "$HREF" \
             --arg realWorldLink "$ORIGINAL_URL" \
             --argjson tags "$TAGS" \
             '{
@@ -369,7 +380,6 @@ jobs:
               realWorldLink: $realWorldLink
             }')
 
-          # Set all existing entries to featured:false, append new as featured:true
           jq 'map(.featured = false) + [$newEntry]' --argjson newEntry "$NEW_ENTRY" data/field-notes.index.json > /tmp/updated-index.json
           mv /tmp/updated-index.json data/field-notes.index.json
 
