@@ -181,7 +181,7 @@
     "date": "2024-07-19",
     "readTime": 2,
     "excerpt": "The Falcon did not fail because it was weak. It failed because it was trusted.",
-    "featured": false,
+    "featured": true,
     "released": true,
     "href": "/field-notes/resonance/2024-07-19-guardians-betrayal.html",
     "tags": [
@@ -199,8 +199,8 @@
     "date": "2020-12-13",
     "readTime": 2,
     "excerpt": "They did not breach walls. They did not batter gates. They simply became part of what kingdoms already trusted.",
-    "featured": true,
-    "released": true,
+    "featured": false,
+    "released": false,
     "href": "/field-notes/resonance/2020-12-13-patience-of-shadows.html",
     "tags": [
       "supply-chain",
