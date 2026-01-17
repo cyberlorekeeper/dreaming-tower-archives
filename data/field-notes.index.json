@@ -92,8 +92,8 @@
     "date": "2026-01-12",
     "readTime": 2,
     "excerpt": "To see everything is to carry everything. The Tower does not forget. Neither do I.",
-    "featured": false,
-    "released": false,
+    "featured": true,
+    "released": true,
     "href": "/field-notes/lore/2026-01-12-the-cost-of-knowing.html",
     "tags": [
       "burnout",
@@ -271,7 +271,7 @@
     "date": "2026-01-17",
     "readTime": 3,
     "excerpt": "Size and prosperity offer no immunity when the fundamental wards remain weak.",
-    "featured": false,
+    "featured": true,
     "released": true,
     "href": "/field-notes/resonance/2026-01-17-corruption-holds-kingdoms-hostage.html",
     "tags": [
