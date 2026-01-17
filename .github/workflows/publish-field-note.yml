@@ -374,4 +374,5 @@ jobs:
           git config user.email "action@github.com"
           git add .
           git commit -m "Publish field note: ${{ steps.process.outputs.TITLE }}"
+          git pull --rebase origin main
           git push
