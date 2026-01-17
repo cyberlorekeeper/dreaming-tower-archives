@@ -342,4 +342,17 @@ jobs:
             }')
           
           # Append to index
-          jq --argjson newEntry "$NEW_ENTRY" '. += [$newEntry]' data/field-notes.inde
+          jq --argjson newEntry "$NEW_ENTRY" '. += [$newEntry]' data/field-notes.index.json > /tmp/updated-index.json
+          mv /tmp/updated-index.json data/field-notes.index.json
+      
+      - name: Remove queue file
+        run: |
+          rm _queue/pending-field-note.json
+      
+      - name: Commit and push changes
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add .
+          git commit -m "Publish field note: ${{ steps.process.outputs.TITLE }}"
+          git push
