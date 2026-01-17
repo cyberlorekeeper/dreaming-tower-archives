@@ -280,23 +280,5 @@
       "corruption"
     ],
     "realWorldLink": "https://www.bleepingcomputer.com/news/security/south-korean-giant-kyowon-confirms-data-theft-in-ransomware-attack/"
-  },
-  {
-    "id": "resonance-2026-01-17-corruption-holds-kingdoms-hostage",
-    "category": "resonance",
-    "title": "The Corruption That Holds Kingdoms Hostage",
-    "subtitle": "When Even Giants Fall to the Ancient Pattern",
-    "date": "2026-01-17",
-    "readTime": 3,
-    "excerpt": "Size and prosperity offer no immunity when the fundamental wards remain weak.",
-    "featured": true,
-    "released": true,
-    "href": "/field-notes/resonance/2026-01-17-corruption-holds-kingdoms-hostage.html",
-    "tags": [
-      "ransomware",
-      "breach",
-      "corruption"
-    ],
-    "realWorldLink": "https://www.bleepingcomputer.com/news/security/south-korean-giant-kyowon-confirms-data-theft-in-ransomware-attack/"
   }
 ]
