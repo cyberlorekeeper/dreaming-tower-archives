@@ -325,6 +325,24 @@
     "date": "",
     "readTime": 3,
     "excerpt": "The realm's protectors have spoken: negligence in safeguarding the people's memories comes with a price measured in gold.",
+    "featured": false,
+    "released": true,
+    "href": "/field-notes/resonance/price-of-broken-trust.html",
+    "tags": [
+      "breach",
+      "regulation",
+      "accountability"
+    ],
+    "realWorldLink": "https://www.bleepingcomputer.com/news/security/france-fines-free-mobile-42-million-over-2024-data-breach-incident/"
+  },
+  {
+    "id": "the-price-of-broken-trust_548528",
+    "category": "resonance",
+    "title": "The Price of Broken Trust",
+    "subtitle": "When Guardians Demand Accounting for Failed Wards",
+    "date": "",
+    "readTime": 3,
+    "excerpt": "The realm's protectors have spoken: negligence in safeguarding the people's memories comes with a price measured in gold.",
     "featured": true,
     "released": true,
     "href": "/field-notes/resonance/price-of-broken-trust.html",
