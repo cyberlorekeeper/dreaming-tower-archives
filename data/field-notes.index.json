@@ -93,7 +93,7 @@
     "readTime": 2,
     "excerpt": "To see everything is to carry everything. The Tower does not forget. Neither do I.",
     "featured": false,
-    "released": true,
+    "released": false,
     "href": "/field-notes/lore/2026-01-12-the-cost-of-knowing.html",
     "tags": [
       "burnout",
@@ -148,7 +148,7 @@
     "readTime": 2,
     "excerpt": "No alarms sounded. No walls fell. And yet the damage had already spread beyond containment.",
     "featured": false,
-    "released": true,
+    "released": false,
     "href": "/field-notes/resonance/2025-12-22-supply-chains-dont-scream.html",
     "tags": [
       "supply-chain",
