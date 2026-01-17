@@ -342,7 +342,7 @@ jobs:
           fi
           cat /tmp/generate-html.log
 
-      - name: Approve - update field-notes.index.json
+      - name: Approve - update field-notes.index.json (upsert + newest first)
         if: ${{ inputs.decision == 'approve' }}
         run: |
           NOTE_ID="${{ steps.process.outputs.CANONICAL_ID }}"
@@ -354,7 +354,7 @@ jobs:
           ORIGINAL_URL="${{ steps.process.outputs.ORIGINAL_URL }}"
           TAGS='${{ steps.process.outputs.TAGS }}'
           HREF="${{ steps.process.outputs.HREF }}"
-
+      
           NEW_ENTRY=$(jq -n \
             --arg id "$NOTE_ID" \
             --arg title "$TITLE" \
@@ -379,8 +379,18 @@ jobs:
               tags: $tags,
               realWorldLink: $realWorldLink
             }')
-
-          jq 'map(.featured = false) + [$newEntry]' --argjson newEntry "$NEW_ENTRY" data/field-notes.index.json > /tmp/updated-index.json
+      
+          jq --arg id "$NOTE_ID" --argjson newEntry "$NEW_ENTRY" '
+            (
+              if any(.[]; .id == $id) then
+                map(if .id == $id then $newEntry else . end)
+              else
+                . + [$newEntry]
+              end
+            )
+            | sort_by(.date) | reverse
+          ' data/field-notes.index.json > /tmp/updated-index.json
+      
           mv /tmp/updated-index.json data/field-notes.index.json
 
       - name: Approve - move pending to processed
