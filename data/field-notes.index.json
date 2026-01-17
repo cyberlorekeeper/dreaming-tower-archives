@@ -10,7 +10,11 @@
     "featured": false,
     "released": false,
     "href": "/field-notes/aera/2025-12-18-first-breach.html",
-    "tags": ["incident", "trust", "failure"]
+    "tags": [
+      "incident",
+      "trust",
+      "failure"
+    ]
   },
   {
     "id": "aera-2025-12-28-finding-cache",
@@ -23,7 +27,11 @@
     "featured": false,
     "released": false,
     "href": "/field-notes/aera/2025-12-28-finding-cache.html",
-    "tags": ["memory", "isle-404", "identity"]
+    "tags": [
+      "memory",
+      "isle-404",
+      "identity"
+    ]
   },
   {
     "id": "aera-2026-01-07-echoes-in-the-static",
@@ -36,9 +44,12 @@
     "featured": false,
     "released": false,
     "href": "/field-notes/aera/2026-01-07-echoes-in-the-static.html",
-    "tags": ["signals", "intuition", "risk"]
+    "tags": [
+      "signals",
+      "intuition",
+      "risk"
+    ]
   },
- 
   {
     "id": "lorekeeper-2025-12-20-incident-level-seven",
     "category": "lore",
@@ -50,7 +61,11 @@
     "featured": false,
     "released": false,
     "href": "/field-notes/lore/2025-12-20-incident-level-seven.html",
-    "tags": ["incident-response", "complacency", "oversight"]
+    "tags": [
+      "incident-response",
+      "complacency",
+      "oversight"
+    ]
   },
   {
     "id": "lorekeeper-2025-12-30-pattern-recognition",
@@ -63,7 +78,11 @@
     "featured": false,
     "released": true,
     "href": "/field-notes/lore/2025-12-30-pattern-recognition.html",
-    "tags": ["monitoring", "analysis", "early-warning"]
+    "tags": [
+      "monitoring",
+      "analysis",
+      "early-warning"
+    ]
   },
   {
     "id": "lorekeeper-2026-01-12-the-cost-of-knowing",
@@ -76,7 +95,11 @@
     "featured": false,
     "released": false,
     "href": "/field-notes/lore/2026-01-12-the-cost-of-knowing.html",
-    "tags": ["burnout", "institutional-memory", "leadership"]
+    "tags": [
+      "burnout",
+      "institutional-memory",
+      "leadership"
+    ]
   },
   {
     "id": "lorekeeper-2025-12-01-on-trusted-writs",
@@ -97,7 +120,7 @@
     ],
     "relatedChronicle": "/chronicles/merchants-gate.html"
   },
- {
+  {
     "id": "lorekeeper-2025-11-15-on-forgetting",
     "category": "lore",
     "title": "On Forgetting",
@@ -127,7 +150,11 @@
     "featured": false,
     "released": false,
     "href": "/field-notes/resonance/2025-12-22-supply-chains-dont-scream.html",
-    "tags": ["supply-chain", "third-party-risk", "blind-spots"]
+    "tags": [
+      "supply-chain",
+      "third-party-risk",
+      "blind-spots"
+    ]
   },
   {
     "id": "resonance-2026-01-03-the-illusion-of-visibility",
@@ -140,7 +167,11 @@
     "featured": false,
     "released": false,
     "href": "/field-notes/resonance/2026-01-03-the-illusion-of-visibility.html",
-    "tags": ["metrics", "false-confidence", "observability"]
+    "tags": [
+      "metrics",
+      "false-confidence",
+      "observability"
+    ]
   },
   {
     "id": "resonance-2024-07-19-guardians-betrayal",
@@ -153,7 +184,11 @@
     "featured": true,
     "released": true,
     "href": "/field-notes/resonance/2024-07-19-guardians-betrayal.html",
-    "tags": ["supply-chain", "third-party-risk", "trust"],
+    "tags": [
+      "supply-chain",
+      "third-party-risk",
+      "trust"
+    ],
     "realWorldLink": "https://thesmokingprinter.com/blog/crowdstrike-dragon-digital-guardians-turn-against-realm"
   },
   {
@@ -167,7 +202,11 @@
     "featured": false,
     "released": false,
     "href": "/field-notes/resonance/2020-12-13-patience-of-shadows.html",
-    "tags": ["supply-chain", "apt", "trust"],
+    "tags": [
+      "supply-chain",
+      "apt",
+      "trust"
+    ],
     "realWorldLink": "https://thesmokingprinter.com/blog/solarwinds-siege"
   },
   {
@@ -181,7 +220,11 @@
     "featured": false,
     "released": false,
     "href": "/field-notes/resonance/2017-09-07-oracles-lament.html",
-    "tags": ["vulnerability", "ignored-warnings", "leadership"],
+    "tags": [
+      "vulnerability",
+      "ignored-warnings",
+      "leadership"
+    ],
     "realWorldLink": "https://thesmokingprinter.com/blog/the-equifax-oracle-prophets-warning"
   },
   {
@@ -195,20 +238,47 @@
     "featured": false,
     "released": false,
     "href": "/field-notes/resonance/2022-09-15-fools-and-kings.html",
-    "tags": ["social-engineering", "mfa-fatigue", "human-factor"],
+    "tags": [
+      "social-engineering",
+      "mfa-fatigue",
+      "human-factor"
+    ],
     "realWorldLink": "https://thesmokingprinter.com/blog/court-jesters-gambit"
   },
   {
-  "id": "resonance-2024-12-15-the-logging-library",
-  "category": "resonance",
-  "title": "The Logging Library",
-  "subtitle": "On threats too small to notice",
-  "date": "2024-12-15",
-  "readTime": 3,
-  "excerpt": "It was just a logging library. Nobody monitors logging libraries. That was precisely the point.",
-  "featured": false,
-  "released": false,
-  "href": "/field-notes/resonance/2024-12-15-the-logging-library.html",
-  "tags": ["supply-chain", "third-party-risk", "blind-spots", "monitoring"]
-}
+    "id": "resonance-2024-12-15-the-logging-library",
+    "category": "resonance",
+    "title": "The Logging Library",
+    "subtitle": "On threats too small to notice",
+    "date": "2024-12-15",
+    "readTime": 3,
+    "excerpt": "It was just a logging library. Nobody monitors logging libraries. That was precisely the point.",
+    "featured": false,
+    "released": false,
+    "href": "/field-notes/resonance/2024-12-15-the-logging-library.html",
+    "tags": [
+      "supply-chain",
+      "third-party-risk",
+      "blind-spots",
+      "monitoring"
+    ]
+  },
+  {
+    "id": "resonance-2026-01-17-corruption-holds-kingdoms-hostage",
+    "category": "resonance",
+    "title": "The Corruption That Holds Kingdoms Hostage",
+    "subtitle": "When Even Giants Fall to the Ancient Pattern",
+    "date": "2026-01-17",
+    "readTime": 3,
+    "excerpt": "Size and prosperity offer no immunity when the fundamental wards remain weak.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/2026-01-17-corruption-holds-kingdoms-hostage.html",
+    "tags": [
+      "ransomware",
+      "breach",
+      "corruption"
+    ],
+    "realWorldLink": "https://www.bleepingcomputer.com/news/security/south-korean-giant-kyowon-confirms-data-theft-in-ransomware-attack/"
+  }
 ]
