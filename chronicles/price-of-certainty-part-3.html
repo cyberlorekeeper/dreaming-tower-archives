@@ -1,401 +1,697 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Price of Certainty: Part 3 — The Dreaming Tower Archives</title>
-  <meta name="description" content="Part 3: The Weight of Leadership — Victory brings reflection. Cassia earns the merchants' trust, and the Queen shares what leadership truly costs.">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="The Price of Certainty: Part 3 — The Weight of Leadership">
-  <meta property="og:description" content="Three days. Seventy percent odds. An economy held together by manual records and trust. They gambled and won—but at what cost?">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://thedreamingtower.com/chronicles/price-of-certainty-part-3.html">
-  
-  <!-- Favicons -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Price of Certainty: Part 3 | DTA Chronicle</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="shortcut icon" href="/images/favicon.ico">
+  <meta name="description" content="Part 3: The Weight of Leadership — Victory brings reflection. Cassia earns the merchants' trust, and the Queen shares what leadership truly costs." />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cinzel:wght@500;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'deep-space':'#0A141B',
-            'abyss':'#0F2230',
-            'rift':'#143545',
-            'nebula':'#1E6175',
-            'glow':'#35C6E0',
-            'stardust':'#CFE5EF',
-            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
-            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
-          },
-          fontFamily: { 
-            display: ['Cinzel', 'serif'], 
-            body: ['Source Sans 3', 'ui-sans-serif', 'system-ui'],
-            prose: ['Crimson Pro', 'serif'],
-            signature: ['Caveat', 'cursive']
-          },
-          boxShadow: {
-            glow: '0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
-            card: '0 6px 18px rgba(0,0,0,.12)'
-          }
-        }
-      }
-    }
-  </script>
-  
-  <link rel="stylesheet" href="/assets/css/styles.css" />
-  <script src="/assets/js/site.js" defer></script>
-  <script src="/assets/js/layout.js" defer></script>
-  
-  <style>
-    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
-    .text-gradient{
-      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
-    .prose-lore p { margin-top: 1rem; line-height: 1.9; color: rgba(207,229,239,.92); }
-    .prose-lore h2 { margin-top: 2.25rem; font-family: Cinzel, serif; font-size: 1.4rem; color: rgba(207,229,239,.95); }
-    .prose-lore h3 { margin-top: 1.75rem; font-family: Cinzel, serif; font-size: 1.15rem; color: rgba(207,229,239,.9); }
-    .prose-lore blockquote { 
-      border-left: 3px solid rgba(53,198,224,.4); 
-      padding-left: 1.25rem; 
-      margin: 1.5rem 0; 
-      font-style: italic;
-      color: rgba(207,229,239,.8);
-    }
-    .prose-lore hr {
-      border: none;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(53,198,224,.3), transparent);
-      margin: 2rem 0;
-    }
-    .prose-lore em { color: rgba(53,198,224,.9); font-style: italic; }
-    .prose-lore strong { color: rgba(207,229,239,1); font-weight: 600; }
-
-    /* Drop cap for opening paragraph */
-    .drop-cap::first-letter {
-      float: left;
-      font-family: Cinzel, serif;
-      font-size: 4rem;
-      line-height: 0.8;
-      padding-right: 0.5rem;
-      color: #35C6E0;
-    }
-
-    /* Series navigation */
-    .series-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.5rem;
-      background: rgba(15, 34, 48, 0.6);
-      border: 1px solid rgba(53, 198, 224, 0.15);
-      border-radius: 8px;
-      margin-top: 3rem;
-    }
-    .series-nav a {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: rgba(207,229,239,.8);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .series-nav a:hover { color: #35C6E0; }
-    .series-nav .disabled {
-      color: rgba(207,229,239,.3);
-      pointer-events: none;
-    }
-
-    /* Part indicator */
-    .part-indicator {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.85rem;
-      background: rgba(53, 198, 224, 0.1);
-      border: 1px solid rgba(53, 198, 224, 0.25);
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: #35C6E0;
-    }
-
-    /* Next chronicle teaser */
-    .next-chronicle {
-      margin-top: 3rem;
-      padding: 1.5rem;
-      background: linear-gradient(135deg, rgba(15, 34, 48, 0.8), rgba(20, 53, 69, 0.6));
-      border: 1px solid rgba(53, 198, 224, 0.2);
-      border-radius: 12px;
-    }
-    .next-chronicle h4 {
-      font-family: Cinzel, serif;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(207,229,239,.6);
-      margin-bottom: 0.75rem;
-    }
-    .next-chronicle p {
-      color: rgba(207,229,239,.85);
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-    .next-chronicle a {
-      color: #35C6E0;
-      text-decoration: none;
-    }
-    .next-chronicle a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
 <body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
-  <main class="relative min-h-screen overflow-hidden">
+  <main class="relative min-h-screen">
     <!-- Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/75 via-abyss/85 to-deep-space/90"></div>
-    <div class="absolute inset-0" aria-hidden="true">
-      <img src="/images/background-1.png" alt="" class="h-full w-full object-cover opacity-70" />
+    <img src="/images/background-1.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/70 via-abyss/80 to-deep-space/85"></div>
+
+    <div id="site-header"></div>
+
+    <!-- Chronicle Header -->
+    <section class="relative mx-auto max-w-7xl px-6 pt-10 pb-6">
+      <p class="uppercase tracking-[.18em] text-stardust/70 text-xs">
+        Serialized Chronicle • Part 3 of 3
+      </p>
+      
+      <div class="mt-2 flex flex-col gap-5">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+          <div>
+            <h1 class="font-display text-4xl sm:text-5xl leading-tight text-gradient">
+              The Price of Certainty
+            </h1>
+            <p class="font-display text-xl text-stardust/80 mt-2">Part 3: The Weight of Leadership</p>
+            <p class="mt-3 text-stardust/85 max-w-3xl">
+              Three days. Seventy percent odds. An economy held together by manual records and trust. They gambled and won—but victory leaves weight that never fully fades.
+            </p>
+        
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="part-indicator">Part 3 of 3</span>
+              <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">Theme: Leadership Cost</span>
+              <span class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-xs text-stardust/80">A Cassia Chronicle</span>
+            </div>
+          </div>
+
+          <div class="lg:pt-2">
+            <a href="#subscribe"
+               class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110 whitespace-nowrap">
+              Subscribe
+            </a>
+          </div>
+        </div>
+
+        <!-- Toggle between Chronicle and Real-World Brief -->
+        <div class="flex flex-col items-center text-center">
+          <div class="toggle-wrap" role="group" aria-label="Chronicle view toggle">
+            <button id="btnStory" class="toggle-btn focus-ring" type="button" aria-pressed="true">
+              <span class="toggle-icon" aria-hidden="true">◉</span>
+              <span>Chronicle</span>
+            </button>
+            
+            <button id="btnAnalysis" class="toggle-btn focus-ring" type="button" aria-pressed="false">
+              <span class="toggle-icon" aria-hidden="true">◯</span>
+              <span>Real-World Brief</span>
+            </button>
+          </div>
+          <p class="mt-2 text-xs text-stardust/65">
+            Flip to reveal the real-world cybersecurity lesson.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="relative mx-auto max-w-7xl px-6">
+      <div class="h-px w-full bg-rift/60"></div>
     </div>
 
-    <div id="site-header" class="relative"></div>
+    <!-- Content Panels -->
+    <section class="relative mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8 pt-8 pb-14">
 
-    <!-- Breadcrumb -->
-    <nav class="relative mx-auto max-w-3xl px-6 pt-8">
-      <a href="/chronicles.html" class="inline-flex items-center gap-2 text-sm text-stardust/60 hover:text-glow transition-colors">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="15 18 9 12 15 6"/>
-        </svg>
-        Back to Chronicles
-      </a>
-    </nav>
+      <!-- Story Panel -->
+      <article id="panelStory" class="story-panel is-active">
+        <div class="mx-auto max-w-4xl prose-lore font-prose text-lg">
 
-    <!-- Chronicle Content -->
-    <article class="relative mx-auto max-w-3xl px-6 pt-8 pb-20">
+<!-- Previously Box -->
+<div class="previously-box">
+  <p><strong class="text-glow">Previously:</strong> The honeypot worked. Three days of manual operations, 70% odds, and an economy held together by trust. When the entity discovered the trap, it fled—and the new systems went live. The Kingdom's economy survived.</p>
+</div>
+
+<h3>One Week Later — Guild Council Session</h3>
+
+<p class="drop-cap">The Guild Hall was still chaotic, but it was the good kind of chaos—merchants celebrating recovered records, shouting about successful trade deals, arguing over trivial disputes that meant everything was back to normal.</p>
+
+<p>Master Kelvin approached Cassia as the session ended. "Merchant-Lord. A word?"</p>
+
+<p>They stepped into a private alcove.</p>
+
+<p>"That was the most terrifying three days of my career," he said. "I've sailed through storms, survived the Great Corruption, and rebuilt from nothing twice. But trusting you with our entire economy while I ran my operations on <em>paper</em>?" He shook his head. "I'm not sure I could have done it."</p>
+
+<p>"I'm sorry—"</p>
+
+<p>"I'm not finished." He smiled. "It was also the finest leadership I've seen from a Merchant-Lord. You made the hard call. You carried the weight. You protected us while we couldn't protect ourselves." He reached out and clasped her arm. "I'm proud to serve under you."</p>
+
+<p>She felt her throat tighten. "Thank you."</p>
+
+<p>After he left, she stood alone in the alcove for a moment, letting the relief and exhaustion wash over her.</p>
+
+<p>Her ledger crystal chimed. A message from the Queen:</p>
+
+<blockquote>Council meeting in one hour. The Lorekeeper has identified a pattern in the entity's behavior that concerns him. Your perspective will be needed.</blockquote>
+
+<p>Cassia sighed. Of course. One crisis resolved, another emerging. That was the job.</p>
+
+<p>But for just a moment, she allowed herself to feel the victory.</p>
+
+<p>Three days. Seventy percent odds. An economy held together by manual records and trust.</p>
+
+<p>They'd gambled and won.</p>
+
+<p>She straightened her robes, adjusted the gold threads in her hair, and prepared for the next negotiation.</p>
+
+<p>Because that's what Merchant-Lords did.</p>
+
+<p>They carried the weight of the Kingdom's prosperity.</p>
+
+<p>And they never, ever stopped calculating the odds.</p>
+
+<hr>
+
+<h3>Epilogue — Private Conversation</h3>
+
+<p>That evening, Cassia found herself in the Queen's private study—an unusual honor.</p>
+
+<p>"You wanted to see me, Your Majesty?"</p>
+
+<p>Lyra gestured to a chair. "I wanted to thank you. Privately. For what you did."</p>
+
+<p>"I just held the line. Like Valdris does."</p>
+
+<p>"You did more than that. You made a decision that could have destroyed your career. You trusted intelligence from Shade that you couldn't verify. You asked me for support to make hard calls, then actually <em>made</em> them." Lyra poured two glasses of something amber and aged. "That takes a kind of courage most people don't have."</p>
+
+<p>Cassia accepted the glass. "It took desperation."</p>
+
+<p>"It took both." Lyra raised her glass. "To desperate courage. May we need it less often."</p>
+
+<p>They drank.</p>
+
+<p>"Can I ask you something?" Cassia said. "The Forgetting Protocol. When you used it. Do you ever regret it?"</p>
+
+<p>Lyra was quiet for a long moment. "Every day. And also never. I made the choice I had to make, knowing I'd carry it forever. Just like you made your choice, knowing you'd carry it if it failed."</p>
+
+<p>"But it didn't fail."</p>
+
+<p>"This time. There will be other times. Other choices. Other weights to carry." Lyra met her eyes. "That's what leadership costs. Are you prepared to keep paying it?"</p>
+
+<p>Cassia thought of Master Kelvin's pride, of the forty guild leaders who'd trusted her, of the thousands of merchants whose livelihoods had hung on her decision.</p>
+
+<p>"Yes," she said. "I am."</p>
+
+<p>"Good." The Queen smiled. "Because the Kingdom needs you."</p>
+
+<p>As Cassia left the palace that evening, walking through the merchant quarter where lights blazed in windows and commerce hummed with recovered vitality, she felt the weight still there.</p>
+
+<p>The weight of responsibility. Of trust. Of future crises she'd have to navigate.</p>
+
+<p>But she also felt something else.</p>
+
+<p>Purpose.</p>
+
+<p>And that, she thought, made the weight bearable.</p>
+
+<!-- End of Chronicle -->
+<div class="mt-12 text-center">
+  <p class="font-display text-lg text-stardust/60 italic">— End of "The Price of Certainty" —</p>
+</div>
+
+<!-- Next Chronicle Teaser -->
+<div class="next-chronicle">
+  <h4>Next Chronicle</h4>
+  <p><strong>"The Wall That Held"</strong> — High Commander Valdris faces a breach that tests everything he believes about defense. When authentication systems fail across the Kingdom, he must execute Protocol Null and hold the line for 63 hours.</p>
+</div>
+
+        </div>
+      </article>
+
+      <!-- Real-World Brief Panel -->
+      <article id="panelAnalysis" class="story-panel">
+        <div class="mx-auto max-w-4xl prose-lore">
+
+<h2>Real-World Brief — The Cost Nobody Puts in the Report</h2>
+
+<p>By the end of this crisis, the systems are repaired.</p>
+
+<p>The attacker is gone. The data is clean. The economy survives.</p>
+
+<p>From the outside, this looks like a success story.</p>
+
+<p>In cybersecurity reporting, this would be called:</p>
+
+<blockquote>"Incident contained. Systems restored. No lasting impact."</blockquote>
+
+<p>That sentence hides almost everything that matters.</p>
+
+<h3>What Recovery Really Looks Like</h3>
+
+<p>In real incidents like this, recovery does not end when systems come back online.</p>
+
+<p><strong>It continues for months.</strong></p>
+
+<p>Teams must:</p>
+
+<ul>
+  <li>Rebuild trust in data</li>
+  <li>Reconcile conflicting records</li>
+  <li>Audit transactions manually</li>
+  <li>Repair business relationships</li>
+  <li>Answer uncomfortable questions from regulators, customers, and boards</li>
+</ul>
+
+<p>After major cyber incidents, companies often survive technically but lose:</p>
+
+<ul>
+  <li>Executive careers</li>
+  <li>Customer confidence</li>
+  <li>Market position</li>
+  <li>Internal morale</li>
+</ul>
+
+<p><strong>The systems heal faster than the people do.</strong></p>
+
+<h3>The Hidden Cost of Leadership Decisions</h3>
+
+<p>Cassia's conversation with the Queen captures one of the least discussed truths in security leadership.</p>
+
+<p><strong>Every major crisis leaves permanent weight behind.</strong></p>
+
+<p>In the real world:</p>
+
+<ul>
+  <li>CISOs resign after successful incident responses</li>
+  <li>Executives leave after saving their companies</li>
+  <li>Leaders burn out not from failure, but from carrying responsibility that never fully fades</li>
+</ul>
+
+<p>Cassia's choice worked.</p>
+
+<p>But she will carry:</p>
+
+<ul>
+  <li>The risk she accepted</li>
+  <li>The people she almost failed</li>
+  <li>The knowledge that next time might not end the same way</li>
+</ul>
+
+<p>This is why senior security leaders talk about "decision fatigue" and burnout.</p>
+
+<p>Not because the technology is hard.</p>
+
+<p><strong>Because the consequences are human.</strong></p>
+
+<h3>The Leadership Lesson</h3>
+
+<p>This final chapter is not about cybersecurity at all.</p>
+
+<p>It is about what leadership actually costs.</p>
+
+<p>Cassia does not celebrate. She reflects.</p>
+
+<p>She asks whether the weight will ever go away.</p>
+
+<p>And the Queen gives the only honest answer.</p>
+
+<p><strong>No.</strong></p>
+
+<p>In crisis leadership, success does not mean relief.</p>
+
+<p>It means accepting that some decisions change you permanently.</p>
+
+<p>The Kingdom survives because someone was willing to carry that burden quietly.</p>
+
+<p><strong>That is what real security leadership looks like.</strong></p>
+
+<p class="mt-8 p-4 bg-abyss/40 border border-rift/50 rounded-lg text-sm text-stardust/70 italic">
+  A complete technical, operational, and leadership analysis of this Chronicle will be released with the full edition.
+</p>
+
+        </div>
+      </article>
+
+      <!-- Series Navigation (dynamically populated) -->
+      <nav id="seriesNav" class="series-nav hidden" aria-label="Chronicle series navigation">
+        <!-- Will be populated by JavaScript based on chronicles.index.json -->
+      </nav>
+
+      <!-- Context Footer -->
+      <div class="mx-auto max-w-3xl mt-12 soft-card p-6">
+        <h3 class="font-display text-xl text-stardust/95">Appearing in this Chronicle</h3>
+        <div class="mt-3 flex flex-wrap gap-2 text-sm">
+          <a href="/characters/cassia.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Merchant-Lord Cassia</a>
+          <a href="/characters/lyra.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Queen Lyra</a>
+          <a href="/characters/kelvin.html" class="rounded-full border border-rift/60 bg-abyss/30 px-3 py-1 text-stardust/85 hover:text-glow">Master Kelvin</a>
+        </div>
       
-      <!-- Header -->
-      <header class="mb-10">
-        <div class="flex flex-wrap items-center gap-3 mb-4">
-          <span class="part-indicator">Part 3 of 3</span>
-          <span class="text-stardust/50 text-sm">A Cassia Chronicle</span>
-        </div>
-        
-        <h1 class="font-display text-3xl md:text-4xl lg:text-5xl text-gradient leading-tight mb-3">
-          The Price of Certainty
-        </h1>
-        <p class="font-display text-xl md:text-2xl text-stardust/80 mb-6">
-          Part 3: The Weight of Leadership
-        </p>
-        
-        <div class="flex flex-wrap items-center gap-4 text-sm text-stardust/60">
-          <span class="flex items-center gap-1.5">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        <div class="mt-6 h-px w-full bg-rift/60"></div>
+      
+        <div class="mt-6">
+          <a href="/chronicles.html" class="inline-flex items-center gap-3 group text-stardust/80 hover:text-glow transition-colors">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-stardust/60 group-hover:text-glow transition-colors">
+              <polyline points="15 18 9 12 15 6"/>
             </svg>
-            ~5 min read
-          </span>
-          <span class="flex items-center gap-1.5">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-            </svg>
-            Featuring: Cassia, Master Kelvin, Queen Lyra
-          </span>
+            <span>
+              <span class="text-xs uppercase tracking-wider text-stardust/60 block">Back to</span>
+              <span class="font-display text-stardust/90 group-hover:text-glow transition-colors">All Chronicles</span>
+            </span>
+          </a>
         </div>
-      </header>
+      </div>
+    </section>
 
-      <!-- Divider -->
-      <div class="h-px w-full bg-gradient-to-r from-transparent via-glow/30 to-transparent mb-10"></div>
-
-      <!-- Previously Section -->
-      <div class="mb-8 p-4 bg-abyss/50 border border-rift/40 rounded-lg">
-        <p class="text-sm text-stardust/70 italic">
-          <strong class="text-glow">Previously:</strong> The honeypot worked. Three days of manual operations, 70% odds, and an economy held together by trust. When the entity discovered the trap, it fled—and the new systems went live. The Kingdom's economy survived.
+<!-- Email capture (Netlify Forms with JavaScript) -->
+    <section id="subscribe" class="relative z-10 mt-12 mx-auto max-w-xl scroll-mt-24">  
+      <div class="mt-8 mx-auto max-w-xl scroll-mt-24">
+        <!-- Success Message (hidden by default) -->
+        <div id="subscribe-success" class="hidden mb-4 rounded-md bg-nebula/20 border border-glow/40 px-6 py-4 text-center backdrop-blur transition-opacity duration-500">
+          <p class="text-glow font-semibold">📜 Inscription Complete</p>
+          <p class="mt-1 text-sm text-stardust/85">Your name has been added to the Tower's registry.</p>
+        </div>
+    
+        <!-- Error Message (hidden by default) -->
+        <div id="subscribe-error" class="hidden mb-4 rounded-md border border-red-400/60 bg-red-400/10 px-6 py-4 text-center backdrop-blur transition-opacity duration-500">
+          <p class="text-red-400 font-semibold">⚠ Something went wrong</p>
+          <p class="mt-1 text-sm text-stardust/85">Please try again or contact us if the problem persists.</p>
+        </div>
+    
+        <form id="subscribe-form" name="chronicle-subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+          class="grid gap-3 text-left">
+          <input type="hidden" name="form-name" value="chronicle-subscribe" />
+      
+          <!-- Honeypot -->
+          <p class="hidden">
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </p>
+          
+          <!-- Name and Email Row -->
+          <div class="grid gap-3 sm:grid-cols-2">
+            <div>
+              <label for="name" class="block text-sm text-stardust/70 mb-1">Name</label>
+              <input type="text" id="name" name="name" required
+                class="w-full rounded-md border border-rift/60 bg-abyss/50 px-4 py-2 text-stardust placeholder:text-stardust/50 focus:border-glow/60 focus:outline-none focus:ring-1 focus:ring-glow/40"
+                placeholder="Your name">
+            </div>
+            <div>
+              <label for="email" class="block text-sm text-stardust/70 mb-1">Email</label>
+              <input type="email" id="email" name="email" required
+                class="w-full rounded-md border border-rift/60 bg-abyss/50 px-4 py-2 text-stardust placeholder:text-stardust/50 focus:border-glow/60 focus:outline-none focus:ring-1 focus:ring-glow/40"
+                placeholder="you@example.com">
+            </div>
+          </div>
+      
+          <button type="submit" id="subscribe-button" class="focus-ring inline-flex items-center justify-center rounded-md bg-glow px-5 py-3 font-semibold text-abyss shadow-glow hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed">
+            Subscribe
+          </button>
+        </form>
+    
+        <p class="mt-3 text-center text-xs text-stardust/65">
+          No spam. Just dispatches from the Dreaming Tower when new Chronicles are released.
         </p>
       </div>
+    </section>
+    
+    <script>
+      (function() {
+        // Handle newsletter subscription
+        const form = document.getElementById('subscribe-form');
+        const successMessage = document.getElementById('subscribe-success');
+        const errorMessage = document.getElementById('subscribe-error');
+        const submitButton = document.getElementById('subscribe-button');
+    
+        if (!form) return;
+    
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+    
+          // Get form data
+          const formData = new FormData(form);
+    
+          // Disable button and show loading state
+          submitButton.disabled = true;
+          const originalButtonText = submitButton.textContent;
+          submitButton.textContent = 'Subscribing...';
+    
+          // Hide any previous messages
+          successMessage.classList.add('hidden');
+          errorMessage.classList.add('hidden');
+    
+          try {
+            // Submit to Netlify
+            const response = await fetch('/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: new URLSearchParams(formData).toString()
+            });
+    
+            if (response.ok) {
+              // Show success message with fade-in
+              successMessage.classList.remove('hidden');
+              successMessage.style.opacity = '0';
+              
+              // Scroll message into view
+              successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              
+              // Trigger fade-in
+              setTimeout(() => {
+                successMessage.style.opacity = '1';
+              }, 10);
+    
+              // Reset form
+              form.reset();
+    
+              // Fade out after 5 seconds
+              setTimeout(() => {
+                successMessage.style.opacity = '0';
+                setTimeout(() => {
+                  successMessage.classList.add('hidden');
+                }, 500);
+              }, 5000);
+    
+            } else {
+              throw new Error('Submission failed');
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            
+            // Show error message
+            errorMessage.classList.remove('hidden');
+            errorMessage.style.opacity = '0';
+            
+            // Scroll message into view
+            errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            setTimeout(() => {
+              errorMessage.style.opacity = '1';
+            }, 10);
+    
+            // Hide error after 7 seconds
+            setTimeout(() => {
+              errorMessage.style.opacity = '0';
+              setTimeout(() => {
+                errorMessage.classList.add('hidden');
+              }, 500);
+            }, 7000);
+          } finally {
+            // Reset button
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+          }
+        });
+      })();
+    </script>
 
-      <!-- Story Content -->
-      <div class="prose-lore font-prose text-lg">
-        
-        <h3>One Week Later — Guild Council Session</h3>
+  <!-- Return to Top Button -->
+  <button 
+    id="returnToTop" 
+    class="fixed bottom-6 right-6 z-50 hidden focus-ring rounded-full bg-abyss/90 border border-rift/60 p-3 shadow-glow hover:border-glow/60 hover:bg-abyss transition-all group"
+    aria-label="Return to top"
+    title="Return to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-stardust/80 group-hover:text-glow transition-colors">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
 
-        <p class="drop-cap">The Guild Hall was still chaotic, but it was the good kind of chaos—merchants celebrating recovered records, shouting about successful trade deals, arguing over trivial disputes that meant everything was back to normal.</p>
-
-        <p>Master Kelvin approached Cassia as the session ended. "Merchant-Lord. A word?"</p>
-
-        <p>They stepped into a private alcove.</p>
-
-        <p>"That was the most terrifying three days of my career," he said. "I've sailed through storms, survived the Great Corruption, and rebuilt from nothing twice. But trusting you with our entire economy while I ran my operations on <em>paper</em>?" He shook his head. "I'm not sure I could have done it."</p>
-
-        <p>"I'm sorry—"</p>
-
-        <p>"I'm not finished." He smiled. "It was also the finest leadership I've seen from a Merchant-Lord. You made the hard call. You carried the weight. You protected us while we couldn't protect ourselves." He reached out and clasped her arm. "I'm proud to serve under you."</p>
-
-        <p>She felt her throat tighten. "Thank you."</p>
-
-        <p>After he left, she stood alone in the alcove for a moment, letting the relief and exhaustion wash over her.</p>
-
-        <p>Her ledger crystal chimed. A message from the Queen:</p>
-
-        <blockquote>Council meeting in one hour. The Lorekeeper has identified a pattern in the entity's behavior that concerns him. Your perspective will be needed.</blockquote>
-
-        <p>Cassia sighed. Of course. One crisis resolved, another emerging. That was the job.</p>
-
-        <p>But for just a moment, she allowed herself to feel the victory.</p>
-
-        <p>Three days. Seventy percent odds. An economy held together by manual records and trust.</p>
-
-        <p>They'd gambled and won.</p>
-
-        <p>She straightened her robes, adjusted the gold threads in her hair, and prepared for the next negotiation.</p>
-
-        <p>Because that's what Merchant-Lords did.</p>
-
-        <p>They carried the weight of the Kingdom's prosperity.</p>
-
-        <p>And they never, ever stopped calculating the odds.</p>
-
-        <hr>
-
-        <h3>Epilogue — Private Conversation</h3>
-
-        <p>That evening, Cassia found herself in the Queen's private study—an unusual honor.</p>
-
-        <p>"You wanted to see me, Your Majesty?"</p>
-
-        <p>Lyra gestured to a chair. "I wanted to thank you. Privately. For what you did."</p>
-
-        <p>"I just held the line. Like Valdris does."</p>
-
-        <p>"You did more than that. You made a decision that could have destroyed your career. You trusted intelligence from Shade that you couldn't verify. You asked me for support to make hard calls, then actually <em>made</em> them." Lyra poured two glasses of something amber and aged. "That takes a kind of courage most people don't have."</p>
-
-        <p>Cassia accepted the glass. "It took desperation."</p>
-
-        <p>"It took both." Lyra raised her glass. "To desperate courage. May we need it less often."</p>
-
-        <p>They drank.</p>
-
-        <p>"Can I ask you something?" Cassia said. "The Forgetting Protocol. When you used it. Do you ever regret it?"</p>
-
-        <p>Lyra was quiet for a long moment. "Every day. And also never. I made the choice I had to make, knowing I'd carry it forever. Just like you made your choice, knowing you'd carry it if it failed."</p>
-
-        <p>"But it didn't fail."</p>
-
-        <p>"This time. There will be other times. Other choices. Other weights to carry." Lyra met her eyes. "That's what leadership costs. Are you prepared to keep paying it?"</p>
-
-        <p>Cassia thought of Master Kelvin's pride, of the forty guild leaders who'd trusted her, of the thousands of merchants whose livelihoods had hung on her decision.</p>
-
-        <p>"Yes," she said. "I am."</p>
-
-        <p>"Good." The Queen smiled. "Because the Kingdom needs you."</p>
-
-        <p>As Cassia left the palace that evening, walking through the merchant quarter where lights blazed in windows and commerce hummed with recovered vitality, she felt the weight still there.</p>
-
-        <p>The weight of responsibility. Of trust. Of future crises she'd have to navigate.</p>
-
-        <p>But she also felt something else.</p>
-
-        <p>Purpose.</p>
-
-        <p>And that, she thought, made the weight bearable.</p>
-
-      </div>
-
-      <!-- End of Chronicle -->
-      <div class="mt-12 text-center">
-        <p class="font-display text-lg text-stardust/60 italic">— End of "The Price of Certainty" —</p>
-      </div>
-
-      <!-- Next Chronicle Teaser -->
-      <div class="next-chronicle">
-        <h4>Next Chronicle</h4>
-        <p><strong>"The Wall That Held"</strong> — High Commander Valdris faces a breach that tests everything he believes about defense. When authentication systems fail across the Kingdom, he must execute Protocol Null and hold the line for 63 hours.</p>
-      </div>
-
-      <!-- Series Navigation -->
-      <div class="series-nav">
-        <a href="/chronicles/price-of-certainty-part-2.html" class="flex items-center gap-2">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="15 18 9 12 15 6"/>
-          </svg>
-          Part 2: The Three-Day Gamble
-        </a>
-        
-        <span class="text-stardust/60 text-sm">Part 3 of 3</span>
-        
-        <a href="/chronicles/price-of-certainty-part-1.html" class="flex items-center gap-2">
-          Start from Part 1
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="9 18 15 12 9 6"/>
-          </svg>
-        </a>
-      </div>
-
-      <!-- Back to Chronicles -->
-      <div class="mt-8 pt-8 border-t border-rift/40">
-        <a href="/chronicles.html" class="inline-flex items-center gap-3 group text-stardust/80 hover:text-glow transition-colors">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-stardust/60 group-hover:text-glow transition-colors">
-            <polyline points="15 18 9 12 15 6"/>
-          </svg>
-          <span>
-            <span class="text-xs uppercase tracking-wider text-stardust/60 block">Back to</span>
-            <span class="font-display text-stardust/90 group-hover:text-glow transition-colors">All Chronicles</span>
-          </span>
-        </a>
-      </div>
-
-    </article>
-
-    <!-- Return to Top Button -->
-    <button id="returnToTop" class="hidden fixed bottom-6 right-6 z-50 p-3 rounded-full bg-abyss/90 border border-rift hover:border-glow/50 text-stardust/70 hover:text-glow transition-all shadow-lg" aria-label="Return to top">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="18 15 12 9 6 15"/>
-      </svg>
-    </button>
-
-    <div id="site-footer" class="relative"></div>
-  </main>
+  <div id="site-footer"></div>
 
   <script>
-    // ---------- Boot ----------
-    (async function boot() {
-      await loadPartial("site-header", "/partials/header.html");
-      initHeaderNav();
-      await loadPartial("site-footer", "/partials/footer.html");
-      initFooterYear();
-      initReturnToTop();
-    })();
+  // ---------- Page Configuration ----------
+  const CURRENT_CHRONICLE = {
+    seriesId: "price-of-certainty",  // Base ID for the series
+    part: 3,                          // Current part number
+    totalParts: 3                     // Total parts in series
+  };
 
-    function initReturnToTop() {
-      const returnToTopBtn = document.getElementById('returnToTop');
-      if (!returnToTopBtn) return;
+  // ---------- Utilities ----------
+  async function loadPartial(targetId, url) {
+    const el = document.getElementById(targetId);
+    if (!el) return;
 
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 400) {
-          returnToTopBtn.classList.remove('hidden');
-        } else {
-          returnToTopBtn.classList.add('hidden');
-        }
-      }, { passive: true });
-
-      returnToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+    const res = await fetch(url, { cache: "no-cache" });
+    if (!res.ok) {
+      console.warn(`Failed to load partial: ${url} (${res.status})`);
+      return;
     }
-  </script>
+    el.innerHTML = await res.text();
+  }
+
+  function initHeaderNav() {
+    const navToggle = document.getElementById("navToggle");
+    const mobileNavPanel = document.getElementById("mobileNavPanel");
+
+    if (!navToggle || !mobileNavPanel) return;
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+      navToggle.setAttribute("aria-expanded", String(!isOpen));
+      mobileNavPanel.classList.toggle("hidden", isOpen);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      if (navToggle.getAttribute("aria-expanded") === "true") {
+        navToggle.setAttribute("aria-expanded", "false");
+        mobileNavPanel.classList.add("hidden");
+      }
+    });
+  }
+
+  function initFooterYear() {
+    const year = document.getElementById("year");
+    if (year) year.textContent = new Date().getFullYear();
+  }
+
+  // ---------- Story/Analysis Toggle ----------
+  function initStoryAnalysisToggle() {
+    const btnStory = document.getElementById("btnStory");
+    const btnAnalysis = document.getElementById("btnAnalysis");
+    const panelStory = document.getElementById("panelStory");
+    const panelAnalysis = document.getElementById("panelAnalysis");
+
+    if (!btnStory || !btnAnalysis || !panelStory || !panelAnalysis) return;
+
+    function showPanel(which) {
+      const isAnalysis = which === "analysis";
+      const toShow = isAnalysis ? panelAnalysis : panelStory;
+      const toHide = isAnalysis ? panelStory : panelAnalysis;
+
+      const y = window.scrollY;
+
+      btnStory.setAttribute("aria-pressed", String(!isAnalysis));
+      btnAnalysis.setAttribute("aria-pressed", String(isAnalysis));
+
+      // Update button text with icons
+      btnStory.innerHTML = `<span class="toggle-icon" aria-hidden="true">${!isAnalysis ? "◉" : "◯"}</span><span>Chronicle</span>`;
+      btnAnalysis.innerHTML = `<span class="toggle-icon" aria-hidden="true">${isAnalysis ? "◉" : "◯"}</span><span>Real-World Brief</span>`;
+
+      toHide.classList.remove("is-active");
+      toShow.classList.add("is-active");
+
+      toShow.classList.remove("fade-enter", "fade-enter-active");
+      toShow.classList.add("fade-enter");
+      requestAnimationFrame(() => toShow.classList.add("fade-enter-active"));
+
+      // Update hash for shareable links
+      if (isAnalysis) {
+        history.replaceState(null, "", "#brief");
+      } else {
+        history.replaceState(null, "", window.location.pathname);
+      }
+
+      window.scrollTo(0, y);
+    }
+
+    btnStory.addEventListener("click", () => showPanel("story"));
+    btnAnalysis.addEventListener("click", () => showPanel("analysis"));
+
+    // Initialize based on URL
+    if (window.location.hash === "#brief") showPanel("analysis");
+    else showPanel("story");
+  }
+
+  // ---------- Series Navigation ----------
+  async function initSeriesNav() {
+    const seriesNav = document.getElementById("seriesNav");
+    if (!seriesNav) return;
+
+    try {
+      // Fetch the chronicles index
+      const response = await fetch("/data/chronicles.index.json");
+      if (!response.ok) {
+        console.warn("Could not load chronicles index");
+        return;
+      }
+
+      const chronicles = await response.json();
+      
+      // Find all parts of this series that are released
+      const seriesParts = chronicles.filter(c => 
+        c.seriesId === CURRENT_CHRONICLE.seriesId && 
+        c.released === true
+      ).sort((a, b) => a.part - b.part);
+
+      // If only one part exists, don't show navigation
+      if (seriesParts.length <= 1) {
+        seriesNav.classList.add("hidden");
+        return;
+      }
+
+      // Find previous and next parts
+      const currentPart = CURRENT_CHRONICLE.part;
+      const prevPart = seriesParts.find(p => p.part === currentPart - 1);
+      const nextPart = seriesParts.find(p => p.part === currentPart + 1);
+
+      // Build navigation HTML
+      let navHTML = "";
+
+      // Previous link
+      if (prevPart) {
+        navHTML += `
+          <a href="${prevPart.href}" class="flex items-center gap-2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+            Part ${prevPart.part}: ${prevPart.partTitle || 'Previous'}
+          </a>
+        `;
+      } else {
+        navHTML += `<span></span>`; // Empty spacer
+      }
+
+      // Center indicator
+      navHTML += `<span class="text-stardust/60 text-sm">Part ${currentPart} of ${CURRENT_CHRONICLE.totalParts}</span>`;
+
+      // Next link
+      if (nextPart) {
+        navHTML += `
+          <a href="${nextPart.href}" class="flex items-center gap-2">
+            Part ${nextPart.part}: ${nextPart.partTitle || 'Next'}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </a>
+        `;
+      } else {
+        // On Part 3, offer link back to Part 1
+        const part1 = seriesParts.find(p => p.part === 1);
+        if (part1) {
+          navHTML += `
+            <a href="${part1.href}" class="flex items-center gap-2">
+              Start from Part 1
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </a>
+          `;
+        } else {
+          navHTML += `<span></span>`; // Empty spacer
+        }
+      }
+
+      seriesNav.innerHTML = navHTML;
+      seriesNav.classList.remove("hidden");
+
+    } catch (error) {
+      console.warn("Error loading series navigation:", error);
+      seriesNav.classList.add("hidden");
+    }
+  }
+
+  // ---------- Return to Top ----------
+  function initReturnToTop() {
+    const returnToTopBtn = document.getElementById('returnToTop');
+    
+    if (!returnToTopBtn) return;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        returnToTopBtn.classList.remove('hidden');
+      } else {
+        returnToTopBtn.classList.add('hidden');
+      }
+    }, { passive: true });
+
+    returnToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ---------- Boot ----------
+  (async function boot() {
+    await loadPartial("site-header", "/partials/header.html");
+    initHeaderNav();
+
+    await loadPartial("site-footer", "/partials/footer.html");
+    initFooterYear();
+
+    initStoryAnalysisToggle();
+    initSeriesNav();
+    initReturnToTop();
+  })();
+</script>
+</main>
 </body>
 </html>
