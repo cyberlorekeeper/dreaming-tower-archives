@@ -1,36 +1,56 @@
 [
   {
-    "id": "aera-2025-12-18-first-breach",
-    "category": "aera",
-    "title": "First Breach",
-    "subtitle": "Field Note I — The night the ward failed",
-    "date": "2025-12-18",
+    "id": "resonance-2026-01-24-the fortress beneath",
+    "category": "resonance",
+    "title": "The Fortress Beneath",
+    "subtitle": "When the foundation itself becomes the weakness",
+    "date": "2026-01-24",
     "readTime": 3,
-    "excerpt": "They told me the wards had never failed. They were wrong. The silence afterward was worse than the alarms.",
-    "featured": false,
-    "released": false,
-    "href": "/field-notes/aera/2025-12-18-first-breach.html",
+    "excerpt": "A flaw discovered in the very stones of protected sanctuaries allows intruders to breach even the most confidential chambers.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/2026-01-24-the fortress beneath.html",
     "tags": [
-      "incident",
-      "trust",
-      "failure"
-    ]
+      "hardware-vulnerabilities",
+      "confidential-computing",
+      "architectural-flaws",
+      "foundational-security"
+    ],
+    "realWorldLink": "https://thehackernews.com/2026/01/new-stackwarp-hardware-flaw-breaks-amd.html"
   },
   {
-    "id": "aera-2025-12-28-finding-cache",
-    "category": "aera",
-    "title": "Finding Cache",
-    "subtitle": "Field Note II — Vault Seven was not empty",
-    "date": "2025-12-28",
+    "id": "resonance-2026-01-17-corruption-holds-kingdoms-hostage",
+    "category": "resonance",
+    "title": "The Corruption That Holds Kingdoms Hostage",
+    "subtitle": "When Even Giants Fall to the Ancient Pattern",
+    "date": "2026-01-17",
     "readTime": 3,
-    "excerpt": "Cache was not supposed to exist. Not like this. Not remembering things I never lived.",
+    "excerpt": "Size and prosperity offer no immunity when the fundamental wards remain weak.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/2026-01-17-corruption-holds-kingdoms-hostage.html",
+    "tags": [
+      "ransomware",
+      "breach",
+      "corruption"
+    ],
+    "realWorldLink": "https://www.bleepingcomputer.com/news/security/south-korean-giant-kyowon-confirms-data-theft-in-ransomware-attack/"
+  },
+  {
+    "id": "lorekeeper-2026-01-12-the-cost-of-knowing",
+    "category": "lore",
+    "title": "The Cost of Knowing",
+    "subtitle": "A margin note never meant to be read",
+    "date": "2026-01-12",
+    "readTime": 2,
+    "excerpt": "To see everything is to carry everything. The Tower does not forget. Neither do I.",
     "featured": false,
     "released": false,
-    "href": "/field-notes/aera/2025-12-28-finding-cache.html",
+    "href": "/field-notes/lore/2026-01-12-the-cost-of-knowing.html",
     "tags": [
-      "memory",
-      "isle-404",
-      "identity"
+      "burnout",
+      "institutional-memory",
+      "leadership"
     ]
   },
   {
@@ -51,20 +71,20 @@
     ]
   },
   {
-    "id": "lorekeeper-2025-12-20-incident-level-seven",
-    "category": "lore",
-    "title": "Incident: Level Seven",
-    "subtitle": "From the Lorekeeper's private register",
-    "date": "2025-12-20",
+    "id": "resonance-2026-01-03-the-illusion-of-visibility",
+    "category": "resonance",
+    "title": "The Illusion of Visibility",
+    "subtitle": "Dashboards are not awareness",
+    "date": "2026-01-03",
     "readTime": 2,
-    "excerpt": "This was not a failure of tools. It was a failure of belief that such a breach was possible.",
+    "excerpt": "We had metrics. We had charts. We did not have understanding.",
     "featured": false,
     "released": false,
-    "href": "/field-notes/lore/2025-12-20-incident-level-seven.html",
+    "href": "/field-notes/resonance/2026-01-03-the-illusion-of-visibility.html",
     "tags": [
-      "incident-response",
-      "complacency",
-      "oversight"
+      "metrics",
+      "false-confidence",
+      "observability"
     ]
   },
   {
@@ -85,20 +105,71 @@
     ]
   },
   {
-    "id": "lorekeeper-2026-01-12-the-cost-of-knowing",
-    "category": "lore",
-    "title": "The Cost of Knowing",
-    "subtitle": "A margin note never meant to be read",
-    "date": "2026-01-12",
-    "readTime": 2,
-    "excerpt": "To see everything is to carry everything. The Tower does not forget. Neither do I.",
+    "id": "aera-2025-12-28-finding-cache",
+    "category": "aera",
+    "title": "Finding Cache",
+    "subtitle": "Field Note II — Vault Seven was not empty",
+    "date": "2025-12-28",
+    "readTime": 3,
+    "excerpt": "Cache was not supposed to exist. Not like this. Not remembering things I never lived.",
     "featured": false,
     "released": false,
-    "href": "/field-notes/lore/2026-01-12-the-cost-of-knowing.html",
+    "href": "/field-notes/aera/2025-12-28-finding-cache.html",
     "tags": [
-      "burnout",
-      "institutional-memory",
-      "leadership"
+      "memory",
+      "isle-404",
+      "identity"
+    ]
+  },
+  {
+    "id": "resonance-2025-12-22-supply-chains-dont-scream",
+    "category": "resonance",
+    "title": "Supply Chains Don't Scream",
+    "subtitle": "They fail quietly, everywhere at once",
+    "date": "2025-12-22",
+    "readTime": 2,
+    "excerpt": "No alarms sounded. No walls fell. And yet the damage had already spread beyond containment.",
+    "featured": false,
+    "released": false,
+    "href": "/field-notes/resonance/2025-12-22-supply-chains-dont-scream.html",
+    "tags": [
+      "supply-chain",
+      "third-party-risk",
+      "blind-spots"
+    ]
+  },
+  {
+    "id": "lorekeeper-2025-12-20-incident-level-seven",
+    "category": "lore",
+    "title": "Incident: Level Seven",
+    "subtitle": "From the Lorekeeper's private register",
+    "date": "2025-12-20",
+    "readTime": 2,
+    "excerpt": "This was not a failure of tools. It was a failure of belief that such a breach was possible.",
+    "featured": false,
+    "released": false,
+    "href": "/field-notes/lore/2025-12-20-incident-level-seven.html",
+    "tags": [
+      "incident-response",
+      "complacency",
+      "oversight"
+    ]
+  },
+  {
+    "id": "aera-2025-12-18-first-breach",
+    "category": "aera",
+    "title": "First Breach",
+    "subtitle": "Field Note I — The night the ward failed",
+    "date": "2025-12-18",
+    "readTime": 3,
+    "excerpt": "They told me the wards had never failed. They were wrong. The silence afterward was worse than the alarms.",
+    "featured": false,
+    "released": false,
+    "href": "/field-notes/aera/2025-12-18-first-breach.html",
+    "tags": [
+      "incident",
+      "trust",
+      "failure"
     ]
   },
   {
@@ -140,37 +211,21 @@
     "relatedChronicle": "/chronicles/choice-between-walls.html"
   },
   {
-    "id": "resonance-2025-12-22-supply-chains-dont-scream",
+    "id": "resonance-2024-12-15-the-logging-library",
     "category": "resonance",
-    "title": "Supply Chains Don't Scream",
-    "subtitle": "They fail quietly, everywhere at once",
-    "date": "2025-12-22",
-    "readTime": 2,
-    "excerpt": "No alarms sounded. No walls fell. And yet the damage had already spread beyond containment.",
+    "title": "The Logging Library",
+    "subtitle": "On threats too small to notice",
+    "date": "2024-12-15",
+    "readTime": 3,
+    "excerpt": "It was just a logging library. Nobody monitors logging libraries. That was precisely the point.",
     "featured": false,
     "released": false,
-    "href": "/field-notes/resonance/2025-12-22-supply-chains-dont-scream.html",
+    "href": "/field-notes/resonance/2024-12-15-the-logging-library.html",
     "tags": [
       "supply-chain",
       "third-party-risk",
-      "blind-spots"
-    ]
-  },
-  {
-    "id": "resonance-2026-01-03-the-illusion-of-visibility",
-    "category": "resonance",
-    "title": "The Illusion of Visibility",
-    "subtitle": "Dashboards are not awareness",
-    "date": "2026-01-03",
-    "readTime": 2,
-    "excerpt": "We had metrics. We had charts. We did not have understanding.",
-    "featured": false,
-    "released": false,
-    "href": "/field-notes/resonance/2026-01-03-the-illusion-of-visibility.html",
-    "tags": [
-      "metrics",
-      "false-confidence",
-      "observability"
+      "blind-spots",
+      "monitoring"
     ]
   },
   {
@@ -190,6 +245,24 @@
       "trust"
     ],
     "realWorldLink": "https://thesmokingprinter.com/blog/crowdstrike-dragon-digital-guardians-turn-against-realm"
+  },
+  {
+    "id": "resonance-2022-09-15-fools-and-kings",
+    "category": "resonance",
+    "title": "On Fools and Kings",
+    "subtitle": "When mockery becomes the weapon",
+    "date": "2022-09-15",
+    "readTime": 2,
+    "excerpt": "The Jester carried no sword. He commanded no army. He simply knocked on the gate until the guards grew weary.",
+    "featured": false,
+    "released": false,
+    "href": "/field-notes/resonance/2022-09-15-fools-and-kings.html",
+    "tags": [
+      "social-engineering",
+      "mfa-fatigue",
+      "human-factor"
+    ],
+    "realWorldLink": "https://thesmokingprinter.com/blog/court-jesters-gambit"
   },
   {
     "id": "resonance-2020-12-13-patience-of-shadows",
@@ -226,59 +299,5 @@
       "leadership"
     ],
     "realWorldLink": "https://thesmokingprinter.com/blog/the-equifax-oracle-prophets-warning"
-  },
-  {
-    "id": "resonance-2022-09-15-fools-and-kings",
-    "category": "resonance",
-    "title": "On Fools and Kings",
-    "subtitle": "When mockery becomes the weapon",
-    "date": "2022-09-15",
-    "readTime": 2,
-    "excerpt": "The Jester carried no sword. He commanded no army. He simply knocked on the gate until the guards grew weary.",
-    "featured": false,
-    "released": false,
-    "href": "/field-notes/resonance/2022-09-15-fools-and-kings.html",
-    "tags": [
-      "social-engineering",
-      "mfa-fatigue",
-      "human-factor"
-    ],
-    "realWorldLink": "https://thesmokingprinter.com/blog/court-jesters-gambit"
-  },
-  {
-    "id": "resonance-2024-12-15-the-logging-library",
-    "category": "resonance",
-    "title": "The Logging Library",
-    "subtitle": "On threats too small to notice",
-    "date": "2024-12-15",
-    "readTime": 3,
-    "excerpt": "It was just a logging library. Nobody monitors logging libraries. That was precisely the point.",
-    "featured": false,
-    "released": false,
-    "href": "/field-notes/resonance/2024-12-15-the-logging-library.html",
-    "tags": [
-      "supply-chain",
-      "third-party-risk",
-      "blind-spots",
-      "monitoring"
-    ]
-  },
-  {
-    "id": "resonance-2026-01-17-corruption-holds-kingdoms-hostage",
-    "category": "resonance",
-    "title": "The Corruption That Holds Kingdoms Hostage",
-    "subtitle": "When Even Giants Fall to the Ancient Pattern",
-    "date": "2026-01-17",
-    "readTime": 3,
-    "excerpt": "Size and prosperity offer no immunity when the fundamental wards remain weak.",
-    "featured": true,
-    "released": true,
-    "href": "/field-notes/resonance/2026-01-17-corruption-holds-kingdoms-hostage.html",
-    "tags": [
-      "ransomware",
-      "breach",
-      "corruption"
-    ],
-    "realWorldLink": "https://www.bleepingcomputer.com/news/security/south-korean-giant-kyowon-confirms-data-theft-in-ransomware-attack/"
   }
 ]
