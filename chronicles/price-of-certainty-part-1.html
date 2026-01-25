@@ -55,6 +55,24 @@
             </a>
           </div>
         </div>
+
+        <!-- Toggle between Chronicle and Real-World Brief -->
+        <div class="flex flex-col items-center text-center">
+          <div class="toggle-wrap" role="group" aria-label="Chronicle view toggle">
+            <button id="btnStory" class="toggle-btn focus-ring" type="button" aria-pressed="true">
+              <span class="toggle-icon" aria-hidden="true">◉</span>
+              <span>Chronicle</span>
+            </button>
+            
+            <button id="btnAnalysis" class="toggle-btn focus-ring" type="button" aria-pressed="false">
+              <span class="toggle-icon" aria-hidden="true">◯</span>
+              <span>Real-World Brief</span>
+            </button>
+          </div>
+          <p class="mt-2 text-xs text-stardust/65">
+            Flip to reveal the real-world cybersecurity lesson.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -63,11 +81,11 @@
       <div class="h-px w-full bg-rift/60"></div>
     </div>
 
-    <!-- Content Panel -->
+    <!-- Content Panels -->
     <section class="relative mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8 pt-8 pb-14">
 
       <!-- Story Panel -->
-      <article class="story-panel is-active">
+      <article id="panelStory" class="story-panel is-active">
         <div class="mx-auto max-w-4xl prose-lore font-prose text-lg">
 
 <p class="drop-cap">The ledger crystal shattered.</p>
@@ -297,24 +315,124 @@
         </div>
       </article>
 
-      <!-- Series Navigation -->
-      <div class="series-nav">
-        <span class="disabled flex items-center gap-2">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="15 18 9 12 15 6"/>
-          </svg>
-          Previous Part
-        </span>
-        
-        <span class="text-stardust/60 text-sm">Part 1 of 3</span>
-        
-        <a href="/chronicles/price-of-certainty-part-2.html" class="flex items-center gap-2">
-          Part 2: The Three-Day Gamble
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="9 18 15 12 9 6"/>
-          </svg>
-        </a>
-      </div>
+      <!-- Real-World Brief Panel -->
+      <article id="panelAnalysis" class="story-panel">
+        <div class="mx-auto max-w-4xl prose-lore">
+
+<h2>Real-World Brief — When You Can't Trust the Data</h2>
+
+<p>In cybersecurity, this kind of incident is called a <strong>data integrity failure</strong>.</p>
+
+<p>Not a breach. Not theft. Not ransomware.</p>
+
+<p>Something more dangerous.</p>
+
+<p>In most attacks, the problem is <em>loss</em>. Files are stolen. Systems go down. Data is encrypted. Those are terrible, but at least they're clear. You know what's broken.</p>
+
+<p>Integrity attacks are different.</p>
+
+<p>Here, the systems still run. Transactions still process. Reports still generate.</p>
+
+<p>But no one knows what's real anymore.</p>
+
+<p>Cassia's crisis mirrors real incidents where attackers didn't destroy systems. They quietly altered records. Changed timestamps. Duplicated transactions. Deleted a few entries. Rewrote others.</p>
+
+<p>The goal is not chaos.</p>
+
+<p><strong>The goal is doubt.</strong></p>
+
+<p>Once merchants stop trusting their own ledgers, the economy collapses on its own.</p>
+
+<h3>When Trust Fails, Commerce Follows</h3>
+
+<p>Modern economies depend on digital records to answer simple questions:</p>
+
+<ul>
+  <li>Who owns what</li>
+  <li>What was paid</li>
+  <li>What was shipped</li>
+  <li>What exists</li>
+</ul>
+
+<p>When those answers become unreliable, trade stops.</p>
+
+<p>After the <strong>NotPetya attack in 2017</strong>, shipping giant Maersk lost the ability to verify where thousands of containers were located. Ships still sailed. Ports still operated.</p>
+
+<p>But no one trusted the tracking systems.</p>
+
+<p>For weeks, global shipping ran on phone calls, paper manifests, and best guesses.</p>
+
+<p>Banks face the same problem during payment system failures. Manufacturers face it when production records are corrupted.</p>
+
+<p>The damage rarely comes from stolen data.</p>
+
+<p><strong>It comes from not knowing what to believe.</strong></p>
+
+<h3>The First Hard Decision: Slow and Correct vs Fast and Wrong</h3>
+
+<p>Cassia's order to revert to manual ledgers is one of the most realistic moments in this story.</p>
+
+<p>When transaction systems can't be trusted, leaders face three bad choices:</p>
+
+<ol>
+  <li>Shut everything down and rebuild</li>
+  <li>Keep running and hope the data is right</li>
+  <li>Operate manually while fixing systems in parallel</li>
+</ol>
+
+<p>Option three is brutal.</p>
+
+<p>It is slower. It is expensive. It makes everyone angry.</p>
+
+<p>But it preserves the one thing commerce cannot survive without.</p>
+
+<p><strong>Trust.</strong></p>
+
+<p>Hospitals do this during ransomware attacks. Banks do this during settlement failures. Shipping companies do this when tracking systems collapse.</p>
+
+<p>Paper returns. Phones return. Human verification returns.</p>
+
+<p>Technology pauses. Business continues.</p>
+
+<p>Barely.</p>
+
+<h3>The Leadership Lesson</h3>
+
+<p>This chapter is not about hacking.</p>
+
+<p>It's about <strong>leadership under uncertainty</strong>.</p>
+
+<p>Cassia does three things that real crisis leaders must do:</p>
+
+<ol>
+  <li>She tells the truth early, even when it's ugly</li>
+  <li>She sets a temporary plan instead of waiting for perfect answers</li>
+  <li>She accepts personal responsibility for the outcome</li>
+</ol>
+
+<p>Most major security failures are not technical.</p>
+
+<p>They are leadership failures.</p>
+
+<p>Delayed decisions. Hidden damage. False certainty.</p>
+
+<p>Cassia chooses the hardest path.</p>
+
+<p><strong>Slow. Visible. Accountable.</strong></p>
+
+<p>And that choice is the only reason the Kingdom still has an economy at all.</p>
+
+<p class="mt-8 p-4 bg-abyss/40 border border-rift/50 rounded-lg text-sm text-stardust/70 italic">
+  A full technical and leadership analysis of this Chronicle will be released with the complete edition.
+</p>
+
+        </div>
+      </article>
+
+      <!-- Series Navigation (dynamically populated) -->
+      <nav id="seriesNav" class="series-nav hidden" aria-label="Chronicle series navigation">
+        <!-- Will be populated by JavaScript based on chronicles.index.json -->
+      </nav>
 
       <!-- Context Footer -->
       <div class="mx-auto max-w-3xl mt-12 soft-card p-6">
@@ -498,6 +616,13 @@
   <div id="site-footer"></div>
 
   <script>
+  // ---------- Page Configuration ----------
+  const CURRENT_CHRONICLE = {
+    seriesId: "price-of-certainty",  // Base ID for the series
+    part: 1,                          // Current part number
+    totalParts: 3                     // Total parts in series
+  };
+
   // ---------- Utilities ----------
   async function loadPartial(targetId, url) {
     const el = document.getElementById(targetId);
@@ -512,7 +637,6 @@
   }
 
   function initHeaderNav() {
-    // These exist only AFTER header.html is injected
     const navToggle = document.getElementById("navToggle");
     const mobileNavPanel = document.getElementById("mobileNavPanel");
 
@@ -524,7 +648,6 @@
       mobileNavPanel.classList.toggle("hidden", isOpen);
     });
 
-    // Escape closes mobile menu
     document.addEventListener("keydown", (e) => {
       if (e.key !== "Escape") return;
       if (navToggle.getAttribute("aria-expanded") === "true") {
@@ -539,26 +662,135 @@
     if (year) year.textContent = new Date().getFullYear();
   }
 
-  // ---------- Boot ----------
-  (async function boot() {
-    // Load header first so nav elements exist when we bind listeners
-    await loadPartial("site-header", "/partials/header.html");
-    initHeaderNav();
+  // ---------- Story/Analysis Toggle ----------
+  function initStoryAnalysisToggle() {
+    const btnStory = document.getElementById("btnStory");
+    const btnAnalysis = document.getElementById("btnAnalysis");
+    const panelStory = document.getElementById("panelStory");
+    const panelAnalysis = document.getElementById("panelAnalysis");
 
-    // Load footer, then update year if present
-    await loadPartial("site-footer", "/partials/footer.html");
-    initFooterYear();
-    
-    // Return to Top button
-    initReturnToTop();
-  })();
+    if (!btnStory || !btnAnalysis || !panelStory || !panelAnalysis) return;
 
+    function showPanel(which) {
+      const isAnalysis = which === "analysis";
+      const toShow = isAnalysis ? panelAnalysis : panelStory;
+      const toHide = isAnalysis ? panelStory : panelAnalysis;
+
+      const y = window.scrollY;
+
+      btnStory.setAttribute("aria-pressed", String(!isAnalysis));
+      btnAnalysis.setAttribute("aria-pressed", String(isAnalysis));
+
+      // Update button text with icons
+      btnStory.innerHTML = `<span class="toggle-icon" aria-hidden="true">${!isAnalysis ? "◉" : "◯"}</span><span>Chronicle</span>`;
+      btnAnalysis.innerHTML = `<span class="toggle-icon" aria-hidden="true">${isAnalysis ? "◉" : "◯"}</span><span>Real-World Brief</span>`;
+
+      toHide.classList.remove("is-active");
+      toShow.classList.add("is-active");
+
+      toShow.classList.remove("fade-enter", "fade-enter-active");
+      toShow.classList.add("fade-enter");
+      requestAnimationFrame(() => toShow.classList.add("fade-enter-active"));
+
+      // Update hash for shareable links
+      if (isAnalysis) {
+        history.replaceState(null, "", "#brief");
+      } else {
+        history.replaceState(null, "", window.location.pathname);
+      }
+
+      window.scrollTo(0, y);
+    }
+
+    btnStory.addEventListener("click", () => showPanel("story"));
+    btnAnalysis.addEventListener("click", () => showPanel("analysis"));
+
+    // Initialize based on URL
+    if (window.location.hash === "#brief") showPanel("analysis");
+    else showPanel("story");
+  }
+
+  // ---------- Series Navigation ----------
+  async function initSeriesNav() {
+    const seriesNav = document.getElementById("seriesNav");
+    if (!seriesNav) return;
+
+    try {
+      // Fetch the chronicles index
+      const response = await fetch("/data/chronicles.index.json");
+      if (!response.ok) {
+        console.warn("Could not load chronicles index");
+        return;
+      }
+
+      const chronicles = await response.json();
+      
+      // Find all parts of this series that are released
+      const seriesParts = chronicles.filter(c => 
+        c.seriesId === CURRENT_CHRONICLE.seriesId && 
+        c.released === true
+      ).sort((a, b) => a.part - b.part);
+
+      // If only one part exists, don't show navigation
+      if (seriesParts.length <= 1) {
+        seriesNav.classList.add("hidden");
+        return;
+      }
+
+      // Find previous and next parts
+      const currentPart = CURRENT_CHRONICLE.part;
+      const prevPart = seriesParts.find(p => p.part === currentPart - 1);
+      const nextPart = seriesParts.find(p => p.part === currentPart + 1);
+
+      // Build navigation HTML
+      let navHTML = "";
+
+      // Previous link
+      if (prevPart) {
+        navHTML += `
+          <a href="${prevPart.href}" class="flex items-center gap-2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+            Part ${prevPart.part}: ${prevPart.partTitle || 'Previous'}
+          </a>
+        `;
+      } else {
+        navHTML += `<span></span>`; // Empty spacer
+      }
+
+      // Center indicator
+      navHTML += `<span class="text-stardust/60 text-sm">Part ${currentPart} of ${CURRENT_CHRONICLE.totalParts}</span>`;
+
+      // Next link
+      if (nextPart) {
+        navHTML += `
+          <a href="${nextPart.href}" class="flex items-center gap-2">
+            Part ${nextPart.part}: ${nextPart.partTitle || 'Next'}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </a>
+        `;
+      } else {
+        navHTML += `<span></span>`; // Empty spacer
+      }
+
+      seriesNav.innerHTML = navHTML;
+      seriesNav.classList.remove("hidden");
+
+    } catch (error) {
+      console.warn("Error loading series navigation:", error);
+      seriesNav.classList.add("hidden");
+    }
+  }
+
+  // ---------- Return to Top ----------
   function initReturnToTop() {
     const returnToTopBtn = document.getElementById('returnToTop');
     
     if (!returnToTopBtn) return;
 
-    // Show/hide based on scroll position
     window.addEventListener('scroll', () => {
       if (window.scrollY > 400) {
         returnToTopBtn.classList.remove('hidden');
@@ -567,11 +799,23 @@
       }
     }, { passive: true });
 
-    // Scroll to top on click
     returnToTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  // ---------- Boot ----------
+  (async function boot() {
+    await loadPartial("site-header", "/partials/header.html");
+    initHeaderNav();
+
+    await loadPartial("site-footer", "/partials/footer.html");
+    initFooterYear();
+
+    initStoryAnalysisToggle();
+    initSeriesNav();
+    initReturnToTop();
+  })();
 </script>
 </main>
 </body>
