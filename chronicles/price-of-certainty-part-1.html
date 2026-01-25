@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Price of Certainty: Part 1 — The Dreaming Tower Archives</title>
+  <meta name="description" content="Part 1: The Ledger Crisis — Merchant-Lord Cassia faces economic chaos when transaction systems begin corrupting themselves. The Secret Council must decide: shutdown, chaos, or a 70% gamble.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Price of Certainty: Part 1 — The Ledger Crisis">
+  <meta property="og:description" content="Transaction records are destroying themselves. Cassia has hours before merchants lose trust in the entire economic system.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thedreamingtower.com/chronicles/price-of-certainty-part-1.html">
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cinzel:wght@500;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily: { 
+            display: ['Cinzel', 'serif'], 
+            body: ['Source Sans 3', 'ui-sans-serif', 'system-ui'],
+            prose: ['Crimson Pro', 'serif'],
+            signature: ['Caveat', 'cursive']
+          },
+          boxShadow: {
+            glow: '0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card: '0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  
+  <style>
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+
+    .prose-lore p { margin-top: 1rem; line-height: 1.9; color: rgba(207,229,239,.92); }
+    .prose-lore h2 { margin-top: 2.25rem; font-family: Cinzel, serif; font-size: 1.4rem; color: rgba(207,229,239,.95); }
+    .prose-lore h3 { margin-top: 1.75rem; font-family: Cinzel, serif; font-size: 1.15rem; color: rgba(207,229,239,.9); }
+    .prose-lore blockquote { 
+      border-left: 3px solid rgba(53,198,224,.4); 
+      padding-left: 1.25rem; 
+      margin: 1.5rem 0; 
+      font-style: italic;
+      color: rgba(207,229,239,.8);
+    }
+    .prose-lore hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(53,198,224,.3), transparent);
+      margin: 2rem 0;
+    }
+    .prose-lore em { color: rgba(53,198,224,.9); font-style: italic; }
+    .prose-lore strong { color: rgba(207,229,239,1); font-weight: 600; }
+
+    /* Drop cap for opening paragraph */
+    .drop-cap::first-letter {
+      float: left;
+      font-family: Cinzel, serif;
+      font-size: 4rem;
+      line-height: 0.8;
+      padding-right: 0.5rem;
+      color: #35C6E0;
+    }
+
+    /* Series navigation */
+    .series-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: rgba(15, 34, 48, 0.6);
+      border: 1px solid rgba(53, 198, 224, 0.15);
+      border-radius: 8px;
+      margin-top: 3rem;
+    }
+    .series-nav a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(207,229,239,.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .series-nav a:hover { color: #35C6E0; }
+    .series-nav .disabled {
+      color: rgba(207,229,239,.3);
+      pointer-events: none;
+    }
+
+    /* Part indicator */
+    .part-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(53, 198, 224, 0.1);
+      border: 1px solid rgba(53, 198, 224, 0.25);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #35C6E0;
+    }
+  </style>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/75 via-abyss/85 to-deep-space/90"></div>
+    <div class="absolute inset-0" aria-hidden="true">
+      <img src="/images/background-1.png" alt="" class="h-full w-full object-cover opacity-70" />
+    </div>
+
+    <div id="site-header" class="relative"></div>
+
+    <!-- Breadcrumb -->
+    <nav class="relative mx-auto max-w-3xl px-6 pt-8">
+      <a href="/chronicles.html" class="inline-flex items-center gap-2 text-sm text-stardust/60 hover:text-glow transition-colors">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back to Chronicles
+      </a>
+    </nav>
+
+    <!-- Chronicle Content -->
+    <article class="relative mx-auto max-w-3xl px-6 pt-8 pb-20">
+      
+      <!-- Header -->
+      <header class="mb-10">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="part-indicator">Part 1 of 3</span>
+          <span class="text-stardust/50 text-sm">A Cassia Chronicle</span>
+        </div>
+        
+        <h1 class="font-display text-3xl md:text-4xl lg:text-5xl text-gradient leading-tight mb-3">
+          The Price of Certainty
+        </h1>
+        <p class="font-display text-xl md:text-2xl text-stardust/80 mb-6">
+          Part 1: The Ledger Crisis
+        </p>
+        
+        <div class="flex flex-wrap items-center gap-4 text-sm text-stardust/60">
+          <span class="flex items-center gap-1.5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            ~12 min read
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+            Featuring: Cassia, Queen Lyra, Valdris, Shade, The Lorekeeper
+          </span>
+        </div>
+      </header>
+
+      <!-- Divider -->
+      <div class="h-px w-full bg-gradient-to-r from-transparent via-glow/30 to-transparent mb-10"></div>
+
+      <!-- Story Content -->
+      <div class="prose-lore font-prose text-lg">
+        
+        <p class="drop-cap">The ledger crystal shattered.</p>
+
+        <p>Not physically—the device remained whole in Cassia Goldthread's hand—but the data streaming across its surface fractured into chaos. Numbers that should have aligned twisted into contradictions. Transactions that had cleared hours ago now showed as pending, disputed, or simply <em>gone</em>.</p>
+
+        <p>She sat in her private office overlooking the merchant quarter, watching the morning sun paint the Crown City in shades of gold and amber. Beautiful. Peaceful. Utterly at odds with the economic nightmare unfolding in her hands.</p>
+
+        <p>"No," she whispered. "No, no, no."</p>
+
+        <p>A soft knock. Her aide, Marcus, entered with his usual morning efficiency. "Merchant-Lord, the Guild Council is—" He stopped, reading her expression. "What's wrong?"</p>
+
+        <p>"How many merchant houses have reported transaction anomalies this morning?"</p>
+
+        <p>"Seventeen, last I checked. Why?"</p>
+
+        <p>Cassia turned the crystal toward him. "It's not seventeen. It's everyone. Every single trading house in the Crown City. The data is corrupted. We can't verify anything."</p>
+
+        <p>Marcus went pale. "The authentication reset. We just finished that. How—"</p>
+
+        <p>"I don't know. But if merchants can't verify their transactions, if customers can't confirm their purchases, if we can't prove who owns what..." She didn't finish. She didn't need to.</p>
+
+        <p>The ledger crystal pulsed, and a new alert appeared. Then another. Then a dozen more.</p>
+
+        <p>Guild after guild reporting the same problem.</p>
+
+        <p>The Kingdom's economy was eating itself.</p>
+
+        <hr>
+
+        <h3>Two Hours Later — Emergency Guild Council Session</h3>
+
+        <p>The Guild Hall was chaos contained by marble walls and expensive architecture.</p>
+
+        <p>Forty guild leaders shouted over each other, their voices echoing off the vaulted ceiling. Master Ironworks pounded the table. Mistress Threadweaver gestured furiously at her own malfunctioning ledger crystal. Someone in the back was threatening to sue someone else over a shipment that may or may not have ever existed.</p>
+
+        <p>Cassia stood at the head of the chamber, still and silent, waiting for the fury to exhaust itself.</p>
+
+        <p>It took twenty minutes.</p>
+
+        <p>Finally, Master Kelvin of the Spice Traders—her mentor, her friend, and currently her harshest critic—stood. The room quieted out of respect for his age and influence.</p>
+
+        <p>"Merchant-Lord Goldthread," he said, his voice heavy with restrained anger. "Three hours ago, my house processed a shipment of saffron from the Eastern Provinces. The transaction cleared. Payment was confirmed. Now the system says that shipment never existed. I have a warehouse full of saffron that, according to our records, <em>doesn't exist</em>. Do I pay for it? Do I not pay? How do I sell something that isn't real?"</p>
+
+        <p>Murmurs of agreement rippled through the chamber.</p>
+
+        <p>"My cloth deliveries have vanished from the records," Mistress Threadweaver said.</p>
+
+        <p>"My iron shipments never arrived, according to the system," Master Ironworks added. "Except they're sitting in my forge right now."</p>
+
+        <p>"My grain contracts have been duplicated," another merchant called. "The system thinks I delivered twice what I actually sent. Do I charge for what I delivered or what the ledger says?"</p>
+
+        <p>The room erupted again.</p>
+
+        <p>Cassia let it run for thirty seconds, then raised her hand. The room quieted—not completely, but enough.</p>
+
+        <p>"I know," she said, her voice carrying over the grumbling. "I know, and I'm working on it. This appears to be a cascading failure in our transaction verification systems—"</p>
+
+        <p>"A failure you assured us was impossible after the authentication reset!" someone shouted.</p>
+
+        <p>"A failure that's going to bankrupt us while the Council debates!" another added.</p>
+
+        <p>Cassia kept her voice level. "The Secret Council is meeting in one hour. I will present the economic impact data and demand immediate action. But I need accurate information from all of you. How many houses are affected? What's the pattern?"</p>
+
+        <p>Master Kelvin stepped forward again. "All houses. All transactions in the past twelve hours. And the pattern—" His expression was grim. "The pattern is that there is no pattern. It's random. Chaotic. Almost like something is <em>playing</em> with us."</p>
+
+        <p>A chill ran down Cassia's spine.</p>
+
+        <p>"Playing," she repeated.</p>
+
+        <p>"My exact word. Transactions appear and disappear. Records change while you're looking at them. It's not corruption. It's <em>manipulation</em>."</p>
+
+        <p>She thought of the Merchant's Gate breach. The authentication reset. The warnings Shade had brought about secondary attacks.</p>
+
+        <p>This was the second phase.</p>
+
+        <p>"Give me two hours," she said. "The Council will have answers, or I will get them myself. In the meantime—" She made a decision that would either save them or destroy her career. "All houses revert to manual ledger operations. Paper records. Verified transactions only. Nothing digital until we know what we're dealing with."</p>
+
+        <p>The room exploded.</p>
+
+        <p>"You're joking!"</p>
+
+        <p>"That will slow everything to a crawl!"</p>
+
+        <p>"The Midwinter Summit is in three weeks—we can't process that volume manually!"</p>
+
+        <p>"DO YOU HAVE A BETTER OPTION?" Cassia's voice cracked through the chaos like a whip. "Our digital systems are compromised. We can either work slowly with accuracy or quickly with garbage. Choose."</p>
+
+        <p>Silence.</p>
+
+        <p>Master Kelvin nodded slowly. "Manual records. Verified by two witnesses minimum. Triple-checked before finalization."</p>
+
+        <p>One by one, the other guild leaders agreed. Reluctantly. Furiously. But they agreed.</p>
+
+        <p>"Two hours," Cassia said. "I promise you, answers in two hours."</p>
+
+        <p>She left before they could argue further.</p>
+
+        <hr>
+
+        <h3>One Hour Later — Secret Council Chamber</h3>
+
+        <p>Cassia arrived early, her ledger crystal clutched in one hand and a stack of hastily compiled reports in the other. The Queen was already there, reviewing something with concern etched on her face.</p>
+
+        <p>"Your Majesty," Cassia said. "We have a crisis."</p>
+
+        <p>"I know. The Lorekeeper alerted me twenty minutes ago. Something about economic chaos matching a pattern from—"</p>
+
+        <p>"Merchant-Lord." The Lorekeeper's voice emerged from the shadows as he entered, his ancient staff clicking against stone. "The transaction corruption. When did it begin?"</p>
+
+        <p>"First reports came in at dawn. Why?"</p>
+
+        <p>"Because ninety-two years ago, a similar attack struck the Southern Kingdoms. They called it the Ledger Plague. It didn't steal wealth—it made wealth impossible to verify. Within weeks, their economy collapsed. Trade stopped. Governments fell."</p>
+
+        <p>Cassia felt her stomach drop. "How did they stop it?"</p>
+
+        <p>The Lorekeeper's expression was grim. "They didn't. The kingdoms dissolved. Some territories recovered decades later. Others never did."</p>
+
+        <p>High Commander Valdris strode in, his armor already battle-ready despite the hour. "Reports from the Sentinels. We've detected an entity operating in the transaction verification systems. It's not stealing data. It's not corrupting it in any traditional sense. It's..." He struggled for words. "It's <em>playing</em> with it."</p>
+
+        <p>"Playing," Cassia echoed Master Kelvin's word. "That's the second time I've heard that description."</p>
+
+        <p>Shade materialized in his corner, Whisper shimmering with unusual agitation. "Not playing. Testing."</p>
+
+        <p>Everyone turned to him.</p>
+
+        <p>"The entity is learning," Shade continued. "Watching how we respond to chaos. Measuring our tolerance for uncertainty. This isn't an attack on the economy. It's a study. It wants to understand how much disruption we can absorb before we break."</p>
+
+        <p>"Why?" the Queen asked.</p>
+
+        <p>"Because once it knows our breaking point, it can bring us exactly to that edge. Keep us there. Bleed us slowly instead of striking fast."</p>
+
+        <p>The room fell silent.</p>
+
+        <p>Cassia was the first to speak. "We need to purge it. Now. Before it learns more."</p>
+
+        <p>"The Purge Script?" Valdris asked. "We just used that three weeks ago. The systems are still recovering."</p>
+
+        <p>"Then we use something else. The Lorekeeper must have another protocol—"</p>
+
+        <p>"There isn't one," the Lorekeeper said quietly. "Not for this. The Purge Script was designed for corruption, for malicious code that can be identified and eliminated. This entity doesn't corrupt. It manipulates. It changes things in ways that are technically <em>valid</em>—just wrong."</p>
+
+        <p>"Then what do we do?" Cassia demanded. "Let it destroy our economy while we watch?"</p>
+
+        <p>"We could shut down all transaction systems," Valdris suggested. "Complete isolation. Manual everything until—"</p>
+
+        <p>"Manual everything for how long?" Cassia interrupted. "Weeks? Months? The Midwinter Summit brings in forty percent of our annual trade revenue. We shut down now, we lose that. Merchants who depend on that income will fold. The economic damage could be worse than the entity itself."</p>
+
+        <p>"Will survive," Valdris said flatly. "Better poor than corrupted."</p>
+
+        <p>"Easy for you to say when it's not your livelihood on the line!"</p>
+
+        <p>"ENOUGH." The Queen's voice cut through the argument. "Cassia, what's your assessment? Actual numbers."</p>
+
+        <p>Cassia took a breath, forcing herself to be clinical. "If we shut down all digital transaction systems: immediate loss of sixty percent of trade capacity. Within one week, forty-seven merchant houses will be unable to meet their obligations. Within two weeks, that number doubles. By month's end, we're looking at a depression that will take years to recover from."</p>
+
+        <p>"And if we don't shut down?" Lyra asked.</p>
+
+        <p>"The chaos spreads. Merchants stop trusting any records. Disputes escalate. Within a week, we're operating on reputation and trust alone—which works fine until someone exploits that trust. Within two weeks, same result. Economic collapse. Just with extra chaos along the way."</p>
+
+        <p>"Both options are unacceptable," the Queen said.</p>
+
+        <p>"Yes," Cassia agreed. "Welcome to my morning."</p>
+
+        <p>Shade's voice emerged from the corner. "There's a third option."</p>
+
+        <p>Everyone looked at him.</p>
+
+        <p>"We don't purge it. We don't shut down. We trap it."</p>
+
+        <p>The Lorekeeper's eyes sharpened. "Explain."</p>
+
+        <p>"The entity is learning how we respond to chaos. So we teach it." Shade stepped into the light, Whisper flowing around him like living shadow. "We create a false sector. A decoy portion of the transaction system that looks real but isn't. Let the entity play there while the Cipher Monks rebuild the actual systems behind barriers it can't see."</p>
+
+        <p>"A honeypot," Valdris said. "Tactical deception."</p>
+
+        <p>"How long would that take to implement?" the Queen asked.</p>
+
+        <p>Cassia was already calculating. "To create a convincing false sector? Eight hours minimum. To rebuild the actual systems behind protection? Three days."</p>
+
+        <p>"Three days of the entity learning in our decoy," the Lorekeeper said. "Three days for it to potentially discover the deception."</p>
+
+        <p>"Or three days of merchants operating in controlled chaos while we fix the problem," Shade countered. "Cassia, can your guild houses function for three days with partially corrupted data?"</p>
+
+        <p>Cassia thought of Master Kelvin, of Mistress Threadweaver, of the forty guild leaders who'd just agreed to manual record-keeping. Thought of the thousands of merchants who trusted her to protect their livelihoods.</p>
+
+        <p>"They can function for three days with <em>known</em> partially corrupted data," she said carefully. "If we tell them it's temporary, if we give them workarounds, if we promise it's being fixed—yes. They can manage. Barely."</p>
+
+        <p>"But?" the Queen prompted.</p>
+
+        <p>"But if the entity discovers the deception early, if it lashes out, if <em>anything</em> goes wrong—" Cassia met Lyra's eyes. "We could lose everything. Every transaction record. Every contract. Every proof of ownership in the entire Kingdom."</p>
+
+        <p>"What are the odds of success?" Valdris asked.</p>
+
+        <p>Shade tilted his head. "Whisper estimates seventy percent."</p>
+
+        <p>"You're basing our entire economy on a <em>seventy percent</em> chance?"</p>
+
+        <p>"I'm basing it on the fact that both other options guarantee failure," Shade said. "This is the only path that <em>might</em> work."</p>
+
+        <p>The Queen looked at each of them in turn. "Lorekeeper?"</p>
+
+        <p>"The historical precedent is... mixed. Similar deceptions have worked. They've also failed catastrophically. But Shade is correct—the alternative options lead nowhere good."</p>
+
+        <p>"Valdris?"</p>
+
+        <p>The High Commander's jaw worked. "I hate it. I hate deception tactics, I hate relying on Shade's mysterious entity-companion, and I hate seventy percent odds. But—" He exhaled sharply. "Shutting down guarantees failure. At least this gives us a chance."</p>
+
+        <p>"Cassia?"</p>
+
+        <p>Merchant-Lord Goldthread looked at the ledger crystal still flickering with corrupted data in her hand. Thought of Master Kelvin standing in a warehouse full of saffron that didn't exist according to the system.</p>
+
+        <p>Thought of the choice the Queen had made during the Forgetting Protocol—the terrible decision between bad options and worse ones.</p>
+
+        <p>"Three days," she said. "I can hold the merchant community together for three days. Barely. But Your Majesty—" She looked directly at Lyra. "If this fails, the economic damage will be my responsibility. I need your support to make decisions that will be unpopular."</p>
+
+        <p>"Including decisions I might not like?" the Queen asked.</p>
+
+        <p>"Especially those."</p>
+
+        <p>A long pause. Then Lyra nodded. "You have my support. Make it work."</p>
+
+        <p>Cassia felt the weight settle on her shoulders. Heavier than any negotiation, any trade deal, any crisis she'd managed before.</p>
+
+        <p>"Then let's begin."</p>
+
+      </div>
+
+      <!-- Series Navigation -->
+      <div class="series-nav">
+        <span class="disabled flex items-center gap-2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          Previous Part
+        </span>
+        
+        <span class="text-stardust/60 text-sm">Part 1 of 3</span>
+        
+        <a href="/chronicles/price-of-certainty-part-2.html" class="flex items-center gap-2">
+          Part 2: The Three-Day Gamble
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Back to Chronicles -->
+      <div class="mt-8 pt-8 border-t border-rift/40">
+        <a href="/chronicles.html" class="inline-flex items-center gap-3 group text-stardust/80 hover:text-glow transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-stardust/60 group-hover:text-glow transition-colors">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          <span>
+            <span class="text-xs uppercase tracking-wider text-stardust/60 block">Back to</span>
+            <span class="font-display text-stardust/90 group-hover:text-glow transition-colors">All Chronicles</span>
+          </span>
+        </a>
+      </div>
+
+    </article>
+
+    <!-- Return to Top Button -->
+    <button id="returnToTop" class="hidden fixed bottom-6 right-6 z-50 p-3 rounded-full bg-abyss/90 border border-rift hover:border-glow/50 text-stardust/70 hover:text-glow transition-all shadow-lg" aria-label="Return to top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="18 15 12 9 6 15"/>
+      </svg>
+    </button>
+
+    <div id="site-footer" class="relative"></div>
+  </main>
+
+  <script>
+    // ---------- Boot ----------
+    (async function boot() {
+      await loadPartial("site-header", "/partials/header.html");
+      initHeaderNav();
+      await loadPartial("site-footer", "/partials/footer.html");
+      initFooterYear();
+      initReturnToTop();
+    })();
+
+    function initReturnToTop() {
+      const returnToTopBtn = document.getElementById('returnToTop');
+      if (!returnToTopBtn) return;
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          returnToTopBtn.classList.remove('hidden');
+        } else {
+          returnToTopBtn.classList.add('hidden');
+        }
+      }, { passive: true });
+
+      returnToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  </script>
+</body>
+</html>
