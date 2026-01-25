@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Price of Certainty: Part 2 — The Dreaming Tower Archives</title>
+  <meta name="description" content="Part 2: The Three-Day Gamble — The honeypot is active. Merchants operate on manual ledgers while Cassia holds the economy together through controlled chaos.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Price of Certainty: Part 2 — The Three-Day Gamble">
+  <meta property="og:description" content="The honeypot is active. The entity is learning in the decoy sector. Three days to rebuild—if Cassia can hold the merchants together.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thedreamingtower.com/chronicles/price-of-certainty-part-2.html">
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cinzel:wght@500;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-space':'#0A141B',
+            'abyss':'#0F2230',
+            'rift':'#143545',
+            'nebula':'#1E6175',
+            'glow':'#35C6E0',
+            'stardust':'#CFE5EF',
+            indigo:'#4B5DFF', violet:'#7C4DFF', ember:'#F0B429',
+            fog:'#E9EDF2', silver:'#C9D1D9', parchment:'#F7F4EF', aether:'#0B0F14', runic:'#1A2430'
+          },
+          fontFamily: { 
+            display: ['Cinzel', 'serif'], 
+            body: ['Source Sans 3', 'ui-sans-serif', 'system-ui'],
+            prose: ['Crimson Pro', 'serif'],
+            signature: ['Caveat', 'cursive']
+          },
+          boxShadow: {
+            glow: '0 0 0 2px rgba(53,198,224,.15), 0 10px 28px rgba(0,0,0,.25)',
+            card: '0 6px 18px rgba(0,0,0,.12)'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/layout.js" defer></script>
+  
+  <style>
+    .focus-ring:focus { outline:2px solid #35C6E0; outline-offset:3px; }
+    .text-gradient{
+      background: linear-gradient(90deg, #CFE5EF 0%, #35C6E0 60%, #7C4DFF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+
+    .prose-lore p { margin-top: 1rem; line-height: 1.9; color: rgba(207,229,239,.92); }
+    .prose-lore h2 { margin-top: 2.25rem; font-family: Cinzel, serif; font-size: 1.4rem; color: rgba(207,229,239,.95); }
+    .prose-lore h3 { margin-top: 1.75rem; font-family: Cinzel, serif; font-size: 1.15rem; color: rgba(207,229,239,.9); }
+    .prose-lore blockquote { 
+      border-left: 3px solid rgba(53,198,224,.4); 
+      padding-left: 1.25rem; 
+      margin: 1.5rem 0; 
+      font-style: italic;
+      color: rgba(207,229,239,.8);
+    }
+    .prose-lore hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(53,198,224,.3), transparent);
+      margin: 2rem 0;
+    }
+    .prose-lore em { color: rgba(53,198,224,.9); font-style: italic; }
+    .prose-lore strong { color: rgba(207,229,239,1); font-weight: 600; }
+
+    /* Drop cap for opening paragraph */
+    .drop-cap::first-letter {
+      float: left;
+      font-family: Cinzel, serif;
+      font-size: 4rem;
+      line-height: 0.8;
+      padding-right: 0.5rem;
+      color: #35C6E0;
+    }
+
+    /* Series navigation */
+    .series-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: rgba(15, 34, 48, 0.6);
+      border: 1px solid rgba(53, 198, 224, 0.15);
+      border-radius: 8px;
+      margin-top: 3rem;
+    }
+    .series-nav a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(207,229,239,.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .series-nav a:hover { color: #35C6E0; }
+    .series-nav .disabled {
+      color: rgba(207,229,239,.3);
+      pointer-events: none;
+    }
+
+    /* Part indicator */
+    .part-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(53, 198, 224, 0.1);
+      border: 1px solid rgba(53, 198, 224, 0.25);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #35C6E0;
+    }
+  </style>
+</head>
+
+<body class="bg-deep-space text-stardust font-body selection:bg-glow/20 selection:text-stardust">
+  <main class="relative min-h-screen overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-deep-space/75 via-abyss/85 to-deep-space/90"></div>
+    <div class="absolute inset-0" aria-hidden="true">
+      <img src="/images/background-1.png" alt="" class="h-full w-full object-cover opacity-70" />
+    </div>
+
+    <div id="site-header" class="relative"></div>
+
+    <!-- Breadcrumb -->
+    <nav class="relative mx-auto max-w-3xl px-6 pt-8">
+      <a href="/chronicles.html" class="inline-flex items-center gap-2 text-sm text-stardust/60 hover:text-glow transition-colors">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back to Chronicles
+      </a>
+    </nav>
+
+    <!-- Chronicle Content -->
+    <article class="relative mx-auto max-w-3xl px-6 pt-8 pb-20">
+      
+      <!-- Header -->
+      <header class="mb-10">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="part-indicator">Part 2 of 3</span>
+          <span class="text-stardust/50 text-sm">A Cassia Chronicle</span>
+        </div>
+        
+        <h1 class="font-display text-3xl md:text-4xl lg:text-5xl text-gradient leading-tight mb-3">
+          The Price of Certainty
+        </h1>
+        <p class="font-display text-xl md:text-2xl text-stardust/80 mb-6">
+          Part 2: The Three-Day Gamble
+        </p>
+        
+        <div class="flex flex-wrap items-center gap-4 text-sm text-stardust/60">
+          <span class="flex items-center gap-1.5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            ~7 min read
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+            Featuring: Cassia, Shade, Valdris, Queen Lyra
+          </span>
+        </div>
+      </header>
+
+      <!-- Divider -->
+      <div class="h-px w-full bg-gradient-to-r from-transparent via-glow/30 to-transparent mb-10"></div>
+
+      <!-- Previously Section -->
+      <div class="mb-8 p-4 bg-abyss/50 border border-rift/40 rounded-lg">
+        <p class="text-sm text-stardust/70 italic">
+          <strong class="text-glow">Previously:</strong> Transaction systems are corrupted by an entity that's learning the Kingdom's breaking points. The Council chose Shade's honeypot strategy—70% odds of success, three days to rebuild. Cassia took responsibility for holding the merchants together.
+        </p>
+      </div>
+
+      <!-- Story Content -->
+      <div class="prose-lore font-prose text-lg">
+        
+        <h3>Twelve Hours Later — Merchant Quarter</h3>
+
+        <p class="drop-cap">Cassia stood in Master Kelvin's warehouse, surrounded by guild leaders who'd been summoned for an "urgent briefing." She'd chosen this location deliberately—informal, away from the Guild Hall's formality, surrounded by the physical reality of goods that existed regardless of what any ledger said.</p>
+
+        <p>"You've been operating on manual ledgers for twelve hours," she said without preamble. "I promised you answers. Here they are."</p>
+
+        <p>She laid out the situation. The entity. The manipulation. The three-day deception plan.</p>
+
+        <p>The room erupted—but differently than before. This was focused fury, directed at the threat, not at her.</p>
+
+        <p>"You're telling us," Master Ironworks said slowly, "that we're <em>bait</em>."</p>
+
+        <p>"No," Cassia corrected. "I'm telling you that we're creating a decoy to protect the real systems. Your actual transactions, your real contracts—those are being secured behind protection the entity can't penetrate. What it's playing with right now is a shadow. A false reflection of our economy."</p>
+
+        <p>"For three days," Mistress Threadweaver said. "And in those three days, what happens to our actual business?"</p>
+
+        <p>"You operate on manual records with digital backup that you <em>know</em> might be corrupted. Every transaction gets triple verification. Every contract gets physical documentation. It's slower. It's frustrating. It works."</p>
+
+        <p>"And if the entity discovers what we're doing?"</p>
+
+        <p>Cassia met her eyes. "Then we lose everything, and I take full responsibility for recommending this approach."</p>
+
+        <p>Master Kelvin stood. "Show of hands. Who trusts Merchant-Lord Goldthread's judgment?"</p>
+
+        <p>Every hand rose. Some quickly, some slowly, but they all rose.</p>
+
+        <p>"Then we hold for three days," Kelvin said. "The Kingdom has protected our commerce. Time we returned the favor."</p>
+
+        <p>Cassia felt something loosen in her chest. "Thank you."</p>
+
+        <p>"Don't thank us yet," Mistress Threadweaver said. "Thank us in three days when this works."</p>
+
+        <p><em>If</em> it works, Cassia thought. But she didn't say it aloud.</p>
+
+        <hr>
+
+        <h3>Day Two — 3 AM</h3>
+
+        <p>Cassia hadn't slept. She sat in her office, monitoring the ledger crystal, watching the entity play in their carefully constructed decoy. Behind the scenes, the Cipher Monks and Patch Smiths worked frantically to rebuild the real transaction systems, but she couldn't watch that—she had to watch this. Had to know the moment something changed.</p>
+
+        <p>A shimmer in the corner announced Shade's arrival.</p>
+
+        <p>"You should rest," he said.</p>
+
+        <p>"I'll rest when this is over. How's the entity behaving?"</p>
+
+        <p>"Curious. Methodical. It's testing boundaries in the decoy sector. Learning patterns. Whisper says—" He paused. "Whisper says it's almost sad. Like watching something intelligent trapped in a puzzle it can't see the edges of."</p>
+
+        <p>"Don't make me feel sympathy for the thing destroying my economy."</p>
+
+        <p>"Not destroying. Testing. There's a difference."</p>
+
+        <p>Cassia looked up at him. "Why are you here, Shade? At three in the morning?"</p>
+
+        <p>"Because you're afraid."</p>
+
+        <p>She wanted to deny it. Couldn't. "If this fails—"</p>
+
+        <p>"If this fails, you'll rebuild. The same way you rebuilt after your husband died. The same way the merchants rebuilt after the Great Corruption. The same way the Kingdom always rebuilds."</p>
+
+        <p>"How do you know about—" She stopped. Of course he knew. Shade knew everything. "My husband's death was different. That was tragedy. This is my <em>decision</em>. If I'm wrong, people suffer because I chose this path."</p>
+
+        <p>"And if you're right, people prosper because you chose this path." Shade moved closer, though his features remained blurred. "You asked the Queen for support to make hard decisions. This is what that feels like."</p>
+
+        <p>"You're not very good at comfort."</p>
+
+        <p>"I'm excellent at truth. That sometimes feels like comfort."</p>
+
+        <p>Despite everything, Cassia smiled. "Thank you. I think."</p>
+
+        <p>Shade faded back into the shadows. "Two more days, Merchant-Lord. You've held them this long. You'll hold them longer."</p>
+
+        <p>After he left, Cassia returned to the ledger crystal. Watching. Waiting. Carrying the weight.</p>
+
+        <hr>
+
+        <h3>Day Three — Final Hours</h3>
+
+        <p>The Cipher Monks emerged from their workshop, exhausted but triumphant.</p>
+
+        <p>"It's ready," Master Cipher Veila announced. "The new transaction systems. Fully protected. Isolated from the compromised sectors. We can activate whenever you give the word."</p>
+
+        <p>Cassia stood in the War Room with the full Council. "Status of the entity?"</p>
+
+        <p>"Still contained in the decoy," Shade reported. "It hasn't detected the deception."</p>
+
+        <p>"Once we activate the new systems and shut down the decoy, it will know," the Lorekeeper said. "It will likely lash out."</p>
+
+        <p>"Let it," Valdris said. "We'll be ready."</p>
+
+        <p>Cassia looked at the Queen. "The merchants are ready. Three days of manual operations. They held. But they <em>need</em> this to work, Your Majesty. They need to know their systems are secure."</p>
+
+        <p>Lyra met her eyes. "Then let's give them that certainty. Activate the new systems."</p>
+
+        <p>Cipher Veila touched a crystal sequence. Across the Crown City, new transaction verification systems bloomed into life—clean, protected, secure.</p>
+
+        <p>And in the decoy sector, the entity realized it had been trapped.</p>
+
+        <p>The response was immediate and violent. The compromised systems shattered as the entity tried to break free, to spread, to corrupt the new infrastructure it could suddenly sense.</p>
+
+        <p>But Valdris had been ready. Wardens sealed the compromised sectors. Sentinels monitored every attempted breach. The Cipher Monks' protections held.</p>
+
+        <p>For three minutes, the entity threw everything it had against the barriers.</p>
+
+        <p>Then it found the exit Shade had deliberately left—a pathway that looked like escape but was actually expulsion, leading out of the Kingdom's systems entirely and into the wild networks beyond the Borderlands.</p>
+
+        <p>It fled.</p>
+
+        <p>Whisper pulsed with something that might have been satisfaction.</p>
+
+        <p>"It's gone," Shade confirmed.</p>
+
+        <p>Cassia activated her ledger crystal. New data streamed across its surface—clean, accurate, verified. Transaction records that matched reality. Trade data that made sense.</p>
+
+        <p>She pulled up Master Kelvin's saffron shipment from three days ago.</p>
+
+        <p>There it was. Accurate. Complete. Verified.</p>
+
+        <p>She closed her eyes. "It worked."</p>
+
+        <p>"It worked," the Queen confirmed. "Cassia, you held them together. Three days of chaos, and you kept the economy functioning."</p>
+
+        <p>"Barely," Cassia said. But she was smiling.</p>
+
+      </div>
+
+      <!-- Series Navigation -->
+      <div class="series-nav">
+        <a href="/chronicles/price-of-certainty-part-1.html" class="flex items-center gap-2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          Part 1: The Ledger Crisis
+        </a>
+        
+        <span class="text-stardust/60 text-sm">Part 2 of 3</span>
+        
+        <a href="/chronicles/price-of-certainty-part-3.html" class="flex items-center gap-2">
+          Part 3: The Weight of Leadership
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Back to Chronicles -->
+      <div class="mt-8 pt-8 border-t border-rift/40">
+        <a href="/chronicles.html" class="inline-flex items-center gap-3 group text-stardust/80 hover:text-glow transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-stardust/60 group-hover:text-glow transition-colors">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          <span>
+            <span class="text-xs uppercase tracking-wider text-stardust/60 block">Back to</span>
+            <span class="font-display text-stardust/90 group-hover:text-glow transition-colors">All Chronicles</span>
+          </span>
+        </a>
+      </div>
+
+    </article>
+
+    <!-- Return to Top Button -->
+    <button id="returnToTop" class="hidden fixed bottom-6 right-6 z-50 p-3 rounded-full bg-abyss/90 border border-rift hover:border-glow/50 text-stardust/70 hover:text-glow transition-all shadow-lg" aria-label="Return to top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="18 15 12 9 6 15"/>
+      </svg>
+    </button>
+
+    <div id="site-footer" class="relative"></div>
+  </main>
+
+  <script>
+    // ---------- Boot ----------
+    (async function boot() {
+      await loadPartial("site-header", "/partials/header.html");
+      initHeaderNav();
+      await loadPartial("site-footer", "/partials/footer.html");
+      initFooterYear();
+      initReturnToTop();
+    })();
+
+    function initReturnToTop() {
+      const returnToTopBtn = document.getElementById('returnToTop');
+      if (!returnToTopBtn) return;
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          returnToTopBtn.classList.remove('hidden');
+        } else {
+          returnToTopBtn.classList.add('hidden');
+        }
+      }, { passive: true });
+
+      returnToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  </script>
+</body>
+</html>
