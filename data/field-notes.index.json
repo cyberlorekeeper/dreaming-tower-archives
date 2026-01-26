@@ -1,5 +1,23 @@
 [
   {
+    "id": "resonance-2026-01-26-the failed siege of the lightning realm",
+    "category": "resonance",
+    "title": "The Failed Siege of the Lightning Realm",
+    "subtitle": "When ancient enemies forge new weapons of erasure",
+    "date": "2026-01-26",
+    "readTime": 3,
+    "excerpt": "From the shadow-touched lands came a new form of destructive enchantment, aimed at the very heart of a kingdom's power.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/2026-01-26-the failed siege of the lightning realm.html",
+    "tags": [
+      "infrastructure",
+      "nation-state",
+      "destructive-magic"
+    ],
+    "realWorldLink": "https://thehackernews.com/2026/01/new-dynowiper-malware-used-in-attempted.html"
+  },
+  {
     "id": "resonance-2026-01-24-the fortress beneath",
     "category": "resonance",
     "title": "The Fortress Beneath",
