@@ -159,6 +159,22 @@ function getPreviousPartUrl(chronicle, allChronicles) {
   return previousPart ? buildUrl(previousPart.href) : '';
 }
 
+/**
+ * Finds Part 1's full URL for any chronicle in a series.
+ * Used by Part 3 (and beyond) to link back to the beginning.
+ * Returns empty string for Part 1 itself or standalone chronicles.
+ */
+function getFirstPartUrl(chronicle, allChronicles) {
+  if (!isSerialChronicle(chronicle)) return '';
+  if (chronicle.part === 1) return '';
+
+  const firstPart = allChronicles.find(
+    (c) => c.seriesId === chronicle.seriesId && c.part === 1
+  );
+
+  return firstPart ? buildUrl(firstPart.href) : '';
+}
+
 // ============================================
 // RSS ITEM GENERATOR
 // ============================================
@@ -170,6 +186,7 @@ function getPreviousPartUrl(chronicle, allChronicles) {
 function generateRssItem(chronicle, allChronicles) {
   const isSerial = isSerialChronicle(chronicle);
   const prevUrl = getPreviousPartUrl(chronicle, allChronicles);
+  const firstUrl = getFirstPartUrl(chronicle, allChronicles);
 
   // Build the title — include part info for serial chronicles
   const displayTitle = isSerial
@@ -245,6 +262,8 @@ function generateRssItem(chronicle, allChronicles) {
       item += `
       <tower:partTitle>${escapeXml(chronicle.partTitle)}</tower:partTitle>`;
     }
+    item += `
+      <tower:seriesTitle>${escapeXml(chronicle.title)}</tower:seriesTitle>`;
     if (chronicle.serialContext) {
       item += `
       <tower:serialContext>${escapeXml(chronicle.serialContext)}</tower:serialContext>`;
@@ -252,6 +271,10 @@ function generateRssItem(chronicle, allChronicles) {
     if (prevUrl) {
       item += `
       <tower:prevPartUrl>${prevUrl}</tower:prevPartUrl>`;
+    }
+    if (firstUrl) {
+      item += `
+      <tower:firstPartUrl>${firstUrl}</tower:firstPartUrl>`;
     }
   } else {
     item += `
@@ -356,8 +379,8 @@ function generateRss() {
   console.log('   Core:   tower:theme, tower:threat, tower:featuring,');
   console.log('           tower:readTime, tower:hasAnalysis, tower:lorekeeperNote');
   console.log('   Serial: tower:isSerial, tower:partNumber, tower:totalParts,');
-  console.log('           tower:seriesId, tower:partTitle, tower:serialContext,');
-  console.log('           tower:prevPartUrl');
+  console.log('           tower:seriesId, tower:seriesTitle, tower:partTitle,');
+  console.log('           tower:serialContext, tower:prevPartUrl, tower:firstPartUrl');
 }
 
 // Run the generator
