@@ -316,10 +316,17 @@
       </article>
 
       <!-- Real-World Brief Panel -->
-      <article id="panelAnalysis" class="story-panel">
-        <div class="mx-auto max-w-4xl prose-lore">
+     <!-- Real-World Brief Panel — EXPANDED -->
+<!-- Replace the contents of <article id="panelAnalysis"> with the following -->
+
+<article id="panelAnalysis" class="story-panel">
+  <div class="mx-auto max-w-4xl prose-lore">
 
 <h2>Real-World Brief — When You Can't Trust the Data</h2>
+
+<p><strong>Real-World Cybersecurity Concept:</strong> Data Integrity Attack / Trust Erosion / Crisis Decision-Making Under Uncertainty</p>
+
+<h3>The Attack That's Worse Than Theft</h3>
 
 <p>In cybersecurity, this kind of incident is called a <strong>data integrity failure</strong>.</p>
 
@@ -343,6 +350,78 @@
 
 <p>Once merchants stop trusting their own ledgers, the economy collapses on its own.</p>
 
+<h3>The Entity as a Real-World Threat</h3>
+
+<p>Shade identifies the entity as something that <em>learns</em>—watching how the Kingdom responds to chaos, measuring tolerance for uncertainty, finding the breaking point so it can hold the Kingdom exactly at the edge.</p>
+
+<p>This maps directly to <strong>Advanced Persistent Threats (APTs)</strong>: nation-state actors and sophisticated threat groups who don't smash-and-grab. They infiltrate, observe, and study before acting. They learn how your SOC operates, what your alert thresholds are, how fast you respond to anomalies. Then they calibrate their activity to stay just below your detection line—bleeding you slowly rather than striking fast.</p>
+
+<p>The Lorekeeper's reference to the "Ledger Plague" that collapsed the Southern Kingdoms ninety-two years ago is the historical precedent every security team dreads: an integrity attack that no one successfully stopped. The kingdoms didn't fall because they were conquered. They fell because no one could trust anything anymore.</p>
+
+<h3>Real-World Examples</h3>
+
+<h4>NotPetya (2017) — Maersk's "Total Rebuild" Decision</h4>
+
+<p>When NotPetya ransomware hit Maersk, the world's largest shipping company, it destroyed 4,000 servers and 45,000 PCs across 600 sites in 130 countries. But the hardware wasn't the real problem. The real problem was <em>integrity</em>—they couldn't trust any data from infected systems. Container tracking, shipping manifests, port schedules—all suspect.</p>
+
+<p>Maersk faced Cassia's exact dilemma. Their choice was extreme: rebuild their entire global IT infrastructure from scratch in ten days. They reverted to manual operations. Employees used WhatsApp groups to coordinate ship movements. Port workers used paper manifests and personal cell phones. For weeks, global shipping ran on phone calls, handwritten records, and best guesses.</p>
+
+<p>They chose the "total quarantine and rebuild" option because they couldn't trust anything.</p>
+
+<p><strong>Impact:</strong> $300M+ in losses. But by accepting total data loss from the infected period and rebuilding clean, they maintained long-term trust in their systems. The alternative—operating with potentially corrupted shipping data—could have been catastrophic for a company moving 12 million containers per year.</p>
+
+<h4>Colonial Pipeline Ransomware (2021) — Shutdown vs. Operate with Doubt</h4>
+
+<p>Colonial Pipeline faced a version of this choice when ransomware hit their systems. The encryption was bad, but worse was the uncertainty: they couldn't verify the integrity of their operational data. They didn't know what had been accessed. They didn't know what had been modified.</p>
+
+<p>They faced three options:</p>
+
+<ol>
+  <li>Shut down operations entirely (quarantine)</li>
+  <li>Try to operate with untrusted data (too risky for critical infrastructure carrying fuel)</li>
+  <li>Pay the ransom and hope for clean decryption</li>
+</ol>
+
+<p>They chose shutdown—and also paid. The $4.4M ransom yielded a decryption tool so slow they ended up rebuilding anyway.</p>
+
+<p><strong>Impact:</strong> Five to six days of shutdown. Fuel shortages across the U.S. East Coast. Gas station lines. Panic buying. $2B+ in estimated economic impact. Months to fully recover confidence in systems. All because they couldn't answer one question: <em>Is our data real?</em></p>
+
+<h4>SolarWinds (2020) — The Impossible Audit</h4>
+
+<p>When the SolarWinds supply chain compromise was discovered, organizations worldwide faced the Queen's dilemma at scale. The malware had been present in systems for <em>months</em>. Attackers had moved laterally through networks, accessed sensitive data, and potentially modified records during that entire period.</p>
+
+<p>The question wasn't "what was stolen?" It was "what was changed, and would we even know?"</p>
+
+<p>Organizations responded with all three of Cassia's options:</p>
+
+<ul>
+  <li><strong>Quarantine approach:</strong> Some organizations rebuilt everything from scratch, assuming all data from the infection period was compromised. Expensive. Disruptive. But defensible.</li>
+  <li><strong>Hunt approach:</strong> Others forensically investigated everything, which consumed massive resources, spread paranoia internally, and in some cases revealed more questions than answers.</li>
+  <li><strong>Quiet remediation:</strong> Some organizations quietly patched the vulnerability and never publicly disclosed the full extent of potential compromise, to avoid damaging customer trust.</li>
+</ul>
+
+<p>Eighteen thousand organizations downloaded the compromised update. Most will never know exactly what happened inside their networks during the exposure window.</p>
+
+<h4>Target Data Breach (2013) — When Quiet Remediation Fails</h4>
+
+<p>Target's breach compromised 40 million credit card numbers and 70 million customer records. But the harder question was integrity: <em>which records were accessed? What was modified? What can we trust?</em></p>
+
+<p>Target faced the same three options:</p>
+
+<ul>
+  <li>Assume everything from that period is compromised (expensive, disruptive)</li>
+  <li>Try to identify exactly what was touched (impossible to be certain)</li>
+  <li>Operate as if nothing happened (destroyed customer trust when the truth emerged)</li>
+</ul>
+
+<p>They initially tried quiet remediation. When the breach became public through an external report—not their own disclosure—customer trust collapsed. The CEO and CIO both resigned. The company paid $18.5M in settlement. Stock dropped 11%. The lesson: if you choose secrecy, you'd better be right. If you're wrong, the cover-up becomes the story.</p>
+
+<h4>Equifax (2017) — The Cost of Delayed Disclosure</h4>
+
+<p>Equifax discovered their breach in July 2017 but didn't disclose publicly until September. They tried to investigate quietly first—the "hunt approach" combined with secrecy. When it went public that 147 million people's data had been exposed, the delayed notification made everything worse. The company faced congressional hearings, $700M+ in settlements, and a complete leadership overhaul.</p>
+
+<p>The lesson is the one the Lorekeeper would have noted: secrets have a half-life. The longer you hold them, the more explosive they become when they surface.</p>
+
 <h3>When Trust Fails, Commerce Follows</h3>
 
 <p>Modern economies depend on digital records to answer simple questions:</p>
@@ -354,81 +433,116 @@
   <li>What exists</li>
 </ul>
 
-<p>When those answers become unreliable, trade stops.</p>
+<p>When those answers become unreliable, trade stops. Master Kelvin standing in a warehouse full of saffron that doesn't exist according to the system—that's not fantasy. That's Maersk employees staring at a port full of containers with no digital record of what's inside them or where they're supposed to go.</p>
 
-<p>After the <strong>NotPetya attack in 2017</strong>, shipping giant Maersk lost the ability to verify where thousands of containers were located. Ships still sailed. Ports still operated.</p>
+<p>Banks face the same problem during payment system failures. Manufacturers face it when production records are corrupted. Hospitals face it when patient medication records can't be verified.</p>
 
-<p>But no one trusted the tracking systems.</p>
+<p>The damage rarely comes from stolen data. <strong>It comes from not knowing what to believe.</strong></p>
 
-<p>For weeks, global shipping ran on phone calls, paper manifests, and best guesses.</p>
+<h3>The First Hard Decision: Slow and Correct vs. Fast and Wrong</h3>
 
-<p>Banks face the same problem during payment system failures. Manufacturers face it when production records are corrupted.</p>
-
-<p>The damage rarely comes from stolen data.</p>
-
-<p><strong>It comes from not knowing what to believe.</strong></p>
-
-<h3>The First Hard Decision: Slow and Correct vs Fast and Wrong</h3>
-
-<p>Cassia's order to revert to manual ledgers is one of the most realistic moments in this story.</p>
+<p>Cassia's order to revert to manual ledgers—paper records, two-witness verification, triple-checked before finalization—is one of the most realistic moments in this story.</p>
 
 <p>When transaction systems can't be trusted, leaders face three bad choices:</p>
 
 <ol>
-  <li>Shut everything down and rebuild</li>
-  <li>Keep running and hope the data is right</li>
-  <li>Operate manually while fixing systems in parallel</li>
+  <li><strong>Shut everything down and rebuild</strong> — safe but economically devastating</li>
+  <li><strong>Keep running and hope the data is right</strong> — reckless, especially for critical operations</li>
+  <li><strong>Operate manually while fixing systems in parallel</strong> — slow, painful, and makes everyone angry</li>
 </ol>
 
-<p>Option three is brutal.</p>
+<p>Option three is brutal. It is slower. It is expensive. It makes everyone angry.</p>
 
-<p>It is slower. It is expensive. It makes everyone angry.</p>
+<p>But it preserves the one thing commerce cannot survive without: <strong>trust</strong>.</p>
 
-<p>But it preserves the one thing commerce cannot survive without.</p>
+<p>Hospitals do this during ransomware attacks—reverting to paper charts, verbal medication orders, manual patient tracking. Banks do this during settlement failures. Shipping companies do this when tracking systems collapse.</p>
 
-<p><strong>Trust.</strong></p>
+<p>Paper returns. Phones return. Human verification returns. Technology pauses. Business continues. Barely.</p>
 
-<p>Hospitals do this during ransomware attacks. Banks do this during settlement failures. Shipping companies do this when tracking systems collapse.</p>
+<h3>The Honeypot Gamble</h3>
 
-<p>Paper returns. Phones return. Human verification returns.</p>
+<p>Shade's proposal—create a false sector, let the entity play there while rebuilding the real systems behind it—is a <strong>deception technology</strong> strategy. In cybersecurity, these are called honeypots (fake systems designed to attract and study attackers) and honeynets (networks of interconnected honeypots).</p>
 
-<p>Technology pauses. Business continues.</p>
+<p>The concept is well-established. What makes the Council's version terrifying is the <em>stakes</em>. A typical honeypot is deployed alongside real systems as an early warning tool. If it fails, you've lost a decoy. Shade is proposing to bet the Kingdom's entire economy on the deception holding for three days.</p>
 
-<p>Barely.</p>
+<p>Real-world parallels exist. During active incident response, security teams sometimes deliberately leave compromised systems running while building clean infrastructure behind them—watching what the attacker does while preparing the real fix. This is standard practice in sophisticated IR engagements. But it requires nerve, coordination, and the uncomfortable reality of watching an attacker operate in your environment while you prepare to cut them off.</p>
+
+<p>Whisper's estimate of seventy percent success maps to the uncertainty that every CISO lives with during an active response. You never have perfect information. You're making hundred-million-dollar decisions on probability, not certainty. That's the price referenced in the title.</p>
+
+<h3>The Cost of Each Choice</h3>
+
+<h4>Quarantine and Shutdown</h4>
+<ul>
+  <li><strong>Colonial Pipeline:</strong> Chose immediate shutdown. Caused a regional fuel crisis but protected safety. $2B+ in economic ripple effects.</li>
+  <li><strong>Maersk:</strong> Total infrastructure rebuild. $300M+ in direct losses. Maintained long-term trust.</li>
+  <li><strong>Lesson:</strong> Shutdown is expensive, but operating with corrupted data can be catastrophic. For critical infrastructure especially, the cost of being wrong about data integrity exceeds the cost of being offline.</li>
+</ul>
+
+<h4>Open Investigation</h4>
+<ul>
+  <li><strong>Equifax:</strong> Tried to investigate quietly before disclosing. When it went public, the delayed notification amplified the damage beyond the breach itself.</li>
+  <li><strong>Lesson:</strong> If you're going to investigate, the investigation itself can't hide the problem forever. And the clock is always ticking—on regulatory requirements, on someone else discovering it first, on the attacker's next move.</li>
+</ul>
+
+<h4>Deception and Managed Chaos</h4>
+<ul>
+  <li><strong>Advanced IR teams:</strong> Routinely let attackers operate in monitored environments while building clean infrastructure. High skill required. High risk if detected.</li>
+  <li><strong>Lesson:</strong> Deception works when you're smarter than the threat and have the discipline to wait. But as Cassia notes, if anything goes wrong, you lose <em>everything</em>.</li>
+</ul>
 
 <h3>The Leadership Lesson</h3>
 
-<p>This chapter is not about hacking.</p>
-
-<p>It's about <strong>leadership under uncertainty</strong>.</p>
+<p>This chapter is not about hacking. It's about <strong>leadership under uncertainty</strong>.</p>
 
 <p>Cassia does three things that real crisis leaders must do:</p>
 
 <ol>
-  <li>She tells the truth early, even when it's ugly</li>
-  <li>She sets a temporary plan instead of waiting for perfect answers</li>
-  <li>She accepts personal responsibility for the outcome</li>
+  <li><strong>She tells the truth early, even when it's ugly.</strong> She doesn't downplay the crisis to the Guild Council. She gives them the real picture and a temporary plan. In real incidents, the organizations that recover fastest are the ones whose leaders resist the urge to minimize.</li>
+  <li><strong>She sets a temporary plan instead of waiting for perfect answers.</strong> Manual ledgers aren't a solution. They're a bridge. But they buy time—and time is the only currency that matters in a crisis. Too many leaders freeze because none of the available options are good. Cassia demonstrates that "imperfect but now" beats "perfect but never."</li>
+  <li><strong>She accepts personal responsibility for the outcome.</strong> "If this fails, the economic damage will be my responsibility." In an industry where leaders routinely deflect blame to vendors, to staff, to "sophisticated threat actors"—Cassia's willingness to own the result is the rarest leadership quality of all.</li>
 </ol>
 
-<p>Most major security failures are not technical.</p>
+<p>Most major security failures are not technical. They are leadership failures. Delayed decisions. Hidden damage. False certainty. The instinct to protect your reputation instead of protecting the mission.</p>
 
-<p>They are leadership failures.</p>
+<p>Cassia chooses the hardest path: <strong>slow, visible, and accountable</strong>. And that choice is the only reason the Kingdom still has an economy at all.</p>
 
-<p>Delayed decisions. Hidden damage. False certainty.</p>
+<h3>What This Means for Your Organization</h3>
 
-<p>Cassia chooses the hardest path.</p>
+<h4>For Enterprises</h4>
 
-<p><strong>Slow. Visible. Accountable.</strong></p>
+<ul>
+  <li><strong>Integrity monitoring is critical.</strong> Most security programs focus on confidentiality (preventing unauthorized access) and availability (keeping systems running). Integrity—ensuring data hasn't been modified—is often the weakest leg of the triad. Invest in systems that detect <em>when data changes</em>, not just when it's accessed.</li>
+  <li><strong>Immutable logs matter.</strong> If your audit trails can be modified by the same attacker who modified your data, you have no source of truth. Write-once logging, separate log infrastructure, and blockchain-style verification aren't luxuries—they're the Lorekeeper's archives.</li>
+  <li><strong>Backup strategy must include integrity verification.</strong> Your backups are only useful if you can prove they weren't compromised too. Known-good snapshots with verified checksums are your "clean ledger" to restore from.</li>
+  <li><strong>Incident response plans must include integrity scenarios.</strong> Most IR playbooks focus on "data stolen" or "systems down." Few address "data modified and we don't know what's real." Plan for it.</li>
+  <li><strong>Decision-making authority must be pre-established.</strong> Who in your organization has the authority to make Cassia's call—shut down revenue-generating systems on a judgment call? If that decision requires three levels of approval and a legal review, you've already lost your response window.</li>
+  <li><strong>Manual fallback isn't optional.</strong> If your digital transaction systems disappeared tomorrow, could your organization operate on paper for three days? Most can't. That's a survivability gap, not a convenience gap.</li>
+</ul>
 
-<p>And that choice is the only reason the Kingdom still has an economy at all.</p>
+<h4>For Small Businesses</h4>
 
-<p class="mt-8 p-4 bg-abyss/40 border border-rift/50 rounded-lg text-sm text-stardust/70 italic">
-  A full technical and leadership analysis of this Chronicle will be released with the complete edition.
-</p>
+<ul>
+  <li><strong>Version control for critical data.</strong> Keep historical versions of important files and databases. If someone modifies your records, you need to be able to answer "what did this look like yesterday?"</li>
+  <li><strong>Regular backups tested for integrity.</strong> Back up your data. Then test the backup. Then verify the backup wasn't accessible to the same threat that could compromise your primary systems.</li>
+  <li><strong>Paper trail for critical transactions.</strong> Some things should have physical documentation. Not everything. But the transactions that would destroy your business if they were disputed? Those need a paper backup.</li>
+  <li><strong>Know your breaking point.</strong> At what dollar amount or duration do you shut down operations versus trying to operate through uncertainty? Decide now, when you're calm. Not during a crisis.</li>
+  <li><strong>Trust but verify.</strong> Even automated systems should have occasional manual verification. Spot-check your records. Reconcile your accounts. The entity that "plays" with data is counting on you to trust the screen without question.</li>
+</ul>
 
-        </div>
-      </article>
+<h3>The Uncomfortable Truth</h3>
 
+<p>The entity in this story is terrifying not because it destroys. It's terrifying because it <em>learns</em>. It watches. It measures. It finds the exact threshold of chaos your organization can absorb—and then holds you there.</p>
+
+<p>This maps to the most dangerous class of real-world threats: the ones that are patient enough to study you before they strike. APTs that sit in networks for months. Supply chain compromises that poison trusted tools gradually. Insider threats that slowly modify data over time. These are scarier than ransomware because with ransomware, you know you've been hit. With an integrity attack, you might never know what's real anymore.</p>
+
+<p>Cassia's crisis isn't over. She's bought three days with manual ledgers and a seventy-percent gamble. The Council has a plan that might work.</p>
+
+<p>But the entity is still learning.</p>
+
+<p><em>Part 2 continues with the execution of the honeypot strategy—and what happens when deception meets something that studies deception.</em></p>
+
+  </div>
+</article>
       <!-- Series Navigation (dynamically populated) -->
       <nav id="seriesNav" class="series-nav hidden" aria-label="Chronicle series navigation">
         <!-- Will be populated by JavaScript based on chronicles.index.json -->
