@@ -809,7 +809,7 @@
 
       // Update hash for shareable links
       if (isAnalysis) {
-        history.replaceState(null, "", "#brief");
+        history.replaceState(null, "", "#analysis");
       } else {
         history.replaceState(null, "", window.location.pathname);
       }
@@ -821,7 +821,7 @@
     btnAnalysis.addEventListener("click", () => showPanel("analysis"));
 
     // Initialize based on URL
-    if (window.location.hash === "#brief") showPanel("analysis");
+    if (window.location.hash === "#analysis") showPanel("analysis");
     else showPanel("story");
   }
 
