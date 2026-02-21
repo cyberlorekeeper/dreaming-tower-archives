@@ -1,5 +1,24 @@
 [
   {
+    "id": "resonance-2026-02-20-the overzealous guardians",
+    "category": "resonance",
+    "title": "The Overzealous Guardians",
+    "subtitle": "When protective wards turn against their own",
+    "date": "2026-02-20",
+    "readTime": 3,
+    "excerpt": "The most trusted guardians, in their fervor to protect, sometimes cannot distinguish friend from foe.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/2026-02-20-the overzealous guardians.html",
+    "tags": [
+      "false-positives",
+      "protective-systems",
+      "trust-erosion",
+      "communication-disruption"
+    ],
+    "realWorldLink": "https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-flags-legitimate-emails-as-phishing/"
+  },
+  {
     "id": "resonance-2026-01-26-the failed siege of the lightning realm",
     "category": "resonance",
     "title": "The Failed Siege of the Lightning Realm",
