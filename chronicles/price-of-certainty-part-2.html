@@ -221,112 +221,183 @@
       </article>
 
       <!-- Real-World Brief Panel -->
-      <article id="panelAnalysis" class="story-panel">
-        <div class="mx-auto max-w-4xl prose-lore">
+      <!-- Real-World Brief Panel — EXPANDED -->
+<!-- Replace the contents of <article id="panelAnalysis"> with the following -->
+
+<!-- Real-World Brief Panel — EXPANDED -->
+<!-- Replace the contents of <article id="panelAnalysis"> with the following -->
+
+<article id="panelAnalysis" class="story-panel">
+  <div class="mx-auto max-w-4xl prose-lore">
 
 <h2>Real-World Brief — When Deception Becomes Defense</h2>
+
+<p><strong>Real-World Cybersecurity Concept:</strong> Deception Technology / Honeypots / Controlled Incident Response / Stakeholder Communication During Active Crisis</p>
+
+<h2>Letting the Attacker Stay</h2>
 
 <p>By this point, the attack is no longer about breaking systems.</p>
 
 <p><strong>It is about buying time.</strong></p>
 
-<p>In cybersecurity, the strategy Cassia approves is called <strong>deception technology</strong>.</p>
+<p>In cybersecurity, the strategy Cassia approves is called <strong>deception technology</strong>. Instead of trying to immediately remove an attacker, defenders create fake systems, fake data, and fake activity that looks valuable. The attacker is allowed to continue operating inside a controlled environment while real systems are quietly rebuilt behind the scenes.</p>
 
-<p>Instead of trying to immediately remove an attacker, defenders sometimes create fake systems, fake data, and fake activity that looks valuable. The attacker is allowed to continue operating inside a controlled environment while real systems are quietly rebuilt behind the scenes.</p>
+<p>This sounds reckless. It is often the only survivable option.</p>
 
-<p>This sounds reckless.</p>
+<p>The concept has a long lineage. Clifford Stoll documented one of the earliest honeypot operations in 1986, tracking a West German hacker through Lawrence Berkeley National Laboratory by creating fake files labeled "SDInet" to keep the intruder engaged while authorities traced the connection. The attacker spent months exploring fabricated military data. Stoll let him. The deception held long enough to identify the threat and coordinate a response across international law enforcement.</p>
 
-<p>It is often the only survivable option.</p>
+<p>That was nearly forty years ago. The principle hasn't changed. The stakes have gotten larger.</p>
 
-<h3>Why Defenders Sometimes Let Attackers Stay</h3>
+<h2>Why Defenders Sometimes Let Attackers Stay</h2>
 
-<p>When an attacker has already spread through critical systems, immediate removal can be more dangerous than delay.</p>
+<p>When an attacker has already spread through critical systems, immediate removal can be more dangerous than delay. Kicking them out too early can destroy forensic evidence needed to understand the full scope of compromise, trigger destructive retaliation (ransomware deployment, data wiping), cause corruption to spread into backup systems the attacker has already positioned against, and leave defenders blind to other footholds the attacker may have established.</p>
 
-<p>Kicking them out too early can:</p>
+<p>So instead, sophisticated security teams sometimes isolate compromised segments, create decoy environments, feed attackers believable but fake data, and monitor behavior while rebuilding clean systems in parallel.</p>
+
+<p>This is exactly what the Council does. The decoy sector is the honeypot. The Cipher Monks rebuilding behind barriers is the parallel clean infrastructure. Shade watching the entity's behavior is threat intelligence collection. And Cassia holding the merchants together on manual operations is business continuity management.</p>
+
+<p>The goal is not to trap the attacker forever. <strong>The goal is to survive long enough to recover.</strong></p>
+
+<h2>Real-World Examples</h2>
+
+<p><h3>Operation Aurora Response (2009–2010) — Google's Calculated Patience</h3></p>
+
+<p>When Google discovered that Chinese state-sponsored hackers had penetrated their systems in what became known as Operation Aurora, they didn't immediately kick the attackers out. Google's security team spent weeks studying the intrusion—monitoring the attackers' movement, understanding their objectives, mapping their infrastructure—while quietly hardening systems and preparing a coordinated response.</p>
+
+<p>The attackers had targeted the Gmail accounts of Chinese human rights activists and had gained access to Google's source code repositories. The stakes were extraordinary. But Google's team understood that premature eviction would mean losing visibility into the attack's full scope, potentially missing other compromised systems, and alerting the attackers to deploy backup access methods.</p>
+
+<p>When Google finally went public in January 2010, they did so with comprehensive understanding of what had happened—and announced a fundamental shift in their China operations. The patience of the deception-and-observe phase gave them the intelligence to make that decision from a position of knowledge rather than panic.</p>
+
+<p>Over thirty other major companies were also compromised in the same campaign. Most of them lacked the same visibility because they hadn't taken the time to watch.</p>
+
+<p><h3>NotPetya (2017) — Maersk's Three-Day Parallel Rebuild</h3></p>
+
+<p>Maersk's response to NotPetya mirrors Cassia's three-day timeline almost exactly. After the attack destroyed their global IT infrastructure, Maersk's team had to rebuild 4,000 servers and 45,000 PCs while the company continued operating on manual processes. Employees used personal phones and WhatsApp groups. Port workers relied on paper manifests and verbal coordination.</p>
+
+<p>The critical parallel to Part 2: Maersk's leadership had to hold the organization together through the rebuild period. Shipping didn't stop. Containers still moved. The business continued—barely, imperfectly, with humans substituting for every automated process. And leadership had to communicate honestly with customers, partners, and port authorities about what was happening and why.</p>
+
+<p>They rebuilt their entire infrastructure in ten days. Not three—ten. And during those ten days, every employee who kept shipping containers moving on paper records was doing exactly what Cassia's merchants did with their manual ledgers: trusting that the fix was coming while operating with less certainty than they'd ever had to tolerate.</p>
+
+<p><strong>Impact:</strong> $300M+ in direct losses. But Maersk survived as a company because leadership was transparent about the crisis, honest about the timeline, and committed to rebuilding clean rather than cutting corners.</p>
+
+<p><h3>Sony Pictures (2014) — What Happens When the Attacker Discovers the Deception</h3></p>
+
+<p>When North Korean hackers (Guardians of Peace) compromised Sony Pictures, the response was chaotic. Once the attackers realized Sony was attempting to limit and contain the breach, they escalated dramatically—releasing unreleased films, publishing embarrassing executive emails, exposing salary data, and destroying infrastructure.</p>
+
+<p>This is the scenario Cassia fears: the entity discovering the deception and lashing out. The Lorekeeper warns "it will likely lash out" when the decoy is shut down, and the story shows exactly that—three minutes of violent assault against the barriers before the entity finds Shade's exit.</p>
+
+<p>Sony didn't have the barriers. The attackers destroyed approximately 75% of Sony Pictures' servers. Three thousand computers and 800 servers were rendered inoperable. The company reverted to paper checks for payroll, fax machines for communication, and dry-erase boards for project management. Executives hand-delivered scripts. The damage ultimately cost Sony an estimated $100M+ in direct costs.</p>
+
+<p>The lesson: deception operations require an endgame. You can't just trap the attacker—you need a plan for the moment they realize they're trapped. Shade's deliberately left exit pathway is sophisticated incident response design: give the threat a way out that serves your interests, not theirs.</p>
+
+<p><h3>The SolarWinds Response (2020–2021) — Parallel Rebuild at National Scale</h3></p>
+
+<p>After the SolarWinds supply chain compromise was discovered, affected organizations couldn't simply remove the compromised SolarWinds Orion software and call it done. The attackers—attributed to Russia's SVR intelligence service—had used the initial access to move laterally, establish additional persistence mechanisms, and access sensitive data across months of undetected operation.</p>
+
+<p>Many organizations had to assume their entire Active Directory infrastructure was compromised. The remediation guidance from CISA and Microsoft essentially amounted to: build new infrastructure in parallel, migrate services over, and decommission the old. Some agencies operated in a degraded state for months while the parallel rebuild was completed.</p>
+
+<p>This is Cassia's three-day gamble stretched to the scale of the U.S. federal government. Multiple agencies running on partially trusted systems while clean infrastructure was built behind the scenes. The difference: the federal government had months, not three days. The Kingdom's economy couldn't wait that long.</p>
+
+<p><h3>Financial Sector Honeypots — Deception as Standard Practice</h3></p>
+
+<p>Major financial institutions routinely deploy deception technology as part of their security architecture. Banks create fake internal systems that mimic high-value targets—payment processing servers, trading platforms, customer databases—specifically designed to attract and study attackers who have breached the perimeter.</p>
+
+<p>Companies like Attivo Networks (acquired by SentinelOne), Illusive Networks, and TrapX have built entire product categories around enterprise deception. These systems generate fake credentials, fake file shares, fake database entries, and fake network services. When an attacker interacts with any of them, defenders get high-fidelity alerts with low false-positive rates—because legitimate users don't access systems that don't actually exist.</p>
+
+<p>Shade's decoy sector is an enterprise-grade deception deployment. The difference is that most organizations deploy deception as an early warning system alongside real infrastructure. The Council is deploying it as the <em>primary containment strategy</em> while all real infrastructure is offline. That's what makes the seventy-percent odds so nerve-wracking—there's no fallback if the deception fails.</p>
+
+<h2>The Three-Day Hold: Business Continuity Under Duress</h2>
+
+<p>The story's emotional core isn't the honeypot. It's Cassia at 3 AM, watching the entity, unable to sleep, carrying the weight of a decision that will either save or destroy thousands of livelihoods.</p>
+
+<p>This maps directly to what CISOs and incident commanders experience during extended incident response. The technical team is rebuilding. The business is operating in degraded mode. And the person who made the call sits in between, monitoring, waiting, unable to do anything except hold the organization together through the uncertainty.</p>
+
+<p>Real incident responders describe this phase as the hardest part of any breach. Not the detection. Not the technical remediation. The <em>waiting</em>. Knowing that the plan is in motion, that the team is executing, but that any number of things could go wrong at any moment. Sleep deprivation. Decision fatigue. The weight of knowing that every hour of continued operation on manual processes is another hour where something could slip through.</p>
+
+<p>Cassia's three-day hold is realistic. During major incidents, business continuity teams routinely sustain manual operations for days or weeks:</p>
 
 <ul>
-  <li>Destroy evidence</li>
-  <li>Trigger destructive retaliation</li>
-  <li>Spread corruption into backups</li>
-  <li>Leave defenders blind</li>
+  <li><strong>Healthcare:</strong> Hospitals hit by ransomware have operated on paper charts, verbal orders, and manual medication tracking for weeks. Universal Health Services operated 400 facilities on paper during a 2020 ransomware attack that lasted three weeks.</li>
+  <li><strong>Manufacturing:</strong> Norsk Hydro, one of the world's largest aluminum producers, operated on manual processes for weeks after a 2019 LockerGoga ransomware attack. Production continued at reduced capacity. Cost: $70M+.</li>
+  <li><strong>Government:</strong> The City of Baltimore operated without email, online bill payment, and real estate transaction processing for weeks after a 2019 RobbinHood ransomware attack. Cost: $18M+ in direct costs and lost revenue.</li>
 </ul>
 
-<p>So instead, security teams sometimes:</p>
+<p>In every case, the organizations that recovered successfully shared one trait: leadership that communicated honestly about the situation, set realistic timelines, and held the organization together through the discomfort of operating without their normal tools.</p>
 
-<ul>
-  <li>Isolate compromised segments</li>
-  <li>Create decoy environments</li>
-  <li>Feed attackers believable but fake data</li>
-  <li>Monitor behavior while rebuilding clean systems in parallel</li>
-</ul>
+<h2>The Risk of Discovery</h2>
 
-<p>Financial institutions do this to study fraud networks. Security teams deploy honeypots to observe intruders. Military cyber units use deception to mislead adversaries about real capabilities.</p>
+<p>Cassia's fear—"if the entity discovers the deception early"—is the central risk of any honeypot or deception operation at this scale.</p>
 
-<p>The goal is not to trap the attacker forever.</p>
+<p>Real attackers who realize they are being observed or contained frequently escalate. They wipe systems. They corrupt backups. They delete logs. They deploy destructive payloads they may have pre-positioned for exactly this contingency. APT groups in particular are known to maintain "dead man's switch" capabilities—automated destruction routines that activate if the attacker loses access.</p>
 
-<p><strong>The goal is to survive long enough to recover.</strong></p>
+<p>This is why the entity's three-minute assault against the barriers when the decoy is shut down is so realistic. The moment of transition—when you cut over from compromised systems to clean ones—is the most dangerous moment in an incident response. The attacker knows something has changed. They have a brief window to cause maximum damage before they lose access entirely.</p>
 
-<h3>The Risk Cassia Accepts Is Very Real</h3>
+<p>Shade's exit pathway is the most tactically elegant detail in this chapter. Rather than simply trying to contain the entity behind barriers (which might not hold under a sustained assault), he gives it a path that looks like escape but is actually expulsion. In incident response terms, this is controlled ejection—directing the threat out of your environment through a channel you choose, rather than letting it thrash around destroying things while trying to maintain access.</p>
 
-<p>Cassia's fear is justified.</p>
+<p>Advanced IR teams do this. When evicting a sophisticated threat actor, they sometimes deliberately leave one access method visible while closing all others, then monitor as the attacker exits through the expected route. It confirms the eviction is complete and ensures the attacker doesn't burn the house down on their way out.</p>
 
-<p>If the attacker discovers the deception early, the response is often violent.</p>
+<h2>The Leadership Lesson: Transparency as Strategy</h2>
 
-<p>Real attackers who realize they are trapped frequently:</p>
+<p>This chapter's deepest insight isn't technical. It's about <strong>trust under extreme pressure</strong>.</p>
 
-<ul>
-  <li>Wipe systems</li>
-  <li>Corrupt backups</li>
-  <li>Delete logs</li>
-  <li>Launch destructive payloads</li>
-</ul>
-
-<p>This is why deception operations are among the highest-risk moves in incident response.</p>
-
-<p>You are betting the survival of your organization on:</p>
-
-<ul>
-  <li>The attacker's curiosity</li>
-  <li>Their patience</li>
-  <li>Your ability to rebuild faster than they can adapt</li>
-</ul>
-
-<p>Shade's "seventy percent odds" is painfully realistic.</p>
-
-<p>In crisis response, there are rarely safe choices.</p>
-
-<p><strong>Only survivable ones.</strong></p>
-
-<h3>The Leadership Lesson</h3>
-
-<p>This chapter is about <strong>trust under extreme pressure</strong>.</p>
-
-<p>Cassia does something that many real leaders struggle to do.</p>
-
-<p>She tells the truth.</p>
-
-<p>Not just to the Queen. Not just to the Council.</p>
-
-<p>To the merchants whose livelihoods are at risk.</p>
-
-<p>She explains the plan. She explains the danger. She accepts responsibility in advance.</p>
+<p>Cassia does something that many real leaders struggle to do: she tells the truth. Not just to the Queen. Not just to the Council. To the merchants whose livelihoods are at risk. She explains the plan, the danger, the probability of failure, and accepts responsibility in advance.</p>
 
 <p>And because she does that, they follow her.</p>
 
-<p>Deception strategies only work when leadership is transparent.</p>
+<p>Master Kelvin's show of hands is the moment that determines whether the Kingdom survives. Not the honeypot activation. Not the Cipher Monks' technical work. The merchants' willingness to endure three days of manual operations, knowing the risk, because they trust Cassia's judgment.</p>
 
-<p>The technology buys time.</p>
+<p>This is the part that most incident response plans get wrong. They focus on technical remediation, legal obligations, and regulatory compliance. They forget that the humans inside the organization—the ones who have to operate with broken tools and incomplete information—need to understand <em>why</em> they're suffering and believe it's for a good reason.</p>
 
-<p><strong>Trust holds the organization together.</strong></p>
+<p>Real-world contrast:</p>
 
-<p>Without both, the system collapses long before the attacker ever wins.</p>
+<ul>
+  <li><strong>Maersk (transparent):</strong> Leadership was open about the crisis. Employees self-organized. The company recovered in ten days. Customer trust was maintained.</li>
+  <li><strong>Equifax (opaque):</strong> Leadership delayed disclosure for six weeks while investigating. When the breach became public, the delayed notification amplified the damage. CEO, CIO, and CISO all departed. $700M+ in settlements.</li>
+  <li><strong>Target (mixed):</strong> Internal teams knew about anomalies but leadership was slow to escalate. When an external security researcher broke the story before Target disclosed, the narrative became about the cover-up. CEO and CIO resigned.</li>
+</ul>
 
-<p class="mt-8 p-4 bg-abyss/40 border border-rift/50 rounded-lg text-sm text-stardust/70 italic">
-  A full technical and leadership analysis of this Chronicle will be released with the complete edition.
-</p>
+<p>Deception strategies only work when leadership is transparent with the people who matter. You can deceive the attacker. You cannot deceive your own team and expect them to hold together through a crisis.</p>
 
-        </div>
-      </article>
+<p>The technology buys time. <strong>Trust holds the organization together.</strong> Without both, the system collapses long before the attacker ever wins.</p>
+
+<h2>What This Means for Your Organization</h2>
+
+<p><h3>For Enterprises</h3></p>
+
+<ul>
+  <li><strong>Deception technology belongs in your toolkit.</strong> Honeypots, honeytokens, and deception platforms provide high-fidelity alerts with almost zero false positives. If someone accesses a system that doesn't really exist, you know something is wrong. This is the digital equivalent of Shade's decoy sector—and unlike Cassia's all-or-nothing gamble, modern deception tools can be deployed alongside real systems as an early warning layer.</li>
+  <li><strong>Plan the cutover, not just the rebuild.</strong> Most incident response plans focus on "rebuild clean systems." Few address the most dangerous moment: the transition from compromised to clean. That moment—when the attacker realizes access is gone—needs its own playbook. What's the ejection plan? What barriers are in place during the switchover? How do you handle the three-minute window of retaliation?</li>
+  <li><strong>Business continuity must be exercised, not just documented.</strong> Cassia's merchants operated on manual ledgers for three days because they'd already been doing it for twelve hours before the Council even approved the plan. Can your finance team process payments without the ERP system? Can your logistics team track shipments without the TMS? If you've never tested it, the answer is no.</li>
+  <li><strong>Stakeholder communication during incidents is a skill, not an afterthought.</strong> Cassia's briefing to the guild leaders—honest, specific, with clear timelines and accountability—is a masterclass in crisis communication. Draft your stakeholder templates now. Decide who communicates to whom. Practice the conversation. Because during a real incident, you won't have time to figure it out.</li>
+  <li><strong>Controlled ejection is preferable to containment.</strong> Shade's exit pathway—letting the entity leave through a route he chose—is sophisticated but achievable. Work with your IR team to develop ejection plans that give the attacker a way out rather than cornering them into destructive behavior. A cornered threat actor with nothing to lose is the most dangerous kind.</li>
+</ul>
+
+<p><h3>For Small Businesses</h3></p>
+
+<ul>
+  <li><strong>You can deploy basic deception for free.</strong> You don't need enterprise deception platforms. Create a shared folder called "Payroll_2026_Confidential" with canary files. Set up alerts if anyone accesses it. If a legitimate employee opens it out of curiosity, that's a training moment. If an attacker opens it, you just detected a breach that your antivirus missed.</li>
+  <li><strong>Know how long you can operate without your systems.</strong> If your point-of-sale system goes down, can you run on paper for a day? Three days? A week? Know the answer before the crisis. Cassia knew her merchants could handle three days. Do you know your number?</li>
+  <li><strong>Communicate with your team, not just your customers.</strong> During a security incident, your employees are operating in the dark. They see systems failing. They hear rumors. They don't know if the company is going to survive. Tell them what's happening. Tell them the plan. Tell them the timeline. They'll hold together if they trust you. They'll panic if they don't.</li>
+  <li><strong>Have a "last resort" decision ready.</strong> Cassia accepted seventy-percent odds because the alternatives were worse. Know your own threshold. At what point do you shut down entirely? At what point do you accept risk and keep operating? Having that decision framework ready before the crisis means you won't freeze when it matters.</li>
+  <li><strong>The fix doesn't have to be instant.</strong> Three days of imperfect manual operations saved the Kingdom. Perfection wasn't required. Survival was. Give yourself permission to operate imperfectly while you work the problem.</li>
+</ul>
+
+<h2>The Uncomfortable Truth</h2>
+
+<p>The most chilling detail in this chapter isn't the entity's violent response when the decoy is shut down. It's Whisper's observation that the entity in the decoy is "almost sad"—something intelligent trapped in a puzzle it can't see the edges of.</p>
+
+<p>This humanizes the threat in a way that real cybersecurity rarely does. But it maps to a real dynamic: the most sophisticated attackers are professionals. Nation-state operators, organized crime groups, advanced threat actors—they have objectives, they follow methodologies, they adapt to defenses. They're not chaos agents. They're intelligent adversaries solving problems, just like the defenders are.</p>
+
+<p>That's what makes deception technology both powerful and morally complex. You're not just blocking an automated script. You're deliberately misleading an intelligence—creating a false world convincing enough to waste another entity's time and effort. In cybersecurity, that's considered fair game. But the story invites you to sit with the discomfort of it.</p>
+
+<p>The Kingdom survived because Cassia held the merchants together, because the Cipher Monks rebuilt in time, and because the deception held for three days.</p>
+
+<p>But the entity is still out there. It fled into the wild networks beyond the Borderlands. It learned something about the Kingdom's defenses. And Shade's exit pathway let it leave intact.</p>
+
+<p><em>Part 3 confronts what happens after survival—when the crisis is over, the systems are clean, and the real cost comes due.</em></p>
+
+  </div>
+</article>
 
       <!-- Series Navigation (dynamically populated) -->
       <nav id="seriesNav" class="series-nav hidden" aria-label="Chronicle series navigation">
