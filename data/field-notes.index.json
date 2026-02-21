@@ -1,5 +1,24 @@
 [
   {
+    "id": "resonance-2026-02-20-the shadow campaigns",
+    "category": "resonance",
+    "title": "The Shadow Campaigns",
+    "subtitle": "How patient spies mapped an empire of kingdoms",
+    "date": "2026-02-20",
+    "readTime": 4,
+    "excerpt": "The greatest conquests begin not with armies at the gates, but with silent watchers in the shadows, cataloguing every weakness across the realm.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/2026-02-20-the shadow campaigns.html",
+    "tags": [
+      "espionage",
+      "state-actors",
+      "reconnaissance",
+      "infrastructure-targeting"
+    ],
+    "realWorldLink": "https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html"
+  },
+  {
     "id": "resonance-2026-02-20-the overzealous guardians",
     "category": "resonance",
     "title": "The Overzealous Guardians",
