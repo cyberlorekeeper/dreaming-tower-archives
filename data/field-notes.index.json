@@ -1,22 +1,21 @@
 [
   {
-    "id": "resonance-2026-02-20-the shadow campaigns",
+    "id": "resonance-2026-03-08-the exposed vault keys",
     "category": "resonance",
-    "title": "The Shadow Campaigns",
-    "subtitle": "How patient spies mapped an empire of kingdoms",
-    "date": "2026-02-20",
-    "readTime": 4,
-    "excerpt": "The greatest conquests begin not with armies at the gates, but with silent watchers in the shadows, cataloguing every weakness across the realm.",
+    "title": "The Exposed Vault Keys",
+    "subtitle": "When guardians become unwitting betrayers",
+    "date": "2026-03-08",
+    "readTime": 3,
+    "excerpt": "A treasury's careless proclamation revealed the very keys to the vaults they had seized, allowing thieves to claim millions in stolen coin.",
     "featured": true,
     "released": true,
-    "href": "/field-notes/resonance/2026-02-20-the shadow campaigns.html",
+    "href": "/field-notes/resonance/2026-03-08-the exposed vault keys.html",
     "tags": [
-      "espionage",
-      "state-actors",
-      "reconnaissance",
-      "infrastructure-targeting"
+      "information-disclosure",
+      "insider-threat",
+      "operational-security"
     ],
-    "realWorldLink": "https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html"
+    "realWorldLink": "https://www.bleepingcomputer.com/news/security/48m-in-crypto-stolen-after-korean-tax-agency-exposes-wallet-seed/"
   },
   {
     "id": "resonance-2026-02-20-the overzealous guardians",
@@ -36,6 +35,25 @@
       "communication-disruption"
     ],
     "realWorldLink": "https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-flags-legitimate-emails-as-phishing/"
+  },
+  {
+    "id": "resonance-2026-02-20-the shadow campaigns",
+    "category": "resonance",
+    "title": "The Shadow Campaigns",
+    "subtitle": "How patient spies mapped an empire of kingdoms",
+    "date": "2026-02-20",
+    "readTime": 4,
+    "excerpt": "The greatest conquests begin not with armies at the gates, but with silent watchers in the shadows, cataloguing every weakness across the realm.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/2026-02-20-the shadow campaigns.html",
+    "tags": [
+      "espionage",
+      "state-actors",
+      "reconnaissance",
+      "infrastructure-targeting"
+    ],
+    "realWorldLink": "https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html"
   },
   {
     "id": "resonance-2026-01-26-the failed siege of the lightning realm",
