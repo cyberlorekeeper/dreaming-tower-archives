@@ -1,5 +1,23 @@
 [
   {
+    "id": "resonance-2026-03-19-the great convergence",
+    "category": "resonance",
+    "title": "The Great Convergence",
+    "subtitle": "When Seventy-Two Kingdoms Unite Against Shadow",
+    "date": "2026-03-19",
+    "readTime": 3,
+    "excerpt": "In the largest coordinated strike against shadow networks in memory, allied kingdoms seized forty-five thousand corrupted waypoints.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/2026-03-19-the great convergence.html",
+    "tags": [
+      "coordination",
+      "law-enforcement",
+      "scale"
+    ],
+    "realWorldLink": "https://thehackernews.com/2026/03/interpol-dismantles-45000-malicious-ips.html"
+  },
+  {
     "id": "resonance-2026-03-08-the exposed vault keys",
     "category": "resonance",
     "title": "The Exposed Vault Keys",
@@ -16,25 +34,6 @@
       "operational-security"
     ],
     "realWorldLink": "https://www.bleepingcomputer.com/news/security/48m-in-crypto-stolen-after-korean-tax-agency-exposes-wallet-seed/"
-  },
-  {
-    "id": "resonance-2026-02-20-the overzealous guardians",
-    "category": "resonance",
-    "title": "The Overzealous Guardians",
-    "subtitle": "When protective wards turn against their own",
-    "date": "2026-02-20",
-    "readTime": 3,
-    "excerpt": "The most trusted guardians, in their fervor to protect, sometimes cannot distinguish friend from foe.",
-    "featured": true,
-    "released": true,
-    "href": "/field-notes/resonance/2026-02-20-the overzealous guardians.html",
-    "tags": [
-      "false-positives",
-      "protective-systems",
-      "trust-erosion",
-      "communication-disruption"
-    ],
-    "realWorldLink": "https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-flags-legitimate-emails-as-phishing/"
   },
   {
     "id": "resonance-2026-02-20-the shadow campaigns",
@@ -54,6 +53,25 @@
       "infrastructure-targeting"
     ],
     "realWorldLink": "https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html"
+  },
+  {
+    "id": "resonance-2026-02-20-the overzealous guardians",
+    "category": "resonance",
+    "title": "The Overzealous Guardians",
+    "subtitle": "When protective wards turn against their own",
+    "date": "2026-02-20",
+    "readTime": 3,
+    "excerpt": "The most trusted guardians, in their fervor to protect, sometimes cannot distinguish friend from foe.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/2026-02-20-the overzealous guardians.html",
+    "tags": [
+      "false-positives",
+      "protective-systems",
+      "trust-erosion",
+      "communication-disruption"
+    ],
+    "realWorldLink": "https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-flags-legitimate-emails-as-phishing/"
   },
   {
     "id": "resonance-2026-01-26-the failed siege of the lightning realm",
