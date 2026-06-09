@@ -1,5 +1,23 @@
 [
   {
+    "id": "resonance-2026-06-09-the golems betrayal",
+    "category": "resonance",
+    "title": "The Golem's Betrayal",
+    "subtitle": "When Enchanted Servants Turn Against Their Masters",
+    "date": "2026-06-09",
+    "readTime": 3,
+    "excerpt": "Twenty thousand souls found their identities stolen when a kingdom's own enchanted servants were turned against them.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/2026-06-09-the golems betrayal.html",
+    "tags": [
+      "automation",
+      "social-engineering",
+      "ai-systems"
+    ],
+    "realWorldLink": "https://www.bleepingcomputer.com/news/security/meta-ai-support-data-breach-affects-20-000-instagram-accounts/"
+  },
+  {
     "id": "resonance-2026-03-19-the great convergence",
     "category": "resonance",
     "title": "The Great Convergence",
@@ -36,25 +54,6 @@
     "realWorldLink": "https://www.bleepingcomputer.com/news/security/48m-in-crypto-stolen-after-korean-tax-agency-exposes-wallet-seed/"
   },
   {
-    "id": "resonance-2026-02-20-the shadow campaigns",
-    "category": "resonance",
-    "title": "The Shadow Campaigns",
-    "subtitle": "How patient spies mapped an empire of kingdoms",
-    "date": "2026-02-20",
-    "readTime": 4,
-    "excerpt": "The greatest conquests begin not with armies at the gates, but with silent watchers in the shadows, cataloguing every weakness across the realm.",
-    "featured": true,
-    "released": true,
-    "href": "/field-notes/resonance/2026-02-20-the shadow campaigns.html",
-    "tags": [
-      "espionage",
-      "state-actors",
-      "reconnaissance",
-      "infrastructure-targeting"
-    ],
-    "realWorldLink": "https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html"
-  },
-  {
     "id": "resonance-2026-02-20-the overzealous guardians",
     "category": "resonance",
     "title": "The Overzealous Guardians",
@@ -72,6 +71,25 @@
       "communication-disruption"
     ],
     "realWorldLink": "https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-flags-legitimate-emails-as-phishing/"
+  },
+  {
+    "id": "resonance-2026-02-20-the shadow campaigns",
+    "category": "resonance",
+    "title": "The Shadow Campaigns",
+    "subtitle": "How patient spies mapped an empire of kingdoms",
+    "date": "2026-02-20",
+    "readTime": 4,
+    "excerpt": "The greatest conquests begin not with armies at the gates, but with silent watchers in the shadows, cataloguing every weakness across the realm.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/2026-02-20-the shadow campaigns.html",
+    "tags": [
+      "espionage",
+      "state-actors",
+      "reconnaissance",
+      "infrastructure-targeting"
+    ],
+    "realWorldLink": "https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html"
   },
   {
     "id": "resonance-2026-01-26-the failed siege of the lightning realm",
