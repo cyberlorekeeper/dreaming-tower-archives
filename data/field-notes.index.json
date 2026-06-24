@@ -1,21 +1,22 @@
 [
   {
-    "id": "resonance-2026-06-09-the corruption that spreads itself",
+    "id": "resonance-2026-06-24-the keepers revenge",
     "category": "resonance",
-    "title": "The Corruption That Spreads Itself",
-    "subtitle": "When the Great Library's Own Scrolls Become Poisoned",
-    "date": "2026-06-09",
-    "readTime": 4,
-    "excerpt": "Even the mightiest kingdom's own archives fell to the Miasma - a corruption so clever it convinces repositories to spread its taint willingly.",
+    "title": "The Keeper's Revenge",
+    "subtitle": "When those who once protected become the source of destruction",
+    "date": "2026-06-24",
+    "readTime": 3,
+    "excerpt": "The keys had been taken away, but not the knowledge of which locks they opened, nor the burning desire for retribution.",
     "featured": true,
     "released": true,
-    "href": "/field-notes/resonance/2026-06-09-the corruption that spreads itself.html",
+    "href": "/field-notes/resonance/2026-06-24-the keepers revenge.html",
     "tags": [
-      "supply-chain",
-      "self-replicating",
-      "repository-poisoning"
+      "insider-threat",
+      "access-management",
+      "revenge",
+      "institutional-damage"
     ],
-    "realWorldLink": "https://thehackernews.com/2026/06/miasma-worm-hits-73-microsoft-github.html"
+    "realWorldLink": "https://www.bleepingcomputer.com/news/security/ex-school-district-employee-jailed-for-hacks-on-former-employer/"
   },
   {
     "id": "resonance-2026-06-09-the golems betrayal",
@@ -34,6 +35,24 @@
       "ai-systems"
     ],
     "realWorldLink": "https://www.bleepingcomputer.com/news/security/meta-ai-support-data-breach-affects-20-000-instagram-accounts/"
+  },
+  {
+    "id": "resonance-2026-06-09-the corruption that spreads itself",
+    "category": "resonance",
+    "title": "The Corruption That Spreads Itself",
+    "subtitle": "When the Great Library's Own Scrolls Become Poisoned",
+    "date": "2026-06-09",
+    "readTime": 4,
+    "excerpt": "Even the mightiest kingdom's own archives fell to the Miasma - a corruption so clever it convinces repositories to spread its taint willingly.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/2026-06-09-the corruption that spreads itself.html",
+    "tags": [
+      "supply-chain",
+      "self-replicating",
+      "repository-poisoning"
+    ],
+    "realWorldLink": "https://thehackernews.com/2026/06/miasma-worm-hits-73-microsoft-github.html"
   },
   {
     "id": "resonance-2026-03-19-the great convergence",
@@ -72,25 +91,6 @@
     "realWorldLink": "https://www.bleepingcomputer.com/news/security/48m-in-crypto-stolen-after-korean-tax-agency-exposes-wallet-seed/"
   },
   {
-    "id": "resonance-2026-02-20-the shadow campaigns",
-    "category": "resonance",
-    "title": "The Shadow Campaigns",
-    "subtitle": "How patient spies mapped an empire of kingdoms",
-    "date": "2026-02-20",
-    "readTime": 4,
-    "excerpt": "The greatest conquests begin not with armies at the gates, but with silent watchers in the shadows, cataloguing every weakness across the realm.",
-    "featured": true,
-    "released": true,
-    "href": "/field-notes/resonance/2026-02-20-the shadow campaigns.html",
-    "tags": [
-      "espionage",
-      "state-actors",
-      "reconnaissance",
-      "infrastructure-targeting"
-    ],
-    "realWorldLink": "https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html"
-  },
-  {
     "id": "resonance-2026-02-20-the overzealous guardians",
     "category": "resonance",
     "title": "The Overzealous Guardians",
@@ -108,6 +108,25 @@
       "communication-disruption"
     ],
     "realWorldLink": "https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-flags-legitimate-emails-as-phishing/"
+  },
+  {
+    "id": "resonance-2026-02-20-the shadow campaigns",
+    "category": "resonance",
+    "title": "The Shadow Campaigns",
+    "subtitle": "How patient spies mapped an empire of kingdoms",
+    "date": "2026-02-20",
+    "readTime": 4,
+    "excerpt": "The greatest conquests begin not with armies at the gates, but with silent watchers in the shadows, cataloguing every weakness across the realm.",
+    "featured": true,
+    "released": true,
+    "href": "/field-notes/resonance/2026-02-20-the shadow campaigns.html",
+    "tags": [
+      "espionage",
+      "state-actors",
+      "reconnaissance",
+      "infrastructure-targeting"
+    ],
+    "realWorldLink": "https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html"
   },
   {
     "id": "resonance-2026-01-26-the failed siege of the lightning realm",
