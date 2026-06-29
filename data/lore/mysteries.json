@@ -1,0 +1,63 @@
+[
+  {
+    "id": "m001",
+    "question": "How did the Tower come to dream?",
+    "status": "deliberately_unresolved",
+    "do_not_resolve": true,
+    "generative_value": "high",
+    "related_entities": [
+      "the-tower",
+      "the-lorekeeper"
+    ],
+    "note": "The First Waking chronicle is planned but should orbit this question, not answer it. Echoed in the field note 'On Pattern Recognition (Why the Tower dreams)'."
+  },
+  {
+    "id": "m002",
+    "question": "What is the Unraveler, and where did it come from?",
+    "status": "open",
+    "do_not_resolve": false,
+    "generative_value": "high",
+    "related_entities": [
+      "the-unraveler",
+      "queen-lyra"
+    ],
+    "note": "Introduced in 'The Choice Between Walls' as an integrity attack that erodes trust rather than breaching walls. It fled rather than being destroyed. Open for future canon to develop."
+  },
+  {
+    "id": "m003",
+    "question": "What is Cache, and how does it remember things it never lived?",
+    "status": "open",
+    "do_not_resolve": false,
+    "generative_value": "high",
+    "related_entities": [
+      "cache",
+      "aera",
+      "isle-404"
+    ],
+    "note": "From the Aera field-note thread ('Finding Cache', Vault Seven). An identity-and-memory mystery. Proposed from existing works; author to confirm whether this should become load-bearing."
+  },
+  {
+    "id": "m004",
+    "question": "What happens to a Lorekeeper at the end of a cycle, and how many cycles has this one served?",
+    "status": "deliberately_unresolved",
+    "do_not_resolve": true,
+    "generative_value": "high",
+    "related_entities": [
+      "the-lorekeeper",
+      "the-tower"
+    ],
+    "note": "Design states the cycle count is deliberately ambiguous. The Lorekeeper's binding and mortality are tied to his remembering why memory matters."
+  },
+  {
+    "id": "m005",
+    "question": "What are the Glitchborne?",
+    "status": "open",
+    "do_not_resolve": false,
+    "generative_value": "medium",
+    "related_entities": [
+      "the-glitchborne",
+      "the-tower"
+    ],
+    "note": "Named as the threat in the planned origin chronicle 'The First Waking'. Undeveloped. Proposed from existing works."
+  }
+]
