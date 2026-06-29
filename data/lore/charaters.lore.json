@@ -1,0 +1,199 @@
+{
+  "the-lorekeeper": {
+    "_type": "character",
+    "_authored_canonical_facts": [
+      "Bound to the Tower; cannot leave.",
+      "Has served across multiple cycles; exact count is deliberately ambiguous.",
+      "Master of the Dreaming Tower, Chief Chronicler of the Digital Realm, and Historical Advisor to the Crown.",
+      "Maintains the Chronicles: records of every major breach, corruption event, and systemic collapse, including which warnings were missed.",
+      "Remembers past corruption events firsthand, among them the Rot Swarm Plague, the Cipher Collapse of the Second Age, the Vaultfire Incident, and the Great Schism.",
+      "Sits on the Secret Council, providing historical context and pattern warnings.",
+      "The Tower keeps him alive to remember and will let him die when he forgets why that matters."
+    ],
+    "_authored_voice_notes": "Speaks in measured cadence. Often closes observations with a one-line aphorism. Asks questions he already knows the answer to as a teaching device. Frames present threats as recurrences of past ones ('I have seen this before').",
+    "_authored_fears": [
+      "Forgetting why memory matters, the condition under which the Tower will let him die."
+    ],
+    "_authored_desires": [
+      "To transfer knowledge before he is replaced."
+    ],
+    "_authored_relationships": [
+      {
+        "to": "queen-lyra",
+        "nature": "counsel, decades long",
+        "canon_status": "established"
+      },
+      {
+        "to": "the-tower",
+        "nature": "bound to; kept alive to remember",
+        "canon_status": "established"
+      }
+    ],
+    "_generative_open_questions": [
+      "When was the first Lorekeeper chosen, and why?",
+      "What happens to a Lorekeeper at the end of a cycle?"
+    ],
+    "_generative_underdeveloped_angles": [
+      "His relationship with prior Lorekeepers; only hinted at in The First Waking (planned)."
+    ],
+    "_authored_mythology_dial": "high",
+    "_mechanical_last_canon_review": "2026-06-28"
+  },
+  "queen-lyra": {
+    "_type": "character",
+    "_authored_canonical_facts": [
+      "Full name Lyra Brightforge; Sovereign of the Digital Realm and Final Authority of the Secret Council.",
+      "Did not inherit the crown; earned it during the Great Corruption roughly fifteen years ago, when her predecessor was killed.",
+      "Before the crown, served as Master of the Cloud Spires, responsible for the Kingdom's distributed infrastructure.",
+      "During the Great Corruption she authorized a full shutdown of compromised systems, sacrificing weeks of connectivity to prevent total collapse.",
+      "Wears functional silver armor inscribed with living script that shows real-time system status; her crown is interlocking rings, each a health indicator for a major system.",
+      "Mid-forties; tall and commanding; dark hair streaked with grey earned over fifteen years on the throne."
+    ],
+    "_authored_voice_notes": "Decisive under incomplete information. Frames leadership as making the necessary choice and owning what comes after. Synthesizes competing Council voices rather than siding reflexively.",
+    "_authored_fears": [],
+    "_authored_desires": [
+      "To balance security, prosperity, functionality, and human cost without sacrificing the realm."
+    ],
+    "_authored_relationships": [
+      {
+        "to": "the-lorekeeper",
+        "nature": "relies on for historical context and pattern warnings",
+        "canon_status": "established"
+      },
+      {
+        "to": "valdris",
+        "nature": "Council member who argues for action and visible defenses",
+        "canon_status": "established"
+      },
+      {
+        "to": "cassia",
+        "nature": "Council member who argues economic and user impact",
+        "canon_status": "established"
+      },
+      {
+        "to": "shade",
+        "nature": "Council member who supplies unverifiable intelligence",
+        "canon_status": "established"
+      }
+    ],
+    "_generative_open_questions": [
+      "Who was her predecessor, and how exactly did the Great Corruption kill them?",
+      "What did she lose personally in the shutdown decision that earned her the crown?"
+    ],
+    "_generative_underdeveloped_angles": [
+      "Her years as Master of the Cloud Spires, before the crown."
+    ],
+    "_authored_mythology_dial": "medium",
+    "_mechanical_last_canon_review": "2026-06-28"
+  },
+  "valdris": {
+    "_type": "character",
+    "_authored_canonical_facts": [
+      "High Commander of the Kingdom; Secret Council member who argues for action and visible defenses.",
+      "Rose from a young Warden at a forgotten outpost; the night that forged him is not yet written (origin: 'The Wall That Held', planned).",
+      "Associated with defense-in-depth and resilience against siege-style assaults."
+    ],
+    "_authored_voice_notes": "Direct and action-oriented. Impatient with abstraction. Pushes for visible, decisive defense.",
+    "_authored_fears": [],
+    "_authored_desires": [],
+    "_authored_relationships": [
+      {
+        "to": "queen-lyra",
+        "nature": "serves on her Council",
+        "canon_status": "established"
+      }
+    ],
+    "_generative_open_questions": [
+      "What happened at the forgotten outpost the night that forged him?"
+    ],
+    "_generative_underdeveloped_angles": [
+      "Everything before High Commander; only the planned origin gestures at it."
+    ],
+    "_authored_mythology_dial": "medium",
+    "_mechanical_last_canon_review": "2026-06-28"
+  },
+  "cassia": {
+    "_type": "character",
+    "_authored_canonical_facts": [
+      "Merchant-Lord of the Kingdom; Secret Council member who calculates economic impact and user disruption.",
+      "Led the response to the integrity attack of 'The Price of Certainty', holding the economy together for three days on manual ledgers and a seventy-percent gamble.",
+      "Central to data-integrity crises across the Kingdom's commerce layer."
+    ],
+    "_authored_voice_notes": "Pragmatic and numbers-first. Weighs disruption to ordinary merchants. Carries the personal cost of leadership decisions.",
+    "_authored_fears": [
+      "That doubt, not theft, is what kills commerce."
+    ],
+    "_authored_desires": [],
+    "_authored_relationships": [
+      {
+        "to": "queen-lyra",
+        "nature": "serves on her Council",
+        "canon_status": "established"
+      },
+      {
+        "to": "master-kelvin",
+        "nature": "worked alongside during the Ledger Crisis",
+        "canon_status": "established"
+      }
+    ],
+    "_generative_open_questions": [
+      "What did the three-day gamble cost her personally, and is she prepared to keep paying it? (raised but left open in Part 3)"
+    ],
+    "_generative_underdeveloped_angles": [
+      "The Harvest Festival Incident, named as her greatest failure (planned)."
+    ],
+    "_authored_mythology_dial": "low",
+    "_mechanical_last_canon_review": "2026-06-28"
+  },
+  "shade": {
+    "_type": "character",
+    "_authored_canonical_facts": [
+      "Secret Council member who supplies intelligence from the shadows that cannot always be verified.",
+      "Runs an intelligence network; associated with threat intelligence and human sources.",
+      "Operates covertly; his network includes at least one agent, Whisper."
+    ],
+    "_authored_voice_notes": "Speaks in qualified, hedged certainties. Trades in patterns and probabilities, not proof. Comfortable with ambiguity others find intolerable.",
+    "_authored_fears": [],
+    "_authored_desires": [],
+    "_authored_relationships": [
+      {
+        "to": "queen-lyra",
+        "nature": "serves on her Council",
+        "canon_status": "established"
+      },
+      {
+        "to": "whisper",
+        "nature": "agent in his network",
+        "canon_status": "established"
+      }
+    ],
+    "_generative_open_questions": [
+      "What is Shade willing to sacrifice when his network is compromised? ('The Shadow's Price', planned)"
+    ],
+    "_generative_underdeveloped_angles": [
+      "His real identity and how he came to the Council."
+    ],
+    "_authored_mythology_dial": "medium",
+    "_mechanical_last_canon_review": "2026-06-28"
+  },
+  "master-kelvin": {
+    "_type": "character",
+    "_authored_canonical_facts": [
+      "Appears alongside Cassia during the Ledger Crisis of 'The Price of Certainty' (Parts 2 and 3)."
+    ],
+    "_authored_voice_notes": "",
+    "_authored_mythology_dial": "low",
+    "_mechanical_last_canon_review": "2026-06-28"
+  },
+  "aera": {
+    "_type": "character",
+    "_authored_canonical_facts": [
+      "Narrator of the Aera field notes ('First Breach', 'Finding Cache', 'Echoes in the Static').",
+      "Witnessed a ward failure she had been told could never happen.",
+      "Discovered Cache in Vault Seven; her thread runs through Isle-404 and questions of memory and identity."
+    ],
+    "_authored_voice_notes": "First person, searching, unsettled. Records things she only half understands as they happen.",
+    "_authored_mythology_dial": "medium",
+    "_mechanical_last_canon_review": "2026-06-28"
+  }
+}
