@@ -1,0 +1,61 @@
+{
+  "the-tower": {
+    "_type": "location",
+    "_authored_location_type": "structure",
+    "_authored_parent_location": null,
+    "_authored_region": "the-tower",
+    "_authored_canonical_facts": [
+      "Sentient or near-sentient; the Tower 'dreams.'",
+      "Houses the Lorekeeper; mechanism of binding unspecified.",
+      "Too old to remember its own construction; built to endure, not to be understood.",
+      "Keeps the Lorekeeper alive to remember; its dreaming is tied to pattern recognition across the realm.",
+      "A thousand years ago it was only stone, before it awakened (origin: 'The First Waking', planned)."
+    ],
+    "_authored_sensory_signature": "Stone that listens. Light that arrives before its source. The sound of pages turning in rooms that contain no books.",
+    "_authored_mood": "watchful, ancient, patient",
+    "_authored_connected_locations": [
+      {
+        "to": "the-secret-council-chamber",
+        "nature": "contains"
+      }
+    ],
+    "_generative_open_questions": [
+      "How does the Tower communicate with the Lorekeeper?",
+      "Has it had Lorekeepers it rejected?"
+    ],
+    "_authored_mythology_dial": "high",
+    "_mechanical_last_canon_review": "2026-06-28"
+  },
+  "merchants-gate": {
+    "_type": "location",
+    "_authored_location_type": "trade gateway",
+    "_authored_parent_location": null,
+    "_authored_region": "the-kingdom",
+    "_authored_canonical_facts": [
+      "A gateway in the Kingdom's commerce network; the setting of 'The Breach at Merchant's Gate'.",
+      "Site of a credential-compromise incident in which a single compromised key cascaded through interconnected systems."
+    ],
+    "_authored_sensory_signature": "",
+    "_authored_mood": "busy, commercial, exposed",
+    "_authored_connected_locations": [],
+    "_generative_open_questions": [],
+    "_authored_mythology_dial": "low",
+    "_mechanical_last_canon_review": "2026-06-28"
+  },
+  "cloud-spires": {
+    "_type": "location",
+    "_authored_location_type": "distributed infrastructure",
+    "_authored_parent_location": null,
+    "_authored_region": "the-kingdom",
+    "_authored_canonical_facts": [
+      "The Kingdom's distributed infrastructure; Queen Lyra was Master of the Cloud Spires before she took the crown.",
+      "Implicated in the Great Corruption roughly fifteen years ago."
+    ],
+    "_authored_sensory_signature": "",
+    "_authored_mood": "vast, distributed, load-bearing",
+    "_authored_connected_locations": [],
+    "_generative_open_questions": [],
+    "_authored_mythology_dial": "medium",
+    "_mechanical_last_canon_review": "2026-06-28"
+  }
+}
